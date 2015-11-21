@@ -4,7 +4,7 @@
   <subtitle><![CDATA[万般皆下品，惟有读书高]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2015-11-21T06:46:28.322Z</updated>
+  <updated>2015-11-21T14:17:09.580Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -13,6 +13,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[GENYMOTION的安装]]></title>
+    <link href="http://yoursite.com/2015/11/21/Genymotion%E7%9A%84%E5%AE%89%E8%A3%85/"/>
+    <id>http://yoursite.com/2015/11/21/Genymotion的安装/</id>
+    <published>2015-11-21T13:53:56.000Z</published>
+    <updated>2015-11-21T14:17:09.580Z</updated>
+    <content type="html"><![CDATA[<h3 id="在genymotion官网上注册一个账号">在genymotion官网上注册一个账号</h3><ol>
+<li>然后下载安装genymotion,会自带安装virtualbox</li>
+<li>安装完成之可能会出现断网情况。<br>解决办法：选择本地连接和 virtualbox host-only这两个，鼠标右键选择桥接。</li>
+</ol>
+<h3 id="eclipse的配置">eclipse的配置</h3><ol>
+<li>打开eclispe</li>
+<li>选择help&gt;install new software</li>
+<li>输入<a href="http://plugins.genymotion.com/eclipse。！！然后去掉勾选出现安装items，select" target="_blank" rel="external">http://plugins.genymotion.com/eclipse。！！然后去掉勾选出现安装items，select</a> all</li>
+<li>安装，直至完成。这个时候重启eclipse可以发现已经多了一个genymotion图标。</li>
+<li>另外在genymotion中也要更改设置 settings&gt;ADB</li>
+<li>配置自己的android sdk目录 %android_dir%/_x64_windows/sdk</li>
+</ol>
+<p>至此已经大工告成！</p>
+<h3 id="相关连接">相关连接</h3><p><a href="https://www.genymotion.com/#!/" target="_blank" rel="external">genymotion官网</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[android最快的模拟器genymotion]]>
+    
+    </summary>
+    
+      <category term="Genymotion" scheme="http://yoursite.com/tags/Genymotion/"/>
+    
+      <category term="android" scheme="http://yoursite.com/categories/android/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[我的Hexo创建历程]]></title>
