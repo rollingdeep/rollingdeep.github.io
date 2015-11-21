@@ -1,29 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title><![CDATA[许传华的博客]]></title>
+  <title><![CDATA[沉思]]></title>
   <subtitle><![CDATA[万般皆下品，惟有读书高]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2015-11-20T08:38:14.792Z</updated>
+  <updated>2015-11-21T06:46:28.322Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
-    <name><![CDATA[Paul]]></name>
+    <name><![CDATA[Rollingdeep]]></name>
     
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[FirstBlog]]></title>
-    <link href="http://yoursite.com/2015/11/20/FirstBlog/"/>
-    <id>http://yoursite.com/2015/11/20/FirstBlog/</id>
-    <published>2015-11-20T08:38:14.000Z</published>
-    <updated>2015-11-20T08:38:14.792Z</updated>
-    <content type="html"></content>
+    <title><![CDATA[我的Hexo创建历程]]></title>
+    <link href="http://yoursite.com/2015/11/21/%E6%88%91%E7%9A%84Hexo%E5%88%9B%E5%BB%BA%E5%8E%86%E7%A8%8B/"/>
+    <id>http://yoursite.com/2015/11/21/我的Hexo创建历程/</id>
+    <published>2015-11-21T05:51:56.000Z</published>
+    <updated>2015-11-21T06:46:28.322Z</updated>
+    <content type="html"><![CDATA[<blockquote>
+<p>使用hexo在github上搭建个人博客,创建一个属于自己的个人空间。你可以分享技术，分享学术，也可以分享生活中的点点滴滴。让我们从这里开始吧！</p>
+</blockquote>
+<h2 id="详细步骤">详细步骤</h2><p>1.首先申请一个<a href="github.com">github</a>账号<br>2.创建一个名为your_username.github.io的repository<br>2.然后安装<a href="http://git-scm.com/download/win" target="_blank" rel="external">Git</a>和<a href="https://nodejs.org/en/" target="_blank" rel="external">nodejs</a></p>
+<h3 id="Git的相关配置">Git的相关配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name <span class="string">"Paul"</span></span><br><span class="line">$ git config --global user.email <span class="string">"paul@sina.com"</span></span><br></pre></td></tr></table></figure>
+<h3 id="生成密钥">生成密钥</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">"humingx@yeah.net"</span></span><br></pre></td></tr></table></figure>
+<p>连续输入三个回车，没问题就去~/.ssh/目录下，查看是否生成id_rsa和id_rsa.pub</p>
+<h3 id="添加密钥到ssh-agent">添加密钥到ssh-agent</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">eval</span> <span class="string">"<span class="variable">$(ssh-agent -s)</span>"</span></span><br><span class="line">$ ssh-add ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure>
+<h3 id="复制密钥">复制密钥</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com <span class="comment">#测试密钥</span></span><br><span class="line">clip &lt; ~/.ssh/id_rsa.pub <span class="comment">#复制密钥</span></span><br></pre></td></tr></table></figure>
+<h3 id="添加可信任电脑">添加可信任电脑</h3><p>1.到你的github &gt;&gt; setttings &gt;&gt; SSH keys &gt;&gt; add key<br>2.右键鼠标粘贴进去，github设置到此ok。</p>
+<h2 id="推荐参考网址">推荐参考网址</h2><p>参考这几个网页<br>1.<a href="http://segmentfault.com/a/1190000002645623" target="_blank" rel="external">git配置ssh</a><br>2.<a href="http://jingyan.baidu.com/article/14bd256e201f12bb6d261222.html" target="_blank" rel="external">git创建静态网页</a><br>3.<a href="http://wsgzao.github.io/post/hexo-guide/#安装GIT" target="_blank" rel="external">nodejs安装</a><br>4.<a href="http://segmentfault.com/a/1190000002632530" target="_blank" rel="external">hexo常用命令</a></p>
+<h2 id="注意事项">注意事项</h2><p>1.这里命名方式注意！！！<br>    创建一个项目，命名比较特殊，格式：your_username_in_github.github.io<br>2.nodejs安装完一定要使用npm init来创建一个package.json<br>然后就是hexo设置在全局里面<br>3.不懂多问度娘或者Google!!</p>
+]]></content>
     <summary type="html">
+    <![CDATA[使用hexo在github上搭建个人博客]]>
     
     </summary>
+    
+      <category term="Github" scheme="http://yoursite.com/tags/Github/"/>
+    
+      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
+    
+      <category term="Nodejs" scheme="http://yoursite.com/tags/Nodejs/"/>
+    
+      <category term="FirstTry" scheme="http://yoursite.com/categories/FirstTry/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[First Blog]]></title>
+    <link href="http://yoursite.com/2015/11/21/First-Blog/"/>
+    <id>http://yoursite.com/2015/11/21/First-Blog/</id>
+    <published>2015-11-21T05:13:12.000Z</published>
+    <updated>2015-11-21T05:22:55.520Z</updated>
+    <content type="html"><![CDATA[<p>写点东西吧！</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[生命在于折腾，又把博客折腾到Hexo了。给Hexo点赞。]]>
+    
+    </summary>
+    
+      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
+    
+      <category term="Rollingdeep" scheme="http://yoursite.com/tags/Rollingdeep/"/>
+    
+      <category term="FirstTry" scheme="http://yoursite.com/categories/FirstTry/"/>
     
   </entry>
   
@@ -46,6 +88,26 @@
     <summary type="html">
     <![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io]]>
     </summary>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[使用Hexo搭建个人博客]]></title>
+    <link href="http://yoursite.com/2015/09/01/FirstBlog/"/>
+    <id>http://yoursite.com/2015/09/01/FirstBlog/</id>
+    <published>2015-09-01T11:07:43.000Z</published>
+    <updated>2015-11-21T05:22:52.223Z</updated>
+    <content type="html"><![CDATA[<p>###怎么写文章啊，不会啊</p>
+<p>##我累个去</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[生命在于折腾，又把博客折腾到Hexo了。给Hexo点赞。]]>
+    
+    </summary>
+    
+      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
+    
+      <category term="FirstTry" scheme="http://yoursite.com/categories/FirstTry/"/>
     
   </entry>
   

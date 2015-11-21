@@ -2,13 +2,43 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/FirstBlog/index.html</loc>
-    <lastmod>2015-11-20T08:42:15.663Z</lastmod>
+    <loc>http://yoursite.com/guestbook/index.html</loc>
+    <lastmod>2015-11-21T06:54:41.539Z</lastmod>
   </url>
   
   <url>
-    <loc>http://yoursite.com/2015/11/20/FirstBlog/</loc>
-    <lastmod>2015-11-20T08:38:14.792Z</lastmod>
+    <loc>http://yoursite.com/2015/11/21/%E6%88%91%E7%9A%84Hexo%E5%88%9B%E5%BB%BA%E5%8E%86%E7%A8%8B/</loc>
+    <lastmod>2015-11-21T06:46:28.322Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2015/11/21/First-Blog/</loc>
+    <lastmod>2015-11-21T05:22:55.520Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2015/09/01/FirstBlog/</loc>
+    <lastmod>2015-11-21T05:22:52.223Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/404.html</loc>
+    <lastmod>2015-11-20T10:40:35.931Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/about/index.html</loc>
+    <lastmod>2015-11-20T10:37:42.745Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/categories/index.html</loc>
+    <lastmod>2015-11-20T10:31:21.334Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/tags/index.html</loc>
+    <lastmod>2015-11-20T10:29:08.518Z</lastmod>
   </url>
   
   <url>
