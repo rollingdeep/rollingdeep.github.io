@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, Blog" />
+  <meta name="keywords" content="Maven,hamcrest," />
 
 
 
@@ -53,16 +53,16 @@
 
 
 
-<meta name="description" content="生命在于折腾，又把博客折腾到Hexo了。给Hexo点赞。">
+<meta name="description" content="在使用junit时候出现一个依赖包叫做hankcs，有两个jar包，一个是core，一个是library,创建好项目之后。提示说在所给的mirror地址下网络错误码:60000">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用Hexo搭建个人博客">
-<meta property="og:url" content="http://yoursite.com/2015/09/01/FirstBlog/index.html">
+<meta property="og:title" content="eclipse开发maven项目60000错误">
+<meta property="og:url" content="http://yoursite.com/2015/11/22/eclipse开发maven项目60000错误/index.html">
 <meta property="og:site_name" content="沉思">
-<meta property="og:description" content="生命在于折腾，又把博客折腾到Hexo了。给Hexo点赞。">
-<meta property="og:updated_time" content="2015-11-21T05:22:52.223Z">
+<meta property="og:description" content="在使用junit时候出现一个依赖包叫做hankcs，有两个jar包，一个是core，一个是library,创建好项目之后。提示说在所给的mirror地址下网络错误码:60000">
+<meta property="og:updated_time" content="2015-11-22T11:58:13.542Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用Hexo搭建个人博客">
-<meta name="twitter:description" content="生命在于折腾，又把博客折腾到Hexo了。给Hexo点赞。">
+<meta name="twitter:title" content="eclipse开发maven项目60000错误">
+<meta name="twitter:description" content="在使用junit时候出现一个依赖包叫做hankcs，有两个jar包，一个是core，一个是library,创建好项目之后。提示说在所给的mirror地址下网络错误码:60000">
 
 
 
@@ -74,7 +74,7 @@
   };
 </script>
 
-  <title> 使用Hexo搭建个人博客 | 沉思 </title>
+  <title> eclipse开发maven项目60000错误 | 沉思 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -214,7 +214,7 @@
             
             
               
-                使用Hexo搭建个人博客
+                eclipse开发maven项目60000错误
               
             
           </h1>
@@ -223,8 +223,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-09-01T19:07:43+08:00" content="2015-09-01">
-              2015-09-01
+            <time itemprop="dateCreated" datetime="2015-11-22T19:37:26+08:00" content="2015-11-22">
+              2015-11-22
             </time>
           </span>
 
@@ -233,8 +233,8 @@
               &nbsp; | &nbsp; 分类于
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/FirstTry/" itemprop="url" rel="index">
-                    <span itemprop="name">FirstTry</span>
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
                   </a>
                 </span>
 
@@ -249,8 +249,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/09/01/FirstBlog/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/01/FirstBlog/" itemprop="commentsCount"></span>
+                <a href="/2015/11/22/eclipse开发maven项目60000错误/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/22/eclipse开发maven项目60000错误/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -269,8 +269,13 @@
       
 
       
-        <span itemprop="articleBody"><p>###怎么写文章啊，不会啊</p>
-<p>##我累个去</p>
+        <span itemprop="articleBody"><h2 id="坚持每天写一点">坚持每天写一点</h2><h3 id="操作步骤">操作步骤</h3><ol>
+<li>首先根据错误提示去~/.m2/repository/下去找org/hamcrest/hamcrest-core/1.3</li>
+<li>删除目录下含有lastupdate结尾的jar(无效的jar)</li>
+<li>百度maven hamcrest-core-1.3.jar和hamcrest-library-1.3.jar。直接手动下载.</li>
+<li>然后直接复制到对应版本的目录下。</li>
+</ol>
+<p>刷新项目ok！！</p>
 </span>
       
     </div>
@@ -279,7 +284,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Hexo/" rel="tag">#Hexo</a>
+            <a href="/tags/Maven/" rel="tag">#Maven</a>
+          
+            <a href="/tags/hamcrest/" rel="tag">#hamcrest</a>
           
         </div>
       
@@ -288,12 +295,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2015/11/21/Genymotion的安装/" rel="next" title="GENYMOTION的安装">
+                <i class="fa fa-chevron-left"></i> GENYMOTION的安装
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/11/20/hello-world/" rel="prev" title="Hello World">
-                Hello World <i class="fa fa-chevron-right"></i>
+              <a href="/2015/11/23/被世界遗忘的角落/" rel="prev" title="被世界遗忘的角落">
+                被世界遗忘的角落 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -321,8 +332,8 @@
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/09/01/FirstBlog/"
-           data-title="使用Hexo搭建个人博客" data-url="http://yoursite.com/2015/09/01/FirstBlog/">
+      <div class="ds-thread" data-thread-key="2015/11/22/eclipse开发maven项目60000错误/"
+           data-title="eclipse开发maven项目60000错误" data-url="http://yoursite.com/2015/11/22/eclipse开发maven项目60000错误/">
       </div>
     
   </div>
@@ -444,7 +455,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#坚持每天写一点"><span class="nav-number">1.</span> <span class="nav-text">坚持每天写一点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#操作步骤"><span class="nav-number">1.1.</span> <span class="nav-text">操作步骤</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
