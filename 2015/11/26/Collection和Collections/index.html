@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, Blog" />
+  <meta name="keywords" content="Collection,Java," />
 
 
 
@@ -53,16 +53,16 @@
 
 
 
-<meta name="description" content="生命在于折腾，又把博客折腾到Hexo了。给Hexo点赞。">
+<meta name="description" content="Java面试经常问到的一个问题，集合接口Collection和集合帮助类Collections的工作原理。刚好看到这里，分享之！">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用Hexo搭建个人博客">
-<meta property="og:url" content="http://yoursite.com/2015/09/01/FirstBlog/index.html">
+<meta property="og:title" content="Collection和Collections">
+<meta property="og:url" content="http://yoursite.com/2015/11/26/Collection和Collections/index.html">
 <meta property="og:site_name" content="沉思">
-<meta property="og:description" content="生命在于折腾，又把博客折腾到Hexo了。给Hexo点赞。">
-<meta property="og:updated_time" content="2015-11-21T05:22:52.223Z">
+<meta property="og:description" content="Java面试经常问到的一个问题，集合接口Collection和集合帮助类Collections的工作原理。刚好看到这里，分享之！">
+<meta property="og:updated_time" content="2015-11-26T10:10:23.781Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用Hexo搭建个人博客">
-<meta name="twitter:description" content="生命在于折腾，又把博客折腾到Hexo了。给Hexo点赞。">
+<meta name="twitter:title" content="Collection和Collections">
+<meta name="twitter:description" content="Java面试经常问到的一个问题，集合接口Collection和集合帮助类Collections的工作原理。刚好看到这里，分享之！">
 
 
 
@@ -74,7 +74,7 @@
   };
 </script>
 
-  <title> 使用Hexo搭建个人博客 | 沉思 </title>
+  <title> Collection和Collections | 沉思 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -214,7 +214,7 @@
             
             
               
-                使用Hexo搭建个人博客
+                Collection和Collections
               
             
           </h1>
@@ -223,8 +223,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-09-01T19:07:43+08:00" content="2015-09-01">
-              2015-09-01
+            <time itemprop="dateCreated" datetime="2015-11-26T17:23:04+08:00" content="2015-11-26">
+              2015-11-26
             </time>
           </span>
 
@@ -233,8 +233,8 @@
               &nbsp; | &nbsp; 分类于
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/FirstTry/" itemprop="url" rel="index">
-                    <span itemprop="name">FirstTry</span>
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
                   </a>
                 </span>
 
@@ -249,8 +249,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/09/01/FirstBlog/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/01/FirstBlog/" itemprop="commentsCount"></span>
+                <a href="/2015/11/26/Collection和Collections/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/26/Collection和Collections/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -269,8 +269,32 @@
       
 
       
-        <span itemprop="articleBody"><p>###怎么写文章啊，不会啊</p>
-<p>##我累个去</p>
+        <span itemprop="articleBody"><h3 id="Collection">Collection</h3><pre><code class="bash">Collection   
+├List   
+│├LinkedList   
+│├ArrayList   
+│└Vector   
+│　└Stack   
+└Set
+</code></pre>
+<p>Collection是集合类的上级接口，继承与他的接口主要有Set 和 List.</p>
+<h3 id="Collections">Collections</h3><p>Collections是针对集合类的一个帮助类，它提供一系列静态方法实现对各种集合的搜索、排序[底层是二分法]、线程安全化等操作。</p>
+<ul>
+<li>此类不能实例化，就像一个工具类，服务于Java的Collection框架</li>
+</ul>
+<h3 id="小例子">小例子</h3><pre><code class="bash">//注意List是实现Collection接口的
+List list = new ArrayList();
+double array[] = {<span class="number">112</span>, <span class="number">111</span>, <span class="number">23</span>, <span class="number">456</span>, <span class="number">231</span>};
+<span class="keyword">for</span> (int i = <span class="number">0</span>; i &lt; array.length; i++) {
+    list.add(new Double(array[i]));
+}
+Collections.sort(list);//
+<span class="keyword">for</span> (int i = <span class="number">0</span>; i &lt; array.length; i++) {
+    System.out.println(list.get(i));
+}
+// 结果：<span class="number">23.0</span> <span class="number">111.0</span> <span class="number">112.0</span> <span class="number">231.0</span> <span class="number">456.0</span>
+</code></pre>
+<h3 id="Reference">Reference</h3><p><a href="http://trinea.iteye.com/blog/1248517" target="_blank" rel="external">对象数组或list排序及Collections排序原理</a><br><a href="http://www.blogjava.net/hgc-ghc/archive/2013/03/28/397084.html" target="_blank" rel="external">Java中的CompareTo</a><br><a href="http://825635381.iteye.com/blog/2017650" target="_blank" rel="external">Java基础中的泛型</a></p>
 </span>
       
     </div>
@@ -279,7 +303,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Hexo/" rel="tag">#Hexo</a>
+            <a href="/tags/Collection/" rel="tag">#Collection</a>
+          
+            <a href="/tags/Java/" rel="tag">#Java</a>
           
         </div>
       
@@ -288,13 +314,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2015/11/26/HashMap工作原理/" rel="next" title="HashMap工作原理">
+                <i class="fa fa-chevron-left"></i> HashMap工作原理
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/11/20/hello-world/" rel="prev" title="Hello World">
-                Hello World <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -321,8 +347,8 @@
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/09/01/FirstBlog/"
-           data-title="使用Hexo搭建个人博客" data-url="http://yoursite.com/2015/09/01/FirstBlog/">
+      <div class="ds-thread" data-thread-key="2015/11/26/Collection和Collections/"
+           data-title="Collection和Collections" data-url="http://yoursite.com/2015/11/26/Collection和Collections/">
       </div>
     
   </div>
@@ -444,7 +470,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Collection"><span class="nav-number">1.</span> <span class="nav-text">Collection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Collections"><span class="nav-number">2.</span> <span class="nav-text">Collections</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小例子"><span class="nav-number">3.</span> <span class="nav-text">小例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reference"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

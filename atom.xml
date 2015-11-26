@@ -4,7 +4,7 @@
   <subtitle><![CDATA[万般皆下品，惟有读书高]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2015-11-25T11:21:14.433Z</updated>
+  <updated>2015-11-26T10:10:23.781Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -13,6 +13,102 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Collection和Collections]]></title>
+    <link href="http://yoursite.com/2015/11/26/Collection%E5%92%8CCollections/"/>
+    <id>http://yoursite.com/2015/11/26/Collection和Collections/</id>
+    <published>2015-11-26T09:23:04.000Z</published>
+    <updated>2015-11-26T10:10:23.781Z</updated>
+    <content type="html"><![CDATA[<h3 id="Collection">Collection</h3><pre><code class="bash">Collection   
+├List   
+│├LinkedList   
+│├ArrayList   
+│└Vector   
+│　└Stack   
+└Set
+</code></pre>
+<p>Collection是集合类的上级接口，继承与他的接口主要有Set 和 List.</p>
+<h3 id="Collections">Collections</h3><p>Collections是针对集合类的一个帮助类，它提供一系列静态方法实现对各种集合的搜索、排序[底层是二分法]、线程安全化等操作。</p>
+<ul>
+<li>此类不能实例化，就像一个工具类，服务于Java的Collection框架</li>
+</ul>
+<h3 id="小例子">小例子</h3><pre><code class="bash">//注意List是实现Collection接口的
+List list = new ArrayList();
+double array[] = {<span class="number">112</span>, <span class="number">111</span>, <span class="number">23</span>, <span class="number">456</span>, <span class="number">231</span>};
+<span class="keyword">for</span> (int i = <span class="number">0</span>; i &lt; array.length; i++) {
+    list.add(new Double(array[i]));
+}
+Collections.sort(list);//
+<span class="keyword">for</span> (int i = <span class="number">0</span>; i &lt; array.length; i++) {
+    System.out.println(list.get(i));
+}
+// 结果：<span class="number">23.0</span> <span class="number">111.0</span> <span class="number">112.0</span> <span class="number">231.0</span> <span class="number">456.0</span>
+</code></pre>
+<h3 id="Reference">Reference</h3><p><a href="http://trinea.iteye.com/blog/1248517" target="_blank" rel="external">对象数组或list排序及Collections排序原理</a><br><a href="http://www.blogjava.net/hgc-ghc/archive/2013/03/28/397084.html" target="_blank" rel="external">Java中的CompareTo</a><br><a href="http://825635381.iteye.com/blog/2017650" target="_blank" rel="external">Java基础中的泛型</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[Java面试经常问到的一个问题，集合接口Collection和集合帮助类Collections的工作原理。刚好看到这里，分享之！]]>
+    
+    </summary>
+    
+      <category term="Collection" scheme="http://yoursite.com/tags/Collection/"/>
+    
+      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
+    
+      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[HashMap工作原理]]></title>
+    <link href="http://yoursite.com/2015/11/26/HashMap%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/"/>
+    <id>http://yoursite.com/2015/11/26/HashMap工作原理/</id>
+    <published>2015-11-26T07:47:34.000Z</published>
+    <updated>2015-11-26T09:24:12.703Z</updated>
+    <content type="html"><![CDATA[<h3 id="数组">数组</h3><p>数组存储区间是连续的，占用内存严重，故空间复杂的很大。但数组的二分查找时间复杂度小，为O(1)；<br>数组的特点是：寻址容易，插入和删除困难；</p>
+<h3 id="链表">链表</h3><p>链表存储区间离散，占用内存比较宽松，故空间复杂度很小，但时间复杂度很大，达O（N）。<br>链表的特点是：寻址困难，插入和删除容易。</p>
+<h3 id="哈希表">哈希表</h3><p>那么我们能不能综合两者的特性，做出一种寻址容易，插入删除也容易的数据结构？答案是肯定的，这就是我们要提起的哈希表。<br>哈希表（(Hash table）既满足了数据的查找方便，同时不占用太多的内容空间，使用也十分方便。</p>
+<p><img src="http://img.blog.csdn.net/20131105152201453?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdmtpbmdfd2FuZw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="哈希表"></p>
+<p><img src="http://img.blog.csdn.net/20131105152215718?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdmtpbmdfd2FuZw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="哈希表例子"></p>
+<h4 id="基本原理">基本原理</h4><p>表达式：hash(key)%arr.length(这里hash(key)是f(k),即我们常说的散列函数)</p>
+<ol>
+<li>f(k1)=f(k2)则散列到数组的同一个下标中，通过链表next依次存放，通过匹配key，获取值。</li>
+<li>f(null)会被存放在arr[0]中,只能存一个元素，再次存取会返回oldValue;两个key相同时也是采取这种策略，新的值替换旧值，并返回旧值。</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public V put(K key, V value) &#123;  </span><br><span class="line">      <span class="keyword">if</span> (key == null)  </span><br><span class="line">          <span class="built_in">return</span> putForNullKey(value);  </span><br><span class="line">      int <span class="built_in">hash</span> = <span class="built_in">hash</span>(key.hashCode());  </span><br><span class="line">      int i = indexFor(<span class="built_in">hash</span>, table.length);  </span><br><span class="line">      <span class="keyword">for</span> (Entry&lt;K,V&gt; e = table[i]; e != null; e = e.next) &#123;  </span><br><span class="line">          Object k;  </span><br><span class="line">          <span class="keyword">if</span> (e.hash == <span class="built_in">hash</span> &amp;&amp; ((k = e.key) == key || key.equals(k))) &#123;  </span><br><span class="line">              V oldValue = e.value;  </span><br><span class="line">              e.value = value;  </span><br><span class="line">              e.recordAccess(this);  </span><br><span class="line">              <span class="built_in">return</span> oldValue;  </span><br><span class="line">          &#125;  </span><br><span class="line">      &#125;  </span><br><span class="line"> </span><br><span class="line">      modCount++;  </span><br><span class="line">      addEntry(<span class="built_in">hash</span>, key, value, i);  </span><br><span class="line">      <span class="built_in">return</span> null;  </span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h5 id="定位数组中的位置">定位数组中的位置</h5><p>书本上是采用 % 模运算<br>而实际是用的 &amp; 按位与运算，“模”运算的消耗还是比较大的</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">static int indexFor(int h, int length) &#123;  </span><br><span class="line">       <span class="built_in">return</span> h &amp; (length-<span class="number">1</span>);  </span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>巧妙之处：通过哈希值和length 按位与获得位置<br>一个简单的情况：length = 16,length-1 = 15,二进制码是1111,那么任意一个h（如1110，1111）按位与都是它自身h,而且没有冲突。</p>
+<h5 id="哈希表长度">哈希表长度</h5><p>length总是2^n(2的倍数),每次超过阈值之后会采用一个,这也是为什么length总是2^n(2的倍数)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (size++ &gt;= threshold)</span><br><span class="line">            resize(<span class="number">2</span> * table.length);</span><br></pre></td></tr></table></figure>
+<p>threshold = capacity * loadFactor,loadFactor默认为0.75.</p>
+<h3 id="HashTable和HashMap">HashTable和HashMap</h3><ul>
+<li>ashtable的轻量级实现（非线程安全的实现），他们都完成了Map接口，主要区别在于HashMap允许空（null）键值（key）,由于非线程安全，在只有一个线程访问的情况下，效率要高于Hashtable。</li>
+<li>HashMap允许将null作为一个entry的key或者value，而Hashtable不允许。</li>
+<li>HashMap把Hashtable的contains方法去掉了，改成containsvalue和containsKey。因为contains方法容易让人引起误解。</li>
+<li>Hashtable继承自Dictionary类，而HashMap是Java1.2引进的Map interface的一个实现。<br>最大的不同是，Hashtable的方法是Synchronize的，而HashMap不是，在多个线程访问Hashtable时，不需要自己为它的方法实现同步，而HashMap 就必须为之提供外同步。<br>Hashtable和HashMap采用的hash/rehash算法都大概一样，所以性能不会有很大的差异。同步上的性能，HashMap会更优秀</li>
+</ul>
+<p>就HashMap与HashTable主要从三方面来说，</p>
+<ol>
+<li>历史原因:Hashtable是基于陈旧的Dictionary类的，HashMap是Java 1.2引进的Map接口的一个实现</li>
+<li>同步性:Hashtable是线程安全的，也就是说是同步的，而HashMap是线程序不安全的，不是同步的</li>
+<li>值：只有HashMap可以让你将空值作为一个表的条目的key或value</li>
+</ol>
+<h3 id="Reference">Reference</h3><p><a href="http://blog.csdn.net/vking_wang/article/details/14166593" target="_blank" rel="external">HashMap实现原理分析</a><br><a href="http://blog.csdn.net/heyutao007/article/details/6206153" target="_blank" rel="external">HashMap源码分析</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[Java面试经常问到的一个问题，哈希表的工作原理。刚好看到这里，分享之！]]>
+    
+    </summary>
+    
+      <category term="HashMap" scheme="http://yoursite.com/tags/HashMap/"/>
+    
+      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
+    
+      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[java文件写入项目根目录]]></title>

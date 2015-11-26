@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, Blog" />
+  <meta name="keywords" content="HashMap,Java," />
 
 
 
@@ -53,16 +53,18 @@
 
 
 
-<meta name="description" content="生命在于折腾，又把博客折腾到Hexo了。给Hexo点赞。">
+<meta name="description" content="Java面试经常问到的一个问题，哈希表的工作原理。刚好看到这里，分享之！">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用Hexo搭建个人博客">
-<meta property="og:url" content="http://yoursite.com/2015/09/01/FirstBlog/index.html">
+<meta property="og:title" content="HashMap工作原理">
+<meta property="og:url" content="http://yoursite.com/2015/11/26/HashMap工作原理/index.html">
 <meta property="og:site_name" content="沉思">
-<meta property="og:description" content="生命在于折腾，又把博客折腾到Hexo了。给Hexo点赞。">
-<meta property="og:updated_time" content="2015-11-21T05:22:52.223Z">
+<meta property="og:description" content="Java面试经常问到的一个问题，哈希表的工作原理。刚好看到这里，分享之！">
+<meta property="og:image" content="http://img.blog.csdn.net/20131105152201453?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdmtpbmdfd2FuZw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20131105152215718?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdmtpbmdfd2FuZw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2015-11-26T09:24:12.703Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用Hexo搭建个人博客">
-<meta name="twitter:description" content="生命在于折腾，又把博客折腾到Hexo了。给Hexo点赞。">
+<meta name="twitter:title" content="HashMap工作原理">
+<meta name="twitter:description" content="Java面试经常问到的一个问题，哈希表的工作原理。刚好看到这里，分享之！">
 
 
 
@@ -74,7 +76,7 @@
   };
 </script>
 
-  <title> 使用Hexo搭建个人博客 | 沉思 </title>
+  <title> HashMap工作原理 | 沉思 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -214,7 +216,7 @@
             
             
               
-                使用Hexo搭建个人博客
+                HashMap工作原理
               
             
           </h1>
@@ -223,8 +225,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-09-01T19:07:43+08:00" content="2015-09-01">
-              2015-09-01
+            <time itemprop="dateCreated" datetime="2015-11-26T15:47:34+08:00" content="2015-11-26">
+              2015-11-26
             </time>
           </span>
 
@@ -233,8 +235,8 @@
               &nbsp; | &nbsp; 分类于
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/FirstTry/" itemprop="url" rel="index">
-                    <span itemprop="name">FirstTry</span>
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
                   </a>
                 </span>
 
@@ -249,8 +251,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/09/01/FirstBlog/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/01/FirstBlog/" itemprop="commentsCount"></span>
+                <a href="/2015/11/26/HashMap工作原理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/26/HashMap工作原理/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -269,8 +271,36 @@
       
 
       
-        <span itemprop="articleBody"><p>###怎么写文章啊，不会啊</p>
-<p>##我累个去</p>
+        <span itemprop="articleBody"><h3 id="数组">数组</h3><p>数组存储区间是连续的，占用内存严重，故空间复杂的很大。但数组的二分查找时间复杂度小，为O(1)；<br>数组的特点是：寻址容易，插入和删除困难；</p>
+<h3 id="链表">链表</h3><p>链表存储区间离散，占用内存比较宽松，故空间复杂度很小，但时间复杂度很大，达O（N）。<br>链表的特点是：寻址困难，插入和删除容易。</p>
+<h3 id="哈希表">哈希表</h3><p>那么我们能不能综合两者的特性，做出一种寻址容易，插入删除也容易的数据结构？答案是肯定的，这就是我们要提起的哈希表。<br>哈希表（(Hash table）既满足了数据的查找方便，同时不占用太多的内容空间，使用也十分方便。</p>
+<p><img src="http://img.blog.csdn.net/20131105152201453?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdmtpbmdfd2FuZw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="哈希表"></p>
+<p><img src="http://img.blog.csdn.net/20131105152215718?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdmtpbmdfd2FuZw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="哈希表例子"></p>
+<h4 id="基本原理">基本原理</h4><p>表达式：hash(key)%arr.length(这里hash(key)是f(k),即我们常说的散列函数)</p>
+<ol>
+<li>f(k1)=f(k2)则散列到数组的同一个下标中，通过链表next依次存放，通过匹配key，获取值。</li>
+<li>f(null)会被存放在arr[0]中,只能存一个元素，再次存取会返回oldValue;两个key相同时也是采取这种策略，新的值替换旧值，并返回旧值。</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public V put(K key, V value) &#123;  </span><br><span class="line">      <span class="keyword">if</span> (key == null)  </span><br><span class="line">          <span class="built_in">return</span> putForNullKey(value);  </span><br><span class="line">      int <span class="built_in">hash</span> = <span class="built_in">hash</span>(key.hashCode());  </span><br><span class="line">      int i = indexFor(<span class="built_in">hash</span>, table.length);  </span><br><span class="line">      <span class="keyword">for</span> (Entry&lt;K,V&gt; e = table[i]; e != null; e = e.next) &#123;  </span><br><span class="line">          Object k;  </span><br><span class="line">          <span class="keyword">if</span> (e.hash == <span class="built_in">hash</span> &amp;&amp; ((k = e.key) == key || key.equals(k))) &#123;  </span><br><span class="line">              V oldValue = e.value;  </span><br><span class="line">              e.value = value;  </span><br><span class="line">              e.recordAccess(this);  </span><br><span class="line">              <span class="built_in">return</span> oldValue;  </span><br><span class="line">          &#125;  </span><br><span class="line">      &#125;  </span><br><span class="line"> </span><br><span class="line">      modCount++;  </span><br><span class="line">      addEntry(<span class="built_in">hash</span>, key, value, i);  </span><br><span class="line">      <span class="built_in">return</span> null;  </span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h5 id="定位数组中的位置">定位数组中的位置</h5><p>书本上是采用 % 模运算<br>而实际是用的 &amp; 按位与运算，“模”运算的消耗还是比较大的</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">static int indexFor(int h, int length) &#123;  </span><br><span class="line">       <span class="built_in">return</span> h &amp; (length-<span class="number">1</span>);  </span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>巧妙之处：通过哈希值和length 按位与获得位置<br>一个简单的情况：length = 16,length-1 = 15,二进制码是1111,那么任意一个h（如1110，1111）按位与都是它自身h,而且没有冲突。</p>
+<h5 id="哈希表长度">哈希表长度</h5><p>length总是2^n(2的倍数),每次超过阈值之后会采用一个,这也是为什么length总是2^n(2的倍数)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (size++ &gt;= threshold)</span><br><span class="line">            resize(<span class="number">2</span> * table.length);</span><br></pre></td></tr></table></figure>
+<p>threshold = capacity * loadFactor,loadFactor默认为0.75.</p>
+<h3 id="HashTable和HashMap">HashTable和HashMap</h3><ul>
+<li>ashtable的轻量级实现（非线程安全的实现），他们都完成了Map接口，主要区别在于HashMap允许空（null）键值（key）,由于非线程安全，在只有一个线程访问的情况下，效率要高于Hashtable。</li>
+<li>HashMap允许将null作为一个entry的key或者value，而Hashtable不允许。</li>
+<li>HashMap把Hashtable的contains方法去掉了，改成containsvalue和containsKey。因为contains方法容易让人引起误解。</li>
+<li>Hashtable继承自Dictionary类，而HashMap是Java1.2引进的Map interface的一个实现。<br>最大的不同是，Hashtable的方法是Synchronize的，而HashMap不是，在多个线程访问Hashtable时，不需要自己为它的方法实现同步，而HashMap 就必须为之提供外同步。<br>Hashtable和HashMap采用的hash/rehash算法都大概一样，所以性能不会有很大的差异。同步上的性能，HashMap会更优秀</li>
+</ul>
+<p>就HashMap与HashTable主要从三方面来说，</p>
+<ol>
+<li>历史原因:Hashtable是基于陈旧的Dictionary类的，HashMap是Java 1.2引进的Map接口的一个实现</li>
+<li>同步性:Hashtable是线程安全的，也就是说是同步的，而HashMap是线程序不安全的，不是同步的</li>
+<li>值：只有HashMap可以让你将空值作为一个表的条目的key或value</li>
+</ol>
+<h3 id="Reference">Reference</h3><p><a href="http://blog.csdn.net/vking_wang/article/details/14166593" target="_blank" rel="external">HashMap实现原理分析</a><br><a href="http://blog.csdn.net/heyutao007/article/details/6206153" target="_blank" rel="external">HashMap源码分析</a></p>
 </span>
       
     </div>
@@ -279,7 +309,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Hexo/" rel="tag">#Hexo</a>
+            <a href="/tags/HashMap/" rel="tag">#HashMap</a>
+          
+            <a href="/tags/Java/" rel="tag">#Java</a>
           
         </div>
       
@@ -288,12 +320,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2015/11/25/java文件写入项目根目录/" rel="next" title="java文件写入项目根目录">
+                <i class="fa fa-chevron-left"></i> java文件写入项目根目录
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/11/20/hello-world/" rel="prev" title="Hello World">
-                Hello World <i class="fa fa-chevron-right"></i>
+              <a href="/2015/11/26/Collection和Collections/" rel="prev" title="Collection和Collections">
+                Collection和Collections <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -321,8 +357,8 @@
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/09/01/FirstBlog/"
-           data-title="使用Hexo搭建个人博客" data-url="http://yoursite.com/2015/09/01/FirstBlog/">
+      <div class="ds-thread" data-thread-key="2015/11/26/HashMap工作原理/"
+           data-title="HashMap工作原理" data-url="http://yoursite.com/2015/11/26/HashMap工作原理/">
       </div>
     
   </div>
@@ -444,7 +480,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#数组"><span class="nav-number">1.</span> <span class="nav-text">数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链表"><span class="nav-number">2.</span> <span class="nav-text">链表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#哈希表"><span class="nav-number">3.</span> <span class="nav-text">哈希表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本原理"><span class="nav-number">3.1.</span> <span class="nav-text">基本原理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#定位数组中的位置"><span class="nav-number">3.1.1.</span> <span class="nav-text">定位数组中的位置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#哈希表长度"><span class="nav-number">3.1.2.</span> <span class="nav-text">哈希表长度</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashTable和HashMap"><span class="nav-number">4.</span> <span class="nav-text">HashTable和HashMap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
