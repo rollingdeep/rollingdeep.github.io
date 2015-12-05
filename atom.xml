@@ -4,7 +4,7 @@
   <subtitle><![CDATA[万般皆下品，惟有读书高]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2015-11-30T08:47:09.777Z</updated>
+  <updated>2015-12-05T03:11:37.930Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -13,6 +13,119 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Java分页原理]]></title>
+    <link href="http://yoursite.com/2015/12/04/Java%E5%88%86%E9%A1%B5%E5%8E%9F%E7%90%86/"/>
+    <id>http://yoursite.com/2015/12/04/Java分页原理/</id>
+    <published>2015-12-04T10:38:03.000Z</published>
+    <updated>2015-12-05T03:11:37.930Z</updated>
+    <content type="html"><![CDATA[<h3 id="为何要使用分页？">为何要使用分页？</h3><ol>
+<li>数据方面的原因</li>
+<li>增强用户使用体验需要，根据需要获取</li>
+<li>浏览器–&gt;网络–&gt;服务器 减小网络和服务器压力，节省数据IO和网络传输时间时间</li>
+</ol>
+<h3 id="不同的分页方式">不同的分页方式</h3><h4 id="传统分页">传统分页</h4><p>明确的获取数据信息，如有多少条数据，分多少页显示等。</p>
+<h4 id="下拉式分页">下拉式分页</h4><p>无法明确的获取数据数量相关的信息，但是在分页操作以后，仍然可以看到之前查询的数据。</p>
+<h3 id="常见的分页实现方式">常见的分页实现方式</h3><ol>
+<li>使用List接口中sublist(int startIndex,int endIndex)方法实现分页。</li>
+<li>直接使用数据库SQL语句实现分页</li>
+<li>使用hibernate，mybatis等框架实现跨数据库的分页<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Mysql:Select * from t_student <span class="built_in">limit</span> <span class="number">0</span>,<span class="number">10</span></span><br><span class="line">Psql:Select * from t_student <span class="built_in">limit</span> <span class="number">10</span> offset <span class="number">0</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="传统sublist分页实现">传统sublist分页实现</h3><h4 id="参数说明">参数说明</h4><p>对任意可分数据类型T,<br>初始化参数<br>pageSize:前台传输过来<br>pageNum:前台传输过来<br>currentPage = pageNum &gt; totalPage ? totalPage : pageNum<br>dataList:后台传输过来<br>totalRecord = dataList.size()<br>totalPage = totalRecord % pageSize?totalRecord / pageSize : totalRecord / pageSize + 1</p>
+<h4 id="过程分析">过程分析</h4><p>前台：<br>T：判定参数，如gender = “male”<br>pageSize:前台传输过来<br>pageNum:前台传输过来<br>提交</p>
+<p>Servlet容器：<br>处理并调用持久层ServiceImpl方法取数据</p>
+<p>后台：<br>生成sql语句，完成参数查询，返回Pager<t></t></p>
+<p>Servlet容器：<br>Servlet包装数据到request里面</p>
+<p>前台：<br>根据参数去显示当前页数据</p>
+<h4 id="源代码">源代码</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line">import java.io.Serializable;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">public class Pager&lt;T&gt; implements Serializable &#123;</span><br><span class="line"></span><br><span class="line">	/**</span><br><span class="line">	 * </span><br><span class="line">	 */</span><br><span class="line">	private static final long serialVersionUID = -<span class="number">6150972860315433465</span>L;</span><br><span class="line">	</span><br><span class="line">	private int pageSize;//每页显示多少条数据</span><br><span class="line">	</span><br><span class="line">	private int currentPage;//当前第几页数据</span><br><span class="line">	</span><br><span class="line">	private int totalRecord;//一共多少条记录</span><br><span class="line">	</span><br><span class="line">	private int totalPage;//一共多少页记录</span><br><span class="line">	</span><br><span class="line">	private List&lt;T&gt; dataList;//要显示的数据</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">	public <span class="function"><span class="title">Pager</span></span>() &#123;</span><br><span class="line">		super();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public Pager(int pageNum,int pageSize, List&lt;T&gt; <span class="built_in">source</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">source</span> == null)&#123;</span><br><span class="line">			<span class="built_in">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		this.pageSize = pageSize;</span><br><span class="line">		this.totalRecord = source.size();</span><br><span class="line">		this.pageSize = pageSize;</span><br><span class="line">		</span><br><span class="line">		//总页数</span><br><span class="line">		this.totalPage = this.totalRecord/this.pageSize;</span><br><span class="line">		<span class="keyword">if</span>(this.totalRecord % this.pageSize != <span class="number">0</span>)&#123;</span><br><span class="line">			this.totalPage += <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		//当前页数</span><br><span class="line">		<span class="keyword">if</span>(this.totalPage &lt; pageNum)&#123;</span><br><span class="line">			this.currentPage = this.totalPage;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			this.currentPage = pageNum;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		int fromIndex = this.pageSize * (this.currentPage - <span class="number">1</span>);</span><br><span class="line">		int toIndex;</span><br><span class="line">		<span class="keyword">if</span>(this.pageSize * this.currentPage &gt; this.totalRecord)&#123;</span><br><span class="line">			toIndex = this.totalRecord;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			toIndex = this.pageSize * this.currentPage;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		this.dataList = source.subList(fromIndex, toIndex);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	public Pager(int pageSize, int currentPage, int totalRecord, int totalPage,</span><br><span class="line">			List&lt;T&gt; dataList) &#123;</span><br><span class="line">		super();</span><br><span class="line">		this.pageSize = pageSize;</span><br><span class="line">		this.currentPage = currentPage;</span><br><span class="line">		this.totalRecord = totalRecord;</span><br><span class="line">		this.totalPage = totalPage;</span><br><span class="line">		this.dataList = dataList;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public int <span class="function"><span class="title">getPageSize</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> pageSize;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void <span class="built_in">set</span>PageSize(int pageSize) &#123;</span><br><span class="line">		this.pageSize = pageSize;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public int <span class="function"><span class="title">getCurrentPage</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> currentPage;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void <span class="built_in">set</span>CurrentPage(int currentPage) &#123;</span><br><span class="line">		this.currentPage = currentPage;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public int <span class="function"><span class="title">getTotalRecord</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> totalRecord;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void <span class="built_in">set</span>TotalRecord(int totalRecord) &#123;</span><br><span class="line">		this.totalRecord = totalRecord;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public int <span class="function"><span class="title">getTotalPage</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> totalPage;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void <span class="built_in">set</span>TotalPage(int totalPage) &#123;</span><br><span class="line">		this.totalPage = totalPage;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public List&lt;T&gt; <span class="function"><span class="title">getDataList</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> dataList;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void <span class="built_in">set</span>DataList(List&lt;T&gt; dataList) &#123;</span><br><span class="line">		this.dataList = dataList;</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="后台sql分页">后台sql分页</h3><ol>
+<li><p>取分页记录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from table <span class="built_in">where</span> <span class="number">1</span> = <span class="number">1</span>[ and gender=male][ and username=<span class="string">"a"</span>] <span class="built_in">limit</span> (pageNum-<span class="number">1</span>) * pageSize, pageSize;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>取总的记录数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select count(*) as totalRecord from table <span class="built_in">where</span> <span class="number">1</span> = <span class="number">1</span>[ and gender=male][ and username=<span class="string">"a"</span>]</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>注：[]内的都是可选条件，1,2步骤的可选条件是一致的。</p>
+<h3 id="完整的源代码">完整的源代码</h3><p>maven项目<a href="https://github.com/rollingdeep/pager-webapp" target="_blank" rel="external">pager-webapp</a></p>
+<h4 id="曾遇到的问题">曾遇到的问题</h4><ol>
+<li>JQuery选取元素 $(“#id”).attr(“action”,”property”);</li>
+<li>遇到了浏览器重复重定位，清除浏览器缓存，clean tomcat项目再试！</li>
+</ol>
+]]></content>
+    <summary type="html">
+    <![CDATA[Java面试经常问到的一个问题，怎么在Java中实现分页，怎么在SQL中分页。这些问题经常遇到，最近复习了一遍，分享一下！]]>
+    
+    </summary>
+    
+      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
+    
+      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Windows通过virtualbox ssh登陆到虚拟ubuntu]]></title>
+    <link href="http://yoursite.com/2015/11/30/Windows%E9%80%9A%E8%BF%87virtualbox-ssh%E7%99%BB%E9%99%86%E5%88%B0%E8%99%9A%E6%8B%9Fubuntu/"/>
+    <id>http://yoursite.com/2015/11/30/Windows通过virtualbox-ssh登陆到虚拟ubuntu/</id>
+    <published>2015-11-30T13:02:33.000Z</published>
+    <updated>2015-12-05T03:13:57.728Z</updated>
+    <content type="html"><![CDATA[<h3 id="Ubuntu中操作">Ubuntu中操作</h3><p>在Ubuntu下使用ALT+CTRL+T打开终端输入以下命令</p>
+<ol>
+<li>查看ubuntu和vitualbx中的网络是不是连通的<pre><code class="bash">$ ping vimer.cn
+</code></pre>
+</li>
+<li>查询ip配置信息<pre><code class="bash">$ ifconfig   //注意是ifconfig
+</code></pre>
+</li>
+<li><p>设置ssh登陆</p>
+<pre><code class="bash">$ sudo apt-get install openssh-server
+</code></pre>
+<p>这里如果遇到依赖openssh-client<br>先执行</p>
+<pre><code class="bash">$ sudo apt-get update
+$ sudo apt-get upgrade
+</code></pre>
+<p>再执行 <a href="#设置ssh登陆">上一步</a>步骤安装</p>
+</li>
+<li><p>安装好后，看一下端口监听</p>
+<pre><code class="bash">$ netstat -lpnt
+</code></pre>
+<p>看一下有没有 ：：：22 字段，一般是最后一个</p>
+</li>
+<li><p>如果以上都没问题，此时Ubuntu所有的配置完成。</p>
+</li>
+<li><p>关闭Ubuntu</p>
+</li>
+</ol>
+<h3 id="Windows下配置">Windows下配置</h3><ol>
+<li>将Virtulbox写入环境变量path中，一般是C:\Program Files\Oracle\VirtualBox </li>
+<li>Win+R打开命令行<pre><code class="bash">$ VBoxManage modifyvm <span class="string">"ubuntu"</span> –-natpf1 <span class="string">"guestssh,tcp,,2222,,22"</span>
+</code></pre>
+</li>
+<li>VBox管理工具 修改vm中 虚拟机ubuntu –网卡1 “端口转发名字,通过tcp连接，宿主机IP(略)，windows下端口2222，虚拟机IP(略)，ubuntu下端口22”  ,一一对应<ul>
+<li>如果其他机器，<br>同网段，写上不同的IP地址。</li>
+<li>不同网段，配置路由上 虚拟服务器 端口转发，然后再配置本机到路由域内转发IP<br>如2222-543-22 中间”guestssh,tcp,192.168.0.100,2222,192.168.0(1).1,543”   然后路优会自动转发至机器22端口。</li>
+</ul>
+</li>
+</ol>
+<p>4.重启Ubuntu,通过putty登陆<br>输入主机名称127.0.0.1端口2222<br>保持的会话起个名字ubuntu,保存<br>登陆<br>出现一个提示，不用管<br>如果看到log as：<br>输入ubuntu用户名<br>输入密码</p>
+<p>Congratulations，你应该可以看到Welcome！</p>
+<h3 id="References">References</h3><p><a href="http://blog.sina.com.cn/s/blog_72e67d290100ox42.html" target="_blank" rel="external">解决VirtualBox 中Ubuntu无法全屏的方法</a><br><a href="http://blog.csdn.net/astrotycoon/article/details/8143146" target="_blank" rel="external">ssh登陆virtualbox安装的Ubuntu的同时也能连上互联网</a><br><a href="http://www.vimer.cn/2010/09/%E5%9C%A8windows%E4%B8%8B%E7%94%A8virtualbox%E8%99%9A%E6%8B%9Fubuntu%E5%B9%B6%E9%80%9A%E8%BF%87ssh%E7%99%BB%E5%BD%95.html" target="_blank" rel="external">在windows下用virtualbox虚拟ubuntu,并通过ssh登录</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[通过windows的putty登陆到虚拟机或者其他电脑终端，实现对其他机器的操作或者计算工作，是不是一件很cool的事情！]]>
+    
+    </summary>
+    
+      <category term="Ubuntu" scheme="http://yoursite.com/tags/Ubuntu/"/>
+    
+      <category term="VirtualBox" scheme="http://yoursite.com/tags/VirtualBox/"/>
+    
+      <category term="VirtualBox" scheme="http://yoursite.com/categories/VirtualBox/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Android全适配]]></title>
@@ -66,7 +179,7 @@
     <link href="http://yoursite.com/2015/11/27/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
     <id>http://yoursite.com/2015/11/27/Java多线程/</id>
     <published>2015-11-27T07:47:35.000Z</published>
-    <updated>2015-11-30T07:59:55.920Z</updated>
+    <updated>2015-12-05T03:11:45.841Z</updated>
     <content type="html"><![CDATA[<h4 id="继承Thread">继承Thread</h4><p>缺点：继承只能继承一次。扩展性不强<br>重写run方法，来自定义线程执行任务</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class MyThread extends Thread&#123;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public void <span class="function"><span class="title">run</span></span>() &#123;</span><br><span class="line">		System.out.println(<span class="string">"MyThread.run()"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args)&#123;</span><br><span class="line">		MyThread thread1 = new MyThread();</span><br><span class="line">		MyThread thread2 = new MyThread();</span><br><span class="line">		thread1.start();</span><br><span class="line">		thread2.start();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="实现Runnable接口">实现Runnable接口</h4><p>优点：可扩展性强<br>方法：通过实现接口，然后Thread构造方法传参新建thread2类，start()启动。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class MyThread2 implements Runnable&#123;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public void <span class="function"><span class="title">run</span></span>() &#123;</span><br><span class="line">		System.out.print(<span class="string">"MyThread2.run()"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args)&#123;</span><br><span class="line">		MyThread2 thread = new MyThread2();</span><br><span class="line">		Thread thread2 = new Thread(thread);</span><br><span class="line">		thread2.start();</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -93,8 +206,6 @@
     
       <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
     
-      <category term="多线程" scheme="http://yoursite.com/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
-    
       <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
     
   </entry>
@@ -104,7 +215,7 @@
     <link href="http://yoursite.com/2015/11/26/Collection%E5%92%8CCollections/"/>
     <id>http://yoursite.com/2015/11/26/Collection和Collections/</id>
     <published>2015-11-26T09:23:04.000Z</published>
-    <updated>2015-11-30T07:57:56.848Z</updated>
+    <updated>2015-12-05T03:13:07.025Z</updated>
     <content type="html"><![CDATA[<h3 id="Collection">Collection</h3><pre><code class="bash">Collection   
 ├List   
 │├LinkedList   
@@ -137,8 +248,6 @@ Collections.sort(list);//
     
     </summary>
     
-      <category term="Collection" scheme="http://yoursite.com/tags/Collection/"/>
-    
       <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
     
       <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
@@ -150,7 +259,7 @@ Collections.sort(list);//
     <link href="http://yoursite.com/2015/11/26/HashMap%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/"/>
     <id>http://yoursite.com/2015/11/26/HashMap工作原理/</id>
     <published>2015-11-26T07:47:34.000Z</published>
-    <updated>2015-11-30T07:59:07.190Z</updated>
+    <updated>2015-12-05T03:13:35.881Z</updated>
     <content type="html"><![CDATA[<h3 id="数组">数组</h3><p>数组存储区间是连续的，占用内存严重，故空间复杂的很大。但数组的二分查找时间复杂度小，为O(1)；<br>数组的特点是：寻址容易，插入和删除困难；</p>
 <h3 id="链表">链表</h3><p>链表存储区间离散，占用内存比较宽松，故空间复杂度很小，但时间复杂度很大，达O（N）。<br>链表的特点是：寻址困难，插入和删除容易。</p>
 <h3 id="哈希表">哈希表</h3><p>那么我们能不能综合两者的特性，做出一种寻址容易，插入删除也容易的数据结构？答案是肯定的，这就是我们要提起的哈希表。<br>哈希表（(Hash table）既满足了数据的查找方便，同时不占用太多的内容空间，使用也十分方便。</p>
@@ -186,8 +295,6 @@ Collections.sort(list);//
     <![CDATA[Java面试经常问到的一个问题，哈希表的工作原理。刚好看到这里，分享之！]]>
     
     </summary>
-    
-      <category term="HashMap" scheme="http://yoursite.com/tags/HashMap/"/>
     
       <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
     
@@ -313,7 +420,7 @@ Collections.sort(list);//
     <link href="http://yoursite.com/2015/11/22/eclipse%E5%BC%80%E5%8F%91maven%E9%A1%B9%E7%9B%AE60000%E9%94%99%E8%AF%AF/"/>
     <id>http://yoursite.com/2015/11/22/eclipse开发maven项目60000错误/</id>
     <published>2015-11-22T11:37:26.000Z</published>
-    <updated>2015-11-22T11:58:13.542Z</updated>
+    <updated>2015-12-05T03:13:17.049Z</updated>
     <content type="html"><![CDATA[<h2 id="坚持每天写一点">坚持每天写一点</h2><h3 id="操作步骤">操作步骤</h3><ol>
 <li>首先根据错误提示去~/.m2/repository/下去找org/hamcrest/hamcrest-core/1.3</li>
 <li>删除目录下含有lastupdate结尾的jar(无效的jar)</li>
@@ -328,8 +435,6 @@ Collections.sort(list);//
     </summary>
     
       <category term="Maven" scheme="http://yoursite.com/tags/Maven/"/>
-    
-      <category term="hamcrest" scheme="http://yoursite.com/tags/hamcrest/"/>
     
       <category term="java" scheme="http://yoursite.com/categories/java/"/>
     
