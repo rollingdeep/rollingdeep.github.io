@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, Blog" />
+  <meta name="keywords" content="ST3,latex," />
 
 
 
@@ -53,16 +53,16 @@
 
 
 
-<meta name="description" content="生命在于折腾，又把博客折腾到Hexo了。给Hexo点赞。">
+<meta name="description" content="最漂亮的文字排版系统latex + 最完美的文字编辑工具，绝配">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用Hexo搭建个人博客">
-<meta property="og:url" content="http://yoursite.com/2015/09/01/FirstBlog/index.html">
+<meta property="og:title" content="Window下sublime+latex配置">
+<meta property="og:url" content="http://yoursite.com/2015/12/06/Window下sublime-latex配置/index.html">
 <meta property="og:site_name" content="沉思">
-<meta property="og:description" content="生命在于折腾，又把博客折腾到Hexo了。给Hexo点赞。">
-<meta property="og:updated_time" content="2015-11-21T05:22:52.223Z">
+<meta property="og:description" content="最漂亮的文字排版系统latex + 最完美的文字编辑工具，绝配">
+<meta property="og:updated_time" content="2015-12-06T05:51:57.165Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用Hexo搭建个人博客">
-<meta name="twitter:description" content="生命在于折腾，又把博客折腾到Hexo了。给Hexo点赞。">
+<meta name="twitter:title" content="Window下sublime+latex配置">
+<meta name="twitter:description" content="最漂亮的文字排版系统latex + 最完美的文字编辑工具，绝配">
 
 
 
@@ -74,7 +74,7 @@
   };
 </script>
 
-  <title> 使用Hexo搭建个人博客 | 沉思 </title>
+  <title> Window下sublime+latex配置 | 沉思 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -214,7 +214,7 @@
             
             
               
-                使用Hexo搭建个人博客
+                Window下sublime+latex配置
               
             
           </h1>
@@ -223,8 +223,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-09-01T19:07:43+08:00" content="2015-09-01">
-              2015-09-01
+            <time itemprop="dateCreated" datetime="2015-12-06T13:01:50+08:00" content="2015-12-06">
+              2015-12-06
             </time>
           </span>
 
@@ -233,8 +233,8 @@
               &nbsp; | &nbsp; 分类于
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/FirstTry/" itemprop="url" rel="index">
-                    <span itemprop="name">FirstTry</span>
+                  <a href="/categories/latex/" itemprop="url" rel="index">
+                    <span itemprop="name">latex</span>
                   </a>
                 </span>
 
@@ -249,8 +249,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/09/01/FirstBlog/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/01/FirstBlog/" itemprop="commentsCount"></span>
+                <a href="/2015/12/06/Window下sublime-latex配置/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/06/Window下sublime-latex配置/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -269,8 +269,30 @@
       
 
       
-        <span itemprop="articleBody"><p>###怎么写文章啊，不会啊</p>
-<p>##我累个去</p>
+        <span itemprop="articleBody"><h3 id="SumatraPDF">SumatraPDF</h3><p>百度下载安装SumatraPDF，傻瓜式安装<br>添加SumatraPDF到系统变量中，这样在编译完latex会自动跳出你的pdf文档</p>
+<h3 id="TexLive">TexLive</h3><ol>
+<li>推荐下载<a href="http://pan.baidu.com/s/1dDnnhvz" target="_blank" rel="external">镜像</a></li>
+<li>使用 软碟通 或者 虚拟光驱 打开texlive.iso</li>
+<li>运行install-tl-advanced.bat</li>
+<li>傻瓜式安装30分钟左右结束，此期间可同时进行下一步</li>
+</ol>
+<h3 id="Sublime_Text3(后简称ST3)">Sublime Text3(后简称ST3)</h3><p>1.添加Package Control插件<br>按下Ctrl + ` （数字键1左边的键）组合键来打开ST3控制台<br>点击<a href="https://packagecontrol.io/installation#st3" target="_blank" rel="external">Package Control link</a><br>或者下面这段copy至控制台回车<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request,os,hashlib; h = <span class="string">'2915d1851351e5ee549c20394736b442'</span> + <span class="string">'8bc59f460fa1548d1514676163dafc88'</span>; pf = <span class="string">'Package Control.sublime-package'</span>; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( <span class="string">'http://packagecontrol.io/'</span> + pf.replace(<span class="string">' '</span>, <span class="string">'%20'</span>)).read(); dh = hashlib.sha256(by).hexdigest(); print(<span class="string">'Error validating download (got %s instead of %s), please try manual install'</span> % (dh, h)) <span class="keyword">if</span> dh != h <span class="keyword">else</span> open(os.path.join( ipp, pf), <span class="string">'wb'</span> ).write(by)</span><br></pre></td></tr></table></figure></p>
+<p>如果报错，请查看自己的Sublime Text版本是2还是3.</p>
+<h4 id="安装LatexTools插件">安装LatexTools插件</h4><ol>
+<li>ST3面板中CTRL+SHIFT+P输入Package Control:Install Package选择</li>
+<li>输入LaTeXTools，选定</li>
+<li>CTRL+SHIFT+P，运行“Reconfigure and migrate settings”</li>
+<li><p>配置LaTexTools.sublime-settings(菜单：Preferences-&gt;Browse Packages 目录：/User)</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">找到“Platform settings: adapt <span class="keyword">as</span> needed <span class="keyword">for</span> your machine” section中的如下图，</span><br><span class="line">更改[<span class="string">"texpath"</span> : <span class="string">""</span>]为[<span class="string">"texpath"</span> : <span class="string">"C:\\Program Files\\texlive\\2014\\bin\\win32;$PATH"</span>]；</span><br><span class="line">发行版[<span class="string">"distro"</span> : <span class="string">"miktex"</span>]更改为[<span class="string">"distro"</span> : <span class="string">"texlive"</span>]</span><br><span class="line">在Build engine settings部分下面，将[<span class="string">"builder"</span>: <span class="string">"traditional"</span>]更改为[<span class="string">"builder"</span>: <span class="string">"simple"</span>]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>大功告成！</p>
+</li>
+</ol>
+<h4 id="测试">测试</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">\documentclass&#123;article&#125;</span><br><span class="line">  </span><br><span class="line">\title&#123;Title&#125;</span><br><span class="line">\author&#123;Your Name&#125;</span><br><span class="line">  </span><br><span class="line">\begin&#123;document&#125;</span><br><span class="line">  </span><br><span class="line">\maketitle&#123;&#125;</span><br><span class="line">  </span><br><span class="line">\section&#123;Introduction&#125;</span><br><span class="line">  </span><br><span class="line">This is <span class="built_in">where</span> you will write your content.</span><br><span class="line">  </span><br><span class="line">\end&#123;document&#125;</span><br></pre></td></tr></table></figure>
+<p>CONTROL + B编译</p>
+<h3 id="References">References</h3><ol>
+<li><a href="http://www.zhihu.com/question/19954023" target="_blank" rel="external">有哪些好的 LaTeX 编辑器？</a></li>
+</ol>
 </span>
       
     </div>
@@ -279,7 +301,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Hexo/" rel="tag">#Hexo</a>
+            <a href="/tags/ST3/" rel="tag">#ST3</a>
+          
+            <a href="/tags/latex/" rel="tag">#latex</a>
           
         </div>
       
@@ -288,13 +312,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2015/12/04/Java分页原理/" rel="next" title="Java分页原理">
+                <i class="fa fa-chevron-left"></i> Java分页原理
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/11/20/hello-world/" rel="prev" title="Hello World">
-                Hello World <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -321,8 +345,8 @@
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/09/01/FirstBlog/"
-           data-title="使用Hexo搭建个人博客" data-url="http://yoursite.com/2015/09/01/FirstBlog/">
+      <div class="ds-thread" data-thread-key="2015/12/06/Window下sublime-latex配置/"
+           data-title="Window下sublime+latex配置" data-url="http://yoursite.com/2015/12/06/Window下sublime-latex配置/">
       </div>
     
   </div>
@@ -444,7 +468,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#SumatraPDF"><span class="nav-number">1.</span> <span class="nav-text">SumatraPDF</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TexLive"><span class="nav-number">2.</span> <span class="nav-text">TexLive</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sublime_Text3(后简称ST3)"><span class="nav-number">3.</span> <span class="nav-text">Sublime Text3(后简称ST3)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装LatexTools插件"><span class="nav-number">3.1.</span> <span class="nav-text">安装LatexTools插件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测试"><span class="nav-number">3.2.</span> <span class="nav-text">测试</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#References"><span class="nav-number">4.</span> <span class="nav-text">References</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
