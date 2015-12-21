@@ -4,7 +4,7 @@
   <subtitle><![CDATA[万般皆下品，惟有读书高]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2015-12-18T06:36:24.961Z</updated>
+  <updated>2015-12-18T06:35:56.698Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -13,36 +13,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title><![CDATA[冬月初八忆初恋]]></title>
-    <link href="http://yoursite.com/2015/12/18/%E6%84%BF%E6%88%91%E4%BB%AC%E5%9C%A8%E5%BD%BC%E6%AD%A4%E7%9C%8B%E4%B8%8D%E5%88%B0%E7%9A%84%E5%B2%81%E6%9C%88%E9%87%8C%E7%86%A0%E7%86%A0%E7%94%9F%E8%BE%89/"/>
-    <id>http://yoursite.com/2015/12/18/愿我们在彼此看不到的岁月里熠熠生辉/</id>
-    <published>2015-12-18T04:35:07.000Z</published>
-    <updated>2015-12-18T06:36:24.961Z</updated>
-    <content type="html"><![CDATA[<blockquote>
-<p>愿我们在彼此看不到的岁月里熠熠生辉</p>
-</blockquote>
-<p><img src="/uploads/love_poem.png" alt="love_poem.png"></p>
-<h3 id="SHARE_IT">SHARE IT</h3><p>人总是在犹豫中失去。原本以为自己可以掌控事态的发展趋势。直到最珍惜的人离开，才发现只有在人成功的时候才能控局。</p>
-<p>沉潜的时候你只能带上你的精锐亲兵，不要轻易进入不熟悉的地方。也许那就是鸿门宴！</p>
-<p>失败不用解释。</p>
-<p>没有人会在原地等你，奋斗吧，少年！</p>
-<p>时间就像潮水，抹平你在海滩留下的脚印。曾经一去不复返。时间会抹平一切！留下的都是历史。</p>
-<p>人生总有起起伏伏，起时宠辱不惊，心细思虑如常；落时默默忍让，等待黑暗前的黎明到来。</p>
-<p>朋友们，愿你们把握现在，把握好身边的每一个人！不管你处于什么状态，乐观去生活，努力奋斗！</p>
-<p>时间束缚不住你前行的脚步，只要你迈步向前，就能看见光明。</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[愿我们在彼此看不到的岁月里熠熠生辉!]]>
-    
-    </summary>
-    
-      <category term="September" scheme="http://yoursite.com/tags/September/"/>
-    
-      <category term="Emotion" scheme="http://yoursite.com/categories/Emotion/"/>
-    
-  </entry>
   
   <entry>
     <title><![CDATA[冬月初八忆初恋]]></title>
@@ -126,7 +96,7 @@
     <link href="http://yoursite.com/2015/12/16/Insist-on-doing-one-thing/"/>
     <id>http://yoursite.com/2015/12/16/Insist-on-doing-one-thing/</id>
     <published>2015-12-16T11:55:43.000Z</published>
-    <updated>2015-12-17T13:13:10.239Z</updated>
+    <updated>2015-12-21T14:51:34.112Z</updated>
     <content type="html"><![CDATA[<blockquote>
 <p>业精于勤荒于嬉，行成于思毁于随！        —     韩愈 ·《劝学解》<br>善始者实繁，克终者盖寡！                —     魏征 ·《谏太宗十思疏》</p>
 </blockquote>
@@ -141,6 +111,19 @@
 <li>weka数据文件.arff，java自动写入格式</li>
 <li>weka实例的增量加载方式，增量训练与预测</li>
 <li>指导师弟毕设。</li>
+</ol>
+<p>###2015/12/20</p>
+<ol>
+<li>SharedPreferences保存用户输入的数据，返回前一个Fragment保证数据不丢失！</li>
+<li>自定义dialog,写入按钮，设置按钮的监听事件。</li>
+<li>解决了读取照片，放入ImageView里。</li>
+<li>哎，我的博客又没有写!</li>
+</ol>
+<h3 id="2015/12/21">2015/12/21</h3><ol>
+<li>android拍照和照片代码重构，</li>
+<li>百度地图key总是有问题，转入高德。my god,help me!</li>
+<li>高德地图key找不到!!</li>
+<li>哎，我的博客又没有写!</li>
 </ol>
 ]]></content>
     <summary type="html">
