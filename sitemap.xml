@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2016/03/01/%E5%8C%BB%E7%96%97%E5%81%A5%E5%BA%B7%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9FAPP/</loc>
+    <lastmod>2016-03-01T09:11:43.980Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2015/12/20/Android%E4%B9%8BSharedPreferences%E5%AD%98%E5%82%A8%E6%95%B0%E6%8D%AE/</loc>
     <lastmod>2015-12-23T07:10:23.959Z</lastmod>
   </url>

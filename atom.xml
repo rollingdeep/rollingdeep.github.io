@@ -4,7 +4,7 @@
   <subtitle><![CDATA[万般皆下品，惟有读书高]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2015-12-23T07:10:20.406Z</updated>
+  <updated>2016-03-01T09:11:43.980Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -13,6 +13,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[医疗健康管理系统APP]]></title>
+    <link href="http://yoursite.com/2016/03/01/%E5%8C%BB%E7%96%97%E5%81%A5%E5%BA%B7%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9FAPP/"/>
+    <id>http://yoursite.com/2016/03/01/医疗健康管理系统APP/</id>
+    <published>2016-03-01T08:43:41.000Z</published>
+    <updated>2016-03-01T09:11:43.980Z</updated>
+    <content type="html"><![CDATA[<h3 id="Self_Diagnose">Self Diagnose</h3><ol>
+<li>输入手环或者智能终端测试的数据提交到后台分析得病的潜在概率。</li>
+<li>用手机按住摄像头读取红色色素点傅里叶变换成心率曲线。<br><img src="/uploads/fig3.png" alt="self diagnose"></li>
+</ol>
+<h3 id="Diet_Analysis">Diet Analysis</h3><p>读取并拍摄获取手机里的食物照片，分析食物的分量如含糖量，碳水化合物的含量。<br><img src="/uploads/fig4.png" alt="diet analysis"></p>
+<h3 id="Recommendation">Recommendation</h3><p>根据前两者给出相关饮食和生活建议。<br><img src="/uploads/fig5.png" alt="recommendation"></p>
+<h3 id="Find_Doctor">Find Doctor</h3><p>根据百度地图定位周边医生，发送自己的身体状况分析报告，并可以和医生在线聊天询问病情发展。<br><img src="/uploads/fig6.png" alt="find doctor"></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[论文demo中的一个小android程序，大部分实现过程都是之前发过的Android教程。]]>
+    
+    </summary>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Android之相机相册服务调用]]></title>
@@ -768,26 +793,6 @@ Collections.sort(list);//
     </summary>
     
       <category term="Github" scheme="http://yoursite.com/tags/Github/"/>
-    
-      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
-    
-      <category term="FirstTry" scheme="http://yoursite.com/categories/FirstTry/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[使用Hexo搭建个人博客]]></title>
-    <link href="http://yoursite.com/2015/09/01/FirstBlog/"/>
-    <id>http://yoursite.com/2015/09/01/FirstBlog/</id>
-    <published>2015-09-01T11:07:43.000Z</published>
-    <updated>2015-11-21T05:22:52.223Z</updated>
-    <content type="html"><![CDATA[<p>###怎么写文章啊，不会啊</p>
-<p>##我累个去</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[生命在于折腾，又把博客折腾到Hexo了。给Hexo点赞。]]>
-    
-    </summary>
     
       <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
     
