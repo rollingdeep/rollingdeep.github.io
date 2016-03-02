@@ -4,7 +4,7 @@
   <subtitle><![CDATA[万般皆下品，惟有读书高]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2016-03-01T09:11:43.980Z</updated>
+  <updated>2016-03-02T02:44:29.767Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -13,6 +13,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[腾讯OMG一面]]></title>
+    <link href="http://yoursite.com/2016/03/02/%E8%85%BE%E8%AE%AF%E4%B8%80%E9%9D%A2/"/>
+    <id>http://yoursite.com/2016/03/02/腾讯一面/</id>
+    <published>2016-03-02T02:01:37.000Z</published>
+    <updated>2016-03-02T02:44:29.767Z</updated>
+    <content type="html"><![CDATA[<h3 id="区域">区域</h3><h4 id="首先第一个问题就是，你对你工作的城市有没有限制？">首先第一个问题就是，你对你工作的城市有没有限制？</h4><ol>
+<li>这个是在问你对我们事业群的位置有没有了解。比如腾讯OMG是在北京，而我目前是在广州，<br>你会觉得有点远。对于我嘛，我觉得没什么问题，毕竟我是一个人，没那么多牵挂。</li>
+<li>当然如果你回答不想去北京，基本一面就结束了(一同学亲身经历)。</li>
+</ol>
+<h3 id="项目">项目</h3><h4 id="你最拿手的项目是哪个？">你最拿手的项目是哪个？</h4><p>从项目简介到项目架构来说，和使用的技术。</p>
+<h4 id="你熟悉哪些前端js框架？">你熟悉哪些前端js框架？</h4><p>如EXT JS,DWR,Amazi UI,Bootstrap,Angular js等等。</p>
+<h4 id="你熟悉哪些除了主流数据库mysql以外的数据库">你熟悉哪些除了主流数据库mysql以外的数据库</h4><p>mangodb,redis,nosql。</p>
+<h4 id="MVC设计模式有什么好处？">MVC设计模式有什么好处？</h4><p>MVC设计模式优点在于:<br>1):测试友好性(如果你需要写单元测试的话,MVC会很不错的)<br>2):可定制性(在MVC中基本上所有的东西都是可以定制的,对于某些定制性要求比较高的工作可以轻易胜任)<br>3):代码清晰(CodeBehind虽说分离的不错,但是还是有很多人直接在CodeBehind里面写SQL的)<br>4):轻量级.(没有控件,没有视图状态,没有控件状态,页面加载速度快)<br>5):对HTML的控制比较深,比如div的id之类的(好吧,ASP.NET WebForm 4.0也加深了控制允许你控制控件生成的html的id)只有对HTML的结构比较清晰才容易写脚本不是.<br>6):开源.</p>
+<p>MVC的不足体现在以下几个方面：<br>1):增加了系统结构和实现的复杂性。对于简单的界面，严格遵循MVC，使模型、视图与控制器分离，会增加结构的复杂性，并可能产生过多的更新操作，降低运行效率。<br>2):视图与控制器间的过于紧密的连接。视图与控制器是相互分离，但确实联系紧密的部件，视图没有控制器的存在，其应用是很有限的，反之亦然，这样就妨碍了他们的独立重用。<br>3):视图对模型数据的低效率访问。依据模型操作接口的不同，视图可能需要多次调用才能获得足够的显示数据。对未变化数据的不必要的频繁访问，也将损害操作性能。<br>4):目前，一般高级的界面工具或构造器不支持MVC架构。改造这些工具以适应MVC需要和建立分离的部件的代价是很高的，从而造成使用MVC的困难。</p>
+<h4 id="java语言的优劣？">java语言的优劣？</h4><p>这个没答完全。<br>优点：简单性、面向对象、分布式、解释型、可靠、安全、平台无关、可移植、高性能、多线程、动态性等。<br>缺点：<br>第一: 运行速度慢，众所周知，Java程序的运行依赖于Java虚拟机，所以相对于其他语言(汇编,C,C++)编写的程序慢，因为它不是直接，执行机器码。<br>第二: 因为Java考虑到了跨平台性。所以他不能像语言<br>（例如:汇编,C) 那样更接近操作系统。也就不能和操作系统的底层打交道了。但可以通过Java的JNI<br>(即Java本地接口。顾名思义：也就是利用Java语言调用，在当前系统上 其他的程序语言 “汇编或C等”所编写的程序)技术，解决这一问题，但这只是解决了。</p>
+<h4 id="如果要你重新学习php的话，你应该怎么学习它呢？">如果要你重新学习php的话，你应该怎么学习它呢？</h4><p>先看看php基本语法，然后再看设计思想和框架，最后在实战中一步一步的修炼。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[昨晚的腾讯网络媒体事业群后台面试相关内容，record一下！]]>
+    
+    </summary>
+    
+      <category term="Interview" scheme="http://yoursite.com/tags/Interview/"/>
+    
+      <category term="Tencent" scheme="http://yoursite.com/tags/Tencent/"/>
+    
+      <category term="Interview" scheme="http://yoursite.com/categories/Interview/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[医疗健康管理系统APP]]></title>
@@ -766,35 +797,6 @@ Collections.sort(list);//
       <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
     
       <category term="Rollingdeep" scheme="http://yoursite.com/tags/Rollingdeep/"/>
-    
-      <category term="FirstTry" scheme="http://yoursite.com/categories/FirstTry/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Hello World]]></title>
-    <link href="http://yoursite.com/2015/11/20/hello-world/"/>
-    <id>http://yoursite.com/2015/11/20/hello-world/</id>
-    <published>2015-11-20T03:34:50.000Z</published>
-    <updated>2015-11-23T13:08:22.070Z</updated>
-    <content type="html"><![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-]]></content>
-    <summary type="html">
-    <![CDATA[Guidebook]]>
-    
-    </summary>
-    
-      <category term="Github" scheme="http://yoursite.com/tags/Github/"/>
-    
-      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
     
       <category term="FirstTry" scheme="http://yoursite.com/categories/FirstTry/"/>
     

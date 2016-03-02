@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Java," />
+  <meta name="keywords" content="Interview,Tencent," />
 
 
 
@@ -53,16 +53,16 @@
 
 
 
-<meta name="description" content="Java面试经常问到的一个问题，多线程的有几种创建方式？run方法启动线程还是start方法启动？sleep的时候有无交出锁？。刚好看到这里，分享之！">
+<meta name="description" content="昨晚的腾讯网络媒体事业群后台面试相关内容，record一下！">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java多线程">
-<meta property="og:url" content="http://yoursite.com/2015/11/27/Java多线程/index.html">
+<meta property="og:title" content="腾讯OMG一面">
+<meta property="og:url" content="http://yoursite.com/2016/03/02/腾讯一面/index.html">
 <meta property="og:site_name" content="沉思">
-<meta property="og:description" content="Java面试经常问到的一个问题，多线程的有几种创建方式？run方法启动线程还是start方法启动？sleep的时候有无交出锁？。刚好看到这里，分享之！">
-<meta property="og:updated_time" content="2015-12-05T03:11:45.841Z">
+<meta property="og:description" content="昨晚的腾讯网络媒体事业群后台面试相关内容，record一下！">
+<meta property="og:updated_time" content="2016-03-02T02:44:29.767Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java多线程">
-<meta name="twitter:description" content="Java面试经常问到的一个问题，多线程的有几种创建方式？run方法启动线程还是start方法启动？sleep的时候有无交出锁？。刚好看到这里，分享之！">
+<meta name="twitter:title" content="腾讯OMG一面">
+<meta name="twitter:description" content="昨晚的腾讯网络媒体事业群后台面试相关内容，record一下！">
 
 
 
@@ -74,7 +74,7 @@
   };
 </script>
 
-  <title> Java多线程 | 沉思 </title>
+  <title> 腾讯OMG一面 | 沉思 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -214,7 +214,7 @@
             
             
               
-                Java多线程
+                腾讯OMG一面
               
             
           </h1>
@@ -223,8 +223,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-11-27T15:47:35+08:00" content="2015-11-27">
-              2015-11-27
+            <time itemprop="dateCreated" datetime="2016-03-02T10:01:37+08:00" content="2016-03-02">
+              2016-03-02
             </time>
           </span>
 
@@ -233,8 +233,8 @@
               &nbsp; | &nbsp; 分类于
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
+                  <a href="/categories/Interview/" itemprop="url" rel="index">
+                    <span itemprop="name">Interview</span>
                   </a>
                 </span>
 
@@ -249,8 +249,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/11/27/Java多线程/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/27/Java多线程/" itemprop="commentsCount"></span>
+                <a href="/2016/03/02/腾讯一面/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/02/腾讯一面/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -269,24 +269,17 @@
       
 
       
-        <span itemprop="articleBody"><h4 id="继承Thread">继承Thread</h4><p>缺点：继承只能继承一次。扩展性不强<br>重写run方法，来自定义线程执行任务</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class MyThread extends Thread&#123;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public void <span class="function"><span class="title">run</span></span>() &#123;</span><br><span class="line">		System.out.println(<span class="string">"MyThread.run()"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args)&#123;</span><br><span class="line">		MyThread thread1 = new MyThread();</span><br><span class="line">		MyThread thread2 = new MyThread();</span><br><span class="line">		thread1.start();</span><br><span class="line">		thread2.start();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="实现Runnable接口">实现Runnable接口</h4><p>优点：可扩展性强<br>方法：通过实现接口，然后Thread构造方法传参新建thread2类，start()启动。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class MyThread2 implements Runnable&#123;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public void <span class="function"><span class="title">run</span></span>() &#123;</span><br><span class="line">		System.out.print(<span class="string">"MyThread2.run()"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args)&#123;</span><br><span class="line">		MyThread2 thread = new MyThread2();</span><br><span class="line">		Thread thread2 = new Thread(thread);</span><br><span class="line">		thread2.start();</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>Thread类本身实现了Runable接口，而且除了默认构造，还有一个带参构造，传入target<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//Thread源代码</span><br><span class="line">public <span class="function"><span class="title">Thread</span></span>() &#123;</span><br><span class="line">       init(null, null, <span class="string">"Thread-"</span> + nextThreadNum(), <span class="number">0</span>);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">public Thread(Runnable target) &#123;</span><br><span class="line">       init(null, target, <span class="string">"Thread-"</span> + nextThreadNum(), <span class="number">0</span>);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"> public void <span class="function"><span class="title">run</span></span>() &#123;</span><br><span class="line">       <span class="keyword">if</span> (target != null) &#123;</span><br><span class="line">           target.run();</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
-<h4 id="ExecutorService、Callable、Future带返回结果的线程实现">ExecutorService、Callable、Future带返回结果的线程实现</h4><p>Callable：执行任务并返回结果。<br>Future<v>：Future接口是Java线程Future模式的实现，可以来进行异步计算。</v></p>
-<blockquote>
-<p>Future模式：我有一个任务，提交给了Future，Future替我完成这个任务。期间我自己可以去做任何想做的事情。一段时间之后，我就便可以从Future那儿取出结果。就相当于下了一张订货单，一段时间后可以拿着提订单来提货，这期间可以干别的任何事情。其中Future 接口就是订货单，真正处理订单的是Executor类，它根据Future接口的要求来生产产品。</p>
-</blockquote>
-<p>ExecutorService：继承自Executor，线程池操作类，创建，执行，关闭</p>
-<h5 id="核心">核心</h5><ul>
-<li>Future<object> f = pool.submit(c);</object></li>
-<li>Void f = pool.execute(RunnableImplements);</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//ExecutorService部分源码 </span><br><span class="line"></span><br><span class="line"> &lt;T&gt; Future&lt;T&gt; submit(Callable&lt;T&gt; task);</span><br><span class="line"></span><br><span class="line"> &lt;T&gt; Future&lt;T&gt; submit(Runnable task, T result);</span><br><span class="line"></span><br><span class="line"> Future&lt;?&gt; submit(Runnable task);</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">另外 </span><br><span class="line">//Executor源码</span><br><span class="line">public interface Executor &#123;</span><br><span class="line">    void execute(Runnable <span class="built_in">command</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="小例子">小例子</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 有返回值的线程</span><br><span class="line"> */</span><br><span class="line">	public class MyThread3 &#123;</span><br><span class="line">		public static void main(String[] args) throws ExecutionException,</span><br><span class="line">				InterruptedException &#123;</span><br><span class="line">			System.out.println(<span class="string">"----程序开始运行----"</span>);</span><br><span class="line">			Date date1 = new Date();</span><br><span class="line"></span><br><span class="line">			int taskSize = <span class="number">5</span>;</span><br><span class="line">			// 创建一个线程池</span><br><span class="line">			ExecutorService pool = Executors.newFixedThreadPool(taskSize);</span><br><span class="line">			// 创建多个有返回值的任务</span><br><span class="line">			List&lt;Future&lt;Object&gt;&gt; list = new ArrayList&lt;Future&lt;Object&gt;&gt;();</span><br><span class="line">			<span class="keyword">for</span> (int i = <span class="number">0</span>; i &lt; taskSize; i++) &#123;</span><br><span class="line">				Callable&lt;Object&gt; c = new MyCallable(i + <span class="string">" "</span>);</span><br><span class="line">				// 执行任务并获取Future对象</span><br><span class="line">				Future&lt;Object&gt; f = pool.submit(c);</span><br><span class="line">				// System.out.println(<span class="string">"&gt;&gt;&gt;"</span> + f.get().toString());</span><br><span class="line">				list.add(f);</span><br><span class="line">			&#125;</span><br><span class="line">			// 关闭线程池</span><br><span class="line">			pool.shutdown();</span><br><span class="line"></span><br><span class="line">			// 获取所有并发任务的运行结果</span><br><span class="line">			<span class="keyword">for</span> (Future&lt;Object&gt; f : list) &#123;</span><br><span class="line">				// 从Future对象上获取任务的返回值，并输出到控制台</span><br><span class="line">				System.out.println(<span class="string">"&gt;&gt;&gt;"</span> + f.get().toString());</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			Date date2 = new Date();</span><br><span class="line">			System.out.println(<span class="string">"----程序结束运行----，程序运行时间【"</span></span><br><span class="line">					+ (date2.getTime() - date1.getTime()) + <span class="string">"毫秒】"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	class MyCallable implements Callable&lt;Object&gt; &#123;</span><br><span class="line">		private String taskNum;</span><br><span class="line"></span><br><span class="line">		MyCallable(String taskNum) &#123;</span><br><span class="line">			this.taskNum = taskNum;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		public Object call() throws Exception &#123;</span><br><span class="line">			System.out.println(<span class="string">"&gt;&gt;&gt;"</span> + taskNum + <span class="string">"任务启动"</span>);</span><br><span class="line">			Date dateTmp1 = new Date();</span><br><span class="line">			Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">			Date dateTmp2 = new Date();</span><br><span class="line">			long time = dateTmp2.getTime() - dateTmp1.getTime();</span><br><span class="line">			System.out.println(<span class="string">"&gt;&gt;&gt;"</span> + taskNum + <span class="string">"任务终止"</span>);</span><br><span class="line">			<span class="built_in">return</span> taskNum + <span class="string">"任务返回运行结果,当前任务时间【"</span> + time + <span class="string">"毫秒】"</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<p>如有不懂，可以多翻阅源代码。</p>
-<h4 id="Reference">Reference</h4><p><a href="http://blog.csdn.net/aboy123/article/details/38307539" target="_blank" rel="external">JAVA多线程实现的三种方式</a><br><a href="java Future 接口介绍">java Future 接口介绍</a><br><a href="http://blog.sina.com.cn/s/blog_64d5ddbe0100ydyv.html" target="_blank" rel="external">线程池中execute和submit的区别</a><br><a href="http://www.cnphp6.com/archives/61093" target="_blank" rel="external">EXECUTORSERVICE线程池讲解</a></p>
+        <span itemprop="articleBody"><h3 id="区域">区域</h3><h4 id="首先第一个问题就是，你对你工作的城市有没有限制？">首先第一个问题就是，你对你工作的城市有没有限制？</h4><ol>
+<li>这个是在问你对我们事业群的位置有没有了解。比如腾讯OMG是在北京，而我目前是在广州，<br>你会觉得有点远。对于我嘛，我觉得没什么问题，毕竟我是一个人，没那么多牵挂。</li>
+<li>当然如果你回答不想去北京，基本一面就结束了(一同学亲身经历)。</li>
+</ol>
+<h3 id="项目">项目</h3><h4 id="你最拿手的项目是哪个？">你最拿手的项目是哪个？</h4><p>从项目简介到项目架构来说，和使用的技术。</p>
+<h4 id="你熟悉哪些前端js框架？">你熟悉哪些前端js框架？</h4><p>如EXT JS,DWR,Amazi UI,Bootstrap,Angular js等等。</p>
+<h4 id="你熟悉哪些除了主流数据库mysql以外的数据库">你熟悉哪些除了主流数据库mysql以外的数据库</h4><p>mangodb,redis,nosql。</p>
+<h4 id="MVC设计模式有什么好处？">MVC设计模式有什么好处？</h4><p>MVC设计模式优点在于:<br>1):测试友好性(如果你需要写单元测试的话,MVC会很不错的)<br>2):可定制性(在MVC中基本上所有的东西都是可以定制的,对于某些定制性要求比较高的工作可以轻易胜任)<br>3):代码清晰(CodeBehind虽说分离的不错,但是还是有很多人直接在CodeBehind里面写SQL的)<br>4):轻量级.(没有控件,没有视图状态,没有控件状态,页面加载速度快)<br>5):对HTML的控制比较深,比如div的id之类的(好吧,ASP.NET WebForm 4.0也加深了控制允许你控制控件生成的html的id)只有对HTML的结构比较清晰才容易写脚本不是.<br>6):开源.</p>
+<p>MVC的不足体现在以下几个方面：<br>1):增加了系统结构和实现的复杂性。对于简单的界面，严格遵循MVC，使模型、视图与控制器分离，会增加结构的复杂性，并可能产生过多的更新操作，降低运行效率。<br>2):视图与控制器间的过于紧密的连接。视图与控制器是相互分离，但确实联系紧密的部件，视图没有控制器的存在，其应用是很有限的，反之亦然，这样就妨碍了他们的独立重用。<br>3):视图对模型数据的低效率访问。依据模型操作接口的不同，视图可能需要多次调用才能获得足够的显示数据。对未变化数据的不必要的频繁访问，也将损害操作性能。<br>4):目前，一般高级的界面工具或构造器不支持MVC架构。改造这些工具以适应MVC需要和建立分离的部件的代价是很高的，从而造成使用MVC的困难。</p>
+<h4 id="java语言的优劣？">java语言的优劣？</h4><p>这个没答完全。<br>优点：简单性、面向对象、分布式、解释型、可靠、安全、平台无关、可移植、高性能、多线程、动态性等。<br>缺点：<br>第一: 运行速度慢，众所周知，Java程序的运行依赖于Java虚拟机，所以相对于其他语言(汇编,C,C++)编写的程序慢，因为它不是直接，执行机器码。<br>第二: 因为Java考虑到了跨平台性。所以他不能像语言<br>（例如:汇编,C) 那样更接近操作系统。也就不能和操作系统的底层打交道了。但可以通过Java的JNI<br>(即Java本地接口。顾名思义：也就是利用Java语言调用，在当前系统上 其他的程序语言 “汇编或C等”所编写的程序)技术，解决这一问题，但这只是解决了。</p>
+<h4 id="如果要你重新学习php的话，你应该怎么学习它呢？">如果要你重新学习php的话，你应该怎么学习它呢？</h4><p>先看看php基本语法，然后再看设计思想和框架，最后在实战中一步一步的修炼。</p>
 </span>
       
     </div>
@@ -295,7 +288,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Java/" rel="tag">#Java</a>
+            <a href="/tags/Interview/" rel="tag">#Interview</a>
+          
+            <a href="/tags/Tencent/" rel="tag">#Tencent</a>
           
         </div>
       
@@ -304,17 +299,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/11/26/Collection和Collections/" rel="next" title="Collection和Collections">
-                <i class="fa fa-chevron-left"></i> Collection和Collections
+              <a href="/2016/03/01/医疗健康管理系统APP/" rel="next" title="医疗健康管理系统APP">
+                <i class="fa fa-chevron-left"></i> 医疗健康管理系统APP
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/11/27/Android全适配/" rel="prev" title="Android全适配">
-                Android全适配 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -341,8 +332,8 @@
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/11/27/Java多线程/"
-           data-title="Java多线程" data-url="http://yoursite.com/2015/11/27/Java多线程/">
+      <div class="ds-thread" data-thread-key="2016/03/02/腾讯一面/"
+           data-title="腾讯OMG一面" data-url="http://yoursite.com/2016/03/02/腾讯一面/">
       </div>
     
   </div>
@@ -464,7 +455,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#继承Thread"><span class="nav-number">1.</span> <span class="nav-text">继承Thread</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现Runnable接口"><span class="nav-number">2.</span> <span class="nav-text">实现Runnable接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ExecutorService、Callable、Future带返回结果的线程实现"><span class="nav-number">3.</span> <span class="nav-text">ExecutorService、Callable、Future带返回结果的线程实现</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#核心"><span class="nav-number">3.1.</span> <span class="nav-text">核心</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#小例子"><span class="nav-number">3.2.</span> <span class="nav-text">小例子</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Reference"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#区域"><span class="nav-number">1.</span> <span class="nav-text">区域</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#首先第一个问题就是，你对你工作的城市有没有限制？"><span class="nav-number">1.1.</span> <span class="nav-text">首先第一个问题就是，你对你工作的城市有没有限制？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#项目"><span class="nav-number">2.</span> <span class="nav-text">项目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#你最拿手的项目是哪个？"><span class="nav-number">2.1.</span> <span class="nav-text">你最拿手的项目是哪个？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#你熟悉哪些前端js框架？"><span class="nav-number">2.2.</span> <span class="nav-text">你熟悉哪些前端js框架？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#你熟悉哪些除了主流数据库mysql以外的数据库"><span class="nav-number">2.3.</span> <span class="nav-text">你熟悉哪些除了主流数据库mysql以外的数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MVC设计模式有什么好处？"><span class="nav-number">2.4.</span> <span class="nav-text">MVC设计模式有什么好处？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java语言的优劣？"><span class="nav-number">2.5.</span> <span class="nav-text">java语言的优劣？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如果要你重新学习php的话，你应该怎么学习它呢？"><span class="nav-number">2.6.</span> <span class="nav-text">如果要你重新学习php的话，你应该怎么学习它呢？</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
