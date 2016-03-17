@@ -4,7 +4,7 @@
   <subtitle><![CDATA[万般皆下品，惟有读书高]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2016-03-02T02:44:29.767Z</updated>
+  <updated>2016-03-17T09:09:35.339Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,11 +15,77 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[互动派面试回忆]]></title>
+    <link href="http://yoursite.com/2016/03/17/%E4%BA%92%E5%8A%A8%E6%B4%BE%E9%9D%A2%E8%AF%95%E5%9B%9E%E5%BF%86/"/>
+    <id>http://yoursite.com/2016/03/17/互动派面试回忆/</id>
+    <published>2016-03-17T07:35:36.000Z</published>
+    <updated>2016-03-17T09:09:35.339Z</updated>
+    <content type="html"><![CDATA[<h3 id="笔试">笔试</h3><ol>
+<li>linux查看系统目录</li>
+<li>linux结束一个用户的进程，用管道的方式</li>
+<li>单例模式</li>
+<li>设计模式</li>
+<li>浏览器输入URL到收到页面内容发生了什么？</li>
+<li>MapReduce,HDFS,HBase,Hive等都用在什么情形</li>
+<li>怎样用O(1)的空间复杂度和O(n)的时间复杂度旋转单链表</li>
+<li>怎么确定单链表是否有环</li>
+</ol>
+<h3 id="面试">面试</h3><ol>
+<li>怎么从重复的电话号码中查找出电话号码和重复次数，写出mysql</li>
+<li>简历中模型里面的实现</li>
+<li>SVM中如何判断一个进行分类的</li>
+</ol>
+]]></content>
+    <summary type="html">
+    <![CDATA[塔布数据]]>
+    
+    </summary>
+    
+      <category term="Interview" scheme="http://yoursite.com/tags/Interview/"/>
+    
+      <category term="Interview" scheme="http://yoursite.com/categories/Interview/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[CVTE面试回忆]]></title>
+    <link href="http://yoursite.com/2016/03/17/CVTE%E9%9D%A2%E8%AF%95%E5%9B%9E%E5%BF%86/"/>
+    <id>http://yoursite.com/2016/03/17/CVTE面试回忆/</id>
+    <published>2016-03-17T07:02:36.000Z</published>
+    <updated>2016-03-17T07:36:18.355Z</updated>
+    <content type="html"><![CDATA[<h3 id="笔试">笔试</h3><ol>
+<li><a href="http://wenku.baidu.com/link?url=u5nwwseVQMZZgdG0LYac0ve8D5XSXvAktz5Y9SG7XDExPb6xIBHBNn3GzcaDLRiD6l4GZbLvCpwSQloFQRWuah3wu54zAd3hKbUNbwJrCe7" target="_blank" rel="external">笔试题文档</a></li>
+<li>笔试程序题：两个班成绩从高到低存放list1、list2怎样才能得到全年级的成绩？（假设全年级只有两个班）</li>
+</ol>
+<h3 id="技术面试">技术面试</h3><ol>
+<li>hibernate优化</li>
+<li>HashMap的结构、能不能存空值，HashTable能不能存空值 ArrayList的初始容量</li>
+<li>LinkedList和ArrayList的区别</li>
+<li>多线程的实现方式、加锁用过吗、线程池有没有接触过</li>
+<li>怎么样自定义比较两个对象，提示Comparable和Comparator区别。</li>
+<li>青蛙一次跳一步一次跳两步解决方法？（写出了递归方法，主考官还问到，这种方法的弊端；然后又写了个迭代方法）</li>
+<li>sql，为什么mysql是小型数据库（后来想想答错了，应该是mysql并发量小，数据量不大）</li>
+<li>写出mysql，学生表id name, 课程表 id course , 成绩表 stuid couid score.查询成绩大于两百分的学生名和分数</li>
+<li>和导师的关系怎么样？导师如何评价你</li>
+</ol>
+]]></content>
+    <summary type="html">
+    <![CDATA[短短CVTE二面结束了]]>
+    
+    </summary>
+    
+      <category term="Interview" scheme="http://yoursite.com/tags/Interview/"/>
+    
+      <category term="Interview" scheme="http://yoursite.com/categories/Interview/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[腾讯OMG一面]]></title>
     <link href="http://yoursite.com/2016/03/02/%E8%85%BE%E8%AE%AF%E4%B8%80%E9%9D%A2/"/>
     <id>http://yoursite.com/2016/03/02/腾讯一面/</id>
     <published>2016-03-02T02:01:37.000Z</published>
-    <updated>2016-03-02T02:44:29.767Z</updated>
+    <updated>2016-03-17T08:52:33.323Z</updated>
     <content type="html"><![CDATA[<h3 id="区域">区域</h3><h4 id="首先第一个问题就是，你对你工作的城市有没有限制？">首先第一个问题就是，你对你工作的城市有没有限制？</h4><ol>
 <li>这个是在问你对我们事业群的位置有没有了解。比如腾讯OMG是在北京，而我目前是在广州，<br>你会觉得有点远。对于我嘛，我觉得没什么问题，毕竟我是一个人，没那么多牵挂。</li>
 <li>当然如果你回答不想去北京，基本一面就结束了(一同学亲身经历)。</li>
@@ -38,8 +104,6 @@
     </summary>
     
       <category term="Interview" scheme="http://yoursite.com/tags/Interview/"/>
-    
-      <category term="Tencent" scheme="http://yoursite.com/tags/Tencent/"/>
     
       <category term="Interview" scheme="http://yoursite.com/categories/Interview/"/>
     
@@ -744,61 +808,6 @@ Collections.sort(list);//
       <category term="Genymotion" scheme="http://yoursite.com/tags/Genymotion/"/>
     
       <category term="android" scheme="http://yoursite.com/categories/android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[我的Hexo创建历程]]></title>
-    <link href="http://yoursite.com/2015/11/21/%E6%88%91%E7%9A%84Hexo%E5%88%9B%E5%BB%BA%E5%8E%86%E7%A8%8B/"/>
-    <id>http://yoursite.com/2015/11/21/我的Hexo创建历程/</id>
-    <published>2015-11-21T05:51:56.000Z</published>
-    <updated>2015-11-21T06:46:28.322Z</updated>
-    <content type="html"><![CDATA[<blockquote>
-<p>使用hexo在github上搭建个人博客,创建一个属于自己的个人空间。你可以分享技术，分享学术，也可以分享生活中的点点滴滴。让我们从这里开始吧！</p>
-</blockquote>
-<h2 id="详细步骤">详细步骤</h2><p>1.首先申请一个<a href="github.com">github</a>账号<br>2.创建一个名为your_username.github.io的repository<br>2.然后安装<a href="http://git-scm.com/download/win" target="_blank" rel="external">Git</a>和<a href="https://nodejs.org/en/" target="_blank" rel="external">nodejs</a></p>
-<h3 id="Git的相关配置">Git的相关配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name <span class="string">"Paul"</span></span><br><span class="line">$ git config --global user.email <span class="string">"paul@sina.com"</span></span><br></pre></td></tr></table></figure>
-<h3 id="生成密钥">生成密钥</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">"humingx@yeah.net"</span></span><br></pre></td></tr></table></figure>
-<p>连续输入三个回车，没问题就去~/.ssh/目录下，查看是否生成id_rsa和id_rsa.pub</p>
-<h3 id="添加密钥到ssh-agent">添加密钥到ssh-agent</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">eval</span> <span class="string">"<span class="variable">$(ssh-agent -s)</span>"</span></span><br><span class="line">$ ssh-add ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure>
-<h3 id="复制密钥">复制密钥</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com <span class="comment">#测试密钥</span></span><br><span class="line">clip &lt; ~/.ssh/id_rsa.pub <span class="comment">#复制密钥</span></span><br></pre></td></tr></table></figure>
-<h3 id="添加可信任电脑">添加可信任电脑</h3><p>1.到你的github &gt;&gt; setttings &gt;&gt; SSH keys &gt;&gt; add key<br>2.右键鼠标粘贴进去，github设置到此ok。</p>
-<h2 id="推荐参考网址">推荐参考网址</h2><p>参考这几个网页<br>1.<a href="http://segmentfault.com/a/1190000002645623" target="_blank" rel="external">git配置ssh</a><br>2.<a href="http://jingyan.baidu.com/article/14bd256e201f12bb6d261222.html" target="_blank" rel="external">git创建静态网页</a><br>3.<a href="http://wsgzao.github.io/post/hexo-guide/#安装GIT" target="_blank" rel="external">nodejs安装</a><br>4.<a href="http://segmentfault.com/a/1190000002632530" target="_blank" rel="external">hexo常用命令</a></p>
-<h2 id="注意事项">注意事项</h2><p>1.这里命名方式注意！！！<br>    创建一个项目，命名比较特殊，格式：your_username_in_github.github.io<br>2.nodejs安装完一定要使用npm init来创建一个package.json<br>然后就是hexo设置在全局里面<br>3.不懂多问度娘或者Google!!</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[使用hexo在github上搭建个人博客]]>
-    
-    </summary>
-    
-      <category term="Github" scheme="http://yoursite.com/tags/Github/"/>
-    
-      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
-    
-      <category term="Nodejs" scheme="http://yoursite.com/tags/Nodejs/"/>
-    
-      <category term="FirstTry" scheme="http://yoursite.com/categories/FirstTry/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[First Blog]]></title>
-    <link href="http://yoursite.com/2015/11/21/First-Blog/"/>
-    <id>http://yoursite.com/2015/11/21/First-Blog/</id>
-    <published>2015-11-21T05:13:12.000Z</published>
-    <updated>2015-11-21T05:22:55.520Z</updated>
-    <content type="html"><![CDATA[<p>写点东西吧！</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[生命在于折腾，又把博客折腾到Hexo了。给Hexo点赞。]]>
-    
-    </summary>
-    
-      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
-    
-      <category term="Rollingdeep" scheme="http://yoursite.com/tags/Rollingdeep/"/>
-    
-      <category term="FirstTry" scheme="http://yoursite.com/categories/FirstTry/"/>
     
   </entry>
   

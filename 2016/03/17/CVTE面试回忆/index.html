@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Github,Hexo,Nodejs," />
+  <meta name="keywords" content="Interview," />
 
 
 
@@ -53,16 +53,16 @@
 
 
 
-<meta name="description" content="使用hexo在github上搭建个人博客">
+<meta name="description" content="短短CVTE二面结束了">
 <meta property="og:type" content="article">
-<meta property="og:title" content="我的Hexo创建历程">
-<meta property="og:url" content="http://yoursite.com/2015/11/21/我的Hexo创建历程/index.html">
+<meta property="og:title" content="CVTE面试回忆">
+<meta property="og:url" content="http://yoursite.com/2016/03/17/CVTE面试回忆/index.html">
 <meta property="og:site_name" content="沉思">
-<meta property="og:description" content="使用hexo在github上搭建个人博客">
-<meta property="og:updated_time" content="2015-11-21T06:46:28.322Z">
+<meta property="og:description" content="短短CVTE二面结束了">
+<meta property="og:updated_time" content="2016-03-17T07:36:18.355Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我的Hexo创建历程">
-<meta name="twitter:description" content="使用hexo在github上搭建个人博客">
+<meta name="twitter:title" content="CVTE面试回忆">
+<meta name="twitter:description" content="短短CVTE二面结束了">
 
 
 
@@ -74,7 +74,7 @@
   };
 </script>
 
-  <title> 我的Hexo创建历程 | 沉思 </title>
+  <title> CVTE面试回忆 | 沉思 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -214,7 +214,7 @@
             
             
               
-                我的Hexo创建历程
+                CVTE面试回忆
               
             
           </h1>
@@ -223,8 +223,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-11-21T13:51:56+08:00" content="2015-11-21">
-              2015-11-21
+            <time itemprop="dateCreated" datetime="2016-03-17T15:02:36+08:00" content="2016-03-17">
+              2016-03-17
             </time>
           </span>
 
@@ -233,8 +233,8 @@
               &nbsp; | &nbsp; 分类于
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/FirstTry/" itemprop="url" rel="index">
-                    <span itemprop="name">FirstTry</span>
+                  <a href="/categories/Interview/" itemprop="url" rel="index">
+                    <span itemprop="name">Interview</span>
                   </a>
                 </span>
 
@@ -249,8 +249,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/11/21/我的Hexo创建历程/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/21/我的Hexo创建历程/" itemprop="commentsCount"></span>
+                <a href="/2016/03/17/CVTE面试回忆/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/17/CVTE面试回忆/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -269,18 +269,21 @@
       
 
       
-        <span itemprop="articleBody"><blockquote>
-<p>使用hexo在github上搭建个人博客,创建一个属于自己的个人空间。你可以分享技术，分享学术，也可以分享生活中的点点滴滴。让我们从这里开始吧！</p>
-</blockquote>
-<h2 id="详细步骤">详细步骤</h2><p>1.首先申请一个<a href="github.com">github</a>账号<br>2.创建一个名为your_username.github.io的repository<br>2.然后安装<a href="http://git-scm.com/download/win" target="_blank" rel="external">Git</a>和<a href="https://nodejs.org/en/" target="_blank" rel="external">nodejs</a></p>
-<h3 id="Git的相关配置">Git的相关配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name <span class="string">"Paul"</span></span><br><span class="line">$ git config --global user.email <span class="string">"paul@sina.com"</span></span><br></pre></td></tr></table></figure>
-<h3 id="生成密钥">生成密钥</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">"humingx@yeah.net"</span></span><br></pre></td></tr></table></figure>
-<p>连续输入三个回车，没问题就去~/.ssh/目录下，查看是否生成id_rsa和id_rsa.pub</p>
-<h3 id="添加密钥到ssh-agent">添加密钥到ssh-agent</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">eval</span> <span class="string">"<span class="variable">$(ssh-agent -s)</span>"</span></span><br><span class="line">$ ssh-add ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure>
-<h3 id="复制密钥">复制密钥</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com <span class="comment">#测试密钥</span></span><br><span class="line">clip &lt; ~/.ssh/id_rsa.pub <span class="comment">#复制密钥</span></span><br></pre></td></tr></table></figure>
-<h3 id="添加可信任电脑">添加可信任电脑</h3><p>1.到你的github &gt;&gt; setttings &gt;&gt; SSH keys &gt;&gt; add key<br>2.右键鼠标粘贴进去，github设置到此ok。</p>
-<h2 id="推荐参考网址">推荐参考网址</h2><p>参考这几个网页<br>1.<a href="http://segmentfault.com/a/1190000002645623" target="_blank" rel="external">git配置ssh</a><br>2.<a href="http://jingyan.baidu.com/article/14bd256e201f12bb6d261222.html" target="_blank" rel="external">git创建静态网页</a><br>3.<a href="http://wsgzao.github.io/post/hexo-guide/#安装GIT" target="_blank" rel="external">nodejs安装</a><br>4.<a href="http://segmentfault.com/a/1190000002632530" target="_blank" rel="external">hexo常用命令</a></p>
-<h2 id="注意事项">注意事项</h2><p>1.这里命名方式注意！！！<br>    创建一个项目，命名比较特殊，格式：your_username_in_github.github.io<br>2.nodejs安装完一定要使用npm init来创建一个package.json<br>然后就是hexo设置在全局里面<br>3.不懂多问度娘或者Google!!</p>
+        <span itemprop="articleBody"><h3 id="笔试">笔试</h3><ol>
+<li><a href="http://wenku.baidu.com/link?url=u5nwwseVQMZZgdG0LYac0ve8D5XSXvAktz5Y9SG7XDExPb6xIBHBNn3GzcaDLRiD6l4GZbLvCpwSQloFQRWuah3wu54zAd3hKbUNbwJrCe7" target="_blank" rel="external">笔试题文档</a></li>
+<li>笔试程序题：两个班成绩从高到低存放list1、list2怎样才能得到全年级的成绩？（假设全年级只有两个班）</li>
+</ol>
+<h3 id="技术面试">技术面试</h3><ol>
+<li>hibernate优化</li>
+<li>HashMap的结构、能不能存空值，HashTable能不能存空值 ArrayList的初始容量</li>
+<li>LinkedList和ArrayList的区别</li>
+<li>多线程的实现方式、加锁用过吗、线程池有没有接触过</li>
+<li>怎么样自定义比较两个对象，提示Comparable和Comparator区别。</li>
+<li>青蛙一次跳一步一次跳两步解决方法？（写出了递归方法，主考官还问到，这种方法的弊端；然后又写了个迭代方法）</li>
+<li>sql，为什么mysql是小型数据库（后来想想答错了，应该是mysql并发量小，数据量不大）</li>
+<li>写出mysql，学生表id name, 课程表 id course , 成绩表 stuid couid score.查询成绩大于两百分的学生名和分数</li>
+<li>和导师的关系怎么样？导师如何评价你</li>
+</ol>
 </span>
       
     </div>
@@ -289,11 +292,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Github/" rel="tag">#Github</a>
-          
-            <a href="/tags/Hexo/" rel="tag">#Hexo</a>
-          
-            <a href="/tags/Nodejs/" rel="tag">#Nodejs</a>
+            <a href="/tags/Interview/" rel="tag">#Interview</a>
           
         </div>
       
@@ -302,16 +301,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/11/21/First-Blog/" rel="next" title="First Blog">
-                <i class="fa fa-chevron-left"></i> First Blog
+              <a href="/2016/03/02/腾讯一面/" rel="next" title="腾讯OMG一面">
+                <i class="fa fa-chevron-left"></i> 腾讯OMG一面
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/11/21/Genymotion的安装/" rel="prev" title="GENYMOTION的安装">
-                GENYMOTION的安装 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/03/17/互动派面试回忆/" rel="prev" title="互动派面试回忆">
+                互动派面试回忆 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -339,8 +338,8 @@
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/11/21/我的Hexo创建历程/"
-           data-title="我的Hexo创建历程" data-url="http://yoursite.com/2015/11/21/我的Hexo创建历程/">
+      <div class="ds-thread" data-thread-key="2016/03/17/CVTE面试回忆/"
+           data-title="CVTE面试回忆" data-url="http://yoursite.com/2016/03/17/CVTE面试回忆/">
       </div>
     
   </div>
@@ -462,7 +461,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#详细步骤"><span class="nav-number">1.</span> <span class="nav-text">详细步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Git的相关配置"><span class="nav-number">1.1.</span> <span class="nav-text">Git的相关配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成密钥"><span class="nav-number">1.2.</span> <span class="nav-text">生成密钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加密钥到ssh-agent"><span class="nav-number">1.3.</span> <span class="nav-text">添加密钥到ssh-agent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复制密钥"><span class="nav-number">1.4.</span> <span class="nav-text">复制密钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加可信任电脑"><span class="nav-number">1.5.</span> <span class="nav-text">添加可信任电脑</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推荐参考网址"><span class="nav-number">2.</span> <span class="nav-text">推荐参考网址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注意事项"><span class="nav-number">3.</span> <span class="nav-text">注意事项</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#笔试"><span class="nav-number">1.</span> <span class="nav-text">笔试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#技术面试"><span class="nav-number">2.</span> <span class="nav-text">技术面试</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
