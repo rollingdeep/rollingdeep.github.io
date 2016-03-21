@@ -4,7 +4,7 @@
   <subtitle><![CDATA[万般皆下品，惟有读书高]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2016-03-21T14:32:59.546Z</updated>
+  <updated>2016-03-21T14:35:38.251Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -19,14 +19,14 @@
     <link href="http://yoursite.com/2016/03/21/BAT%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/"/>
     <id>http://yoursite.com/2016/03/21/BAT面试准备/</id>
     <published>2016-03-21T13:44:05.000Z</published>
-    <updated>2016-03-21T14:32:59.546Z</updated>
+    <updated>2016-03-21T14:35:38.251Z</updated>
     <content type="html"><![CDATA[<h3 id="算法">算法</h3><h4 id="数组、链表">数组、链表</h4><ol>
 <li><a href="http://www.cppblog.com/cxiaojia/archive/2012/07/31/185760" target="_blank" rel="external">http://www.cppblog.com/cxiaojia/archive/2012/07/31/185760</a></li>
 <li><a href="http://blog.csdn.net/hackbuteer1/article/details/6591486/" target="_blank" rel="external">http://blog.csdn.net/hackbuteer1/article/details/6591486/</a></li>
 <li><a href="http://blog.csdn.net/pony_maggie/article/details/38390513" target="_blank" rel="external">http://blog.csdn.net/pony_maggie/article/details/38390513</a></li>
-<li><img src="http://blog.csdn.net/niteip/article/details/11840691" alt="AVL"></li>
-<li><img src="http://blog.csdn.net/stpeace/article/details/9067029" alt="BST"></li>
-<li><img src="http://www.cnblogs.com/oldhorse/archive/2009/11/16/1604009.html" alt="B，B+,B-"></li>
+<li><a href="http://blog.csdn.net/niteip/article/details/11840691" target="_blank" rel="external">AVL</a></li>
+<li><a href="http://blog.csdn.net/stpeace/article/details/9067029" target="_blank" rel="external">BST</a></li>
+<li><a href="http://www.cnblogs.com/oldhorse/archive/2009/11/16/1604009.html" target="_blank" rel="external">B，B+,B-</a></li>
 <li><a href="http://blog.csdn.net/tonyxf121/article/details/8393545" target="_blank" rel="external">http://blog.csdn.net/tonyxf121/article/details/8393545</a></li>
 <li><a href="http://blog.csdn.net/chenhuajie123/article/details/11900153" target="_blank" rel="external">http://blog.csdn.net/chenhuajie123/article/details/11900153</a></li>
 <li><a href="http://blog.csdn.net/ganggexiongqi/article/details/7449970" target="_blank" rel="external">http://blog.csdn.net/ganggexiongqi/article/details/7449970</a></li>
@@ -47,7 +47,7 @@
 <li><a href="http://blog.csdn.net/ghsau/article/details/16890151" target="_blank" rel="external">http://blog.csdn.net/ghsau/article/details/16890151</a></li>
 </ol>
 <h4 id="并发编程，线程，线程池，加锁">并发编程，线程，线程池，加锁</h4><ol>
-<li><img src="http://blog.csdn.net/jackfrued/article/details/44499227" alt="并发思想"></li>
+<li><a href="http://blog.csdn.net/jackfrued/article/details/44499227" target="_blank" rel="external">并发思想</a></li>
 <li><a href="http://www.cnblogs.com/riskyer/p/3263032" target="_blank" rel="external">http://www.cnblogs.com/riskyer/p/3263032</a></li>
 <li><a href="http://blog.csdn.net/aboy123/article/details/38307539" target="_blank" rel="external">http://blog.csdn.net/aboy123/article/details/38307539</a></li>
 <li><a href="http://blog.jobbole.com/76308/" target="_blank" rel="external">http://blog.jobbole.com/76308/</a></li>
