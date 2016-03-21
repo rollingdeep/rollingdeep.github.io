@@ -4,7 +4,7 @@
   <subtitle><![CDATA[万般皆下品，惟有读书高]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2016-03-17T09:09:35.339Z</updated>
+  <updated>2016-03-21T14:32:59.546Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -13,6 +13,87 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[BAT面试准备]]></title>
+    <link href="http://yoursite.com/2016/03/21/BAT%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/"/>
+    <id>http://yoursite.com/2016/03/21/BAT面试准备/</id>
+    <published>2016-03-21T13:44:05.000Z</published>
+    <updated>2016-03-21T14:32:59.546Z</updated>
+    <content type="html"><![CDATA[<h3 id="算法">算法</h3><h4 id="数组、链表">数组、链表</h4><ol>
+<li><a href="http://www.cppblog.com/cxiaojia/archive/2012/07/31/185760" target="_blank" rel="external">http://www.cppblog.com/cxiaojia/archive/2012/07/31/185760</a></li>
+<li><a href="http://blog.csdn.net/hackbuteer1/article/details/6591486/" target="_blank" rel="external">http://blog.csdn.net/hackbuteer1/article/details/6591486/</a></li>
+<li><a href="http://blog.csdn.net/pony_maggie/article/details/38390513" target="_blank" rel="external">http://blog.csdn.net/pony_maggie/article/details/38390513</a></li>
+<li><img src="http://blog.csdn.net/niteip/article/details/11840691" alt="AVL"></li>
+<li><img src="http://blog.csdn.net/stpeace/article/details/9067029" alt="BST"></li>
+<li><img src="http://www.cnblogs.com/oldhorse/archive/2009/11/16/1604009.html" alt="B，B+,B-"></li>
+<li><a href="http://blog.csdn.net/tonyxf121/article/details/8393545" target="_blank" rel="external">http://blog.csdn.net/tonyxf121/article/details/8393545</a></li>
+<li><a href="http://blog.csdn.net/chenhuajie123/article/details/11900153" target="_blank" rel="external">http://blog.csdn.net/chenhuajie123/article/details/11900153</a></li>
+<li><a href="http://blog.csdn.net/ganggexiongqi/article/details/7449970" target="_blank" rel="external">http://blog.csdn.net/ganggexiongqi/article/details/7449970</a></li>
+<li><a href="http://blog.csdn.net/yutianzuijin/article/details/11954939/" target="_blank" rel="external">http://blog.csdn.net/yutianzuijin/article/details/11954939/</a></li>
+</ol>
+<h4 id="排序">排序</h4><h3 id="Java">Java</h3><h4 id="String，StringBuffer,StringBuilder区别">String，StringBuffer,StringBuilder区别</h4><ol>
+<li><a href="http://blog.csdn.net/clam_clam/article/details/6831345" target="_blank" rel="external">http://blog.csdn.net/clam_clam/article/details/6831345</a></li>
+<li><a href="http://www.cnblogs.com/xudong-bupt/p/3961159.html" target="_blank" rel="external">http://www.cnblogs.com/xudong-bupt/p/3961159.html</a></li>
+</ol>
+<h4 id="HashMap和HashMap区别，能否存储空值">HashMap和HashMap区别，能否存储空值</h4><ol>
+<li><a href="http://www.cnblogs.com/carbs/archive/2012/07/04/2576995" target="_blank" rel="external">http://www.cnblogs.com/carbs/archive/2012/07/04/2576995</a></li>
+<li><a href="http://blog.csdn.net/wl_ldy/article/details/5941770" target="_blank" rel="external">http://blog.csdn.net/wl_ldy/article/details/5941770</a></li>
+</ol>
+<h4 id="ArrayList和HashMap初始容量">ArrayList和HashMap初始容量</h4><ol>
+<li><a href="http://blog.csdn.net/java2000_net/article/details/5215882" target="_blank" rel="external">http://blog.csdn.net/java2000_net/article/details/5215882</a></li>
+<li><a href="http://ask.csdn.net/questions/178013" target="_blank" rel="external">http://ask.csdn.net/questions/178013</a></li>
+<li><a href="http://blog.sina.com.cn/s/blog_45ff7c3f0100bwan.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_45ff7c3f0100bwan.html</a></li>
+<li><a href="http://blog.csdn.net/ghsau/article/details/16890151" target="_blank" rel="external">http://blog.csdn.net/ghsau/article/details/16890151</a></li>
+</ol>
+<h4 id="并发编程，线程，线程池，加锁">并发编程，线程，线程池，加锁</h4><ol>
+<li><img src="http://blog.csdn.net/jackfrued/article/details/44499227" alt="并发思想"></li>
+<li><a href="http://www.cnblogs.com/riskyer/p/3263032" target="_blank" rel="external">http://www.cnblogs.com/riskyer/p/3263032</a></li>
+<li><a href="http://blog.csdn.net/aboy123/article/details/38307539" target="_blank" rel="external">http://blog.csdn.net/aboy123/article/details/38307539</a></li>
+<li><a href="http://blog.jobbole.com/76308/" target="_blank" rel="external">http://blog.jobbole.com/76308/</a></li>
+<li><a href="http://developer.51cto.com/art/201509/490965.htm" target="_blank" rel="external">http://developer.51cto.com/art/201509/490965.htm</a></li>
+<li><a href="http://blog.csdn.net/yangzhijun_cau/article/details/6432216" target="_blank" rel="external">http://blog.csdn.net/yangzhijun_cau/article/details/6432216</a></li>
+<li><a href="http://cuisuqiang.iteye.com/blog/2019372" target="_blank" rel="external">http://cuisuqiang.iteye.com/blog/2019372</a></li>
+<li><a href="http://www.cnblogs.com/lxzh/archive/2013/01/20/2868736.html" target="_blank" rel="external">http://www.cnblogs.com/lxzh/archive/2013/01/20/2868736.html</a></li>
+</ol>
+<h4 id="Comparable和Comparator的区别">Comparable和Comparator的区别</h4><ol>
+<li><a href="http://www.cnblogs.com/sunflower627/p/3158042.html" target="_blank" rel="external">http://www.cnblogs.com/sunflower627/p/3158042.html</a></li>
+<li><a href="http://www.codeceo.com/article/java-comparable-comparator.html" target="_blank" rel="external">http://www.codeceo.com/article/java-comparable-comparator.html</a></li>
+</ol>
+<h4 id="GC回收分代和回收">GC回收分代和回收</h4><ol>
+<li><a href="http://www.cnblogs.com/hnrainll/archive/2013/11/06/3410042.html" target="_blank" rel="external">http://www.cnblogs.com/hnrainll/archive/2013/11/06/3410042.html</a></li>
+<li><a href="http://blog.csdn.net/kennyrose/article/details/7543696" target="_blank" rel="external">http://blog.csdn.net/kennyrose/article/details/7543696</a></li>
+</ol>
+<h4 id="Collections方法">Collections方法</h4><ol>
+<li><a href="http://pengcqu.iteye.com/blog/492196" target="_blank" rel="external">http://pengcqu.iteye.com/blog/492196</a></li>
+<li><a href="http://blog.csdn.net/lskyne/article/details/8961014" target="_blank" rel="external">http://blog.csdn.net/lskyne/article/details/8961014</a></li>
+<li><a href="http://blog.csdn.net/ameyume/article/details/6282051" target="_blank" rel="external">http://blog.csdn.net/ameyume/article/details/6282051</a></li>
+<li><a href="http://www.cnblogs.com/gw811/archive/2012/10/10/2719134.html" target="_blank" rel="external">http://www.cnblogs.com/gw811/archive/2012/10/10/2719134.html</a></li>
+</ol>
+<h3 id="SQL">SQL</h3><h4 id="SQL基础，group_by等，修改表结构">SQL基础，group by等，修改表结构</h4><ol>
+<li><a href="http://www.cnblogs.com/mr-wid/archive/2013/05/09/3068229.html" target="_blank" rel="external">http://www.cnblogs.com/mr-wid/archive/2013/05/09/3068229.html</a></li>
+<li><a href="http://www.cnblogs.com/hustcat/archive/2009/10/28/1591648.html" target="_blank" rel="external">http://www.cnblogs.com/hustcat/archive/2009/10/28/1591648.html</a></li>
+<li><a href="http://www.cnblogs.com/daxian2012/articles/2767989.html" target="_blank" rel="external">http://www.cnblogs.com/daxian2012/articles/2767989.html</a></li>
+</ol>
+<h4 id="缓存机制和MySQL调优">缓存机制和MySQL调优</h4><ol>
+<li><a href="http://blog.csdn.net/wulantian/article/details/11043121" target="_blank" rel="external">http://blog.csdn.net/wulantian/article/details/11043121</a></li>
+<li><a href="http://blog.csdn.net/gzh0222/article/details/8001362" target="_blank" rel="external">http://blog.csdn.net/gzh0222/article/details/8001362</a></li>
+<li><a href="http://www.cnblogs.com/adforce/archive/2012/06/02/2532086.html" target="_blank" rel="external">http://www.cnblogs.com/adforce/archive/2012/06/02/2532086.html</a></li>
+<li><a href="http://www.cnblogs.com/not-code/archive/2011/11/01/2231493.html" target="_blank" rel="external">http://www.cnblogs.com/not-code/archive/2011/11/01/2231493.html</a></li>
+</ol>
+]]></content>
+    <summary type="html">
+    <![CDATA[一年一度的BAT校招，千军万马过独木桥。失败，别气馁，勇敢向前冲！]]>
+    
+    </summary>
+    
+      <category term="Interview" scheme="http://yoursite.com/tags/Interview/"/>
+    
+      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
+    
+      <category term="Interview" scheme="http://yoursite.com/categories/Interview/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[互动派面试回忆]]></title>
@@ -671,7 +752,7 @@ Collections.sort(list);//
     <link href="http://yoursite.com/2015/11/26/HashMap%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/"/>
     <id>http://yoursite.com/2015/11/26/HashMap工作原理/</id>
     <published>2015-11-26T07:47:34.000Z</published>
-    <updated>2015-12-05T03:13:35.881Z</updated>
+    <updated>2016-03-21T13:55:54.494Z</updated>
     <content type="html"><![CDATA[<h3 id="数组">数组</h3><p>数组存储区间是连续的，占用内存严重，故空间复杂的很大。但数组的二分查找时间复杂度小，为O(1)；<br>数组的特点是：寻址容易，插入和删除困难；</p>
 <h3 id="链表">链表</h3><p>链表存储区间离散，占用内存比较宽松，故空间复杂度很小，但时间复杂度很大，达O（N）。<br>链表的特点是：寻址困难，插入和删除容易。</p>
 <h3 id="哈希表">哈希表</h3><p>那么我们能不能综合两者的特性，做出一种寻址容易，插入删除也容易的数据结构？答案是肯定的，这就是我们要提起的哈希表。<br>哈希表（(Hash table）既满足了数据的查找方便，同时不占用太多的内容空间，使用也十分方便。</p>
@@ -690,7 +771,7 @@ Collections.sort(list);//
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (size++ &gt;= threshold)</span><br><span class="line">            resize(<span class="number">2</span> * table.length);</span><br></pre></td></tr></table></figure>
 <p>threshold = capacity * loadFactor,loadFactor默认为0.75.</p>
 <h3 id="HashTable和HashMap">HashTable和HashMap</h3><ul>
-<li>ashtable的轻量级实现（非线程安全的实现），他们都完成了Map接口，主要区别在于HashMap允许空（null）键值（key）,由于非线程安全，在只有一个线程访问的情况下，效率要高于Hashtable。</li>
+<li>Hashtable的轻量级实现（非线程安全的实现），他们都完成了Map接口，主要区别在于HashMap允许空（null）键值（key）,由于非线程安全，在只有一个线程访问的情况下，效率要高于Hashtable。</li>
 <li>HashMap允许将null作为一个entry的key或者value，而Hashtable不允许。</li>
 <li>HashMap把Hashtable的contains方法去掉了，改成containsvalue和containsKey。因为contains方法容易让人引起误解。</li>
 <li>Hashtable继承自Dictionary类，而HashMap是Java1.2引进的Map interface的一个实现。<br>最大的不同是，Hashtable的方法是Synchronize的，而HashMap不是，在多个线程访问Hashtable时，不需要自己为它的方法实现同步，而HashMap 就必须为之提供外同步。<br>Hashtable和HashMap采用的hash/rehash算法都大概一样，所以性能不会有很大的差异。同步上的性能，HashMap会更优秀</li>
@@ -776,38 +857,6 @@ Collections.sort(list);//
       <category term="Maven" scheme="http://yoursite.com/tags/Maven/"/>
     
       <category term="java" scheme="http://yoursite.com/categories/java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[GENYMOTION的安装]]></title>
-    <link href="http://yoursite.com/2015/11/21/Genymotion%E7%9A%84%E5%AE%89%E8%A3%85/"/>
-    <id>http://yoursite.com/2015/11/21/Genymotion的安装/</id>
-    <published>2015-11-21T13:53:56.000Z</published>
-    <updated>2015-11-21T14:17:09.580Z</updated>
-    <content type="html"><![CDATA[<h3 id="在genymotion官网上注册一个账号">在genymotion官网上注册一个账号</h3><ol>
-<li>然后下载安装genymotion,会自带安装virtualbox</li>
-<li>安装完成之可能会出现断网情况。<br>解决办法：选择本地连接和 virtualbox host-only这两个，鼠标右键选择桥接。</li>
-</ol>
-<h3 id="eclipse的配置">eclipse的配置</h3><ol>
-<li>打开eclispe</li>
-<li>选择help&gt;install new software</li>
-<li>输入<a href="http://plugins.genymotion.com/eclipse。！！然后去掉勾选出现安装items，select" target="_blank" rel="external">http://plugins.genymotion.com/eclipse。！！然后去掉勾选出现安装items，select</a> all</li>
-<li>安装，直至完成。这个时候重启eclipse可以发现已经多了一个genymotion图标。</li>
-<li>另外在genymotion中也要更改设置 settings&gt;ADB</li>
-<li>配置自己的android sdk目录 %android_dir%/_x64_windows/sdk</li>
-</ol>
-<p>至此已经大工告成！</p>
-<h3 id="相关连接">相关连接</h3><p><a href="https://www.genymotion.com/#!/" target="_blank" rel="external">genymotion官网</a></p>
-]]></content>
-    <summary type="html">
-    <![CDATA[android最快的模拟器genymotion]]>
-    
-    </summary>
-    
-      <category term="Genymotion" scheme="http://yoursite.com/tags/Genymotion/"/>
-    
-      <category term="android" scheme="http://yoursite.com/categories/android/"/>
     
   </entry>
   

@@ -61,7 +61,7 @@
 <meta property="og:description" content="Java面试经常问到的一个问题，哈希表的工作原理。刚好看到这里，分享之！">
 <meta property="og:image" content="http://img.blog.csdn.net/20131105152201453?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdmtpbmdfd2FuZw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:image" content="http://img.blog.csdn.net/20131105152215718?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdmtpbmdfd2FuZw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:updated_time" content="2015-12-05T03:13:35.881Z">
+<meta property="og:updated_time" content="2016-03-21T13:55:54.494Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HashMap工作原理">
 <meta name="twitter:description" content="Java面试经常问到的一个问题，哈希表的工作原理。刚好看到这里，分享之！">
@@ -289,7 +289,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (size++ &gt;= threshold)</span><br><span class="line">            resize(<span class="number">2</span> * table.length);</span><br></pre></td></tr></table></figure>
 <p>threshold = capacity * loadFactor,loadFactor默认为0.75.</p>
 <h3 id="HashTable和HashMap">HashTable和HashMap</h3><ul>
-<li>ashtable的轻量级实现（非线程安全的实现），他们都完成了Map接口，主要区别在于HashMap允许空（null）键值（key）,由于非线程安全，在只有一个线程访问的情况下，效率要高于Hashtable。</li>
+<li>Hashtable的轻量级实现（非线程安全的实现），他们都完成了Map接口，主要区别在于HashMap允许空（null）键值（key）,由于非线程安全，在只有一个线程访问的情况下，效率要高于Hashtable。</li>
 <li>HashMap允许将null作为一个entry的key或者value，而Hashtable不允许。</li>
 <li>HashMap把Hashtable的contains方法去掉了，改成containsvalue和containsKey。因为contains方法容易让人引起误解。</li>
 <li>Hashtable继承自Dictionary类，而HashMap是Java1.2引进的Map interface的一个实现。<br>最大的不同是，Hashtable的方法是Synchronize的，而HashMap不是，在多个线程访问Hashtable时，不需要自己为它的方法实现同步，而HashMap 就必须为之提供外同步。<br>Hashtable和HashMap采用的hash/rehash算法都大概一样，所以性能不会有很大的差异。同步上的性能，HashMap会更优秀</li>
@@ -400,7 +400,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">24</span>
+              <span class="site-state-item-count">25</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
