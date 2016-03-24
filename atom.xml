@@ -4,7 +4,7 @@
   <subtitle><![CDATA[万般皆下品，惟有读书高]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2016-03-21T14:35:38.251Z</updated>
+  <updated>2016-03-24T13:32:37.076Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,11 +15,67 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[最近面试集锦]]></title>
+    <link href="http://yoursite.com/2016/03/24/%E6%9C%80%E8%BF%91%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/"/>
+    <id>http://yoursite.com/2016/03/24/最近面试集锦/</id>
+    <published>2016-03-24T06:15:39.000Z</published>
+    <updated>2016-03-24T13:32:37.076Z</updated>
+    <content type="html"><![CDATA[<h3 id="蘑菇街二面">蘑菇街二面</h3><blockquote>
+<p>蘑菇街，在大学有女朋友的时候听说的，倡导一种弹性自由轻时尚女性购物文化。开始以为蘑菇街是阿里旗下，原来淘宝也只是供货商而已（PS:实话实说）。值得一提的是，相比阿里，我更喜欢蘑菇街的面试官的准时和HR对待面试人员的贴心程度！</p>
+</blockquote>
+<p>整个面试半个小时</p>
+<ol>
+<li>自我介绍</li>
+<li>LinkedList和ArrayList的区别？</li>
+<li>了解HashMap吗？与HashTable有什么区别？</li>
+<li>Java里面的基本类型<br>基本类型：boolean char short byte int float double</li>
+<li>谈谈你是怎么学习android，遇到过哪些困难，如何解决的<br><a href="http://www.cnblogs.com/newcj/archive/2011/05/30/2061370.html" target="_blank" rel="external">http://www.cnblogs.com/newcj/archive/2011/05/30/2061370.html</a></li>
+<li>算法题：将一个数分解为素数的乘积<br>我写了一个很蹩脚的程序。。。<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">resolve</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">while</span>(n != <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(n % i == <span class="number">0</span>)&#123;</span><br><span class="line">            n = n / i;</span><br><span class="line">            print(<span class="string">"%d"</span>,i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            i ++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;      </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="阿里一面">阿里一面</h3><blockquote>
+<p>很普通的面试，每个问题问到你不懂为止。但是这个面试官是唯一一个认真看完我的简历的人，很感动！因为没提到的一个问题都是关于我的项目。虽然很不堪，但是自身的不足是明显的事情！所以继续加油准备。</p>
+<h4 id="数据结构">数据结构</h4></blockquote>
+<ol>
+<li><a href="http://www.cnblogs.com/perfy/p/3820594.html" target="_blank" rel="external">堆和栈的区别</a></li>
+<li><a href="http://blog.csdn.net/stormlovetao/article/details/8665506" target="_blank" rel="external">大根堆和小根堆</a></li>
+<li><a href="http://blog.sina.com.cn/s/blog_4e0c21cc01010itp.html" target="_blank" rel="external">B+树是什么数</a></li>
+</ol>
+<h4 id="java基础">java基础</h4><ol>
+<li>熟悉的classLoader有哪些<br><a href="http://www.cnblogs.com/Lawson/archive/2012/07/31/2616623.html" target="_blank" rel="external">http://www.cnblogs.com/Lawson/archive/2012/07/31/2616623.html</a><br><a href="http://ifeve.com/classloader/" target="_blank" rel="external">http://ifeve.com/classloader/</a></li>
+<li><a href="http://www.open-open.com/bbs/view/1320131360999/" target="_blank" rel="external">Concurrent包有了解多少</a></li>
+<li>CAS是怎么实现的<br><a href="http://blog.csdn.net/hsuxu/article/details/9467651" target="_blank" rel="external">http://blog.csdn.net/hsuxu/article/details/9467651</a><br><a href="http://www.ibm.com/developerworks/cn/opensource/os-cn-cas/" target="_blank" rel="external">http://www.ibm.com/developerworks/cn/opensource/os-cn-cas/</a></li>
+<li><p>JVM内存模型和回收机制<br><a href="http://www.cnblogs.com/dingyingsi/p/3760447.html" target="_blank" rel="external">http://www.cnblogs.com/dingyingsi/p/3760447.html</a><br><a href="http://jbutton.iteye.com/blog/1569746" target="_blank" rel="external">http://jbutton.iteye.com/blog/1569746</a></p>
+</li>
+<li><p>类什么时候被卸载<br><a href="http://www.cnblogs.com/mengdd/p/3594608.html" target="_blank" rel="external">http://www.cnblogs.com/mengdd/p/3594608.html</a><br><a href="http://yhjhappy234.blog.163.com/blog/static/316328322011101413730764/" target="_blank" rel="external">http://yhjhappy234.blog.163.com/blog/static/316328322011101413730764/</a></p>
+</li>
+<li>线程同步lock里面的一些方法<br><a href="http://www.cnblogs.com/dolphin0520/p/3923167.html" target="_blank" rel="external">http://www.cnblogs.com/dolphin0520/p/3923167.html</a><br><a href="http://www.2cto.com/kf/201302/189404.html" target="_blank" rel="external">http://www.2cto.com/kf/201302/189404.html</a></li>
+</ol>
+<h4 id="JavaEE">JavaEE</h4><ol>
+<li>Spring 的AOP和IOC分别是什么，日常使用在哪些方面了？<br><a href="http://blog.csdn.net/kiss_vicente/article/details/6902879" target="_blank" rel="external">http://blog.csdn.net/kiss_vicente/article/details/6902879</a><br><a href="http://bbs.csdn.net/topics/350251143" target="_blank" rel="external">http://bbs.csdn.net/topics/350251143</a></li>
+<li>hibernate缓存机制？<br><a href="http://zhidao.baidu.com/link?url=5nqJQAJH4UahoxwzeTs-G1enHJ_s-5mCer-Xr91y5PQ7KmDtDjS0r_coyKxQ2qBtCrXJVmuCYkNpE2NWyCaLBa" target="_blank" rel="external">http://zhidao.baidu.com/link?url=5nqJQAJH4UahoxwzeTs-G1enHJ_s-5mCer-Xr91y5PQ7KmDtDjS0r_coyKxQ2qBtCrXJVmuCYkNpE2NWyCaLBa</a><br><a href="http://blog.csdn.net/defonds/article/details/2308972" target="_blank" rel="external">http://blog.csdn.net/defonds/article/details/2308972</a></li>
+<li>谈谈你是怎么学习android，遇到过哪些困难，如何解决的？<br><a href="http://blog.csdn.net/mirkerson/article/details/7238815" target="_blank" rel="external">http://blog.csdn.net/mirkerson/article/details/7238815</a><br><a href="http://blog.csdn.net/hpoi/article/details/4629065" target="_blank" rel="external">android生命周期</a></li>
+</ol>
+]]></content>
+    <summary type="html">
+    <![CDATA[这两天忙于论文版权注册和面试，蘑菇街给我的印象是这个公司很亲切很自由，打电话HR妹纸也非常贴心，点个赞！]]>
+    
+    </summary>
+    
+      <category term="Interview" scheme="http://yoursite.com/tags/Interview/"/>
+    
+      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
+    
+      <category term="Interview" scheme="http://yoursite.com/categories/Interview/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[BAT面试准备]]></title>
     <link href="http://yoursite.com/2016/03/21/BAT%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/"/>
     <id>http://yoursite.com/2016/03/21/BAT面试准备/</id>
     <published>2016-03-21T13:44:05.000Z</published>
-    <updated>2016-03-21T14:35:38.251Z</updated>
+    <updated>2016-03-23T01:35:48.896Z</updated>
     <content type="html"><![CDATA[<h3 id="算法">算法</h3><h4 id="数组、链表">数组、链表</h4><ol>
 <li><a href="http://www.cppblog.com/cxiaojia/archive/2012/07/31/185760" target="_blank" rel="external">http://www.cppblog.com/cxiaojia/archive/2012/07/31/185760</a></li>
 <li><a href="http://blog.csdn.net/hackbuteer1/article/details/6591486/" target="_blank" rel="external">http://blog.csdn.net/hackbuteer1/article/details/6591486/</a></li>
@@ -74,6 +130,7 @@
 <li><a href="http://www.cnblogs.com/mr-wid/archive/2013/05/09/3068229.html" target="_blank" rel="external">http://www.cnblogs.com/mr-wid/archive/2013/05/09/3068229.html</a></li>
 <li><a href="http://www.cnblogs.com/hustcat/archive/2009/10/28/1591648.html" target="_blank" rel="external">http://www.cnblogs.com/hustcat/archive/2009/10/28/1591648.html</a></li>
 <li><a href="http://www.cnblogs.com/daxian2012/articles/2767989.html" target="_blank" rel="external">http://www.cnblogs.com/daxian2012/articles/2767989.html</a></li>
+<li><a href="http://www.cnblogs.com/rainman/archive/2013/05/01/3053703.html" target="_blank" rel="external">group by</a></li>
 </ol>
 <h4 id="缓存机制和MySQL调优">缓存机制和MySQL调优</h4><ol>
 <li><a href="http://blog.csdn.net/wulantian/article/details/11043121" target="_blank" rel="external">http://blog.csdn.net/wulantian/article/details/11043121</a></li>
@@ -832,31 +889,6 @@ Collections.sort(list);//
       <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
     
       <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[eclipse开发maven项目60000错误]]></title>
-    <link href="http://yoursite.com/2015/11/22/eclipse%E5%BC%80%E5%8F%91maven%E9%A1%B9%E7%9B%AE60000%E9%94%99%E8%AF%AF/"/>
-    <id>http://yoursite.com/2015/11/22/eclipse开发maven项目60000错误/</id>
-    <published>2015-11-22T11:37:26.000Z</published>
-    <updated>2015-12-05T03:13:17.049Z</updated>
-    <content type="html"><![CDATA[<h2 id="坚持每天写一点">坚持每天写一点</h2><h3 id="操作步骤">操作步骤</h3><ol>
-<li>首先根据错误提示去~/.m2/repository/下去找org/hamcrest/hamcrest-core/1.3</li>
-<li>删除目录下含有lastupdate结尾的jar(无效的jar)</li>
-<li>百度maven hamcrest-core-1.3.jar和hamcrest-library-1.3.jar。直接手动下载.</li>
-<li>然后直接复制到对应版本的目录下。</li>
-</ol>
-<p>刷新项目ok！！</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[在使用junit时候出现一个依赖包叫做hankcs，有两个jar包，一个是core，一个是library,创建好项目之后。提示说在所给的mirror地址下网络错误码:60000]]>
-    
-    </summary>
-    
-      <category term="Maven" scheme="http://yoursite.com/tags/Maven/"/>
-    
-      <category term="java" scheme="http://yoursite.com/categories/java/"/>
     
   </entry>
   
