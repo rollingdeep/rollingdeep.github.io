@@ -4,7 +4,7 @@
   <subtitle><![CDATA[万般皆下品，惟有读书高]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2016-03-29T03:14:35.232Z</updated>
+  <updated>2016-04-11T07:42:06.357Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,11 +15,59 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[腾讯SNG面试经历]]></title>
+    <link href="http://yoursite.com/2016/04/11/%E8%85%BE%E8%AE%AFSNG%E9%9D%A2%E8%AF%95%E7%BB%8F%E5%8E%86/"/>
+    <id>http://yoursite.com/2016/04/11/腾讯SNG面试经历/</id>
+    <published>2016-04-11T06:37:50.000Z</published>
+    <updated>2016-04-11T07:42:06.357Z</updated>
+    <content type="html"><![CDATA[<h3 id="一面（回忆版）">一面（回忆版）</h3><blockquote>
+<p>本来是准备等到下午六点就准备回去，因为放在那儿的简历一直躺在那儿，没人要。早晨10点钟过来，到了霸面区，hr姐姐说，霸面的同学简历放在这儿，我穿过人群过去一看，好多简历，各种漂亮的简历。<br>晚上5点45分有个面试官过来看了下后台开发的简历，晒走了两份，我一看，哎，命中了，有点欣喜。<br>大约6点钟，经过签到，然后去等待叫号。</p>
+</blockquote>
+<p>面试开始了，首先自我介绍。<br>面试官很年轻，一开始在填写我的信息。然后说他们那个系统很烂，然后不是他开发的，所以很无语。</p>
+<ol>
+<li>你最熟悉的语言是什么？为什么选择java,哪一点最吸引你！</li>
+<li>Java语言的优缺点？</li>
+<li>Java的特性</li>
+<li>SSH三个分别是什么东西？struts负责那一部分，Spring干嘛的，hibernate作用。 </li>
+<li>有了解过平衡二叉树，红黑树吗？查找的时间复杂度是多少，怎么来的？<br><a href="http://blog.csdn.net/niteip/article/details/11840691" target="_blank" rel="external">平衡二叉树</a><br><a href="http://blog.csdn.net/chenhuajie123/article/details/11951777" target="_blank" rel="external">红黑树</a></li>
+<li>对排序算法熟悉吗？快排序时间复杂度，为什么是O(nlogn)<br><a href="http://blog.csdn.net/whuslei/article/details/6442755" target="_blank" rel="external">常见排序算法</a></li>
+<li>mysql的性能？<br>（一脸懵逼）然后我问是指什么，面试官说TPS，还是不知道，我说大约10w吧，之前查询数据的时候1s差不多10w条，然后面试官说，你这有依据吗<br><a href="http://f.dataguru.cn/thread-385925-1-1.html" target="_blank" rel="external">关于qps一点资料</a></li>
+<li>你对mysql的了解，说说？（好多这样开放性的题目，能说多少就说多少）mysql索引是什么数据结构<br><a href="http://my.oschina.net/u/554660/blog/284653" target="_blank" rel="external">B+</a></li>
+<li>数据库的ACID了解吗？1,2,3NF知道吗？<br><a href="http://www.cnblogs.com/CareySon/archive/2012/01/29/2331088.html" target="_blank" rel="external">ACID</a><br><a href="http://blog.csdn.net/xuxurui007/article/details/7738330" target="_blank" rel="external">1,2,3,BCNF</a></li>
+<li>在海量数据里面选出最大的1000条数据怎么做？（内存不够）</li>
+</ol>
+<h3 id="二面">二面</h3><blockquote>
+<p>在昨天晚上，实验室大部分人都走了，正在看一个人B+树博客的时候，突然手机一响，我看了下。竟然是一面过了，邀请明天10点面试，想想好激动。去大堂签到，然后等待叫号,惴惴不安。突然一个短信来了，心里一叮咚，这就开始啦。</p>
+</blockquote>
+<p>上楼看了找房间，房号，结果们关着。。。<br>我礼貌的敲了下们，没人。我纳闷，结果发现门旁边有个门铃，我按了两下，好像有动静，然后再按了下，门开了。</p>
+<p>打了个招呼，我报了下自己的名字，是来面试的。<br>面试开始了，首先自我介绍。</p>
+<ol>
+<li>直接就开始聊起了项目，了解最熟悉最拿手的项目。</li>
+<li>对js熟悉吗，angular js, facebook的js框架。<br><a href="http://www.apjs.net/" target="_blank" rel="external">angular js</a><br><a href="http://reactjs.cn/react/docs/getting-started.html" target="_blank" rel="external">React.js</a></li>
+<li>项目里面有个安卓自己开发的项目，然后面试官想看看效果，刚好前几天，我把它放在我的github博客上了！</li>
+<li>研究生阶段是学的什么课程，学过一些什么，知道AWS吗？</li>
+<li>本科学校是什么，专业，估计面试官很看重出身吧！</li>
+<li>然后面试官介绍了他们项目组是SNG,目前最业务状况和需要哪方面的人才！</li>
+</ol>
+<p>全程下来没有聊任何技术方面的，不知道结果如何，waiting!</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[尽管没参加腾讯的笔试，听同学说可以霸面，去试了试自己的水平。昨晚腾讯社交网络事业群SNG后台面试相关内容，record一下！]]>
+    
+    </summary>
+    
+      <category term="Interview" scheme="http://yoursite.com/tags/Interview/"/>
+    
+      <category term="Interview" scheme="http://yoursite.com/categories/Interview/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[最近面试集锦]]></title>
     <link href="http://yoursite.com/2016/03/24/%E6%9C%80%E8%BF%91%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/"/>
     <id>http://yoursite.com/2016/03/24/最近面试集锦/</id>
     <published>2016-03-24T06:15:39.000Z</published>
-    <updated>2016-03-29T03:14:35.232Z</updated>
+    <updated>2016-03-29T12:42:51.444Z</updated>
     <content type="html"><![CDATA[<h3 id="蘑菇街二面">蘑菇街二面</h3><blockquote>
 <p>蘑菇街，在大学有女朋友的时候听说的，倡导一种弹性自由轻时尚女性购物文化。开始以为蘑菇街是阿里旗下，原来淘宝也只是供货商而已（PS:实话实说）。值得一提的是，相比阿里，我更喜欢蘑菇街的面试官的准时和HR对待面试人员的贴心程度！</p>
 </blockquote>
@@ -76,7 +124,8 @@
 <li>shell语言里面的权限<br><a href="http://www.cnblogs.com/younes/archive/2009/11/20/1607174.html" target="_blank" rel="external">http://www.cnblogs.com/younes/archive/2009/11/20/1607174.html</a></li>
 </ol>
 <h3 id="java学习">java学习</h3><ol>
-<li>知识图谱<br><a href="http://www.zhihu.com/question/19851109" target="_blank" rel="external">http://www.zhihu.com/question/19851109</a></li>
+<li><a href="http://www.zhihu.com/question/19851109" target="_blank" rel="external">知识图谱</a></li>
+<li><a href="http://www.cnblogs.com/dolphin0520/p/3592500.html" target="_blank" rel="external">关于equals和==的最佳解释</a></li>
 </ol>
 ]]></content>
     <summary type="html">
@@ -865,46 +914,6 @@ Collections.sort(list);//
 ]]></content>
     <summary type="html">
     <![CDATA[Java面试经常问到的一个问题，哈希表的工作原理。刚好看到这里，分享之！]]>
-    
-    </summary>
-    
-      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
-    
-      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[java文件写入项目根目录]]></title>
-    <link href="http://yoursite.com/2015/11/25/java%E6%96%87%E4%BB%B6%E5%86%99%E5%85%A5%E9%A1%B9%E7%9B%AE%E6%A0%B9%E7%9B%AE%E5%BD%95/"/>
-    <id>http://yoursite.com/2015/11/25/java文件写入项目根目录/</id>
-    <published>2015-11-25T10:07:55.000Z</published>
-    <updated>2015-11-30T08:00:40.552Z</updated>
-    <content type="html"><![CDATA[<h2 id="创建路径或文件">创建路径或文件</h2><p>方法：new File(<a href="#路径问题">路径</a>，文件夹或文件)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">File folder = new File(rootPath,<span class="string">"src/data/weibo1"</span>);</span><br><span class="line">	<span class="keyword">if</span>(!folder.exists())&#123;</span><br><span class="line">	    folder.mkdirs(); </span><br><span class="line">	    &#125;</span><br></pre></td></tr></table></figure>
-<p>文件夹中创建文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">File file = new File(folder, filename);</span><br></pre></td></tr></table></figure>
-<p>当然也可以一步到位，本人习惯这样，层次感强。</p>
-<h2 id="读写文件示例">读写文件示例</h2><p>见<a href="#源代码">源代码</a></p>
-<h2 id="路径问题">路径问题</h2><p>在Java开发工具eclipse,myeclipse的project中使用相对路径<br>也就是说，在jar包或者cmd下无效。只在ide成立</p>
-<p>项目结构：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">project</span><br><span class="line">├─src </span><br><span class="line">│    └─com </span><br><span class="line">│       └─javasoft </span><br><span class="line">│             ├─entity</span><br><span class="line">│             └─db </span><br><span class="line">├─doc</span><br></pre></td></tr></table></figure></p>
-<p>文件创建：<br>以“/”开头，指的是ide workspace所在磁盘的根目录<br>不以“/”开头，指的是project下子文件夹或者文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">File f = new File(<span class="string">"src/com/javasoft/db/a.txt"</span>);</span><br><span class="line">//or</span><br><span class="line">File f = new File(<span class="string">"doc/b.txt"</span>);</span><br></pre></td></tr></table></figure>
-<h2 id="通过CLASSPATH读取包内文件">通过CLASSPATH读取包内文件</h2><p>获取类路径下文件，也就是classes文件夹下文件，以“/”开头</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">InputStream is = ReadFile.class.getResourceAsStream(<span class="string">"/com/javasoft/db/a.txt"</span>);</span><br><span class="line">//获取classes(classpath)路径</span><br><span class="line">String classpath = getClass().getResource(<span class="string">"/"</span>).getFile().toString();</span><br></pre></td></tr></table></figure>
-<p>获取类加载器下文件 不以“/”开头</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">InputStream is=TestAction.class.getClassLoader().getResourceAsStream(<span class="string">"com/javasoft/db/test.txt"</span>); </span><br><span class="line">//获取classes(classpath)路径</span><br><span class="line">String rootPath = FileUtil.class.getClassLoader().getResource(<span class="string">""</span>).getFile().toString();</span><br></pre></td></tr></table></figure>
-<h2 id="可行的解决办法">可行的解决办法</h2><p>absolutePath可以直接获取到项目路径</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String path = Thread.currentThread().getContextClassLoader().getResource(<span class="string">""</span>).getPath(); </span><br><span class="line">String secendPath = path.substring(<span class="number">1</span>, path.lastIndexOf(<span class="string">"/"</span>)); </span><br><span class="line">String absolutelyPath = secendPath.substring(<span class="number">0</span>,secendPath.lastIndexOf(<span class="string">"/"</span>));</span><br></pre></td></tr></table></figure>
-<p>结果</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/D:/j2ee/m_workspace/LDA4j-master/target/<span class="built_in">test</span>-classes/</span><br><span class="line">D:/j2ee/m_workspace/LDA4j-master/target/<span class="built_in">test</span>-classes</span><br><span class="line">D:/j2ee/m_workspace/LDA4j-master/target</span><br></pre></td></tr></table></figure>
-<h2 id="总结">总结</h2><blockquote>
-<p>使用工程相对路径是靠不住的。<br>使用CLASSPATH路径是可靠的。</p>
-</blockquote>
-<hr>
-<h2 id="源代码">源代码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br></pre></td><td class="code"><pre><span class="line">package com.your.package;</span><br><span class="line"></span><br><span class="line">import java.io.BufferedReader;</span><br><span class="line">import java.io.BufferedWriter;</span><br><span class="line">import java.io.File;</span><br><span class="line">import java.io.FileOutputStream;</span><br><span class="line">import java.io.FileReader;</span><br><span class="line">import java.io.FileWriter;</span><br><span class="line">import java.io.RandomAccessFile;</span><br><span class="line"></span><br><span class="line">public class TxtUtil &#123;</span><br><span class="line"> </span><br><span class="line"> /**</span><br><span class="line">  * 创建文件</span><br><span class="line">  * @param fileName</span><br><span class="line">  * @<span class="built_in">return</span></span><br><span class="line">  */</span><br><span class="line"> public static boolean createFile(File fileName)throws Exception&#123;</span><br><span class="line">	 </span><br><span class="line">	  boolean flag=<span class="literal">false</span>;</span><br><span class="line">	  try&#123;</span><br><span class="line">		   <span class="keyword">if</span>(!fileName.exists())&#123;</span><br><span class="line">			    fileName.createNewFile();</span><br><span class="line">			    flag=<span class="literal">true</span>;</span><br><span class="line">	   &#125;</span><br><span class="line">	  &#125;catch(Exception e)&#123;</span><br><span class="line">		  e.printStackTrace();</span><br><span class="line">	  &#125;</span><br><span class="line">	  <span class="built_in">return</span> flag;</span><br><span class="line"> &#125; </span><br><span class="line"> </span><br><span class="line"> /**</span><br><span class="line">  * 读TXT文件内容</span><br><span class="line">  * @param fileName</span><br><span class="line">  * @<span class="built_in">return</span></span><br><span class="line">  */</span><br><span class="line"> public static String <span class="built_in">read</span>TxtFile(File fileName)throws Exception&#123;</span><br><span class="line">	  String result=null;</span><br><span class="line">	  FileReader fileReader=null;</span><br><span class="line">	  BufferedReader bufferedReader=null;</span><br><span class="line">	  try&#123;</span><br><span class="line">		   fileReader=new FileReader(fileName);</span><br><span class="line">		   bufferedReader=new BufferedReader(fileReader);</span><br><span class="line">		   try&#123;</span><br><span class="line">			   String <span class="built_in">read</span>=null;</span><br><span class="line">			    <span class="keyword">while</span>((<span class="built_in">read</span>=bufferedReader.readLine())!=null)&#123;</span><br><span class="line">			    	result=result+<span class="built_in">read</span>+<span class="string">"\r\n"</span>;</span><br><span class="line">			    &#125;</span><br><span class="line">		   &#125;catch(Exception e)&#123;</span><br><span class="line">			   e.printStackTrace();</span><br><span class="line">		   &#125;</span><br><span class="line">	  &#125;catch(Exception e)&#123;</span><br><span class="line">		  e.printStackTrace();</span><br><span class="line">	  &#125;finally&#123;</span><br><span class="line">		   <span class="keyword">if</span>(bufferedReader!=null)&#123;</span><br><span class="line">		    bufferedReader.close();</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span>(fileReader!=null)&#123;</span><br><span class="line">    fileReader.close();</span><br><span class="line">   &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  System.out.println(<span class="string">"读取出来的文件内容是："</span>+<span class="string">"\r\n"</span>+result);</span><br><span class="line">  <span class="built_in">return</span> result;</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> public static boolean writeTxtFile(String content,File  fileName)throws Exception&#123;</span><br><span class="line">	  RandomAccessFile mm=null;</span><br><span class="line">	  boolean flag=<span class="literal">false</span>;</span><br><span class="line">	  FileOutputStream o=null;</span><br><span class="line">	  try &#123;</span><br><span class="line">	   o = new FileOutputStream(fileName);</span><br><span class="line">	      o.write(content.getBytes(<span class="string">"UTF-8"</span>));</span><br><span class="line">	      o.close();</span><br><span class="line">	//   mm=new RandomAccessFile(fileName,<span class="string">"rw"</span>);</span><br><span class="line">	//   mm.writeBytes(content);</span><br><span class="line">	   flag=<span class="literal">true</span>;</span><br><span class="line">	  &#125; catch (Exception e) &#123;</span><br><span class="line">	   // TODO: handle exception</span><br><span class="line">		  e.printStackTrace();</span><br><span class="line">	  &#125;finally&#123;</span><br><span class="line">	   <span class="keyword">if</span>(mm!=null)&#123;</span><br><span class="line">		   mm.close();</span><br><span class="line">	   &#125;</span><br><span class="line">	  &#125;</span><br><span class="line">	  <span class="built_in">return</span> flag;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> 	public static void contentToTxt(String filePath, String content) &#123;</span><br><span class="line">        String str = new String(); //原有txt内容</span><br><span class="line">        String s1 = new String();//内容更新</span><br><span class="line">        try &#123;</span><br><span class="line">            File f = new File(filePath);</span><br><span class="line">            <span class="keyword">if</span> (f.exists()) &#123;</span><br><span class="line">                System.out.print(<span class="string">"文件存在"</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                System.out.print(<span class="string">"文件不存在"</span>);</span><br><span class="line">                f.createNewFile();// 不存在则创建</span><br><span class="line">            &#125;</span><br><span class="line">            BufferedReader input = new BufferedReader(new FileReader(f));</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> ((str = input.readLine()) != null) &#123;</span><br><span class="line">                s1 += str + <span class="string">"\n"</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(s1);</span><br><span class="line">            input.close();</span><br><span class="line">            s1 += content;</span><br><span class="line"></span><br><span class="line">            BufferedWriter output = new BufferedWriter(new FileWriter(f));</span><br><span class="line">            output.write(s1);</span><br><span class="line">            output.close();</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    <summary type="html">
-    <![CDATA[在文件操作的过程中，总是会出现路径问题。]]>
     
     </summary>
     
