@@ -183,7 +183,7 @@
     <link href="http://yoursite.com/2016/03/21/BAT%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/"/>
     <id>http://yoursite.com/2016/03/21/BAT面试准备/</id>
     <published>2016-03-21T13:44:05.000Z</published>
-    <updated>2016-03-24T13:37:50.076Z</updated>
+    <updated>2016-04-16T14:31:54.472Z</updated>
     <content type="html"><![CDATA[<h3 id="算法">算法</h3><h4 id="数组、链表">数组、链表</h4><ol>
 <li><a href="http://www.cppblog.com/cxiaojia/archive/2012/07/31/185760" target="_blank" rel="external">http://www.cppblog.com/cxiaojia/archive/2012/07/31/185760</a></li>
 <li><a href="http://blog.csdn.net/hackbuteer1/article/details/6591486/" target="_blank" rel="external">http://blog.csdn.net/hackbuteer1/article/details/6591486/</a></li>
@@ -245,6 +245,16 @@
 <li><a href="http://blog.csdn.net/gzh0222/article/details/8001362" target="_blank" rel="external">http://blog.csdn.net/gzh0222/article/details/8001362</a></li>
 <li><a href="http://www.cnblogs.com/adforce/archive/2012/06/02/2532086.html" target="_blank" rel="external">http://www.cnblogs.com/adforce/archive/2012/06/02/2532086.html</a></li>
 <li><a href="http://www.cnblogs.com/not-code/archive/2011/11/01/2231493.html" target="_blank" rel="external">http://www.cnblogs.com/not-code/archive/2011/11/01/2231493.html</a></li>
+</ol>
+<h3 id="Reference">Reference</h3><ol>
+<li><a href="http://www.nowcoder.com/discuss/3043" target="_blank" rel="external">面试心得与总结—BAT、网易、蘑菇街</a></li>
+<li><a href="http://blog.sina.com.cn/s/blog_53f7991701000a2l.html" target="_blank" rel="external">JAVA和C++相比有什么优点呢？</a></li>
+<li><a href="http://blog.csdn.net/lk_blog/article/details/13760999" target="_blank" rel="external">Java项目性能监控和调优工具-Javamelody</a></li>
+<li><a href="http://liudeh-009.iteye.com/blog/1847876" target="_blank" rel="external">java内存调优工具</a></li>
+<li><a href="http://www.cnblogs.com/magialmoon/archive/2013/11/23/3439042.html" target="_blank" rel="external">MySQL优化</a></li>
+<li><a href="http://blog.csdn.net/xueshuangshuang123/article/details/8462261" target="_blank" rel="external">Hibernate 性能优化</a></li>
+<li><a href="http://bbs.csdn.net/topics/390843777?page=1" target="_blank" rel="external">实际生活hibernate调优</a></li>
+<li><a href="http://blog.sina.com.cn/s/blog_5198c7370100hvxb.html" target="_blank" rel="external">使用Spring进行面向切面编程</a></li>
 </ol>
 ]]></content>
     <summary type="html">
