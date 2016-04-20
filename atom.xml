@@ -4,7 +4,7 @@
   <subtitle><![CDATA[万般皆下品，惟有读书高]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2016-04-16T06:20:27.545Z</updated>
+  <updated>2016-04-20T09:14:53.857Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -13,6 +13,44 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[最近校招算法题整理]]></title>
+    <link href="http://yoursite.com/2016/04/20/%E6%9C%80%E8%BF%91%E6%A0%A1%E6%8B%9B%E7%AE%97%E6%B3%95%E9%A2%98%E6%95%B4%E7%90%86/"/>
+    <id>http://yoursite.com/2016/04/20/最近校招算法题整理/</id>
+    <published>2016-04-20T07:05:02.000Z</published>
+    <updated>2016-04-20T09:14:53.857Z</updated>
+    <content type="html"><![CDATA[<h3 id="幂次"><a href="http://blog.sina.com.cn/s/blog_638f5b130102dr0t.html" target="_blank" rel="external">幂次</a></h3><p>判断一个数的幂次</p>
+<blockquote>
+<p>个位数是2的n次方的尾数循环为：2486 2486 2486 2486….<br>个位数是3的n次方的尾数循环为：3971 3971 3971 3971….<br>[公式] : n&amp;(n-1)判断n中有多少个1;</p>
+</blockquote>
+<ul>
+<li>判断一个数是2的幂次<br>[code]</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Created by Paul on 2016/4/20.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line">    <span class="preprocessor">#<span class="keyword">include</span> <span class="string">"iostream"</span></span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">is2sN</span><span class="params">(<span class="keyword">int</span> n)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; <span class="number">1000</span>;i ++)&#123;</span><br><span class="line">            <span class="keyword">int</span> flag = is2sN(i);</span><br><span class="line">            <span class="keyword">if</span>(flag == <span class="number">0</span>)&#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"%d \n"</span>,i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">is2sN</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> n &amp; (n - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>判断一个数是3的幂次<br>[code]</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Created by Paul on 2016/4/20.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line">    <span class="preprocessor">#<span class="keyword">include</span> <span class="string">"iostream"</span></span></span><br><span class="line">    <span class="preprocessor">#<span class="keyword">include</span> <span class="string">"math.h"</span></span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">is3sN</span><span class="params">(<span class="keyword">int</span> n)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; <span class="number">1000</span>;i ++)&#123;</span><br><span class="line">            <span class="keyword">int</span> flag = is3sN(i);</span><br><span class="line">            <span class="keyword">if</span>(flag == <span class="number">1</span>)<span class="built_in">printf</span>(<span class="string">"%d  %d \n"</span>,i,flag);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">is3sN</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">        <span class="keyword">double</span> a = <span class="built_in">log</span>(n)/<span class="built_in">log</span>(<span class="number">3</span>);</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">floor</span>(a) == <span class="built_in">ceil</span>(a))<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="[完全数]梅森素数">[完全数]梅森素数</h3><p>大数学家欧几里德曾推算出完全数的获得公式：如果2^p-1质数,那么(2^p-1)2^(p-1)便是一个完全数.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">example:</span><br><span class="line">         p=<span class="number">2</span>,<span class="number">2</span>^p-<span class="number">1</span>=<span class="number">3</span>是质数,(<span class="number">2</span>^p-<span class="number">1</span>)*<span class="number">2</span>^(p-<span class="number">1</span>)=<span class="number">3</span>*<span class="number">2</span>=<span class="number">6</span></span><br><span class="line">         p=<span class="number">3</span>,<span class="number">2</span>^p-<span class="number">1</span>=<span class="number">7</span>是质数,(<span class="number">2</span>^p-<span class="number">1</span>)*<span class="number">2</span>^(p-<span class="number">1</span>)=<span class="number">7</span>X4=<span class="number">28</span></span><br><span class="line">         p=<span class="number">5</span>,<span class="number">2</span>^p-<span class="number">1</span>=<span class="number">31</span>是质数,(<span class="number">2</span>^p-<span class="number">1</span>)*<span class="number">2</span>^(p-<span class="number">1</span>)=<span class="number">31</span>X16=<span class="number">496</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>但是2^p-1什么条件下才是质数呢?当2^p-1是质数的时候,称其为梅森素数!顾名思义,就是梅森第一个系统地研究这种形式的素数的!事实上,至今(2006.9.4)为止,人类只发现了44个梅森素数,也就是只发现了44个完全数!</p>
+</blockquote>
+<p>[算法]：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Created by Paul on 2016/4/20.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line">    <span class="preprocessor">#<span class="keyword">include</span> <span class="string">"iostream"</span></span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">isPerfectNumber</span><span class="params">(<span class="keyword">int</span> n)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; <span class="number">10000</span>;i ++)&#123;</span><br><span class="line">            <span class="keyword">int</span> flag = isPerfectNumber(i);</span><br><span class="line">            <span class="keyword">if</span>(flag == <span class="number">1</span>)&#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"%d \n"</span>,i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">isPerfectNumber</span><span class="params">(<span class="keyword">int</span> n)</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(n &lt; <span class="number">6</span>)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(i &lt; n/<span class="number">2</span> + <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(n % i == <span class="number">0</span>)sum += i;</span><br><span class="line">            i ++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(sum == n)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>]]></content>
+    <summary type="html">
+    <![CDATA[算法]]>
+    
+    </summary>
+    
+      <category term="Interview" scheme="http://yoursite.com/tags/Interview/"/>
+    
+      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
+    
+      <category term="Interview" scheme="http://yoursite.com/categories/Interview/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[LeetCode算法题]]></title>
@@ -183,18 +221,23 @@
     <link href="http://yoursite.com/2016/03/21/BAT%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/"/>
     <id>http://yoursite.com/2016/03/21/BAT面试准备/</id>
     <published>2016-03-21T13:44:05.000Z</published>
-    <updated>2016-04-16T14:31:54.472Z</updated>
+    <updated>2016-04-20T04:39:35.559Z</updated>
     <content type="html"><![CDATA[<h3 id="算法">算法</h3><h4 id="数组、链表">数组、链表</h4><ol>
 <li><a href="http://www.cppblog.com/cxiaojia/archive/2012/07/31/185760" target="_blank" rel="external">http://www.cppblog.com/cxiaojia/archive/2012/07/31/185760</a></li>
 <li><a href="http://blog.csdn.net/hackbuteer1/article/details/6591486/" target="_blank" rel="external">http://blog.csdn.net/hackbuteer1/article/details/6591486/</a></li>
 <li><a href="http://blog.csdn.net/pony_maggie/article/details/38390513" target="_blank" rel="external">http://blog.csdn.net/pony_maggie/article/details/38390513</a></li>
-<li><a href="http://blog.csdn.net/niteip/article/details/11840691" target="_blank" rel="external">AVL</a></li>
+<li><a href="http://blog.csdn.net/niteip/article/details/11840691" target="_blank" rel="external">AVL</a> </li>
+</ol>
+<ul>
+<li><a href="http://blog.csdn.net/vesper305/article/details/13614403" target="_blank" rel="external">AVL平衡二叉树中旋转操作的本质及其实现</a></li>
+</ul>
+<ol>
 <li><a href="http://blog.csdn.net/stpeace/article/details/9067029" target="_blank" rel="external">BST</a></li>
 <li><a href="http://www.cnblogs.com/oldhorse/archive/2009/11/16/1604009.html" target="_blank" rel="external">B，B+,B-</a></li>
 <li><a href="http://blog.csdn.net/tonyxf121/article/details/8393545" target="_blank" rel="external">http://blog.csdn.net/tonyxf121/article/details/8393545</a></li>
 <li><a href="http://blog.csdn.net/chenhuajie123/article/details/11900153" target="_blank" rel="external">http://blog.csdn.net/chenhuajie123/article/details/11900153</a></li>
 <li><a href="http://blog.csdn.net/ganggexiongqi/article/details/7449970" target="_blank" rel="external">http://blog.csdn.net/ganggexiongqi/article/details/7449970</a></li>
-<li><a href="http://blog.csdn.net/yutianzuijin/article/details/11954939/" target="_blank" rel="external">http://blog.csdn.net/yutianzuijin/article/details/11954939/</a></li>
+<li><a href="http://blog.csdn.net/yutianzuijin/article/details/11954939/" target="_blank" rel="external">http://blog.csdn.net/yutianzuijin/article/details/11954939/</a> </li>
 </ol>
 <h4 id="排序">排序</h4><h3 id="Java">Java</h3><h4 id="String，StringBuffer,StringBuilder区别">String，StringBuffer,StringBuilder区别</h4><ol>
 <li><a href="http://blog.csdn.net/clam_clam/article/details/6831345" target="_blank" rel="external">http://blog.csdn.net/clam_clam/article/details/6831345</a></li>
@@ -245,6 +288,10 @@
 <li><a href="http://blog.csdn.net/gzh0222/article/details/8001362" target="_blank" rel="external">http://blog.csdn.net/gzh0222/article/details/8001362</a></li>
 <li><a href="http://www.cnblogs.com/adforce/archive/2012/06/02/2532086.html" target="_blank" rel="external">http://www.cnblogs.com/adforce/archive/2012/06/02/2532086.html</a></li>
 <li><a href="http://www.cnblogs.com/not-code/archive/2011/11/01/2231493.html" target="_blank" rel="external">http://www.cnblogs.com/not-code/archive/2011/11/01/2231493.html</a></li>
+</ol>
+<h3 id="进程调度">进程调度</h3><ol>
+<li><a href="http://blog.csdn.net/dc_726/article/details/7985430" target="_blank" rel="external">进程基础知识</a></li>
+<li><a href="http://blog.csdn.net/dc_726/article/details/8001783" target="_blank" rel="external">进程调度</a></li>
 </ol>
 <h3 id="Reference">Reference</h3><ol>
 <li><a href="http://www.nowcoder.com/discuss/3043" target="_blank" rel="external">面试心得与总结—BAT、网易、蘑菇街</a></li>
@@ -869,50 +916,6 @@ $ sudo apt-get upgrade
 ]]></content>
     <summary type="html">
     <![CDATA[Java面试经常问到的一个问题，多线程的有几种创建方式？run方法启动线程还是start方法启动？sleep的时候有无交出锁？。刚好看到这里，分享之！]]>
-    
-    </summary>
-    
-      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
-    
-      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Collection和Collections]]></title>
-    <link href="http://yoursite.com/2015/11/26/Collection%E5%92%8CCollections/"/>
-    <id>http://yoursite.com/2015/11/26/Collection和Collections/</id>
-    <published>2015-11-26T09:23:04.000Z</published>
-    <updated>2015-12-05T03:13:07.025Z</updated>
-    <content type="html"><![CDATA[<h3 id="Collection">Collection</h3><pre><code class="bash">Collection   
-├List   
-│├LinkedList   
-│├ArrayList   
-│└Vector   
-│　└Stack   
-└Set
-</code></pre>
-<p>Collection是集合类的上级接口，继承与他的接口主要有Set 和 List.</p>
-<h3 id="Collections">Collections</h3><p>Collections是针对集合类的一个帮助类，它提供一系列静态方法实现对各种集合的搜索、排序[底层是二分法]、线程安全化等操作。</p>
-<ul>
-<li>此类不能实例化，就像一个工具类，服务于Java的Collection框架</li>
-</ul>
-<h3 id="小例子">小例子</h3><pre><code class="bash">//注意List是实现Collection接口的
-List list = new ArrayList();
-double array[] = {<span class="number">112</span>, <span class="number">111</span>, <span class="number">23</span>, <span class="number">456</span>, <span class="number">231</span>};
-<span class="keyword">for</span> (int i = <span class="number">0</span>; i &lt; array.length; i++) {
-    list.add(new Double(array[i]));
-}
-Collections.sort(list);//
-<span class="keyword">for</span> (int i = <span class="number">0</span>; i &lt; array.length; i++) {
-    System.out.println(list.get(i));
-}
-// 结果：<span class="number">23.0</span> <span class="number">111.0</span> <span class="number">112.0</span> <span class="number">231.0</span> <span class="number">456.0</span>
-</code></pre>
-<h3 id="Reference">Reference</h3><p><a href="http://trinea.iteye.com/blog/1248517" target="_blank" rel="external">对象数组或list排序及Collections排序原理</a><br><a href="http://www.blogjava.net/hgc-ghc/archive/2013/03/28/397084.html" target="_blank" rel="external">Java中的CompareTo</a><br><a href="http://825635381.iteye.com/blog/2017650" target="_blank" rel="external">Java基础中的泛型</a></p>
-]]></content>
-    <summary type="html">
-    <![CDATA[Java面试经常问到的一个问题，集合接口Collection和集合帮助类Collections的工作原理。刚好看到这里，分享之！]]>
     
     </summary>
     

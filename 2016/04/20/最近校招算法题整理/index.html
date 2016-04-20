@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Genymotion," />
+  <meta name="keywords" content="Interview,Java," />
 
 
 
@@ -53,16 +53,16 @@
 
 
 
-<meta name="description" content="android最快的模拟器genymotion">
+<meta name="description" content="算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GENYMOTION的安装">
-<meta property="og:url" content="http://yoursite.com/2015/11/21/Genymotion的安装/index.html">
+<meta property="og:title" content="最近校招算法题整理">
+<meta property="og:url" content="http://yoursite.com/2016/04/20/最近校招算法题整理/index.html">
 <meta property="og:site_name" content="沉思">
-<meta property="og:description" content="android最快的模拟器genymotion">
-<meta property="og:updated_time" content="2015-11-21T14:17:09.580Z">
+<meta property="og:description" content="算法">
+<meta property="og:updated_time" content="2016-04-20T09:14:53.857Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GENYMOTION的安装">
-<meta name="twitter:description" content="android最快的模拟器genymotion">
+<meta name="twitter:title" content="最近校招算法题整理">
+<meta name="twitter:description" content="算法">
 
 
 
@@ -74,7 +74,7 @@
   };
 </script>
 
-  <title> GENYMOTION的安装 | 沉思 </title>
+  <title> 最近校招算法题整理 | 沉思 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -214,7 +214,7 @@
             
             
               
-                GENYMOTION的安装
+                最近校招算法题整理
               
             
           </h1>
@@ -223,8 +223,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-11-21T21:53:56+08:00" content="2015-11-21">
-              2015-11-21
+            <time itemprop="dateCreated" datetime="2016-04-20T15:05:02+08:00" content="2016-04-20">
+              2016-04-20
             </time>
           </span>
 
@@ -233,8 +233,8 @@
               &nbsp; | &nbsp; 分类于
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
+                  <a href="/categories/Interview/" itemprop="url" rel="index">
+                    <span itemprop="name">Interview</span>
                   </a>
                 </span>
 
@@ -249,8 +249,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/11/21/Genymotion的安装/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/21/Genymotion的安装/" itemprop="commentsCount"></span>
+                <a href="/2016/04/20/最近校招算法题整理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/20/最近校招算法题整理/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -269,21 +269,25 @@
       
 
       
-        <span itemprop="articleBody"><h3 id="在genymotion官网上注册一个账号">在genymotion官网上注册一个账号</h3><ol>
-<li>然后下载安装genymotion,会自带安装virtualbox</li>
-<li>安装完成之可能会出现断网情况。<br>解决办法：选择本地连接和 virtualbox host-only这两个，鼠标右键选择桥接。</li>
-</ol>
-<h3 id="eclipse的配置">eclipse的配置</h3><ol>
-<li>打开eclispe</li>
-<li>选择help&gt;install new software</li>
-<li>输入<a href="http://plugins.genymotion.com/eclipse。！！然后去掉勾选出现安装items，select" target="_blank" rel="external">http://plugins.genymotion.com/eclipse。！！然后去掉勾选出现安装items，select</a> all</li>
-<li>安装，直至完成。这个时候重启eclipse可以发现已经多了一个genymotion图标。</li>
-<li>另外在genymotion中也要更改设置 settings&gt;ADB</li>
-<li>配置自己的android sdk目录 %android_dir%/_x64_windows/sdk</li>
-</ol>
-<p>至此已经大工告成！</p>
-<h3 id="相关连接">相关连接</h3><p><a href="https://www.genymotion.com/#!/" target="_blank" rel="external">genymotion官网</a></p>
-</span>
+        <span itemprop="articleBody"><h3 id="幂次"><a href="http://blog.sina.com.cn/s/blog_638f5b130102dr0t.html" target="_blank" rel="external">幂次</a></h3><p>判断一个数的幂次</p>
+<blockquote>
+<p>个位数是2的n次方的尾数循环为：2486 2486 2486 2486….<br>个位数是3的n次方的尾数循环为：3971 3971 3971 3971….<br>[公式] : n&amp;(n-1)判断n中有多少个1;</p>
+</blockquote>
+<ul>
+<li>判断一个数是2的幂次<br>[code]</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Created by Paul on 2016/4/20.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line">    <span class="preprocessor">#<span class="keyword">include</span> <span class="string">"iostream"</span></span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">is2sN</span><span class="params">(<span class="keyword">int</span> n)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; <span class="number">1000</span>;i ++)&#123;</span><br><span class="line">            <span class="keyword">int</span> flag = is2sN(i);</span><br><span class="line">            <span class="keyword">if</span>(flag == <span class="number">0</span>)&#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"%d \n"</span>,i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">is2sN</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> n &amp; (n - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>判断一个数是3的幂次<br>[code]</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Created by Paul on 2016/4/20.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line">    <span class="preprocessor">#<span class="keyword">include</span> <span class="string">"iostream"</span></span></span><br><span class="line">    <span class="preprocessor">#<span class="keyword">include</span> <span class="string">"math.h"</span></span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">is3sN</span><span class="params">(<span class="keyword">int</span> n)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; <span class="number">1000</span>;i ++)&#123;</span><br><span class="line">            <span class="keyword">int</span> flag = is3sN(i);</span><br><span class="line">            <span class="keyword">if</span>(flag == <span class="number">1</span>)<span class="built_in">printf</span>(<span class="string">"%d  %d \n"</span>,i,flag);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">is3sN</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">        <span class="keyword">double</span> a = <span class="built_in">log</span>(n)/<span class="built_in">log</span>(<span class="number">3</span>);</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">floor</span>(a) == <span class="built_in">ceil</span>(a))<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="[完全数]梅森素数">[完全数]梅森素数</h3><p>大数学家欧几里德曾推算出完全数的获得公式：如果2^p-1质数,那么(2^p-1)2^(p-1)便是一个完全数.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">example:</span><br><span class="line">         p=<span class="number">2</span>,<span class="number">2</span>^p-<span class="number">1</span>=<span class="number">3</span>是质数,(<span class="number">2</span>^p-<span class="number">1</span>)*<span class="number">2</span>^(p-<span class="number">1</span>)=<span class="number">3</span>*<span class="number">2</span>=<span class="number">6</span></span><br><span class="line">         p=<span class="number">3</span>,<span class="number">2</span>^p-<span class="number">1</span>=<span class="number">7</span>是质数,(<span class="number">2</span>^p-<span class="number">1</span>)*<span class="number">2</span>^(p-<span class="number">1</span>)=<span class="number">7</span>X4=<span class="number">28</span></span><br><span class="line">         p=<span class="number">5</span>,<span class="number">2</span>^p-<span class="number">1</span>=<span class="number">31</span>是质数,(<span class="number">2</span>^p-<span class="number">1</span>)*<span class="number">2</span>^(p-<span class="number">1</span>)=<span class="number">31</span>X16=<span class="number">496</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>但是2^p-1什么条件下才是质数呢?当2^p-1是质数的时候,称其为梅森素数!顾名思义,就是梅森第一个系统地研究这种形式的素数的!事实上,至今(2006.9.4)为止,人类只发现了44个梅森素数,也就是只发现了44个完全数!</p>
+</blockquote>
+<p>[算法]：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Created by Paul on 2016/4/20.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line">    <span class="preprocessor">#<span class="keyword">include</span> <span class="string">"iostream"</span></span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">isPerfectNumber</span><span class="params">(<span class="keyword">int</span> n)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; <span class="number">10000</span>;i ++)&#123;</span><br><span class="line">            <span class="keyword">int</span> flag = isPerfectNumber(i);</span><br><span class="line">            <span class="keyword">if</span>(flag == <span class="number">1</span>)&#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"%d \n"</span>,i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">isPerfectNumber</span><span class="params">(<span class="keyword">int</span> n)</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(n &lt; <span class="number">6</span>)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(i &lt; n/<span class="number">2</span> + <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(n % i == <span class="number">0</span>)sum += i;</span><br><span class="line">            i ++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(sum == n)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></span>
       
     </div>
 
@@ -291,7 +295,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Genymotion/" rel="tag">#Genymotion</a>
+            <a href="/tags/Interview/" rel="tag">#Interview</a>
+          
+            <a href="/tags/Java/" rel="tag">#Java</a>
           
         </div>
       
@@ -300,17 +306,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/11/21/我的Hexo创建历程/" rel="next" title="我的Hexo创建历程">
-                <i class="fa fa-chevron-left"></i> 我的Hexo创建历程
+              <a href="/2016/04/14/LeetCode算法题/" rel="next" title="LeetCode算法题">
+                <i class="fa fa-chevron-left"></i> LeetCode算法题
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/11/22/eclipse开发maven项目60000错误/" rel="prev" title="eclipse开发maven项目60000错误">
-                eclipse开发maven项目60000错误 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -337,8 +339,8 @@
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/11/21/Genymotion的安装/"
-           data-title="GENYMOTION的安装" data-url="http://yoursite.com/2015/11/21/Genymotion的安装/">
+      <div class="ds-thread" data-thread-key="2016/04/20/最近校招算法题整理/"
+           data-title="最近校招算法题整理" data-url="http://yoursite.com/2016/04/20/最近校招算法题整理/">
       </div>
     
   </div>
@@ -460,7 +462,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#在genymotion官网上注册一个账号"><span class="nav-number">1.</span> <span class="nav-text">在genymotion官网上注册一个账号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#eclipse的配置"><span class="nav-number">2.</span> <span class="nav-text">eclipse的配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关连接"><span class="nav-number">3.</span> <span class="nav-text">相关连接</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#幂次"><span class="nav-number">1.</span> <span class="nav-text">幂次</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#[完全数]梅森素数"><span class="nav-number">2.</span> <span class="nav-text">[完全数]梅森素数</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
