@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2016/04/25/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
+    <lastmod>2016-04-25T14:47:16.733Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2016/04/14/LeetCode%E7%AE%97%E6%B3%95%E9%A2%98/</loc>
     <lastmod>2016-04-25T11:58:10.705Z</lastmod>
   </url>
