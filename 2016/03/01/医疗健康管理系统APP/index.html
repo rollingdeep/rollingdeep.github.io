@@ -59,11 +59,20 @@
 <meta property="og:url" content="http://yoursite.com/2016/03/01/医疗健康管理系统APP/index.html">
 <meta property="og:site_name" content="沉思">
 <meta property="og:description" content="论文demo中的一个小android程序，大部分实现过程都是之前发过的Android教程。">
-<meta property="og:image" content="http://yoursite.com/uploads/fig3.png">
-<meta property="og:image" content="http://yoursite.com/uploads/fig4.png">
-<meta property="og:image" content="http://yoursite.com/uploads/fig5.png">
-<meta property="og:image" content="http://yoursite.com/uploads/fig6.png">
-<meta property="og:updated_time" content="2016-03-01T09:11:43.980Z">
+<meta property="og:image" content="http://yoursite.com/uploads/softwares/s0.jpg">
+<meta property="og:image" content="http://yoursite.com/uploads/softwares/s0_1.jpg">
+<meta property="og:image" content="http://yoursite.com/uploads/softwares/s2.jpg">
+<meta property="og:image" content="http://yoursite.com/uploads/softwares/s2_1.jpg">
+<meta property="og:image" content="http://yoursite.com/uploads/softwares/s3_1.jpg">
+<meta property="og:image" content="http://yoursite.com/uploads/softwares/s4_2.jpg">
+<meta property="og:image" content="http://yoursite.com/uploads/softwares/s4_2.jpg">
+<meta property="og:image" content="http://yoursite.com/uploads/softwares/s5.jpg">
+<meta property="og:image" content="http://yoursite.com/uploads/softwares/s5_1.jpg">
+<meta property="og:image" content="http://yoursite.com/uploads/softwares/s5_2.jpg">
+<meta property="og:image" content="http://yoursite.com/uploads/softwares/s12.jpg">
+<meta property="og:image" content="http://yoursite.com/uploads/softwares/s13.jpg">
+<meta property="og:image" content="http://yoursite.com/uploads/softwares/s14.jpg">
+<meta property="og:updated_time" content="2016-05-31T12:03:19.193Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="医疗健康管理系统APP">
 <meta name="twitter:description" content="论文demo中的一个小android程序，大部分实现过程都是之前发过的Android教程。">
@@ -273,13 +282,40 @@
       
 
       
-        <span itemprop="articleBody"><h3 id="Self_Diagnose">Self Diagnose</h3><ol>
+        <span itemprop="articleBody"><h3 id="基本介绍">基本介绍</h3><p>私人健康小助手，它需要为用户提供友好的操作交互界面，方面用户的使用，并给出实时的合适的评测和建议，提供附近医生的地点并聊天。我们在客户的功能需求主要包含一下内容：</p>
+<ul>
+<li>身体信息采集<br>用户能够提交自己的身体参数，如血糖，血压，心跳等8个参数，心跳可以通过手机后置摄像头测得，其他参数需要手动输入。</li>
+<li>饮食图片分析<br>用户可以上传当天的所食食物图片，后台根据图片分析出该图片是什么菜，并给出菜的大致的营养含量，如蛋白质，热量，碳水化合物含量。</li>
+<li>历史分析<br>根据用户每天提交的身体参数，app会通过后台数据挖掘的模型，分析出一个概率，比如糖尿病：32.5%，高血压：20%。将每次测得的最高概率记录生成历史记录。用户可以根据曲线是否平稳，知道自己的身体是不是有生病的趋势。</li>
+<li>预测并给出生活和饮食建议<br>根据图片分析和身体信息分析，综合给出生活建议和饮食建议。如果该用户可能会有潜在的糖尿病风险，那么不要吃含糖量比较高的食物。</li>
+</ul>
+<h3 id="软件详情">软件详情</h3><h4 id="启动页面">启动页面</h4><p>图2-1中SHMS为开发的软件 私人健康小助手，首先查看手机是否连网，连网后，点击图标SHMS打开应用。<br><img src="/uploads/softwares/s0.jpg" alt="图2-1"><br>图2-1</p>
+<h4 id="APP启动页面">APP启动页面</h4><p>图2-2是APP启动欢迎页面，私人健康小助手，为页面初始化和数据准备做一个简单的缓冲。<br><img src="/uploads/softwares/s0_1.jpg" alt="图2-2"><br>图2-2</p>
+<h4 id="程序页面介绍">程序页面介绍</h4><h5 id="自我诊断页面">自我诊断页面</h5><ol>
 <li>输入手环或者智能终端测试的数据提交到后台分析得病的潜在概率。</li>
-<li>用手机按住摄像头读取红色色素点傅里叶变换成心率曲线。<br><img src="/uploads/fig3.png" alt="self diagnose"></li>
+<li>用手机按住摄像头读取红色色素点傅里叶变换成心率曲线。<br>图2-3展示的是自我诊断页面(Self diagnose),用户可以通过点击右边的数字，会弹出对话框。可以填写自己的身体状况信息。<br><img src="/uploads/softwares/s2.jpg" alt="图2-3"><br>图2-3</li>
 </ol>
-<h3 id="Diet_Analysis">Diet Analysis</h3><p>读取并拍摄获取手机里的食物照片，分析食物的分量如含糖量，碳水化合物的含量。<br><img src="/uploads/fig4.png" alt="diet analysis"></p>
-<h3 id="Recommendation">Recommendation</h3><p>根据前两者给出相关饮食和生活建议。<br><img src="/uploads/fig5.png" alt="recommendation"></p>
-<h3 id="Find_Doctor">Find Doctor</h3><p>根据百度地图定位周边医生，发送自己的身体状况分析报告，并可以和医生在线聊天询问病情发展。<br><img src="/uploads/fig6.png" alt="find doctor"></p>
+<h5 id="信息输入">信息输入</h5><p>图2-4展示的是信息输入页面，点击图2-3中数字，可以弹出如下的对话框，可以上下滑动，然后Confirm确认输入，Cancel取消输入。输入的数据会最终显示在图2-3中，点击按钮Submit会提交至图2-6所示的页面，预测结果会以饼状图显示。<br><img src="/uploads/softwares/s2_1.jpg" alt="图2-4"><br>图2-4</p>
+<h5 id="脉搏测量">脉搏测量</h5><p>点击图2-3HeartBeat右侧的数字会显示如图2-5所示的界面。界面会提示用户将手指按住后置摄像头，然后会出现心跳的频率。并将结果提交到图2-3<br>中。<br><img src="/uploads/softwares/s3_1.jpg" alt="图2-5"><br>图2-5</p>
+<h5 id="预测结果展示">预测结果展示</h5><p>图2-3中点击Submit,会将输入的身体状况信息提交至图2-6，并以饼图的形式展示，里面百分比数据是代表预测出该疾病的潜在发生概率，如果超过60%就表明身体状况有些危险。该页面有历史分析（Historic Analysis），点击该按钮，跳转至图2-13的历史分析图。<br><img src="/uploads/softwares/s4_2.jpg" alt="图2-6"><br>图2-6</p>
+<p>输入不同的数据，会展示不同的概率饼图，图2-7展示就是血糖过高的一个实际例子，高达90%的概率，这基本已经确定是糖尿病人。</p>
+<p><img src="/uploads/softwares/s4_2.jpg" alt="图2-7"><br>图2-7</p>
+<h5 id="饮食分析">饮食分析</h5><ul>
+<li>读取并拍摄获取手机里的食物照片，分析食物的分量如含糖量，碳水化合物的含量。<br>图2-8中展示的是饮食分析页面。用户可以上传当天饮食情况，打出相关标签，并上传至服务器。分析菜的分量。点击Submit提交至图2-10。</li>
+</ul>
+<p><img src="/uploads/softwares/s5.jpg" alt="图2-8"><br>图2-8</p>
+<p>点击图2-8中的小龙虾图片，会展示如图2-9底栏对话框。可以选择拍照，上传图片等功能。最终选择的图片会展示在图2-8小龙虾的位置。下面有一个文本框。这个是在后台无法识别该图片的时候。用户可以打一个标签，如小龙虾。这样后台可以给出一个如图2-10的图片。</p>
+<p><img src="/uploads/softwares/s5_1.jpg" alt="图2-9"><br>图2-9</p>
+<h5 id="食物摄入量">食物摄入量</h5><p>图2-9中上传的图片和打出的标签，传入服务器后台，会给出一个营养成分柱状表。有卡路里，碳水化合物，脂肪，蛋白质，纤维素的含量。单位为100g。<br><img src="/uploads/softwares/s5_2.jpg" alt="图2-10"><br>图2-10</p>
+<h5 id="健康建议">健康建议</h5><ul>
+<li>根据前两者给出相关饮食和生活建议。<br>图2-11中根据自我诊断和饮食分析建立的该用户的画像，分析给出适当的生活和饮食建议。点击右上方的时间图标同样可以看到图2-13的历史分析页面。记录用户使用以来的身体状况是否平稳。<br><img src="/uploads/softwares/s12.jpg" alt="图2-11"><br>图2-11</li>
+</ul>
+<p>图2-12展示的是不同的信息输入和饮食分析，会出现不同的分析结果。图2-11展示的是胆固醇高的用户，图2-12展示的是图2-7展示对应的血糖高的用户。<br><img src="/uploads/softwares/s13.jpg" alt="图2-12"><br>图2-12</p>
+<h5 id="历史记录">历史记录</h5><p>图2-13展示的是历史记录。每次用户测试之后都会有一个最高概率，如果最高概率超过阈值就会被记录在折线图中。此处展示的是没有设置阈值的情况。<br><img src="/uploads/softwares/s14.jpg" alt="图2-13"><br>图2-13</p>
+<h5 id="查找医生">查找医生</h5><ul>
+<li>根据百度地图定位周边医生，发送自己的身体状况分析报告，并可以和医生在线聊天询问病情发展。<br>会根据百度地图提供附近医生的信息，可以向医生传输发送自己的数据，让医生给出一些合适的建议。此功能正在修改当中，未来会逐渐完善。</li>
+</ul>
+<h3 id="问题反馈">问题反馈</h3><p>以上就是私人健康小助手的全部功能介绍。如有问题,欢迎发送邮件至chxu@m.scnu.edu.cn.</p>
 </span>
       
     </div>
@@ -457,7 +493,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Self_Diagnose"><span class="nav-number">1.</span> <span class="nav-text">Self Diagnose</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Diet_Analysis"><span class="nav-number">2.</span> <span class="nav-text">Diet Analysis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Recommendation"><span class="nav-number">3.</span> <span class="nav-text">Recommendation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Find_Doctor"><span class="nav-number">4.</span> <span class="nav-text">Find Doctor</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本介绍"><span class="nav-number">1.</span> <span class="nav-text">基本介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#软件详情"><span class="nav-number">2.</span> <span class="nav-text">软件详情</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#启动页面"><span class="nav-number">2.1.</span> <span class="nav-text">启动页面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#APP启动页面"><span class="nav-number">2.2.</span> <span class="nav-text">APP启动页面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#程序页面介绍"><span class="nav-number">2.3.</span> <span class="nav-text">程序页面介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#自我诊断页面"><span class="nav-number">2.3.1.</span> <span class="nav-text">自我诊断页面</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#信息输入"><span class="nav-number">2.3.2.</span> <span class="nav-text">信息输入</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#脉搏测量"><span class="nav-number">2.3.3.</span> <span class="nav-text">脉搏测量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#预测结果展示"><span class="nav-number">2.3.4.</span> <span class="nav-text">预测结果展示</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#饮食分析"><span class="nav-number">2.3.5.</span> <span class="nav-text">饮食分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#食物摄入量"><span class="nav-number">2.3.6.</span> <span class="nav-text">食物摄入量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#健康建议"><span class="nav-number">2.3.7.</span> <span class="nav-text">健康建议</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#历史记录"><span class="nav-number">2.3.8.</span> <span class="nav-text">历史记录</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查找医生"><span class="nav-number">2.3.9.</span> <span class="nav-text">查找医生</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题反馈"><span class="nav-number">3.</span> <span class="nav-text">问题反馈</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
