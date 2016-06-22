@@ -4,7 +4,7 @@
   <subtitle><![CDATA[万般皆下品，惟有读书高]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2016-04-29T11:35:36.140Z</updated>
+  <updated>2016-06-01T03:13:03.432Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,11 +15,51 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[JAVA中Object类中有几个方法]]></title>
+    <link href="http://yoursite.com/2016/05/31/JAVA%E4%B8%ADObject%E7%B1%BB%E4%B8%AD%E6%9C%89%E5%87%A0%E4%B8%AA%E6%96%B9%E6%B3%95/"/>
+    <id>http://yoursite.com/2016/05/31/JAVA中Object类中有几个方法/</id>
+    <published>2016-05-31T12:29:09.000Z</published>
+    <updated>2016-06-01T03:13:03.432Z</updated>
+    <content type="html"><![CDATA[<blockquote>
+<p>常常在开发的过程中，都会对Java.lang.Object类的一些重要方法进行重写，这些方法包含：hashCode(),toString(),equals(),finalize(),clone(),wait(),notify()/notifyAll() 这八个方法。</p>
+</blockquote>
+<h3 id="equals()">equals()</h3><p>equals默认实现是用==，比较地址！</p>
+<ul>
+<li>什么时候用equals? </li>
+<li>什么时候需要重写?</li>
+</ul>
+<p>Java语言规范要求equals方法具有下面的特点：<br>自反性：对于任何非空引用值 x，x.equals(x) 都应返回 true。<br>对称性：对于任何非空引用值 x 和 y，当且仅当 y.equals(x) 返回 true 时，x.equals(y) 才应返回 true。<br>传递性：对于任何非空引用值 x、y 和 z，如果 x.equals(y) 返回 true，并且 y.equals(z) 返回 true，那么 x.equals(z) 应返回 true。<br>一致性：对于任何非空引用值 x 和 y，多次调用 x.equals(y) 始终返回 true 或始终返回 false，前提是对象上 equals<br>非空性：任何非空的引用值X，x.equals(null)的返回值一定为false<br>从这里看出，上面的例子是Java规范的equals方法的标准实现，推荐用上面例子的写法实现类的equals方法。</p>
+<ul>
+<li>什么情况下会破坏对称性?<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Override</span>  </span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span> == obj)  </span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;  </span><br><span class="line">        <span class="keyword">if</span> (obj == <span class="keyword">null</span>)  </span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;  </span><br><span class="line">        <span class="keyword">if</span> (getClass() != obj.getClass())  </span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;  </span><br><span class="line">        Student other = (Student) obj;  </span><br><span class="line">        <span class="keyword">if</span> (age != other.age)  </span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;  </span><br><span class="line">        <span class="keyword">if</span> (name == <span class="keyword">null</span>) &#123;  </span><br><span class="line">            <span class="keyword">if</span> (other.name != <span class="keyword">null</span>)  </span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;  </span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!name.equals(other.name))  </span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;  </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>重写equals装到容器中是得重写hashcode()</p>
+<p>###hashCode()<br>几个关键点：<br>1、hashCode的存在主要是用于查找的快捷性，如Hashtable，HashMap等，hashCode是用来在散列存储结构中确定对象的存储地址的；<br>2、如果两个对象相同，就是适用于equals(Java.lang.Object) 方法，那么这两个对象的hashCode一定要相同；<br>3、如果对象的equals方法被重写，那么对象的hashCode也尽量重写，并且产生hashCode使用的对象，一定要和equals方法中使用的一致，否则就会违反上面提到的第2点；<br>4、两个对象的hashCode相同，并不一定表示两个对象就相同，也就是不一定适用于equals(java.lang.Object) 方法，只能够说明这两个对象在散列存储结构中，如Hashtable，他们“存放在同一个篮子里”。</p>
+<p>hashCode()的返回值和equals()的关系如下：</p>
+<p>如果x.equals(y)返回“true”，那么x和y的hashCode()必须相等。<br>如果x.equals(y)返回“false”，那么x和y的hashCode()有可能相等，也有可能不等。</p>
+<h3 id="Reference">Reference</h3><ol>
+<li><a href="http://lavasoft.blog.51cto.com/62575/15456/" target="_blank" rel="external">深入研究java.lang.Object类</a></li>
+<li><a href="Java 重写Object类的常见方法">Java 重写Object类的常见方法</a></li>
+<li><a href="http://blog.csdn.net/lonely_fireworks/article/details/7974307" target="_blank" rel="external">java-覆盖equals时规则不容忽视</a></li>
+</ol>
+]]></content>
+    <summary type="html">
+    <![CDATA[Object是JAVA中所有类的基类，那Object中方法你又知道多少呢？开发中常常需要注意些什么。 -- 来自阿里面试官的提问]]>
+    
+    </summary>
+    
+      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
+    
+      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[Java设计模式]]></title>
     <link href="http://yoursite.com/2016/04/25/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     <id>http://yoursite.com/2016/04/25/Java设计模式/</id>
     <published>2016-04-25T14:31:27.000Z</published>
-    <updated>2016-04-29T11:35:36.140Z</updated>
+    <updated>2016-04-29T12:08:01.643Z</updated>
     <content type="html"><![CDATA[<h3 id="单例模式">单例模式</h3><p>在一个虚拟机内只存在一个实例，hashcode一致；<br>需要考虑两点</p>
 <ol>
 <li>线程安全</li>
@@ -907,67 +947,6 @@
       <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
     
       <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Windows通过virtualbox ssh登陆到虚拟ubuntu]]></title>
-    <link href="http://yoursite.com/2015/11/30/Windows%E9%80%9A%E8%BF%87virtualbox-ssh%E7%99%BB%E9%99%86%E5%88%B0%E8%99%9A%E6%8B%9Fubuntu/"/>
-    <id>http://yoursite.com/2015/11/30/Windows通过virtualbox-ssh登陆到虚拟ubuntu/</id>
-    <published>2015-11-30T13:02:33.000Z</published>
-    <updated>2015-12-05T03:16:25.904Z</updated>
-    <content type="html"><![CDATA[<h3 id="Ubuntu中操作">Ubuntu中操作</h3><p>在Ubuntu下使用ALT+CTRL+T打开终端输入以下命令</p>
-<ol>
-<li>查看ubuntu和vitualbx中的网络是不是连通的<pre><code class="bash">$ ping vimer.cn
-</code></pre>
-</li>
-<li>查询ip配置信息<pre><code class="bash">$ ifconfig   //注意是ifconfig
-</code></pre>
-</li>
-<li><p>设置ssh登陆</p>
-<pre><code class="bash">$ sudo apt-get install openssh-server
-</code></pre>
-<p>这里如果遇到依赖openssh-client<br>先执行</p>
-<pre><code class="bash">$ sudo apt-get update
-$ sudo apt-get upgrade
-</code></pre>
-<p>再执行 <a href="#设置ssh登陆">上一步</a>步骤安装</p>
-</li>
-<li><p>安装好后，看一下端口监听</p>
-<pre><code class="bash">$ netstat -lpnt
-</code></pre>
-<p>看一下有没有 ：：：22 字段，一般是最后一个</p>
-</li>
-<li><p>如果以上都没问题，此时Ubuntu所有的配置完成。</p>
-</li>
-<li><p>关闭Ubuntu</p>
-</li>
-</ol>
-<h3 id="Windows下配置">Windows下配置</h3><ol>
-<li>将Virtulbox写入环境变量path中，一般是C:\Program Files\Oracle\VirtualBox </li>
-<li>Win+R打开命令行<pre><code class="bash">$ VBoxManage modifyvm <span class="string">"ubuntu"</span> –-natpf1 <span class="string">"guestssh,tcp,,2222,,22"</span>
-</code></pre>
-</li>
-<li>VBox管理工具 修改vm中 虚拟机ubuntu –网卡1 “端口转发名字,通过tcp连接，宿主机IP(略)，windows下端口2222，虚拟机IP(略)，ubuntu下端口22”  ,一一对应<ul>
-<li>如果其他机器，<br>同网段，写上不同的IP地址。</li>
-<li>不同网段，配置路由上 虚拟服务器 端口转发，然后再配置本机到路由域内转发IP<br>如2222-543-22 中间”guestssh,tcp,192.168.0.100,2222,192.168.0(1).1,543”   然后路优会自动转发至机器22端口。</li>
-</ul>
-</li>
-</ol>
-<p>4.重启Ubuntu,通过putty登陆<br>输入主机名称127.0.0.1端口2222<br>保持的会话起个名字ubuntu,保存<br>登陆<br>出现一个提示，不用管<br>如果看到log as：<br>输入ubuntu用户名<br>输入密码</p>
-<p>Congratulations，你应该可以看到Welcome！</p>
-<h3 id="References">References</h3><p><a href="http://blog.sina.com.cn/s/blog_72e67d290100ox42.html" target="_blank" rel="external">解决VirtualBox 中Ubuntu无法全屏的方法</a><br><a href="http://blog.csdn.net/astrotycoon/article/details/8143146" target="_blank" rel="external">ssh登陆virtualbox安装的Ubuntu的同时也能连上互联网</a><br><a href="http://www.vimer.cn/2010/09/%E5%9C%A8windows%E4%B8%8B%E7%94%A8virtualbox%E8%99%9A%E6%8B%9Fubuntu%E5%B9%B6%E9%80%9A%E8%BF%87ssh%E7%99%BB%E5%BD%95.html" target="_blank" rel="external">在windows下用virtualbox虚拟ubuntu,并通过ssh登录</a></p>
-]]></content>
-    <summary type="html">
-    <![CDATA[通过windows的putty登陆到虚拟机或者其他电脑终端，实现对其他机器的操作或者计算工作，是不是一件很cool的事情！]]>
-    
-    </summary>
-    
-      <category term="Ubuntu" scheme="http://yoursite.com/tags/Ubuntu/"/>
-    
-      <category term="VirtualBox" scheme="http://yoursite.com/tags/VirtualBox/"/>
-    
-      <category term="VirtualBox" scheme="http://yoursite.com/categories/VirtualBox/"/>
     
   </entry>
   
