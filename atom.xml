@@ -4,7 +4,7 @@
   <subtitle><![CDATA[万般皆下品，惟有读书高]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2016-06-01T03:13:03.432Z</updated>
+  <updated>2016-06-29T08:59:00.115Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -13,6 +13,124 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[PYTHON THEANO配置GPU CUDA]]></title>
+    <link href="http://yoursite.com/2016/06/29/python-theano%E9%85%8D%E7%BD%AEGPU-CUDA/"/>
+    <id>http://yoursite.com/2016/06/29/python-theano配置GPU-CUDA/</id>
+    <published>2016-06-29T08:07:36.000Z</published>
+    <updated>2016-06-29T08:59:00.115Z</updated>
+    <content type="html"><![CDATA[<h3 id="python科学环境">python科学环境</h3><p><a href="https://www.continuum.io/downloads" target="_blank" rel="external">Anaconda</a></p>
+<ol>
+<li>在Anaconda官网上下载anaconda安装包,进行安装，傻瓜式安装，【Just me】，【next】,【next to end】</li>
+<li>其中要是杀毒软件拦截，直接允许插入系统环境变量。</li>
+</ol>
+<h3 id="深度学习基本环境">深度学习基本环境</h3><ol>
+<li>libpython和mingw<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ conda <span class="keyword">install</span> mingw</span><br><span class="line">$ conda <span class="keyword">install</span> libpython</span><br><span class="line">$ pip <span class="keyword">install</span> theano</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>至于为什么装theano用pip,主要是本人觉得pip速度快。</p>
+<p>注意：别急着调试！</p>
+<h4 id="无GPU配置">无GPU配置</h4><ol>
+<li>在home目录，windows下就是以你【计算机名】命名的文件夹，如我的是C:\Users\Paul</li>
+<li><p>在home目录下创建名.theaorc.txt,文件内容</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">[blas]</span></span><br><span class="line"><span class="setting">ldflags =</span><br><span class="line"></span><br><span class="line"><span class="value">[gcc]</span></span></span><br><span class="line"><span class="setting">cxxflags = <span class="value">-ID:\Anaconda\MinGW</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>其实没有cxxflags也没问题，主要是需要gcc环境。可以写完这个在dos下测试</p>
+</li>
+</ol>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>gcc -v</span><br></pre></td></tr></table></figure>
+<ol>
+<li>至此已经全部完成。</li>
+<li><p>测试，dos下输入python，再输入</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="prompt">&gt;&gt;</span>&gt;import theano</span><br><span class="line"><span class="prompt">&gt;&gt;</span>&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>成功！</p>
+</li>
+</ol>
+<h4 id="GPU配置">GPU配置</h4><p>这几天又整合了GPU CUDA+GTX970</p>
+<ol>
+<li>在Anaconda官网上下载anaconda安装包,进行安装，傻瓜式安装，【Just me】，【next】,【next to end】</li>
+<li>其中要是杀毒软件拦截，直接让通过插入系统环境变量。</li>
+<li>打开dos窗口，用conda安装mingw,libpython，参照前面</li>
+<li><p>在home目录，windows下就是你【计算机名】命名的文件夹创建名为.theano.txt</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">[blas]</span></span><br><span class="line"><span class="setting">ldflags =</span><br><span class="line"></span><br><span class="line"><span class="value">[gcc]</span></span></span><br><span class="line"><span class="setting">cxxflags = <span class="value">-ID:\Anaconda\MinGW</span></span></span><br><span class="line"><span class="title"></span><br><span class="line">[nvcc]</span></span><br><span class="line"><span class="setting">fastmath = <span class="value"><span class="keyword">True</span></span></span></span><br><span class="line"><span class="setting">flags = <span class="value">-LD:\Anaconda\libs</span></span></span><br><span class="line"><span class="setting">compiler_bindir = <span class="value">C:\Program File(x86)\Microsoft Visual Studio <span class="number">11.0</span>\VC\bin</span></span></span><br><span class="line"><span class="title"></span><br><span class="line">[global]</span></span><br><span class="line"><span class="setting">device = <span class="value">gpu0</span></span></span><br><span class="line"><span class="setting">flaotX = <span class="value">float32</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装CUDA和VS2010、VS2012或者VS2012Express,注意只有几个版本的VS支持<br><a href="https://developer.nvidia.com/cuda-toolkit-archive" target="_blank" rel="external">CUDA下载地址</a><br><a href="http://blog.csdn.net/yeyang911/article/details/17450963" target="_blank" rel="external">CUDA安装教程</a><br><a href="http://www.xiazaiba.com/html/7678.html" target="_blank" rel="external">VS2012</a></p>
+</li>
+</ol>
+<p>6.成功！</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[塔布数据]]>
+    
+    </summary>
+    
+      <category term="CUDA" scheme="http://yoursite.com/tags/CUDA/"/>
+    
+      <category term="GPU" scheme="http://yoursite.com/tags/GPU/"/>
+    
+      <category term="theano" scheme="http://yoursite.com/tags/theano/"/>
+    
+      <category term="python" scheme="http://yoursite.com/categories/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[斯坦福机器学习课程]]></title>
+    <link href="http://yoursite.com/2016/06/23/%E6%96%AF%E5%9D%A6%E7%A6%8F%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0CS229/"/>
+    <id>http://yoursite.com/2016/06/23/斯坦福机器学习CS229/</id>
+    <published>2016-06-23T04:45:39.000Z</published>
+    <updated>2016-06-23T09:21:53.824Z</updated>
+    <content type="html"><![CDATA[<h3 id="COURSE_1">COURSE 1</h3><ol>
+<li>SUPERVISED LEANRNING – 分类<br>有先验知识。对事物的判断已有相关定论</li>
+<li>UNSUPERVISED LEARNING – 聚类<br>没有先验知识。事先没有给定结论</li>
+<li>REFOCEMENT LEANRNING<br>见[2]</li>
+</ol>
+<h3 id="COURSE_2">COURSE 2</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">Notation</span></span><br><span class="line">m = <span class="comment">#training examples</span></span><br><span class="line">x = <span class="string">'input'</span> variables/features;</span><br><span class="line"><span class="title">y</span> = <span class="string">'output'</span> variables/<span class="string">'target'</span> variables</span><br><span class="line">(x,y) = training example</span><br><span class="line">ith training example = (xi,yi)</span><br></pre></td></tr></table></figure>
+<h4 id="Gradient_Descent">Gradient Descent</h4><h3 id="Reference">Reference</h3><ol>
+<li><a href="http://cs229.stanford.edu/materials.html" target="_blank" rel="external">课程讲义</a></li>
+<li><a href="http://www.cnblogs.com/jerrylead/archive/2011/05/13/2045309.html" target="_blank" rel="external">增强学习</a></li>
+</ol>
+]]></content>
+    <summary type="html">
+    <![CDATA[吴恩达的机器学习视频，决定看完一次!]]>
+    
+    </summary>
+    
+      <category term="Machine Learning" scheme="http://yoursite.com/tags/Machine-Learning/"/>
+    
+      <category term="ML" scheme="http://yoursite.com/categories/ML/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[ANDROID STUDIO 安装提示JDK未安装解决办法]]></title>
+    <link href="http://yoursite.com/2016/06/22/Android-Studio-%E5%AE%89%E8%A3%85%E6%8F%90%E7%A4%BAjdk%E6%9C%AA%E5%AE%89%E8%A3%85%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
+    <id>http://yoursite.com/2016/06/22/Android-Studio-安装提示jdk未安装解决办法/</id>
+    <published>2016-06-22T02:51:27.000Z</published>
+    <updated>2016-06-29T08:59:37.204Z</updated>
+    <content type="html"><![CDATA[<ul>
+<li>Android Studio安装时候提示未检测path中含有1.7或者1.7+jdk<br>解决办法</li>
+</ul>
+<ol>
+<li>检查系统中是否含有JAVA_HOME，path是否指定到%JAVA_HOME%\bin；</li>
+<li>将JAVA_HOME中‘\’替换为‘/’, path中也一致改为%JAVA_HOME%/bin;</li>
+</ol>
+<ul>
+<li>在home目录下创建.开头的文件<br>在dos下用mkdir创建</li>
+</ul>
+]]></content>
+    <summary type="html">
+    <![CDATA[Android Studio安装时候提示未检测path中含有1.7或者1.7+jdk]]>
+    
+    </summary>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[JAVA中Object类中有几个方法]]></title>
@@ -805,148 +923,6 @@
       <category term="Fragment" scheme="http://yoursite.com/tags/Fragment/"/>
     
       <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[INSIST ON!]]></title>
-    <link href="http://yoursite.com/2015/12/16/Insist-on-doing-one-thing/"/>
-    <id>http://yoursite.com/2015/12/16/Insist-on-doing-one-thing/</id>
-    <published>2015-12-16T11:55:43.000Z</published>
-    <updated>2015-12-21T14:56:58.141Z</updated>
-    <content type="html"><![CDATA[<blockquote>
-<p>业精于勤荒于嬉，行成于思毁于随！        —     韩愈 ·《劝学解》<br>善始者实繁，克终者盖寡！                —     魏征 ·《谏太宗十思疏》</p>
-</blockquote>
-<h2 id="Latest_Works">Latest Works</h2><h3 id="2015/12/16">2015/12/16</h3><ol>
-<li>学习完成了android项目SHMS中的Fragment跳转和传值.</li>
-<li>异步 URL json传值访问web服务器,并返回需要的json,异步完成后跳转Fragment并加载json数据.</li>
-<li>Fragment上点击TextView事件跳转DialogFragment. </li>
-<li>搭建weka学习maven项目，预处理股票数据生成.arff数据格式。</li>
-</ol>
-<h3 id="2015/12/17">2015/12/17</h3><ol>
-<li>weka api学习,学会了加载不同的分类器</li>
-<li>weka数据文件.arff，java自动写入格式</li>
-<li>weka实例的增量加载方式，增量训练与预测</li>
-<li>指导师弟毕设。</li>
-</ol>
-<h3 id="2015/12/20">2015/12/20</h3><ol>
-<li>SharedPreferences保存用户输入的数据，返回前一个Fragment保证数据不丢失！</li>
-<li>自定义dialog,写入按钮，设置按钮的监听事件。</li>
-<li>解决了读取照片，放入ImageView里。</li>
-<li>哎，我的博客又没有写!</li>
-</ol>
-<h3 id="2015/12/21">2015/12/21</h3><ol>
-<li>android拍照和照片代码重构，</li>
-<li>百度地图key总是有问题，转入高德。my god,help me!</li>
-<li>高德地图key找不到!!</li>
-<li>哎，我的博客又没有写!</li>
-</ol>
-]]></content>
-    <summary type="html">
-    <![CDATA[Let's not start with a bang and end with a whimper！]]>
-    
-    </summary>
-    
-      <category term="September" scheme="http://yoursite.com/tags/September/"/>
-    
-      <category term="Emotion" scheme="http://yoursite.com/categories/Emotion/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Window下sublime+latex配置]]></title>
-    <link href="http://yoursite.com/2015/12/06/Window%E4%B8%8Bsublime-latex%E9%85%8D%E7%BD%AE/"/>
-    <id>http://yoursite.com/2015/12/06/Window下sublime-latex配置/</id>
-    <published>2015-12-06T05:01:50.000Z</published>
-    <updated>2015-12-06T05:51:57.165Z</updated>
-    <content type="html"><![CDATA[<h3 id="SumatraPDF">SumatraPDF</h3><p>百度下载安装SumatraPDF，傻瓜式安装<br>添加SumatraPDF到系统变量中，这样在编译完latex会自动跳出你的pdf文档</p>
-<h3 id="TexLive">TexLive</h3><ol>
-<li>推荐下载<a href="http://pan.baidu.com/s/1dDnnhvz" target="_blank" rel="external">镜像</a></li>
-<li>使用 软碟通 或者 虚拟光驱 打开texlive.iso</li>
-<li>运行install-tl-advanced.bat</li>
-<li>傻瓜式安装30分钟左右结束，此期间可同时进行下一步</li>
-</ol>
-<h3 id="Sublime_Text3(后简称ST3)">Sublime Text3(后简称ST3)</h3><p>1.添加Package Control插件<br>按下Ctrl + ` （数字键1左边的键）组合键来打开ST3控制台<br>点击<a href="https://packagecontrol.io/installation#st3" target="_blank" rel="external">Package Control link</a><br>或者下面这段copy至控制台回车<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request,os,hashlib; h = <span class="string">'2915d1851351e5ee549c20394736b442'</span> + <span class="string">'8bc59f460fa1548d1514676163dafc88'</span>; pf = <span class="string">'Package Control.sublime-package'</span>; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( <span class="string">'http://packagecontrol.io/'</span> + pf.replace(<span class="string">' '</span>, <span class="string">'%20'</span>)).read(); dh = hashlib.sha256(by).hexdigest(); print(<span class="string">'Error validating download (got %s instead of %s), please try manual install'</span> % (dh, h)) <span class="keyword">if</span> dh != h <span class="keyword">else</span> open(os.path.join( ipp, pf), <span class="string">'wb'</span> ).write(by)</span><br></pre></td></tr></table></figure></p>
-<p>如果报错，请查看自己的Sublime Text版本是2还是3.</p>
-<h4 id="安装LatexTools插件">安装LatexTools插件</h4><ol>
-<li>ST3面板中CTRL+SHIFT+P输入Package Control:Install Package选择</li>
-<li>输入LaTeXTools，选定</li>
-<li>CTRL+SHIFT+P，运行“Reconfigure and migrate settings”</li>
-<li><p>配置LaTexTools.sublime-settings(菜单：Preferences-&gt;Browse Packages 目录：/User)</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">找到“Platform settings: adapt <span class="keyword">as</span> needed <span class="keyword">for</span> your machine” section中的如下图，</span><br><span class="line">更改[<span class="string">"texpath"</span> : <span class="string">""</span>]为[<span class="string">"texpath"</span> : <span class="string">"C:\\Program Files\\texlive\\2014\\bin\\win32;$PATH"</span>]；</span><br><span class="line">发行版[<span class="string">"distro"</span> : <span class="string">"miktex"</span>]更改为[<span class="string">"distro"</span> : <span class="string">"texlive"</span>]</span><br><span class="line">在Build engine settings部分下面，将[<span class="string">"builder"</span>: <span class="string">"traditional"</span>]更改为[<span class="string">"builder"</span>: <span class="string">"simple"</span>]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>大功告成！</p>
-</li>
-</ol>
-<h4 id="测试">测试</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">\documentclass&#123;article&#125;</span><br><span class="line">  </span><br><span class="line">\title&#123;Title&#125;</span><br><span class="line">\author&#123;Your Name&#125;</span><br><span class="line">  </span><br><span class="line">\begin&#123;document&#125;</span><br><span class="line">  </span><br><span class="line">\maketitle&#123;&#125;</span><br><span class="line">  </span><br><span class="line">\section&#123;Introduction&#125;</span><br><span class="line">  </span><br><span class="line">This is <span class="built_in">where</span> you will write your content.</span><br><span class="line">  </span><br><span class="line">\end&#123;document&#125;</span><br></pre></td></tr></table></figure>
-<p>CONTROL + B编译</p>
-<h3 id="References">References</h3><ol>
-<li><a href="http://www.zhihu.com/question/19954023" target="_blank" rel="external">有哪些好的 LaTeX 编辑器？</a></li>
-</ol>
-]]></content>
-    <summary type="html">
-    <![CDATA[最漂亮的文字排版系统latex + 最完美的文字编辑工具，绝配]]>
-    
-    </summary>
-    
-      <category term="ST3" scheme="http://yoursite.com/tags/ST3/"/>
-    
-      <category term="latex" scheme="http://yoursite.com/tags/latex/"/>
-    
-      <category term="latex" scheme="http://yoursite.com/categories/latex/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Java分页原理]]></title>
-    <link href="http://yoursite.com/2015/12/04/Java%E5%88%86%E9%A1%B5%E5%8E%9F%E7%90%86/"/>
-    <id>http://yoursite.com/2015/12/04/Java分页原理/</id>
-    <published>2015-12-04T10:38:03.000Z</published>
-    <updated>2015-12-05T04:13:33.151Z</updated>
-    <content type="html"><![CDATA[<h3 id="为何要使用分页？">为何要使用分页？</h3><ol>
-<li>数据方面的原因</li>
-<li>增强用户使用体验需要，根据需要获取</li>
-<li>浏览器–&gt;网络–&gt;服务器 减小网络和服务器压力，节省数据IO和网络传输时间时间</li>
-</ol>
-<h3 id="不同的分页方式">不同的分页方式</h3><h4 id="传统分页">传统分页</h4><p>明确的获取数据信息，如有多少条数据，分多少页显示等。</p>
-<h4 id="下拉式分页">下拉式分页</h4><p>无法明确的获取数据数量相关的信息，但是在分页操作以后，仍然可以看到之前查询的数据。</p>
-<h3 id="常见的分页实现方式">常见的分页实现方式</h3><ol>
-<li>使用List接口中sublist(int startIndex,int endIndex)方法实现分页。</li>
-<li>直接使用数据库SQL语句实现分页</li>
-<li>使用hibernate，mybatis等框架实现跨数据库的分页<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Mysql:Select * from t_student <span class="built_in">limit</span> <span class="number">0</span>,<span class="number">10</span></span><br><span class="line">Psql:Select * from t_student <span class="built_in">limit</span> <span class="number">10</span> offset <span class="number">0</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="传统sublist分页实现">传统sublist分页实现</h3><h4 id="参数说明">参数说明</h4><p>对任意可分数据类型T,<br>初始化参数<br>pageSize:前台传输过来<br>pageNum:前台传输过来<br>currentPage = pageNum &gt; totalPage ? totalPage : pageNum<br>dataList:后台传输过来<br>totalRecord = dataList.size()<br>totalPage = totalRecord % pageSize?totalRecord / pageSize : totalRecord / pageSize + 1</p>
-<h4 id="过程分析">过程分析</h4><p>前台：<br>T：判定参数，如gender = “male”<br>pageSize:前台传输过来<br>pageNum:前台传输过来<br>提交</p>
-<p>Servlet容器：<br>处理并调用持久层ServiceImpl方法取数据</p>
-<p>后台：<br>生成sql语句，完成参数查询，返回Pager<t></t></p>
-<p>Servlet容器：<br>Servlet包装数据到request里面</p>
-<p>前台：<br>根据参数去显示当前页数据</p>
-<h4 id="源代码">源代码</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line">import java.io.Serializable;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">public class Pager&lt;T&gt; implements Serializable &#123;</span><br><span class="line"></span><br><span class="line">	/**</span><br><span class="line">	 * </span><br><span class="line">	 */</span><br><span class="line">	private static final long serialVersionUID = -<span class="number">6150972860315433465</span>L;</span><br><span class="line">	</span><br><span class="line">	private int pageSize;//每页显示多少条数据</span><br><span class="line">	</span><br><span class="line">	private int currentPage;//当前第几页数据</span><br><span class="line">	</span><br><span class="line">	private int totalRecord;//一共多少条记录</span><br><span class="line">	</span><br><span class="line">	private int totalPage;//一共多少页记录</span><br><span class="line">	</span><br><span class="line">	private List&lt;T&gt; dataList;//要显示的数据</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">	public <span class="function"><span class="title">Pager</span></span>() &#123;</span><br><span class="line">		super();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public Pager(int pageNum,int pageSize, List&lt;T&gt; <span class="built_in">source</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">source</span> == null)&#123;</span><br><span class="line">			<span class="built_in">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		this.pageSize = pageSize;</span><br><span class="line">		this.totalRecord = source.size();</span><br><span class="line">		this.pageSize = pageSize;</span><br><span class="line">		</span><br><span class="line">		//总页数</span><br><span class="line">		this.totalPage = this.totalRecord/this.pageSize;</span><br><span class="line">		<span class="keyword">if</span>(this.totalRecord % this.pageSize != <span class="number">0</span>)&#123;</span><br><span class="line">			this.totalPage += <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		//当前页数</span><br><span class="line">		<span class="keyword">if</span>(this.totalPage &lt; pageNum)&#123;</span><br><span class="line">			this.currentPage = this.totalPage;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			this.currentPage = pageNum;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		int fromIndex = this.pageSize * (this.currentPage - <span class="number">1</span>);</span><br><span class="line">		int toIndex;</span><br><span class="line">		<span class="keyword">if</span>(this.pageSize * this.currentPage &gt; this.totalRecord)&#123;</span><br><span class="line">			toIndex = this.totalRecord;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			toIndex = this.pageSize * this.currentPage;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		this.dataList = source.subList(fromIndex, toIndex);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	public Pager(int pageSize, int currentPage, int totalRecord, int totalPage,</span><br><span class="line">			List&lt;T&gt; dataList) &#123;</span><br><span class="line">		super();</span><br><span class="line">		this.pageSize = pageSize;</span><br><span class="line">		this.currentPage = currentPage;</span><br><span class="line">		this.totalRecord = totalRecord;</span><br><span class="line">		this.totalPage = totalPage;</span><br><span class="line">		this.dataList = dataList;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public int <span class="function"><span class="title">getPageSize</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> pageSize;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void <span class="built_in">set</span>PageSize(int pageSize) &#123;</span><br><span class="line">		this.pageSize = pageSize;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public int <span class="function"><span class="title">getCurrentPage</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> currentPage;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void <span class="built_in">set</span>CurrentPage(int currentPage) &#123;</span><br><span class="line">		this.currentPage = currentPage;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public int <span class="function"><span class="title">getTotalRecord</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> totalRecord;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void <span class="built_in">set</span>TotalRecord(int totalRecord) &#123;</span><br><span class="line">		this.totalRecord = totalRecord;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public int <span class="function"><span class="title">getTotalPage</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> totalPage;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void <span class="built_in">set</span>TotalPage(int totalPage) &#123;</span><br><span class="line">		this.totalPage = totalPage;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public List&lt;T&gt; <span class="function"><span class="title">getDataList</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> dataList;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void <span class="built_in">set</span>DataList(List&lt;T&gt; dataList) &#123;</span><br><span class="line">		this.dataList = dataList;</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="后台sql分页">后台sql分页</h3><ol>
-<li><p>取分页记录</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from table <span class="built_in">where</span> <span class="number">1</span> = <span class="number">1</span>[ and gender=male][ and username=<span class="string">"a"</span>] <span class="built_in">limit</span> (pageNum-<span class="number">1</span>) * pageSize, pageSize;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>取总的记录数</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select count(*) as totalRecord from table <span class="built_in">where</span> <span class="number">1</span> = <span class="number">1</span>[ and gender=male][ and username=<span class="string">"a"</span>]</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>注：[]内的都是可选条件，1,2步骤的可选条件是一致的。</p>
-<h3 id="完整的源代码">完整的源代码</h3><p>maven项目<a href="https://github.com/rollingdeep/pager-webapp" target="_blank" rel="external">pager-webapp</a></p>
-<h4 id="曾遇到的问题">曾遇到的问题</h4><ol>
-<li>JQuery选取元素 $(“#id”).attr(“action”,”property”);</li>
-<li>遇到了浏览器重复重定位，清除浏览器缓存，clean tomcat项目再试！</li>
-<li>将长整形转为整形 int intNumber = ((Number)(LongNumber)).intValue();</li>
-</ol>
-]]></content>
-    <summary type="html">
-    <![CDATA[Java面试经常问到的一个问题，怎么在Java中实现分页，怎么在SQL中分页。这些问题经常遇到，最近复习了一遍，分享一下！]]>
-    
-    </summary>
-    
-      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
-    
-      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
     
   </entry>
   
