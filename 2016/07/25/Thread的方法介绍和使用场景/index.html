@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Android,SharedPreferences," />
+  <meta name="keywords" content="Java," />
 
 
 
@@ -53,16 +53,16 @@
 
 
 
-<meta name="description" content="SharedPreferences一般是用于系统设置数据的存储，在项目中我用在了Fragment返回前一个Fragment，保证前一个Fragment数据不丢失！">
+<meta name="description" content="多线程是Java独特之处，学习它非常有必要！">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android之SharedPreferences存储数据">
-<meta property="og:url" content="http://yoursite.com/2015/12/20/Android之SharedPreferences存储数据/index.html">
+<meta property="og:title" content="Thread的方法介绍和使用场景">
+<meta property="og:url" content="http://yoursite.com/2016/07/25/Thread的方法介绍和使用场景/index.html">
 <meta property="og:site_name" content="沉思">
-<meta property="og:description" content="SharedPreferences一般是用于系统设置数据的存储，在项目中我用在了Fragment返回前一个Fragment，保证前一个Fragment数据不丢失！">
-<meta property="og:updated_time" content="2015-12-23T07:10:23.959Z">
+<meta property="og:description" content="多线程是Java独特之处，学习它非常有必要！">
+<meta property="og:updated_time" content="2016-07-25T08:17:26.711Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android之SharedPreferences存储数据">
-<meta name="twitter:description" content="SharedPreferences一般是用于系统设置数据的存储，在项目中我用在了Fragment返回前一个Fragment，保证前一个Fragment数据不丢失！">
+<meta name="twitter:title" content="Thread的方法介绍和使用场景">
+<meta name="twitter:description" content="多线程是Java独特之处，学习它非常有必要！">
 
 
 
@@ -74,7 +74,7 @@
   };
 </script>
 
-  <title> Android之SharedPreferences存储数据 | 沉思 </title>
+  <title> Thread的方法介绍和使用场景 | 沉思 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -214,7 +214,7 @@
             
             
               
-                Android之SharedPreferences存储数据
+                Thread的方法介绍和使用场景
               
             
           </h1>
@@ -223,8 +223,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-12-20T18:57:03+08:00" content="2015-12-20">
-              2015-12-20
+            <time itemprop="dateCreated" datetime="2016-07-25T11:21:30+08:00" content="2016-07-25">
+              2016-07-25
             </time>
           </span>
 
@@ -233,8 +233,8 @@
               &nbsp; | &nbsp; 分类于
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
                   </a>
                 </span>
 
@@ -249,8 +249,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/12/20/Android之SharedPreferences存储数据/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/20/Android之SharedPreferences存储数据/" itemprop="commentsCount"></span>
+                <a href="/2016/07/25/Thread的方法介绍和使用场景/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/25/Thread的方法介绍和使用场景/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -269,26 +269,55 @@
       
 
       
-        <span itemprop="articleBody"><blockquote>
-<p>SharedPreferences一般是用于系统设置数据的存储，在项目中我用在了Fragment返回前一个Fragment，保证前一个Fragment数据不丢失！</p>
-</blockquote>
-<h3 id="SharedPreferences基本存取">SharedPreferences基本存取</h3><h4 id="存数据">存数据</h4><p>SharedPreferences.Editor  一个类似map的东西，生成键值对，存入xml中。</p>
+        <span itemprop="articleBody"><figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Thread implements Runnable：</span><br><span class="line">    run()<span class="comment">;</span></span><br><span class="line">    start()<span class="comment">;</span></span><br><span class="line">    join()<span class="comment">;</span></span><br><span class="line">    sleep()<span class="comment">;</span></span><br><span class="line">    yield()<span class="comment">;</span></span><br><span class="line">    wait()<span class="comment">;</span></span><br><span class="line">    notify()<span class="comment">;</span></span><br><span class="line">    interrupted()<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<h3 id="run()">run()</h3><ul>
+<li>run()方法只是类的一个普通方法而已，如果直接调用Run方法，程序中依然只有主线程这一个线程，其程序执行路径还是只有一条，还是要顺序执行，还是要等待run方法体执行完毕后才可继续执行下面的代码，这样就没有达到写线程的目的。</li>
+<li>调用start方法方可启动线程，把需要并行处理的代码放在run()方法中，start()方法启动线程将自动调用 run()方法，这是由jvm的内存机制规定的。</li>
+<li>run()方法必须是public访问权限，返回值类型为void.。</li>
+</ul>
+<h3 id="start()">start()</h3><ul>
+<li>用start方法来启动线程，真正实现了多线程运行，这时无需等待run方法体代码执行完毕而直接继续执行下面的代码。</li>
+<li>通过调用Thread类的start()方法来启动一个线程，这时此线程处于就绪（可运行）状态，并没有运行，一旦得到cpu时间片，就开始执行run()方法。</li>
+<li>方法 run()称为线程体，它包含了要执行的这个线程的内容，Run方法运行结束，此线程随即终止。</li>
+</ul>
+<h3 id="join()">join()</h3><ul>
+<li>Java Thread中, join() 方法主要是让调用改方法的thread完成run方法里面的东西后， 在执行join()方法后面的代码。</li>
+<li>使用场景: 主线程开启子线程，子线程进行网络访问，然后获得结果，填充数据至UI。</li>
+<li>线程同步，除了join()方法外，目前安卓中还有另外一个Handler，Message<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Handler mHandler = <span class="keyword">new</span> Handler() &#123;  </span><br><span class="line">  </span><br><span class="line">        <span class="annotation">@Override</span>  </span><br><span class="line">        public <span class="keyword">void</span> handleMessage(Message msg) &#123;  </span><br><span class="line">            <span class="keyword">super</span>.handleMessage(msg);  </span><br><span class="line">            <span class="keyword">switch</span> (msg.what) &#123;  </span><br><span class="line">            <span class="keyword">case</span> <span class="number">0</span>:  </span><br><span class="line">                <span class="comment">//完成主界面更新,拿到数据  </span></span><br><span class="line">                <span class="built_in">String</span> data = (<span class="built_in">String</span>)msg.obj;  </span><br><span class="line">                  </span><br><span class="line">                updateWeather();  </span><br><span class="line">                textView.setText(data);  </span><br><span class="line">                <span class="keyword">break</span>;  </span><br><span class="line">            <span class="keyword">default</span>:  </span><br><span class="line">                <span class="keyword">break</span>;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>在子线程中，通过传递Message对象给handler处理<br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">void</span> <span class="title">updateWeather</span><span class="params">()</span> </span>&#123;  </span><br><span class="line"> </span><br><span class="line">        <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable()&#123;  </span><br><span class="line">  </span><br><span class="line">            <span class="annotation">@Override</span>  </span><br><span class="line">            <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">                <span class="comment">//耗时操作，完成之后发送消息给Handler，完成UI更新；  </span></span><br><span class="line">                mHandler.sendEmptyMessage(<span class="number">0</span>);  </span><br><span class="line">                <span class="comment">//需要数据传递，用下面方法；  </span></span><br><span class="line">                Message msg =<span class="keyword">new</span> Message();  </span><br><span class="line">                msg.obj = <span class="string">"数据"</span>;<span class="comment">//可以是基本类型，可以是对象，可以是List、map等；  </span></span><br><span class="line">                mHandler.sendMessage(msg);  </span><br><span class="line">            &#125;  </span><br><span class="line">              </span><br><span class="line">        &#125;).start();  </span><br><span class="line">          </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="sleep()">sleep()</h3><p>sleep是让线程指定休眠时间，然后继续工作</p>
+<h3 id="yield()">yield()</h3><p>yiedld这个方法是让当前线程回到可执行状态，以便让具有相同优先级的线程进入执行状态，但不是绝对的。因为虚拟机可能会让该线程重新进入执行状态。</p>
+<h3 id="wait()">wait()</h3><p>wait是等待，直到有线程通知notify()唤醒他才会重新工作。</p>
+<p>sleep与wait的区别：</p>
 <ul>
-<li>我这个是写在Fragment中，所以要getActivity();</li>
-<li>你也可以写个静态方法在MainActivity中。</li>
+<li>sleep是你困了，要睡觉，等你睡醒了再干活。</li>
+<li>wait是你现在没事做，先眯会儿吧，什么时候领导提醒你该干活了再干。</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line"> <span class="comment">/**</span><br><span class="line">  * 存入SharedPreferences</span><br><span class="line">  */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">inStore</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//实例化SharedPreferences对象（第一步） </span></span><br><span class="line">    SharedPreferences mySharedPreferences= getActivity().getSharedPreferences(<span class="string">"bodyinfo"</span>, </span><br><span class="line">    Activity.MODE_PRIVATE); </span><br><span class="line">    <span class="comment">//实例化SharedPreferences.Editor对象（第二步） </span></span><br><span class="line">    SharedPreferences.Editor editor = mySharedPreferences.edit(); </span><br><span class="line">    <span class="comment">//用putString的方法保存数据 </span></span><br><span class="line">    editor.putString(<span class="string">"Age"</span>, dis_tv1.getText().toString());</span><br><span class="line">    editor.putString(<span class="string">"Height"</span>, dis_tv2.getText().toString());</span><br><span class="line">    editor.putString(<span class="string">"Weight"</span>, dis_tv3.getText().toString());    </span><br><span class="line">    <span class="comment">//提交当前数据 </span></span><br><span class="line">    editor.commit(); </span><br><span class="line">    <span class="comment">//使用toast信息提示框提示成功写入数据 </span></span><br><span class="line">    Toast.makeText(getActivity(), <span class="string">"数据成功写入SharedPreferences！"</span> , Toast.LENGTH_LONG).show();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="取数据">取数据</h4><p>写入控件中</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line">     * 取SharedPreferences数据</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">outStore</span><span class="params">()</span></span>&#123;</span><br><span class="line">        SharedPreferences sharedPreferences= getActivity().getSharedPreferences(<span class="string">"bodyinfo"</span>, </span><br><span class="line">                Activity.MODE_PRIVATE); </span><br><span class="line">                <span class="comment">// 使用getString方法获得value，注意第2个参数是value的默认值 </span></span><br><span class="line">                dis_tv1.setText(sharedPreferences.getString(<span class="string">"Age"</span>, <span class="string">""</span>));</span><br><span class="line">                dis_tv2.setText(sharedPreferences.getString(<span class="string">"Height"</span>, <span class="string">""</span>));</span><br><span class="line">                dis_tv3.setText(sharedPreferences.getString(<span class="string">"Weight"</span>, <span class="string">""</span>));        </span><br><span class="line">                <span class="comment">//使用toast信息提示框显示信息 </span></span><br><span class="line">                Toast.makeText(getActivity(), <span class="string">"读取数据如下成功"</span>, Toast.LENGTH_LONG).show();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Fragment跳转Fragment数据不丢失">Fragment跳转Fragment数据不丢失</h3><ul>
-<li>跳转前A将数据存储到SharedPreferences中</li>
-<li>跳转B后返回时候加载<br>  通过A设置全局变量mStack，在每次跳转时候，mStack++;<br>  当然你会问mStack在transaction.replace()方法时候移除了，在加载又是初始值。看下一条</li>
-<li>为了保存Fragment中的变量，一般会重写onSaveInstanceState(Bundle outState)和 onCreate(Bundle savedInstanceState) 。一个存一个取</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Override</span></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSaveInstanceState</span><span class="params">(Bundle outState)</span> </span>&#123;</span><br><span class="line">         <span class="keyword">super</span>.onSaveInstanceState(outState);</span><br><span class="line">         outState.putInt(<span class="string">"level"</span>, mStackLevel);</span><br><span class="line">     &#125;</span><br><span class="line"> <span class="annotation">@Override</span></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">         <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line"></span><br><span class="line">         <span class="keyword">if</span> (savedInstanceState != <span class="keyword">null</span>) &#123;</span><br><span class="line">             mStackLevel = savedInstanceState.getInt(<span class="string">"level"</span>);</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure>
+<p>简单点说wait和sleep的区别：</p>
+<ol>
+<li>wait只能在有线程锁的部分调用，而sleep不需要。 </li>
+<li>wait是睡眠时放开线程锁，此时线程不占用任何资源，不增加时间限制。而sleep睡眠时占着线程锁占着CPU不工作，形象地说明为“占着CPU睡觉”，此时，系统的CPU部分资源(同步资源)被占用，其他线程无法进入，会增加时间限制。</li>
+<li>wait需要notify方法来唤醒，而sleep是定时醒。</li>
+</ol>
+<h3 id="notify()">notify()</h3><p>Wait()和notify():如果条件不满足，则等待。当条件满足时，等待该条件的线程将被唤醒。<br>一般用在synchronized机制中<br><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">例如<span class="value">:</span><br><span class="line">线程A</span><br><span class="line"><span class="function">synchronized</span>(obj) &#123;</span><br><span class="line">    <span class="function">while</span>(!condition) &#123;</span><br><span class="line">        obj.<span class="function">wait</span>();</span></span><br><span class="line">    &#125;</span><br><span class="line">    obj<span class="class">.doSomething</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>当线程A获得了obj锁后，发现条件condition不满足，无法继续下一处理，于是线程A就wait（）。<br>在另一线程B中，如果B更改了某些条件，使得线程A的condition条件满足了，就可以唤醒线程A：</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">线程B</span><br><span class="line"><span class="keyword">synchronized</span>(obj) &#123;</span><br><span class="line">    condition = <span class="keyword">true</span>;</span><br><span class="line">    obj.notify();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>需要注意的概念是：</p>
 <ul>
-<li>最后，在onCreateView重新加载视图<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> <span class="annotation">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> View <span class="title">onCreateView</span><span class="params">(LayoutInflater inflater, ViewGroup container,</span><br><span class="line">            Bundle savedInstanceState)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(mStackLevel != <span class="number">0</span>)&#123;</span><br><span class="line">                    outStore();</span><br><span class="line">        &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></li>
+<li>调用obj的wait（）， notify（）方法前，必须获得obj锁，也就是必须写在synchronized（obj） {……} 代码段内。</li>
+<li>调用obj.wait（）后，线程A就释放了obj的锁，否则线程B无法获得obj锁，也就无法在synchronized（obj） {……} 代码段内唤醒A.</li>
+<li>当obj.wait（）方法返回后，线程A需要再次获得obj锁，才能继续执行。</li>
+<li>如果A1，A2，A3都在obj.wait（），则B调用obj.notify（）只能唤醒A1，A2，A3中的一个（具体哪一个由JVM决定）。</li>
+<li>obj.notifyAll（）则能全部唤醒A1，A2，A3，但是要继续执行obj.wait（）的下一条语句，必须获得obj锁，因此，A1，A2，A3只有一个有机会获得锁继续执行，例如A1，其余的需要等待A1释放obj锁之后才能继续执行。</li>
+<li>当B调用obj.notify/notifyAll的时候，B正持有obj锁，因此，A1，A2，A3虽被唤醒，但是仍无法获得obj锁。直到B退出synchronized块，释放obj锁后，A1，A2，A3中的一个才有机会获得锁继续执行。</li>
 </ul>
+<h3 id="interrupted()">interrupted()</h3><ol>
+<li>interrupt：置线程的中断状态</li>
+<li>isInterrupt：线程是否中断</li>
+<li>interrupted：返回线程的上次的中断状态，并清除中断状态</li>
+</ol>
 </span>
       
     </div>
@@ -297,9 +326,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Android/" rel="tag">#Android</a>
-          
-            <a href="/tags/SharedPreferences/" rel="tag">#SharedPreferences</a>
+            <a href="/tags/Java/" rel="tag">#Java</a>
           
         </div>
       
@@ -308,17 +335,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/12/19/android之自定义dialog/" rel="next" title="android之自定义Dialog">
-                <i class="fa fa-chevron-left"></i> android之自定义Dialog
+              <a href="/2016/07/21/python-matplotlib画图/" rel="next" title="python matplotlib画图">
+                <i class="fa fa-chevron-left"></i> python matplotlib画图
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/12/21/Android之异步任务/" rel="prev" title="Android之异步任务AsyncTask">
-                Android之异步任务AsyncTask <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -345,8 +368,8 @@
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/12/20/Android之SharedPreferences存储数据/"
-           data-title="Android之SharedPreferences存储数据" data-url="http://yoursite.com/2015/12/20/Android之SharedPreferences存储数据/">
+      <div class="ds-thread" data-thread-key="2016/07/25/Thread的方法介绍和使用场景/"
+           data-title="Thread的方法介绍和使用场景" data-url="http://yoursite.com/2016/07/25/Thread的方法介绍和使用场景/">
       </div>
     
   </div>
@@ -468,7 +491,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#SharedPreferences基本存取"><span class="nav-number">1.</span> <span class="nav-text">SharedPreferences基本存取</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#存数据"><span class="nav-number">1.1.</span> <span class="nav-text">存数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#取数据"><span class="nav-number">1.2.</span> <span class="nav-text">取数据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fragment跳转Fragment数据不丢失"><span class="nav-number">2.</span> <span class="nav-text">Fragment跳转Fragment数据不丢失</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#run()"><span class="nav-number">1.</span> <span class="nav-text">run()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#start()"><span class="nav-number">2.</span> <span class="nav-text">start()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#join()"><span class="nav-number">3.</span> <span class="nav-text">join()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sleep()"><span class="nav-number">4.</span> <span class="nav-text">sleep()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#yield()"><span class="nav-number">5.</span> <span class="nav-text">yield()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wait()"><span class="nav-number">6.</span> <span class="nav-text">wait()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#notify()"><span class="nav-number">7.</span> <span class="nav-text">notify()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#interrupted()"><span class="nav-number">8.</span> <span class="nav-text">interrupted()</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
