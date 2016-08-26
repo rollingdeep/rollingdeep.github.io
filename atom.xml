@@ -4,7 +4,7 @@
   <subtitle><![CDATA[万般皆下品，惟有读书高]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2016-08-26T13:55:00.305Z</updated>
+  <updated>2016-08-26T14:11:31.815Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -19,38 +19,61 @@
     <link href="http://yoursite.com/2016/08/25/%E6%B5%81%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86kafka/"/>
     <id>http://yoursite.com/2016/08/25/流式数据处理kafka/</id>
     <published>2016-08-25T13:56:17.000Z</published>
-    <updated>2016-08-26T13:55:00.305Z</updated>
+    <updated>2016-08-26T14:11:31.815Z</updated>
     <content type="html"><![CDATA[<blockquote>
 <p>Kafka是一种高吞吐量的分布式发布订阅消息系统，它可以处理消费者规模的网站中的所有动作流数据。<br>我想它应该很适合按热度进行新闻推荐和网易云音乐排行，常用地模型等。最近遇到这些问题，还没解决。。。</p>
-<h4 id="CENTOS">CENTOS</h4><ul>
+</blockquote>
+<h3 id="CENTOS">CENTOS</h3><ul>
 <li>基本命令</li>
 </ul>
 <ol>
-<li>包管理yum install [package]<br>eg : yum install net-tools<br>eg : yum install wget</li>
-<li>下载命令wget [link]<br>eg : wget <a href="http://www.slf4j.org/dist/slf4j-1.7.6.zip" target="_blank" rel="external">http://www.slf4j.org/dist/slf4j-1.7.6.zip</a></li>
-<li>进程查找ps -ef|grep [name]</li>
-<li>进程杀死kill pid</li>
-<li>重命名/移动命令 mv a/c b:将c移动到b目录下</li>
-<li>删除文件 rm file    rm -rf folder</li>
-<li>创建软连接ln -s a b，如同windows下的快捷方式.删除软连接 rm -rf b</li>
-<li>ln a b 是建立硬链接</li>
-<li>查看全部路径pwd</li>
-<li>解压 unzip slf4j-1.7.6.zip</li>
-<li>解压 tar zcvf zzz.tar.gz</li>
+<li><p>包管理</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$$ yum <span class="operator"><span class="keyword">install</span> [<span class="keyword">package</span>]</span><br><span class="line">$$ yum <span class="keyword">install</span> net-tools</span><br><span class="line">$$ yum <span class="keyword">install</span> wget</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>下载命令</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$$</span> wget [link]</span><br><span class="line"><span class="variable">$$</span> wget <span class="symbol">http:</span>/<span class="regexp">/www.slf4j.org/dist</span><span class="regexp">/slf4j-1.7.6.zip</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进程查找</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$$ <span class="keyword">ps</span> -ef|<span class="keyword">grep</span> [name]</span><br><span class="line">$$ <span class="keyword">ps</span> -ef|<span class="keyword">grep</span> kafka</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进程杀死</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$$ <span class="built_in">kill</span> [pid]</span><br><span class="line">$$ <span class="built_in">kill</span> <span class="number">5043</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重命名/移动命令</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$$</span> mv a/c b    <span class="comment"># 将c移动到b目录下</span></span><br><span class="line"><span class="variable">$$</span> mv kafka /usr/local</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除文件 </p>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$$</span> rm [<span class="keyword">file</span>] </span><br><span class="line"><span class="variable">$$</span> rm -rf [folder]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建软连接</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$$</span> ln -s a b  <span class="comment"># 如同windows下的快捷方式</span></span><br><span class="line"><span class="variable">$$</span> rm -rf b   <span class="comment"># 删除软连接</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>建立硬链接</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$$ <span class="built_in">ln</span> <span class="operator">a</span> b</span><br><span class="line">$$ <span class="built_in">ln</span> /usr/<span class="built_in">local</span>/kafka-<span class="number">0.8</span><span class="number">.1</span><span class="number">.1</span>-src kafka</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看全部路径</p>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$$</span> <span class="keyword">pwd</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解压 </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$ unzip slf4j-<span class="number">1.7</span><span class="number">.6</span>.zip</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解压 </p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$ tar zcvf zzz<span class="class">.tar</span><span class="class">.gz</span></span><br></pre></td></tr></table></figure>
+</li>
 </ol>
-</blockquote>
-<h3 id="kafka">kafka</h3><p>首先kafka安装<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor"># 后台启动</span></span><br><span class="line">[root@localhost kafka-<span class="number">0.8</span><span class="number">.1</span><span class="number">.1</span>-src]<span class="preprocessor"># nohup bin/zookeeper-server-start.sh config/zookeeper.properties &amp;</span></span><br><span class="line">[root@localhost kafka-<span class="number">0.8</span><span class="number">.1</span><span class="number">.1</span>-src]<span class="preprocessor"># nohup bin/kafka-server-start.sh config/server.properties &amp;</span></span><br><span class="line"><span class="preprocessor"># 创建主题</span></span><br><span class="line">[root@localhost kafka-<span class="number">0.8</span><span class="number">.1</span><span class="number">.1</span>-src]<span class="preprocessor"># bin/kafka-topics.sh --create --zookeeper <span class="number">10.0</span><span class="number">.2</span><span class="number">.15</span>:<span class="number">2181</span> --replication-factor <span class="number">1</span> --partitions <span class="number">1</span> --topic LJ200</span></span><br><span class="line"><span class="preprocessor">## 查看现有主题</span></span><br><span class="line">[root@localhost kafka-<span class="number">0.8</span><span class="number">.1</span><span class="number">.1</span>-src]<span class="preprocessor"># bin/kafka-topics.sh --list --zookeeper <span class="number">10.0</span><span class="number">.2</span><span class="number">.15</span>:<span class="number">2181</span></span></span><br></pre></td></tr></table></figure></p>
-<ul>
-<li>生产者<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost kafka-<span class="number">0.8</span><span class="number">.1</span><span class="number">.1</span>-src]<span class="preprocessor"># bin/kafka-console-producer.sh --broker-list <span class="number">10.0</span><span class="number">.2</span><span class="number">.15</span>:<span class="number">9092</span> --topic test</span></span><br></pre></td></tr></table></figure>
+<h3 id="zookeeper">zookeeper</h3><p>首先安装zookeeper<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor"># 启动并开启端口服务</span></span><br><span class="line">[root@localhost  zookeeper-<span class="number">3.4</span><span class="number">.6</span>]<span class="preprocessor"># bin/zkServer.sh start</span></span><br><span class="line">[root@localhost  zookeeper-<span class="number">3.4</span><span class="number">.6</span>]<span class="preprocessor"># bin/zkCli.sh -server <span class="number">10.0</span><span class="number">.2</span><span class="number">.15</span>:<span class="number">2181</span></span></span><br></pre></td></tr></table></figure></p>
+<h3 id="kafka">kafka</h3><ul>
+<li><p>首先kafka安装</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor"># 后台启动</span></span><br><span class="line">[root@localhost kafka-<span class="number">0.8</span><span class="number">.1</span><span class="number">.1</span>-src]<span class="preprocessor"># nohup bin/zookeeper-server-start.sh config/zookeeper.properties &amp;</span></span><br><span class="line">[root@localhost kafka-<span class="number">0.8</span><span class="number">.1</span><span class="number">.1</span>-src]<span class="preprocessor"># nohup bin/kafka-server-start.sh config/server.properties &amp;</span></span><br><span class="line"><span class="preprocessor"># 创建主题</span></span><br><span class="line">[root@localhost kafka-<span class="number">0.8</span><span class="number">.1</span><span class="number">.1</span>-src]<span class="preprocessor"># bin/kafka-topics.sh --create --zookeeper <span class="number">10.0</span><span class="number">.2</span><span class="number">.15</span>:<span class="number">2181</span> --replication-factor <span class="number">1</span> --partitions <span class="number">1</span> --topic LJ200</span></span><br><span class="line"><span class="preprocessor">## 查看现有主题</span></span><br><span class="line">[root@localhost kafka-<span class="number">0.8</span><span class="number">.1</span><span class="number">.1</span>-src]<span class="preprocessor"># bin/kafka-topics.sh --list --zookeeper <span class="number">10.0</span><span class="number">.2</span><span class="number">.15</span>:<span class="number">2181</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生产者</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost kafka-<span class="number">0.8</span><span class="number">.1</span><span class="number">.1</span>-src]<span class="preprocessor"># bin/kafka-console-producer.sh --broker-list <span class="number">10.0</span><span class="number">.2</span><span class="number">.15</span>:<span class="number">9092</span> --topic test</span></span><br><span class="line"><span class="preprocessor"># 然后输入一些数据如hello world</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>消费者</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor"># 再开一个终端</span></span><br><span class="line">[root@localhost kafka-<span class="number">0.8</span><span class="number">.1</span><span class="number">.1</span>-src]<span class="preprocessor"># bin/kafka-console-consumer.sh --zookeeper <span class="number">10.0</span><span class="number">.2</span><span class="number">.15</span>:<span class="number">2181</span> --topic test --from-beginning</span></span><br><span class="line"><span class="preprocessor"># 自动打印出生产者的数据，从头开始打印</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>然后输入一些数据</p>
-<ul>
-<li>消费者<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost kafka-<span class="number">0.8</span><span class="number">.1</span><span class="number">.1</span>-src]<span class="preprocessor"># bin/kafka-console-consumer.sh --zookeeper <span class="number">10.0</span><span class="number">.2</span><span class="number">.15</span>:<span class="number">2181</span> --topic test --from-beginning</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>自动打印出生产者的数据，从头开始打印</p>
-<p>###zookeeper<br>首先安装zookeeper<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor"># 启动并开启端口服务</span></span><br><span class="line">bin/zkServer.sh start</span><br><span class="line">bin/zkCli.sh -server <span class="number">10.0</span><span class="number">.2</span><span class="number">.15</span>:<span class="number">2181</span></span><br></pre></td></tr></table></figure></p>
+<p>暂时进展到这里！敬请期待！</p>
 <h3 id="REFERENCE">REFERENCE</h3><p>[1]. <a href="http://www.cnblogs.com/likehua/p/3999538.html" target="_blank" rel="external">kafka入门</a><br>[2]. <a href="http://www.cnblogs.com/likehua/p/3999600.html" target="_blank" rel="external">zookeeper</a></p>
 ]]></content>
     <summary type="html">
