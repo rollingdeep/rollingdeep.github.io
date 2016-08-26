@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Maven," />
+  <meta name="keywords" content="KAFKA," />
 
 
 
@@ -53,16 +53,16 @@
 
 
 
-<meta name="description" content="在使用junit时候出现一个依赖包叫做hankcs，有两个jar包，一个是core，一个是library,创建好项目之后。提示说在所给的mirror地址下网络错误码:60000">
+<meta name="description" content="KAFKA是一种流式数据处理架构，结合生产者消费者模型。想研究能否用在音乐推荐上？">
 <meta property="og:type" content="article">
-<meta property="og:title" content="eclipse开发maven项目60000错误">
-<meta property="og:url" content="http://yoursite.com/2015/11/22/eclipse开发maven项目60000错误/index.html">
+<meta property="og:title" content="流式数据处理kafka">
+<meta property="og:url" content="http://yoursite.com/2016/08/25/流式数据处理kafka/index.html">
 <meta property="og:site_name" content="沉思">
-<meta property="og:description" content="在使用junit时候出现一个依赖包叫做hankcs，有两个jar包，一个是core，一个是library,创建好项目之后。提示说在所给的mirror地址下网络错误码:60000">
-<meta property="og:updated_time" content="2016-07-12T12:42:07.565Z">
+<meta property="og:description" content="KAFKA是一种流式数据处理架构，结合生产者消费者模型。想研究能否用在音乐推荐上？">
+<meta property="og:updated_time" content="2016-08-26T13:55:00.305Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="eclipse开发maven项目60000错误">
-<meta name="twitter:description" content="在使用junit时候出现一个依赖包叫做hankcs，有两个jar包，一个是core，一个是library,创建好项目之后。提示说在所给的mirror地址下网络错误码:60000">
+<meta name="twitter:title" content="流式数据处理kafka">
+<meta name="twitter:description" content="KAFKA是一种流式数据处理架构，结合生产者消费者模型。想研究能否用在音乐推荐上？">
 
 
 
@@ -74,7 +74,7 @@
   };
 </script>
 
-  <title> eclipse开发maven项目60000错误 | 沉思 </title>
+  <title> 流式数据处理kafka | 沉思 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -214,7 +214,7 @@
             
             
               
-                eclipse开发maven项目60000错误
+                流式数据处理kafka
               
             
           </h1>
@@ -223,8 +223,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-11-22T19:37:26+08:00" content="2015-11-22">
-              2015-11-22
+            <time itemprop="dateCreated" datetime="2016-08-25T21:56:17+08:00" content="2016-08-25">
+              2016-08-25
             </time>
           </span>
 
@@ -233,8 +233,8 @@
               &nbsp; | &nbsp; 分类于
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
+                  <a href="/categories/Interview/" itemprop="url" rel="index">
+                    <span itemprop="name">Interview</span>
                   </a>
                 </span>
 
@@ -249,8 +249,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/11/22/eclipse开发maven项目60000错误/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/22/eclipse开发maven项目60000错误/" itemprop="commentsCount"></span>
+                <a href="/2016/08/25/流式数据处理kafka/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/25/流式数据处理kafka/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -269,13 +269,38 @@
       
 
       
-        <span itemprop="articleBody"><h2 id="坚持每天写一点">坚持每天写一点</h2><h3 id="操作步骤">操作步骤</h3><ol>
-<li>首先根据错误提示去~/.m2/repository/下去找org/hamcrest/hamcrest-core/1.3</li>
-<li>删除目录下含有lastupdate结尾的jar(无效的jar)</li>
-<li>百度maven hamcrest-core-1.3.jar和hamcrest-library-1.3.jar。直接手动下载.</li>
-<li>然后直接复制到对应版本的目录下。</li>
+        <span itemprop="articleBody"><blockquote>
+<p>Kafka是一种高吞吐量的分布式发布订阅消息系统，它可以处理消费者规模的网站中的所有动作流数据。<br>我想它应该很适合按热度进行新闻推荐和网易云音乐排行，常用地模型等。最近遇到这些问题，还没解决。。。</p>
+<h4 id="CENTOS">CENTOS</h4><ul>
+<li>基本命令</li>
+</ul>
+<ol>
+<li>包管理yum install [package]<br>eg : yum install net-tools<br>eg : yum install wget</li>
+<li>下载命令wget [link]<br>eg : wget <a href="http://www.slf4j.org/dist/slf4j-1.7.6.zip" target="_blank" rel="external">http://www.slf4j.org/dist/slf4j-1.7.6.zip</a></li>
+<li>进程查找ps -ef|grep [name]</li>
+<li>进程杀死kill pid</li>
+<li>重命名/移动命令 mv a/c b:将c移动到b目录下</li>
+<li>删除文件 rm file    rm -rf folder</li>
+<li>创建软连接ln -s a b，如同windows下的快捷方式.删除软连接 rm -rf b</li>
+<li>ln a b 是建立硬链接</li>
+<li>查看全部路径pwd</li>
+<li>解压 unzip slf4j-1.7.6.zip</li>
+<li>解压 tar zcvf zzz.tar.gz</li>
 </ol>
-<p>刷新项目ok！！</p>
+</blockquote>
+<h3 id="kafka">kafka</h3><p>首先kafka安装<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor"># 后台启动</span></span><br><span class="line">[root@localhost kafka-<span class="number">0.8</span><span class="number">.1</span><span class="number">.1</span>-src]<span class="preprocessor"># nohup bin/zookeeper-server-start.sh config/zookeeper.properties &amp;</span></span><br><span class="line">[root@localhost kafka-<span class="number">0.8</span><span class="number">.1</span><span class="number">.1</span>-src]<span class="preprocessor"># nohup bin/kafka-server-start.sh config/server.properties &amp;</span></span><br><span class="line"><span class="preprocessor"># 创建主题</span></span><br><span class="line">[root@localhost kafka-<span class="number">0.8</span><span class="number">.1</span><span class="number">.1</span>-src]<span class="preprocessor"># bin/kafka-topics.sh --create --zookeeper <span class="number">10.0</span><span class="number">.2</span><span class="number">.15</span>:<span class="number">2181</span> --replication-factor <span class="number">1</span> --partitions <span class="number">1</span> --topic LJ200</span></span><br><span class="line"><span class="preprocessor">## 查看现有主题</span></span><br><span class="line">[root@localhost kafka-<span class="number">0.8</span><span class="number">.1</span><span class="number">.1</span>-src]<span class="preprocessor"># bin/kafka-topics.sh --list --zookeeper <span class="number">10.0</span><span class="number">.2</span><span class="number">.15</span>:<span class="number">2181</span></span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>生产者<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost kafka-<span class="number">0.8</span><span class="number">.1</span><span class="number">.1</span>-src]<span class="preprocessor"># bin/kafka-console-producer.sh --broker-list <span class="number">10.0</span><span class="number">.2</span><span class="number">.15</span>:<span class="number">9092</span> --topic test</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>然后输入一些数据</p>
+<ul>
+<li>消费者<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost kafka-<span class="number">0.8</span><span class="number">.1</span><span class="number">.1</span>-src]<span class="preprocessor"># bin/kafka-console-consumer.sh --zookeeper <span class="number">10.0</span><span class="number">.2</span><span class="number">.15</span>:<span class="number">2181</span> --topic test --from-beginning</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>自动打印出生产者的数据，从头开始打印</p>
+<p>###zookeeper<br>首先安装zookeeper<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor"># 启动并开启端口服务</span></span><br><span class="line">bin/zkServer.sh start</span><br><span class="line">bin/zkCli.sh -server <span class="number">10.0</span><span class="number">.2</span><span class="number">.15</span>:<span class="number">2181</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="REFERENCE">REFERENCE</h3><p>[1]. <a href="http://www.cnblogs.com/likehua/p/3999538.html" target="_blank" rel="external">kafka入门</a><br>[2]. <a href="http://www.cnblogs.com/likehua/p/3999600.html" target="_blank" rel="external">zookeeper</a></p>
 </span>
       
     </div>
@@ -284,7 +309,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Maven/" rel="tag">#Maven</a>
+            <a href="/tags/KAFKA/" rel="tag">#KAFKA</a>
           
         </div>
       
@@ -293,17 +318,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/11/21/Genymotion的安装/" rel="next" title="GENYMOTION的安装">
-                <i class="fa fa-chevron-left"></i> GENYMOTION的安装
+              <a href="/2016/07/25/Thread的方法介绍和使用场景/" rel="next" title="Thread的方法介绍和使用场景">
+                <i class="fa fa-chevron-left"></i> Thread的方法介绍和使用场景
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/11/23/被世界遗忘的角落/" rel="prev" title="被世界遗忘的角落">
-                被世界遗忘的角落 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -330,8 +351,8 @@
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/11/22/eclipse开发maven项目60000错误/"
-           data-title="eclipse开发maven项目60000错误" data-url="http://yoursite.com/2015/11/22/eclipse开发maven项目60000错误/">
+      <div class="ds-thread" data-thread-key="2016/08/25/流式数据处理kafka/"
+           data-title="流式数据处理kafka" data-url="http://yoursite.com/2016/08/25/流式数据处理kafka/">
       </div>
     
   </div>
@@ -453,7 +474,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#坚持每天写一点"><span class="nav-number">1.</span> <span class="nav-text">坚持每天写一点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#操作步骤"><span class="nav-number">1.1.</span> <span class="nav-text">操作步骤</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#CENTOS"><span class="nav-number">1.</span> <span class="nav-text">CENTOS</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kafka"><span class="nav-number"></span> <span class="nav-text">kafka</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#REFERENCE"><span class="nav-number"></span> <span class="nav-text">REFERENCE</span></a></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

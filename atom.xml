@@ -4,7 +4,7 @@
   <subtitle><![CDATA[万般皆下品，惟有读书高]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2016-07-25T08:17:26.711Z</updated>
+  <updated>2016-08-26T13:55:00.305Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -13,6 +13,56 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[流式数据处理kafka]]></title>
+    <link href="http://yoursite.com/2016/08/25/%E6%B5%81%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86kafka/"/>
+    <id>http://yoursite.com/2016/08/25/流式数据处理kafka/</id>
+    <published>2016-08-25T13:56:17.000Z</published>
+    <updated>2016-08-26T13:55:00.305Z</updated>
+    <content type="html"><![CDATA[<blockquote>
+<p>Kafka是一种高吞吐量的分布式发布订阅消息系统，它可以处理消费者规模的网站中的所有动作流数据。<br>我想它应该很适合按热度进行新闻推荐和网易云音乐排行，常用地模型等。最近遇到这些问题，还没解决。。。</p>
+<h4 id="CENTOS">CENTOS</h4><ul>
+<li>基本命令</li>
+</ul>
+<ol>
+<li>包管理yum install [package]<br>eg : yum install net-tools<br>eg : yum install wget</li>
+<li>下载命令wget [link]<br>eg : wget <a href="http://www.slf4j.org/dist/slf4j-1.7.6.zip" target="_blank" rel="external">http://www.slf4j.org/dist/slf4j-1.7.6.zip</a></li>
+<li>进程查找ps -ef|grep [name]</li>
+<li>进程杀死kill pid</li>
+<li>重命名/移动命令 mv a/c b:将c移动到b目录下</li>
+<li>删除文件 rm file    rm -rf folder</li>
+<li>创建软连接ln -s a b，如同windows下的快捷方式.删除软连接 rm -rf b</li>
+<li>ln a b 是建立硬链接</li>
+<li>查看全部路径pwd</li>
+<li>解压 unzip slf4j-1.7.6.zip</li>
+<li>解压 tar zcvf zzz.tar.gz</li>
+</ol>
+</blockquote>
+<h3 id="kafka">kafka</h3><p>首先kafka安装<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor"># 后台启动</span></span><br><span class="line">[root@localhost kafka-<span class="number">0.8</span><span class="number">.1</span><span class="number">.1</span>-src]<span class="preprocessor"># nohup bin/zookeeper-server-start.sh config/zookeeper.properties &amp;</span></span><br><span class="line">[root@localhost kafka-<span class="number">0.8</span><span class="number">.1</span><span class="number">.1</span>-src]<span class="preprocessor"># nohup bin/kafka-server-start.sh config/server.properties &amp;</span></span><br><span class="line"><span class="preprocessor"># 创建主题</span></span><br><span class="line">[root@localhost kafka-<span class="number">0.8</span><span class="number">.1</span><span class="number">.1</span>-src]<span class="preprocessor"># bin/kafka-topics.sh --create --zookeeper <span class="number">10.0</span><span class="number">.2</span><span class="number">.15</span>:<span class="number">2181</span> --replication-factor <span class="number">1</span> --partitions <span class="number">1</span> --topic LJ200</span></span><br><span class="line"><span class="preprocessor">## 查看现有主题</span></span><br><span class="line">[root@localhost kafka-<span class="number">0.8</span><span class="number">.1</span><span class="number">.1</span>-src]<span class="preprocessor"># bin/kafka-topics.sh --list --zookeeper <span class="number">10.0</span><span class="number">.2</span><span class="number">.15</span>:<span class="number">2181</span></span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>生产者<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost kafka-<span class="number">0.8</span><span class="number">.1</span><span class="number">.1</span>-src]<span class="preprocessor"># bin/kafka-console-producer.sh --broker-list <span class="number">10.0</span><span class="number">.2</span><span class="number">.15</span>:<span class="number">9092</span> --topic test</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>然后输入一些数据</p>
+<ul>
+<li>消费者<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost kafka-<span class="number">0.8</span><span class="number">.1</span><span class="number">.1</span>-src]<span class="preprocessor"># bin/kafka-console-consumer.sh --zookeeper <span class="number">10.0</span><span class="number">.2</span><span class="number">.15</span>:<span class="number">2181</span> --topic test --from-beginning</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>自动打印出生产者的数据，从头开始打印</p>
+<p>###zookeeper<br>首先安装zookeeper<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor"># 启动并开启端口服务</span></span><br><span class="line">bin/zkServer.sh start</span><br><span class="line">bin/zkCli.sh -server <span class="number">10.0</span><span class="number">.2</span><span class="number">.15</span>:<span class="number">2181</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="REFERENCE">REFERENCE</h3><p>[1]. <a href="http://www.cnblogs.com/likehua/p/3999538.html" target="_blank" rel="external">kafka入门</a><br>[2]. <a href="http://www.cnblogs.com/likehua/p/3999600.html" target="_blank" rel="external">zookeeper</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[KAFKA是一种流式数据处理架构，结合生产者消费者模型。想研究能否用在音乐推荐上？]]>
+    
+    </summary>
+    
+      <category term="KAFKA" scheme="http://yoursite.com/tags/KAFKA/"/>
+    
+      <category term="Interview" scheme="http://yoursite.com/categories/Interview/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Thread的方法介绍和使用场景]]></title>
@@ -86,9 +136,9 @@
     <link href="http://yoursite.com/2016/07/21/python-matplotlib%E7%94%BB%E5%9B%BE/"/>
     <id>http://yoursite.com/2016/07/21/python-matplotlib画图/</id>
     <published>2016-07-21T01:12:11.000Z</published>
-    <updated>2016-07-25T12:51:08.658Z</updated>
-    <content type="html"><![CDATA[<h3 id="2D折线图绘制">2D折线图绘制</h3><p>主要模块pyplot<br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取数据</span></span><br><span class="line"><span class="built_in">file</span> = <span class="built_in">open</span>(<span class="string">"./dataset.txt"</span>)</span><br><span class="line">dataSet = []</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">while</span> True:</span><br><span class="line">        <span class="built_in">line</span> = <span class="built_in">file</span>.readline()</span><br><span class="line">        dataSet.append(<span class="built_in">line</span>)</span><br><span class="line">        <span class="keyword">if</span> <span class="operator">not</span> <span class="built_in">line</span>:</span><br><span class="line">            break</span><br><span class="line">        pass</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    <span class="built_in">file</span>.<span class="built_in">close</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment"># x,y 必须是相同的维度</span></span><br><span class="line"><span class="comment"># y =  np.arange(0, 12000, 500) # 步长500</span></span><br><span class="line">x, y = dataSet <span class="comment"># 这里用你自己的</span></span><br><span class="line"><span class="comment"># x = y =  np.arange(0, 1, 0.1) # 示例数据</span></span><br><span class="line"></span><br><span class="line">plt.figure()</span><br><span class="line"><span class="comment"># color [r：red g：green b:blue m c]   mark [s = square '^' '*' 'o' 'x'] </span></span><br><span class="line">plt.plot(y,x,<span class="string">'rs'</span>,label = str)</span><br><span class="line">plt.plot(y,x,<span class="string">'r'</span>)</span><br><span class="line">plt.xlabel(<span class="string">"Number of features extracted"</span>)</span><br><span class="line">plt.ylabel(<span class="string">"Accuracy(F1)"</span>)</span><br><span class="line">plt.grid() <span class="comment"># 添加网格</span></span><br><span class="line">plt.ylim(<span class="number">0</span>, <span class="number">1</span>) <span class="comment"># y轴 范围限制</span></span><br><span class="line"></span><br><span class="line">plt.legend()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></p>
-<h3 id="3D图绘制">3D图绘制</h3><p>主要模块 axes3d<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import mpl_toolkits.mplot3d.axes3d as p3</span><br><span class="line"></span><br><span class="line">fig_num = <span class="number">1</span></span><br><span class="line">fig = plt.figure(fig_num)</span><br><span class="line">ax = p3.Axes3D(fig)</span><br><span class="line"><span class="preprocessor"># x,y,z = dataset</span></span><br><span class="line">color = <span class="string">'r'</span></span><br><span class="line">mark = <span class="string">'*'</span></span><br><span class="line"><span class="preprocessor"># <span class="number">3</span>D折线图</span></span><br><span class="line">ax.scatter3D(x, y, z ,c = color, marker = mark)</span><br><span class="line"><span class="preprocessor"># <span class="number">3</span>D曲面图</span></span><br><span class="line">ax.plot_surface(x1, y, z ,rstride=<span class="number">1</span>, cstride=<span class="number">1</span>, cmap=plt.cm.hot)</span><br><span class="line"></span><br><span class="line">plt.legend()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></p>
+    <updated>2016-07-26T01:50:21.978Z</updated>
+    <content type="html"><![CDATA[<h3 id="2D折线图绘制">2D折线图绘制</h3><p>主要模块pyplot<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取数据</span></span><br><span class="line">file = open(<span class="string">"./dataset.txt"</span>)</span><br><span class="line">dataSet = []</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        line = file.readline()</span><br><span class="line">        dataSet.append(line)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> line:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    file.close()</span><br><span class="line"></span><br><span class="line"><span class="comment"># x,y 必须是相同的维度</span></span><br><span class="line"><span class="comment"># y =  np.arange(0, 12000, 500) # 步长500</span></span><br><span class="line">x, y = dataSet <span class="comment"># 这里用你自己的</span></span><br><span class="line"><span class="comment"># x = y =  np.arange(0, 1, 0.1) # 示例数据</span></span><br><span class="line"></span><br><span class="line">plt.figure()</span><br><span class="line"><span class="comment"># color [r：red g：green b:blue m c]   mark [s = square '^' '*' 'o' 'x']</span></span><br><span class="line">plt.plot(y,x,<span class="string">'rs'</span>,label = str)</span><br><span class="line">plt.plot(y,x,<span class="string">'r'</span>)</span><br><span class="line">plt.xlabel(<span class="string">"Number of features extracted"</span>)</span><br><span class="line">plt.ylabel(<span class="string">"Accuracy(F1)"</span>)</span><br><span class="line">plt.grid() <span class="comment"># 添加网格</span></span><br><span class="line">plt.ylim(<span class="number">0</span>, <span class="number">1</span>) <span class="comment"># y轴 范围限制</span></span><br><span class="line"></span><br><span class="line">plt.legend()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></p>
+<h3 id="3D图绘制">3D图绘制</h3><p>主要模块 axes3d<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> mpl_toolkits.mplot3d.axes3d <span class="keyword">as</span> p3</span><br><span class="line"></span><br><span class="line">fig_num = <span class="number">1</span></span><br><span class="line">fig = plt.figure(fig_num)</span><br><span class="line">ax = p3.Axes3D(fig)</span><br><span class="line"><span class="comment"># x,y,z = dataset</span></span><br><span class="line">color = <span class="string">'r'</span></span><br><span class="line">mark = <span class="string">'*'</span></span><br><span class="line"><span class="comment"># 3D折线图</span></span><br><span class="line">ax.scatter3D(x, y, z ,c = color, marker = mark)</span><br><span class="line"><span class="comment"># 3D曲面图</span></span><br><span class="line">ax.plot_surface(x1, y, z ,rstride=<span class="number">1</span>, cstride=<span class="number">1</span>, cmap=plt.cm.hot)</span><br><span class="line"></span><br><span class="line">plt.legend()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></p>
 <h3 id="Reference">Reference</h3><p>[1]. <a href="http://matplotlib.org/examples/index.html" target="_blank" rel="external">matplotlib examples</a></p>
 ]]></content>
     <summary type="html">
@@ -756,7 +806,7 @@
     <link href="http://yoursite.com/2016/03/01/%E5%8C%BB%E7%96%97%E5%81%A5%E5%BA%B7%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9FAPP/"/>
     <id>http://yoursite.com/2016/03/01/医疗健康管理系统APP/</id>
     <published>2016-03-01T08:43:41.000Z</published>
-    <updated>2016-05-31T12:03:19.193Z</updated>
+    <updated>2016-07-26T01:50:44.980Z</updated>
     <content type="html"><![CDATA[<h3 id="基本介绍">基本介绍</h3><p>私人健康小助手，它需要为用户提供友好的操作交互界面，方面用户的使用，并给出实时的合适的评测和建议，提供附近医生的地点并聊天。我们在客户的功能需求主要包含一下内容：</p>
 <ul>
 <li>身体信息采集<br>用户能够提交自己的身体参数，如血糖，血压，心跳等8个参数，心跳可以通过手机后置摄像头测得，其他参数需要手动输入。</li>
@@ -875,46 +925,6 @@
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="AsyncTask" scheme="http://yoursite.com/tags/AsyncTask/"/>
-    
-      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Android之SharedPreferences存储数据]]></title>
-    <link href="http://yoursite.com/2015/12/20/Android%E4%B9%8BSharedPreferences%E5%AD%98%E5%82%A8%E6%95%B0%E6%8D%AE/"/>
-    <id>http://yoursite.com/2015/12/20/Android之SharedPreferences存储数据/</id>
-    <published>2015-12-20T10:57:03.000Z</published>
-    <updated>2015-12-23T07:10:23.959Z</updated>
-    <content type="html"><![CDATA[<blockquote>
-<p>SharedPreferences一般是用于系统设置数据的存储，在项目中我用在了Fragment返回前一个Fragment，保证前一个Fragment数据不丢失！</p>
-</blockquote>
-<h3 id="SharedPreferences基本存取">SharedPreferences基本存取</h3><h4 id="存数据">存数据</h4><p>SharedPreferences.Editor  一个类似map的东西，生成键值对，存入xml中。</p>
-<ul>
-<li>我这个是写在Fragment中，所以要getActivity();</li>
-<li>你也可以写个静态方法在MainActivity中。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line"> <span class="comment">/**</span><br><span class="line">  * 存入SharedPreferences</span><br><span class="line">  */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">inStore</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//实例化SharedPreferences对象（第一步） </span></span><br><span class="line">    SharedPreferences mySharedPreferences= getActivity().getSharedPreferences(<span class="string">"bodyinfo"</span>, </span><br><span class="line">    Activity.MODE_PRIVATE); </span><br><span class="line">    <span class="comment">//实例化SharedPreferences.Editor对象（第二步） </span></span><br><span class="line">    SharedPreferences.Editor editor = mySharedPreferences.edit(); </span><br><span class="line">    <span class="comment">//用putString的方法保存数据 </span></span><br><span class="line">    editor.putString(<span class="string">"Age"</span>, dis_tv1.getText().toString());</span><br><span class="line">    editor.putString(<span class="string">"Height"</span>, dis_tv2.getText().toString());</span><br><span class="line">    editor.putString(<span class="string">"Weight"</span>, dis_tv3.getText().toString());    </span><br><span class="line">    <span class="comment">//提交当前数据 </span></span><br><span class="line">    editor.commit(); </span><br><span class="line">    <span class="comment">//使用toast信息提示框提示成功写入数据 </span></span><br><span class="line">    Toast.makeText(getActivity(), <span class="string">"数据成功写入SharedPreferences！"</span> , Toast.LENGTH_LONG).show();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="取数据">取数据</h4><p>写入控件中</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line">     * 取SharedPreferences数据</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">outStore</span><span class="params">()</span></span>&#123;</span><br><span class="line">        SharedPreferences sharedPreferences= getActivity().getSharedPreferences(<span class="string">"bodyinfo"</span>, </span><br><span class="line">                Activity.MODE_PRIVATE); </span><br><span class="line">                <span class="comment">// 使用getString方法获得value，注意第2个参数是value的默认值 </span></span><br><span class="line">                dis_tv1.setText(sharedPreferences.getString(<span class="string">"Age"</span>, <span class="string">""</span>));</span><br><span class="line">                dis_tv2.setText(sharedPreferences.getString(<span class="string">"Height"</span>, <span class="string">""</span>));</span><br><span class="line">                dis_tv3.setText(sharedPreferences.getString(<span class="string">"Weight"</span>, <span class="string">""</span>));        </span><br><span class="line">                <span class="comment">//使用toast信息提示框显示信息 </span></span><br><span class="line">                Toast.makeText(getActivity(), <span class="string">"读取数据如下成功"</span>, Toast.LENGTH_LONG).show();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Fragment跳转Fragment数据不丢失">Fragment跳转Fragment数据不丢失</h3><ul>
-<li>跳转前A将数据存储到SharedPreferences中</li>
-<li>跳转B后返回时候加载<br>  通过A设置全局变量mStack，在每次跳转时候，mStack++;<br>  当然你会问mStack在transaction.replace()方法时候移除了，在加载又是初始值。看下一条</li>
-<li>为了保存Fragment中的变量，一般会重写onSaveInstanceState(Bundle outState)和 onCreate(Bundle savedInstanceState) 。一个存一个取</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Override</span></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSaveInstanceState</span><span class="params">(Bundle outState)</span> </span>&#123;</span><br><span class="line">         <span class="keyword">super</span>.onSaveInstanceState(outState);</span><br><span class="line">         outState.putInt(<span class="string">"level"</span>, mStackLevel);</span><br><span class="line">     &#125;</span><br><span class="line"> <span class="annotation">@Override</span></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">         <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line"></span><br><span class="line">         <span class="keyword">if</span> (savedInstanceState != <span class="keyword">null</span>) &#123;</span><br><span class="line">             mStackLevel = savedInstanceState.getInt(<span class="string">"level"</span>);</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>最后，在onCreateView重新加载视图<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> <span class="annotation">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> View <span class="title">onCreateView</span><span class="params">(LayoutInflater inflater, ViewGroup container,</span><br><span class="line">            Bundle savedInstanceState)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(mStackLevel != <span class="number">0</span>)&#123;</span><br><span class="line">                    outStore();</span><br><span class="line">        &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-    <summary type="html">
-    <![CDATA[SharedPreferences一般是用于系统设置数据的存储，在项目中我用在了Fragment返回前一个Fragment，保证前一个Fragment数据不丢失！]]>
-    
-    </summary>
-    
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
-      <category term="SharedPreferences" scheme="http://yoursite.com/tags/SharedPreferences/"/>
     
       <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
     
