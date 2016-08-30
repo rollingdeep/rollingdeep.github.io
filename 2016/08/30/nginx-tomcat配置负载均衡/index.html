@@ -1,0 +1,742 @@
+<!doctype html>
+<html class="theme-next   use-motion ">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="NGINX,TOMCAT," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="沉思" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+
+
+
+
+
+
+<meta name="description" content="NGINX是一个反向代理工具，可以代理很多http请求给目的服务器。同时也可以实现负载均衡。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NGINX + TOMCAT配置负载均衡">
+<meta property="og:url" content="http://yoursite.com/2016/08/30/nginx-tomcat配置负载均衡/index.html">
+<meta property="og:site_name" content="沉思">
+<meta property="og:description" content="NGINX是一个反向代理工具，可以代理很多http请求给目的服务器。同时也可以实现负载均衡。">
+<meta property="og:updated_time" content="2016-08-30T11:37:23.328Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NGINX + TOMCAT配置负载均衡">
+<meta name="twitter:description" content="NGINX是一个反向代理工具，可以代理很多http请求给目的服务器。同时也可以实现负载均衡。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post',
+    motion: true
+  };
+</script>
+
+  <title> NGINX + TOMCAT配置负载均衡 | 沉思 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">沉思</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">万般皆下品，惟有读书高</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-question-circle fa-fw"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                NGINX + TOMCAT配置负载均衡
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-08-30T18:30:02+08:00" content="2016-08-30">
+              2016-08-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Interview/" itemprop="url" rel="index">
+                    <span itemprop="name">Interview</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/30/nginx-tomcat配置负载均衡/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/30/nginx-tomcat配置负载均衡/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><blockquote>
+<p>Nginx是一款轻量级的Web 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器，并在一个BSD-like 协议下发行。由俄罗斯的程序设计师Igor Sysoev所开发，供俄国大型的入口网站及搜索引擎Rambler（俄文：Рамблер）使用。其特点是占有内存少，并发能力强，事实上nginx的并发能力确实在同类型的网页服务器中表现较好，中国大陆使用nginx网站用户有：百度、京东、新浪、网易、腾讯、淘宝等。</p>
+</blockquote>
+<h3 id="CENTOS准备工作">CENTOS准备工作</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">yum</span> -y install gcc automake autoconf libtool make gcc-c++</span><br><span class="line"></span><br><span class="line"><span class="comment"># install pcre</span></span><br><span class="line">[root<span class="variable">@localhost</span> ]<span class="comment"># cd /usr/local/</span></span><br><span class="line">[root<span class="variable">@localhost</span> ]<span class="comment"># wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.21.tar.gz</span></span><br><span class="line">[root<span class="variable">@localhost</span> ]<span class="comment"># tar -zxvf pcre-8.21.tar.gz</span></span><br><span class="line">[root<span class="variable">@localhost</span> ]<span class="comment"># cd pcre-8.21</span></span><br><span class="line">[root<span class="variable">@localhost</span> ]<span class="comment"># ./configure</span></span><br><span class="line">[root<span class="variable">@localhost</span> ]<span class="comment"># make</span></span><br><span class="line">[root<span class="variable">@localhost</span> ]<span class="comment"># make install</span></span><br></pre></td></tr></table></figure>
+<h3 id="NGINX安装和配置">NGINX安装和配置</h3><ul>
+<li>安装nginx<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor"># install nginx </span></span><br><span class="line">[root<span class="constant">@localhost</span> ]<span class="preprocessor"># cd /</span></span><br><span class="line">[root<span class="constant">@localhost</span> ]<span class="preprocessor"># mkdir soft</span></span><br><span class="line">[root<span class="constant">@localhost</span> ]<span class="preprocessor"># cd soft</span></span><br><span class="line">[root<span class="constant">@localhost</span> ]<span class="preprocessor"># wget http://nginx.org/download/nginx-1.10.1.tar.gz</span></span><br><span class="line">[root<span class="constant">@localhost</span> ]<span class="preprocessor"># tar -xzvf nginx-1.10.1.tar.gz</span></span><br><span class="line">[root<span class="constant">@localhost</span> ]<span class="preprocessor"># mv nginx-1.10.1 /usr/local </span></span><br><span class="line">[root<span class="constant">@localhost</span> ]<span class="preprocessor"># cd /usr/local/nginx-1.10.1</span></span><br><span class="line">[root<span class="constant">@localhost</span> ]<span class="preprocessor"># ./configure --prefix=/usr/local/nginx --with-http_ssl_module --with-http_gzip_static_module --with-http_stub_status_module</span></span><br><span class="line">[root<span class="constant">@localhost</span> ]<span class="preprocessor"># make &amp;&amp; make install</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>–prefix=/usr/local/nginx 代表mginx安装目录</p>
+<ul>
+<li><p>开放端口<br>由于CENTOS默认开启防火墙，我们需要手动开放端口。</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="property">@localhost</span> ]<span class="comment"># /sbin/iptables -I INPUT -p tcp --dport 80 -j ACCEPT</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置文件</p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="constant">@localhost</span> ]<span class="preprocessor"># cd nginx/</span></span><br><span class="line">[root<span class="constant">@localhost</span> ]<span class="preprocessor"># vim conf/nginx.conf</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">user</span>  root paul;                                                                                        </span><br><span class="line"><span class="title">worker_processes</span>  <span class="number">1</span>;                                                                                    </span><br><span class="line">                                                                                                        </span><br><span class="line"><span class="comment">#error_log  logs/error.log;                                                                             </span></span><br><span class="line"><span class="comment">#error_log  logs/error.log  notice;                                                                     </span></span><br><span class="line"><span class="comment">#error_log  logs/error.log  info;                                                                       </span></span><br><span class="line">                                                                                                        </span><br><span class="line"><span class="comment">#pid        logs/nginx.pid;                                                                             </span></span><br><span class="line">                                                                                                        </span><br><span class="line">                                                                                                        </span><br><span class="line"><span class="title">events</span> &#123;                                                                                                </span><br><span class="line">    <span class="title">worker_connections</span>  <span class="number">1024</span>;                                                                           </span><br><span class="line">&#125;                                                                                                       </span><br><span class="line">                                                                                                        </span><br><span class="line">                                                                                                        </span><br><span class="line"><span class="title">http</span> &#123;                                                                                                  </span><br><span class="line">    <span class="title">include</span>       mime.types;                                                                           </span><br><span class="line">    <span class="title">default_type</span>  application/octet-stream;                                                             </span><br><span class="line">                                                                                                        </span><br><span class="line">    <span class="comment">#log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '                          </span></span><br><span class="line">    <span class="comment">#                  '$status $body_bytes_sent "$http_referer" '                                      </span></span><br><span class="line">    <span class="comment">#                  '"$http_user_agent" "$http_x_forwarded_for"';                                    </span></span><br><span class="line">                                                                                                        </span><br><span class="line">    <span class="comment">#access_log  logs/access.log  main;                                                                 </span></span><br><span class="line">                                                                                                        </span><br><span class="line">    <span class="title">sendfile</span>        <span class="built_in">on</span>;                                                                                 </span><br><span class="line">    <span class="comment">#tcp_nopush     on;                                                                                 </span></span><br><span class="line">                                                                                                        </span><br><span class="line">    <span class="comment">#keepalive_timeout  0;                                                                              </span></span><br><span class="line">    <span class="title">keepalive_timeout</span>  <span class="number">65</span>;                                                                              </span><br><span class="line">                                                                                                        </span><br><span class="line">    <span class="title">gzip</span>  <span class="built_in">on</span>;                                                                                           </span><br><span class="line">    <span class="comment">#   upstream tomcatCluster&#123;                                                                         </span></span><br><span class="line">    <span class="comment">#   server 127.0.0.1:8080 weight=1;                                                                 </span></span><br><span class="line">    <span class="comment">#&#125;                                                                                                  </span></span><br><span class="line">                                                                                                        </span><br><span class="line">    <span class="title">upstream</span> tomcatCluster &#123; <span class="comment"># (1).随便命名   </span></span><br><span class="line">        <span class="comment"># 可设置多个tomcat服务器  转发权重                                                               </span></span><br><span class="line">        <span class="title">server</span>          <span class="number">127.0.0.1:8080</span>  weight=<span class="number">1</span>;      </span><br><span class="line">        <span class="comment"># server          127.0.0.1:8081  weight=2;                                                 </span></span><br><span class="line">    &#125;                                                                                                   </span><br><span class="line">                                                                                                        </span><br><span class="line">    <span class="title">server</span> &#123;                                                                                            </span><br><span class="line">        <span class="title">listen</span>       <span class="number">80</span>;                    </span><br><span class="line">    <span class="comment"># (3)localhost可以不改                                                                               </span></span><br><span class="line">        <span class="title">server_name</span>  localhost;                                                                         </span><br><span class="line">                                                                                                        </span><br><span class="line">        <span class="comment">#charset koi8-r;                                                                                </span></span><br><span class="line">                                                                                                        </span><br><span class="line">        <span class="comment">#access_log  logs/host.access.log  main;                                                        </span></span><br><span class="line">                                                                                                        </span><br><span class="line">        <span class="comment">#location / &#123;                                                                                   </span></span><br><span class="line">        <span class="comment">#    root   html;                                                                               </span></span><br><span class="line">        <span class="comment">#    index  index.html index.htm;                                                               </span></span><br><span class="line">        <span class="comment">#&#125;                                                                                              </span></span><br><span class="line">        <span class="title">location</span> / &#123;     </span><br><span class="line">    <span class="comment">#(2)对于上面的(1)处的名字                                                                           </span></span><br><span class="line">                <span class="title">proxy_pass</span>       <span class="url">http://tomcatCluster</span>;                                                  </span><br><span class="line">                <span class="title">proxy_set_header</span> Host      <span class="variable">$host</span>;                                                       </span><br><span class="line">                <span class="title">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;                                                </span><br><span class="line">                <span class="title">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;                            </span><br><span class="line">                <span class="title">proxy_redirect</span> default ;                                                                </span><br><span class="line">                <span class="title">proxy_redirect</span>  default;                                                                </span><br><span class="line">        &#125;                                                                                               </span><br><span class="line">        <span class="comment">#error_page  404              /404.html;                                                        </span></span><br><span class="line">                                                                                                        </span><br><span class="line">        <span class="comment">#redirect server error pages to the static page /50x.html                                       </span></span><br><span class="line">        <span class="title">error_page</span>   <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span>  /50x.html;                                                        </span><br><span class="line">        <span class="title">location</span> = /50x.html &#123;                                                                          </span><br><span class="line">            <span class="title">root</span>   html;                                                                                </span><br><span class="line">        &#125;                                                                                               </span><br><span class="line">                                                                                                        </span><br><span class="line">        <span class="title">location</span> <span class="regexp">~ .(jsp|jspx|do)?$</span> &#123;                                                                   </span><br><span class="line">                <span class="title">proxy_set_header</span> Host <span class="variable">$host</span>;                                                            </span><br><span class="line">                <span class="title">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;                                                </span><br><span class="line">                <span class="title">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;                            </span><br><span class="line">                <span class="title">proxy_pass</span> <span class="url">http://tomcatCluster</span>;                                                        </span><br><span class="line">        &#125;                                                                                               </span><br><span class="line">                                                                                                        </span><br><span class="line">        <span class="title">location</span> <span class="regexp">~ .*.(htm|html|gif|jpg|jpeg|png|bmp|swf|ioc|rar|zip|txt|flv|mid|doc|ppt|pdf|xls|mp3|wma</span></span><br><span class="line">        &#123;  <span class="title">expires</span> <span class="number">15d</span>; &#125;                                                                               </span><br><span class="line">                                                                                                        </span><br><span class="line">        <span class="title">location</span> <span class="regexp">~ .*.(js|css)?$</span>                                                                        </span><br><span class="line">            &#123; <span class="title">expires</span> <span class="number">1h</span>; &#125;                                                                             </span><br><span class="line">                                                                                                        </span><br><span class="line">        &#125;                                                                                               </span><br><span class="line">        <span class="comment"># proxy the PHP scripts to Apache listening on 127.0.0.1:80                                     </span></span><br><span class="line">        <span class="comment">#                                                                                               </span></span><br><span class="line">        <span class="comment">#location ~ \.php$ &#123;                                                                            </span></span><br><span class="line">        <span class="comment">#    proxy_pass   http://127.0.0.1;                                                             </span></span><br><span class="line">        <span class="comment">#&#125;                                                                                              </span></span><br><span class="line">                                                                                                        </span><br><span class="line">        <span class="comment"># pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000                            </span></span><br><span class="line">        <span class="comment">#                                                                                               </span></span><br><span class="line">        <span class="comment">#location ~ \.php$ &#123;                                                                            </span></span><br><span class="line">        <span class="comment">#    root           html;                                                                       </span></span><br><span class="line">        <span class="comment">#    fastcgi_pass   127.0.0.1:9000;                                                             </span></span><br><span class="line">        <span class="comment">#    fastcgi_index  index.php;                                                                  </span></span><br><span class="line">        <span class="comment">#    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;                              </span></span><br><span class="line">        <span class="comment">#    include        fastcgi_params;                                                             </span></span><br><span class="line">        <span class="comment">#&#125;                                                                                              </span></span><br><span class="line">                                                                                                        </span><br><span class="line">        <span class="comment"># deny access to .htaccess files, if Apache's document root                                     </span></span><br><span class="line">        <span class="comment"># concurs with nginx's one                                                                      </span></span><br><span class="line">        <span class="comment">#                                                                                               </span></span><br><span class="line">        <span class="comment">#location ~ /\.ht &#123;                                                                             </span></span><br><span class="line">        <span class="comment">#    deny  all;                                                                                 </span></span><br><span class="line">        <span class="comment">#&#125;                                                                                              </span></span><br><span class="line">    &#125;                                                                                                   </span><br><span class="line">                                                                                                        </span><br><span class="line">                                                                                                        </span><br><span class="line">    <span class="comment"># another virtual host using mix of IP-, name-, and port-based configuration                        </span></span><br><span class="line">    <span class="comment">#                                                                                                   </span></span><br><span class="line">    <span class="comment">#server &#123;                                                                                           </span></span><br><span class="line">    <span class="comment">#    listen       8000;                                                                             </span></span><br><span class="line">    <span class="comment">#    listen       somename:8080;                                                                    </span></span><br><span class="line">    <span class="comment">#    server_name  somename  alias  another.alias;                                                   </span></span><br><span class="line">                                                                                                        </span><br><span class="line">    <span class="comment">#    location / &#123;                                                                                   </span></span><br><span class="line">    <span class="comment">#        root   html;                                                                               </span></span><br><span class="line">    <span class="comment">#        index  index.html index.htm;                                                               </span></span><br><span class="line">    <span class="comment">#    &#125;                                                                                              </span></span><br><span class="line">    <span class="comment">#&#125;                                                                                                  </span></span><br><span class="line">                                                                                                        </span><br><span class="line">                                                                                                        </span><br><span class="line">    <span class="comment"># HTTPS server                                                                                      </span></span><br><span class="line">    <span class="comment">#                                                                                                   </span></span><br><span class="line">    <span class="comment">#server &#123;                                                                                           </span></span><br><span class="line">    <span class="comment">#    listen       443 ssl;                                                                          </span></span><br><span class="line">    <span class="comment">#    server_name  localhost;                                                                        </span></span><br><span class="line">                                                                                                        </span><br><span class="line">    <span class="comment">#    ssl_certificate      cert.pem;                                                                 </span></span><br><span class="line">    <span class="comment">#    ssl_certificate_key  cert.key;                                                                 </span></span><br><span class="line">                                                                                                        </span><br><span class="line">    <span class="comment">#    ssl_session_cache    shared:SSL:1m;                                                            </span></span><br><span class="line">    <span class="comment">#    ssl_session_timeout  5m;                                                                       </span></span><br><span class="line">                                                                                                        </span><br><span class="line">    <span class="comment">#    ssl_ciphers  HIGH:!aNULL:!MD5;                                                                 </span></span><br><span class="line">    <span class="comment">#    ssl_prefer_server_ciphers  on;                                                                 </span></span><br><span class="line">                                                                                                        </span><br><span class="line">    <span class="comment">#    location / &#123;                                                                                   </span></span><br><span class="line">    <span class="comment">#        root   html;                                                                               </span></span><br><span class="line">    <span class="comment">#        index  index.html index.htm;                                                               </span></span><br><span class="line">    <span class="comment">#    &#125;                                                                                              </span></span><br><span class="line">    <span class="comment">#&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="TOMCAT">TOMCAT</h3><ul>
+<li><p>安装tomcat</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor"># install tomcat</span></span><br><span class="line">[root@localhost ]<span class="preprocessor"># cd /soft</span></span><br><span class="line">[root@localhost ]<span class="preprocessor"># wget http:<span class="comment">//mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-7/v7.0.70/bin/apache-[root@localhost ]# tomcat-7.0.70.tar.gz</span></span></span><br><span class="line">[root@localhost ]<span class="preprocessor"># tar xzvf apache-tomcat-<span class="number">6.0</span><span class="number">.41</span>.tar.gz</span></span><br><span class="line">[root@localhost ]<span class="preprocessor"># mv apache-tomcat-<span class="number">6.0</span><span class="number">.41</span>/ /usr/local</span></span><br><span class="line">[root@localhost ]<span class="preprocessor"># cd /usr/local/apache-tomcat-<span class="number">6.0</span><span class="number">.41</span></span></span><br><span class="line">[root@localhost ]<span class="preprocessor"># sh bin/startup.sh</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>开放端口<br>如果修改了conf/server.xml文件启动端口，则相应的nginx.conf和下面的8080都要改变</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="property">@localhost</span> ]<span class="comment"># /sbin/iptables -I INPUT -p tcp --dport 8080 -j ACCEPT</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果出现下面的信息代表启动成功</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Using <span class="string">CATALINA_BASE:</span>   <span class="regexp">/usr/</span>local/apache-tomcat-<span class="number">7.0</span><span class="number">.70</span></span><br><span class="line">Using <span class="string">CATALINA_HOME:</span>   <span class="regexp">/usr/</span>local/apache-tomcat-<span class="number">7.0</span><span class="number">.70</span></span><br><span class="line">Using <span class="string">CATALINA_TMPDIR:</span> <span class="regexp">/usr/</span>local<span class="regexp">/apache-tomcat-7.0.70/</span>temp</span><br><span class="line">Using <span class="string">JRE_HOME:</span>        /</span><br><span class="line">Using <span class="string">CLASSPATH:</span>       <span class="regexp">/usr/</span>local<span class="regexp">/apache-tomcat-7.0.70/</span>bin<span class="regexp">/bootstrap.jar:/</span>usr<span class="regexp">/local/</span>apache-tomcat-<span class="number">7.0</span><span class="number">.70</span><span class="regexp">/bin/</span>tomcat-juli.jar</span><br><span class="line">Using <span class="string">CATALINA_PID:</span>    <span class="regexp">/usr/</span>local<span class="regexp">/apache-tomcat-7.0.70/</span>logs/tomcat.pid</span><br><span class="line">Existing PID file found during start.</span><br><span class="line">Removing/clearing stale PID file.</span><br><span class="line">Tomcat started.</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="基本命令">基本命令</h3><figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="constant">@localhost</span> ]<span class="preprocessor"># ./sbin/nginx -s reload  # 重启nginx</span></span><br><span class="line">[root<span class="constant">@localhost</span> ]<span class="preprocessor"># vi [filename] # 新建文件</span></span><br><span class="line">[root<span class="constant">@localhost</span> ]<span class="preprocessor"># &gt; [filename] # 清空文件内容</span></span><br><span class="line">[root<span class="constant">@localhost</span> ]<span class="preprocessor"># ps -ef|grep tomcat #查询进程</span></span><br><span class="line">[root<span class="constant">@localhost</span> ]<span class="preprocessor"># kill -9 [pid] #杀死进程</span></span><br><span class="line">[root<span class="constant">@localhost</span> ]<span class="preprocessor"># chmod +xw [filename] # 新增执行和写入权限</span></span><br></pre></td></tr></table></figure>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/NGINX/" rel="tag">#NGINX</a>
+          
+            <a href="/tags/TOMCAT/" rel="tag">#TOMCAT</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/25/流式数据处理kafka/" rel="next" title="流式数据处理kafka">
+                <i class="fa fa-chevron-left"></i> 流式数据处理kafka
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+        </div>
+
+        
+
+
+        
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/08/30/nginx-tomcat配置负载均衡/"
+           data-title="NGINX + TOMCAT配置负载均衡" data-url="http://yoursite.com/2016/08/30/nginx-tomcat配置负载均衡/">
+      </div>
+    
+  </div>
+
+
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/uploads/portrait.jpg" alt="Rollingdeep" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Rollingdeep</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">记录学习生活的点点滴滴</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">41</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">27</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/rollingdeep" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/xuchuanhua" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name">新浪微博</p>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/xuchuanhua" target="_blank">GentlemanBehold</a>
+              </span>
+            
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#CENTOS准备工作"><span class="nav-number">1.</span> <span class="nav-text">CENTOS准备工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NGINX安装和配置"><span class="nav-number">2.</span> <span class="nav-text">NGINX安装和配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TOMCAT"><span class="nav-number">3.</span> <span class="nav-text">TOMCAT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本命令"><span class="nav-number">4.</span> <span class="nav-text">基本命令</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Rollingdeep</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"iissnan-notes"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+
+
+    
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
+
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+
+  
+  
+
+  
+  
+
+</body>
+</html>
