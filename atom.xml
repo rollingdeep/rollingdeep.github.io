@@ -4,7 +4,7 @@
   <subtitle><![CDATA[万般皆下品，惟有读书高]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2016-08-30T11:37:23.328Z</updated>
+  <updated>2016-09-23T04:21:09.799Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -13,6 +13,89 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[JAVA位运算以及在大数据上的应用]]></title>
+    <link href="http://yoursite.com/2016/09/23/JAVA%E4%BD%8D%E8%BF%90%E7%AE%97%E4%BB%A5%E5%8F%8A%E5%9C%A8%E5%A4%A7%E6%95%B0%E6%8D%AE%E4%B8%8A%E7%9A%84%E5%BA%94%E7%94%A8/"/>
+    <id>http://yoursite.com/2016/09/23/JAVA位运算以及在大数据上的应用/</id>
+    <published>2016-09-23T02:31:45.000Z</published>
+    <updated>2016-09-23T04:21:09.799Z</updated>
+    <content type="html"><![CDATA[<h3 id="位运算">位运算</h3><ul>
+<li>&amp; : 与运算</li>
+<li>| : 或运算</li>
+<li>^ : 异或运算</li>
+<li>~ : 非运算</li>
+<li>&lt;&lt; : 左移操作，右侧补0</li>
+<li><blockquote>
+<blockquote>
+<p>: 右移操作，左侧补1</p>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>: 右移操作，左侧补0</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h3 id="基本技巧">基本技巧</h3><ol>
+<li>判别奇数偶数<br>(num &amp; 1) != 0 为奇数  (常规情况下, 取余操作没有逻辑操作快)</li>
+<li>判别某一位为1<br>num = num &gt;&gt; indexBit; //右移indexBit位<br>(num &amp; 1) == 1         //判断当前位是不是1</li>
+<li>二进制数1的个数<br>(n &amp; (n -1))           //不断清除最右边的 1</li>
+<li>异或 数学逻辑<br>b = a ^ b ^ a<br>a ^ a = 0<br>a ^ 0 = a</li>
+</ol>
+<h3 id="实例">实例</h3><blockquote>
+<ol>
+<li>数组中有两个元素出现了奇数次，其他元素出现了偶数次。找出这两个元素。</li>
+</ol>
+</blockquote>
+<p>解析：a^b^c^d^…^z,出现偶数次可以抵消，奇数次则最终留下来运算。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">package com.leetcode;</span><br><span class="line"></span><br><span class="line">import java.util.BitSet;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by Paul on 2016/9/23.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> TwoEven &#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> a[]=&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">7</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">7</span>,<span class="number">7</span>&#125;;</span><br><span class="line">        fun(a);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span>[] data)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> e0 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; data.length;i ++)&#123;</span><br><span class="line">            e0 = e0 ^ data[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//在indexBit这个位置上面，一定有一个是1，另外一个为0</span></span><br><span class="line">        <span class="keyword">int</span> indexBit = findFirstBit(e0);</span><br><span class="line">        <span class="keyword">int</span> num1 = <span class="number">0</span>, num2 =<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; data.length;i ++)&#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(isbit1(data[i] ,indexBit))num1 = num1 ^ data[i];</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                num2 = num2 ^ data[i];</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(num1 + <span class="string">" | "</span> + num2);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span>  <span class="keyword">int</span> <span class="title">findFirstBit</span><span class="params">(<span class="keyword">int</span> num)</span></span>&#123;</span><br><span class="line">        <span class="comment">// 64位机器</span></span><br><span class="line">        <span class="keyword">int</span> indexBit = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// num &amp; 1 == 0  如果这样写，会报错。原来位运算 优先级 比 == 低</span></span><br><span class="line">        <span class="keyword">while</span>((num &amp; <span class="number">1</span>) == <span class="number">0</span> &amp;&amp; (indexBit &lt; <span class="number">32</span>))&#123;</span><br><span class="line">            num = num &gt;&gt; <span class="number">1</span>;</span><br><span class="line">            indexBit ++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> indexBit;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 对应bit位是0还是1</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> boolean <span class="title">isbit1</span><span class="params">(<span class="keyword">int</span> num,<span class="keyword">int</span> indexBit)</span></span>&#123;</span><br><span class="line">        num = num &gt;&gt; indexBit;</span><br><span class="line">        <span class="keyword">return</span> (num &amp; <span class="number">1</span>) == <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<ol>
+<li>对于两个32位整数a和b，请设计一个算法返回a和b中较大的。但是不能用任何比较判断。若两数相同，返回任意一个。<br>给定两个整数a和b，请返回较大的数。<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> Compare &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">flip</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> n ^ <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">sign</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> flip((n &gt;&gt; <span class="number">31</span>) &amp; <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getMax</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> c = a - b;</span><br><span class="line">        <span class="keyword">int</span> sa = sign(a);</span><br><span class="line">        <span class="keyword">int</span> sb = sign(b);</span><br><span class="line">        <span class="keyword">int</span> sc = sign(c);</span><br><span class="line">        <span class="keyword">int</span> difSab = sa ^ sb;</span><br><span class="line">        <span class="keyword">int</span> sameSab = flip(difSab);</span><br><span class="line">        <span class="keyword">int</span> returnA = difSab * sa + sameSab * sc;</span><br><span class="line">        <span class="keyword">int</span> returnB = flip(returnA);</span><br><span class="line">        <span class="keyword">return</span> a * returnA + b * returnB;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</blockquote>
+]]></content>
+    <summary type="html">
+    <![CDATA[塔布数据]]>
+    
+    </summary>
+    
+      <category term="JAVA" scheme="http://yoursite.com/tags/JAVA/"/>
+    
+      <category term="JAVA" scheme="http://yoursite.com/categories/JAVA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[深度学习个人学习笔记(1)]]></title>
+    <link href="http://yoursite.com/2016/09/09/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/"/>
+    <id>http://yoursite.com/2016/09/09/深度学习个人学习笔记-1/</id>
+    <published>2016-09-09T09:16:54.000Z</published>
+    <updated>2016-09-10T13:55:01.727Z</updated>
+    <content type="html"><![CDATA[<h3 id="关于epoch、iteration、batchsize">关于epoch、iteration、batchsize</h3><ol>
+<li>batchsize : 批大小。在深度学习中，一般采用SGD训练，即每次训练在训练集中取batchsize个样本训练；</li>
+<li>iteration : 1个iteration等于使用batchsize个样本训练一次；</li>
+<li>epoch : 1个epoch等于使用训练集中的全部样本训练一次；</li>
+</ol>
+<p>eg : 训练集有1000个样本，batchsize=10。那么,训练完整个样本集需要100次iteration，1次epoch。</p>
+<h3 id="REFERENCE">REFERENCE</h3><p>[1]. <a href="https://www.zhihu.com/question/32673260" target="_blank" rel="external">深度机器学习中的batch的大小对学习效果有何影响？</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[深度学习Keras基本参数理解和简单实验。]]>
+    
+    </summary>
+    
+      <category term="DEEPLEARNING" scheme="http://yoursite.com/tags/DEEPLEARNING/"/>
+    
+      <category term="KERAS" scheme="http://yoursite.com/tags/KERAS/"/>
+    
+      <category term="DL" scheme="http://yoursite.com/categories/DL/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[NGINX + TOMCAT配置负载均衡]]></title>
@@ -784,7 +867,7 @@
     <link href="http://yoursite.com/2016/03/17/%E4%BA%92%E5%8A%A8%E6%B4%BE%E9%9D%A2%E8%AF%95%E5%9B%9E%E5%BF%86/"/>
     <id>http://yoursite.com/2016/03/17/互动派面试回忆/</id>
     <published>2016-03-17T07:35:36.000Z</published>
-    <updated>2016-03-17T09:09:35.339Z</updated>
+    <updated>2016-09-23T02:33:55.906Z</updated>
     <content type="html"><![CDATA[<h3 id="笔试">笔试</h3><ol>
 <li>linux查看系统目录</li>
 <li>linux结束一个用户的进程，用管道的方式</li>
@@ -871,90 +954,6 @@
       <category term="Interview" scheme="http://yoursite.com/tags/Interview/"/>
     
       <category term="Interview" scheme="http://yoursite.com/categories/Interview/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[医疗健康管理系统APP]]></title>
-    <link href="http://yoursite.com/2016/03/01/%E5%8C%BB%E7%96%97%E5%81%A5%E5%BA%B7%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9FAPP/"/>
-    <id>http://yoursite.com/2016/03/01/医疗健康管理系统APP/</id>
-    <published>2016-03-01T08:43:41.000Z</published>
-    <updated>2016-07-26T01:50:44.980Z</updated>
-    <content type="html"><![CDATA[<h3 id="基本介绍">基本介绍</h3><p>私人健康小助手，它需要为用户提供友好的操作交互界面，方面用户的使用，并给出实时的合适的评测和建议，提供附近医生的地点并聊天。我们在客户的功能需求主要包含一下内容：</p>
-<ul>
-<li>身体信息采集<br>用户能够提交自己的身体参数，如血糖，血压，心跳等8个参数，心跳可以通过手机后置摄像头测得，其他参数需要手动输入。</li>
-<li>饮食图片分析<br>用户可以上传当天的所食食物图片，后台根据图片分析出该图片是什么菜，并给出菜的大致的营养含量，如蛋白质，热量，碳水化合物含量。</li>
-<li>历史分析<br>根据用户每天提交的身体参数，app会通过后台数据挖掘的模型，分析出一个概率，比如糖尿病：32.5%，高血压：20%。将每次测得的最高概率记录生成历史记录。用户可以根据曲线是否平稳，知道自己的身体是不是有生病的趋势。</li>
-<li>预测并给出生活和饮食建议<br>根据图片分析和身体信息分析，综合给出生活建议和饮食建议。如果该用户可能会有潜在的糖尿病风险，那么不要吃含糖量比较高的食物。</li>
-</ul>
-<h3 id="软件详情">软件详情</h3><h4 id="启动页面">启动页面</h4><p>图2-1中SHMS为开发的软件 私人健康小助手，首先查看手机是否连网，连网后，点击图标SHMS打开应用。<br><img src="/uploads/softwares/s0.jpg" alt="图2-1"><br>图2-1</p>
-<h4 id="APP启动页面">APP启动页面</h4><p>图2-2是APP启动欢迎页面，私人健康小助手，为页面初始化和数据准备做一个简单的缓冲。<br><img src="/uploads/softwares/s0_1.jpg" alt="图2-2"><br>图2-2</p>
-<h4 id="程序页面介绍">程序页面介绍</h4><h5 id="自我诊断页面">自我诊断页面</h5><ol>
-<li>输入手环或者智能终端测试的数据提交到后台分析得病的潜在概率。</li>
-<li>用手机按住摄像头读取红色色素点傅里叶变换成心率曲线。<br>图2-3展示的是自我诊断页面(Self diagnose),用户可以通过点击右边的数字，会弹出对话框。可以填写自己的身体状况信息。<br><img src="/uploads/softwares/s2.jpg" alt="图2-3"><br>图2-3</li>
-</ol>
-<h5 id="信息输入">信息输入</h5><p>图2-4展示的是信息输入页面，点击图2-3中数字，可以弹出如下的对话框，可以上下滑动，然后Confirm确认输入，Cancel取消输入。输入的数据会最终显示在图2-3中，点击按钮Submit会提交至图2-6所示的页面，预测结果会以饼状图显示。<br><img src="/uploads/softwares/s2_1.jpg" alt="图2-4"><br>图2-4</p>
-<h5 id="脉搏测量">脉搏测量</h5><p>点击图2-3HeartBeat右侧的数字会显示如图2-5所示的界面。界面会提示用户将手指按住后置摄像头，然后会出现心跳的频率。并将结果提交到图2-3<br>中。<br><img src="/uploads/softwares/s3_1.jpg" alt="图2-5"><br>图2-5</p>
-<h5 id="预测结果展示">预测结果展示</h5><p>图2-3中点击Submit,会将输入的身体状况信息提交至图2-6，并以饼图的形式展示，里面百分比数据是代表预测出该疾病的潜在发生概率，如果超过60%就表明身体状况有些危险。该页面有历史分析（Historic Analysis），点击该按钮，跳转至图2-13的历史分析图。<br><img src="/uploads/softwares/s4_2.jpg" alt="图2-6"><br>图2-6</p>
-<p>输入不同的数据，会展示不同的概率饼图，图2-7展示就是血糖过高的一个实际例子，高达90%的概率，这基本已经确定是糖尿病人。</p>
-<p><img src="/uploads/softwares/s4_2.jpg" alt="图2-7"><br>图2-7</p>
-<h5 id="饮食分析">饮食分析</h5><ul>
-<li>读取并拍摄获取手机里的食物照片，分析食物的分量如含糖量，碳水化合物的含量。<br>图2-8中展示的是饮食分析页面。用户可以上传当天饮食情况，打出相关标签，并上传至服务器。分析菜的分量。点击Submit提交至图2-10。</li>
-</ul>
-<p><img src="/uploads/softwares/s5.jpg" alt="图2-8"><br>图2-8</p>
-<p>点击图2-8中的小龙虾图片，会展示如图2-9底栏对话框。可以选择拍照，上传图片等功能。最终选择的图片会展示在图2-8小龙虾的位置。下面有一个文本框。这个是在后台无法识别该图片的时候。用户可以打一个标签，如小龙虾。这样后台可以给出一个如图2-10的图片。</p>
-<p><img src="/uploads/softwares/s5_1.jpg" alt="图2-9"><br>图2-9</p>
-<h5 id="食物摄入量">食物摄入量</h5><p>图2-9中上传的图片和打出的标签，传入服务器后台，会给出一个营养成分柱状表。有卡路里，碳水化合物，脂肪，蛋白质，纤维素的含量。单位为100g。<br><img src="/uploads/softwares/s5_2.jpg" alt="图2-10"><br>图2-10</p>
-<h5 id="健康建议">健康建议</h5><ul>
-<li>根据前两者给出相关饮食和生活建议。<br>图2-11中根据自我诊断和饮食分析建立的该用户的画像，分析给出适当的生活和饮食建议。点击右上方的时间图标同样可以看到图2-13的历史分析页面。记录用户使用以来的身体状况是否平稳。<br><img src="/uploads/softwares/s12.jpg" alt="图2-11"><br>图2-11</li>
-</ul>
-<p>图2-12展示的是不同的信息输入和饮食分析，会出现不同的分析结果。图2-11展示的是胆固醇高的用户，图2-12展示的是图2-7展示对应的血糖高的用户。<br><img src="/uploads/softwares/s13.jpg" alt="图2-12"><br>图2-12</p>
-<h5 id="历史记录">历史记录</h5><p>图2-13展示的是历史记录。每次用户测试之后都会有一个最高概率，如果最高概率超过阈值就会被记录在折线图中。此处展示的是没有设置阈值的情况。<br><img src="/uploads/softwares/s14.jpg" alt="图2-13"><br>图2-13</p>
-<h5 id="查找医生">查找医生</h5><ul>
-<li>根据百度地图定位周边医生，发送自己的身体状况分析报告，并可以和医生在线聊天询问病情发展。<br>会根据百度地图提供附近医生的信息，可以向医生传输发送自己的数据，让医生给出一些合适的建议。此功能正在修改当中，未来会逐渐完善。</li>
-</ul>
-<h3 id="问题反馈">问题反馈</h3><p>以上就是私人健康小助手的全部功能介绍。如有问题,欢迎发送邮件至chxu@m.scnu.edu.cn.</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[论文demo中的一个小android程序，大部分实现过程都是之前发过的Android教程。]]>
-    
-    </summary>
-    
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
-      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Android之相机相册服务调用]]></title>
-    <link href="http://yoursite.com/2015/12/22/Android%E4%B9%8B%E7%9B%B8%E6%9C%BA%E7%9B%B8%E5%86%8C%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8/"/>
-    <id>http://yoursite.com/2015/12/22/Android之相机相册服务调用/</id>
-    <published>2015-12-22T06:38:43.000Z</published>
-    <updated>2015-12-23T07:10:20.406Z</updated>
-    <content type="html"><![CDATA[<h3 id="相册服务">相册服务</h3><ol>
-<li>判断是否有外存</li>
-<li>通过startActivityForResult(intent, MainActivity.GALLERY_REQUET)返回主Activity获得result.</li>
-<li>重写方法 protected void onActivityResult(int requestCode, int resultCode, Intent data);</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line">     * 调用相册服务</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">takePhoto</span><span class="params">()</span></span>&#123;</span><br><span class="line">         Intent intent = <span class="keyword">null</span>;</span><br><span class="line">         String state = Environment.getExternalStorageState();  </span><br><span class="line">         <span class="keyword">if</span> (state.equals(Environment.MEDIA_MOUNTED)) &#123;  </span><br><span class="line">             intent=<span class="keyword">new</span> Intent(Intent.ACTION_GET_CONTENT);</span><br><span class="line">             intent.addCategory(Intent.CATEGORY_OPENABLE);</span><br><span class="line">             intent.setType(<span class="string">"image/*"</span>);</span><br><span class="line">             intent.putExtra(<span class="string">"cameraPhoto"</span>, <span class="keyword">true</span>);</span><br><span class="line">             startActivityForResult(intent, MainActivity.GALLERY_REQUET);</span><br><span class="line">             &#125;</span><br><span class="line">             <span class="keyword">else</span> &#123;  </span><br><span class="line">                 Toast.makeText(<span class="keyword">this</span>, <span class="string">"请确认已经插入SD卡"</span>, Toast.LENGTH_LONG).show();  </span><br><span class="line">             &#125;  </span><br><span class="line">             Log.i(<span class="string">"Target"</span>, <span class="string">"选取照片"</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="相机服务">相机服务</h3><p>这里给出的就是拍照并根据时间保存相片，然后image_path作为全局变量，在onActivityResult(int requestCode, int resultCode, Intent data);继续使用</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line">     * 调用相机服务</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">takeCamera</span><span class="params">()</span></span>&#123;</span><br><span class="line">        String path = Environment.getExternalStorageDirectory()+File.separator+Environment.DIRECTORY_DCIM;</span><br><span class="line">        Intent intent = <span class="keyword">new</span> Intent(MediaStore.ACTION_IMAGE_CAPTURE);</span><br><span class="line">        <span class="keyword">if</span>(intent.resolveActivity(getPackageManager()) != <span class="keyword">null</span> )&#123;</span><br><span class="line">            <span class="annotation">@SuppressWarnings</span>(<span class="string">"static-access"</span>)</span><br><span class="line">            String temName = <span class="keyword">new</span> DateFormat().format(<span class="string">"yyMMdd_hhmmss"</span>,System.currentTimeMillis()) + <span class="string">"_"</span> + (Math.random()*<span class="number">100</span>)+<span class="string">".jpg"</span>;</span><br><span class="line">            image_path = path + File.separator + temName;</span><br><span class="line">            File file=<span class="keyword">new</span> File(image_path);</span><br><span class="line">            <span class="keyword">if</span>(file.exists())&#123;</span><br><span class="line">                file.delete();</span><br><span class="line">            &#125;</span><br><span class="line">            Uri uri=Uri.fromFile(file);</span><br><span class="line">            intent.putExtra(MediaStore.EXTRA_OUTPUT, uri); </span><br><span class="line">            startActivityForResult(intent, CAMERA_REQUEST);</span><br><span class="line">            Log.i(<span class="string">"Target"</span>, <span class="string">"照相"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="onActivityResult">onActivityResult</h3><p>在Activity跳转中很常用<br>这里用于系统服务和我们程序跳转，我想原理应该类似<br>onActivityResult(int requestCode, int resultCode, Intent data)不多说，生命周期<br>WARNING：</p>
-<ol>
-<li>CAMERA_REQUEST中是通过image_path生成File再生成的Uri，没有使用Intent data中的数据</li>
-<li>在Fragment中调用MainActivity时候要强转为Activity类，即((MainActivity)getActivity()).takeCamera();<br>这两点我在做的时候，疑惑了好久！后来发现，不难理解</li>
-</ol>
-<h3 id="源代码">源代码</h3><p>MainActivity.java<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//全局变量</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Bitmap photo;</span><br><span class="line">    <span class="comment">//系统参数</span></span><br><span class="line">    <span class="keyword">private</span> String image_path;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onActivityResult</span><span class="params">(<span class="keyword">int</span> requestCode, <span class="keyword">int</span> resultCode, Intent data)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(requestCode == CAMERA_REQUEST &amp;&amp; resultCode == RESULT_OK)&#123;</span><br><span class="line">            File file=<span class="keyword">new</span> File(image_path);</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Uri uri = Uri.fromFile(file);</span><br><span class="line">                BitmapFactory.Options options=<span class="keyword">new</span> BitmapFactory.Options();</span><br><span class="line">                options.inJustDecodeBounds=<span class="keyword">true</span>;                </span><br><span class="line">                BitmapFactory.decodeStream(getContentResolver().openInputStream(uri), <span class="keyword">null</span>, options);</span><br><span class="line">                options.inSampleSize=<span class="number">4</span>;</span><br><span class="line">                options.inJustDecodeBounds=<span class="keyword">false</span>;</span><br><span class="line">                Bitmap map=BitmapFactory.decodeStream(getContentResolver().openInputStream(uri), <span class="keyword">null</span>, options);</span><br><span class="line">                android.provider.MediaStore.Images.Media.insertImage(getContentResolver(), map, <span class="keyword">null</span>, <span class="keyword">null</span>);</span><br><span class="line">                sendBroadcast(<span class="keyword">new</span> Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE,uri));</span><br><span class="line"><span class="comment">//              image.setImageBitmap(map);</span></span><br><span class="line">                photo = map;</span><br><span class="line">            &#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125; </span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(requestCode == GALLERY_REQUET &amp;&amp; resultCode == RESULT_OK)&#123;</span><br><span class="line">            ContentResolver resolver = getContentResolver();</span><br><span class="line">            Uri selectedImage = data.getData();  </span><br><span class="line">            String[] filePathColumn = &#123; MediaStore.Images.Media.DATA &#125;;  </span><br><span class="line">       </span><br><span class="line">            Cursor cursor = resolver.query(selectedImage,  </span><br><span class="line">                     filePathColumn, <span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">null</span>);  </span><br><span class="line">            cursor.moveToFirst();  </span><br><span class="line">            <span class="keyword">int</span> columnIndex = cursor.getColumnIndex(filePathColumn[<span class="number">0</span>]);  </span><br><span class="line">            String choosePicturePath = cursor.getString(columnIndex);  </span><br><span class="line">            cursor.close(); </span><br><span class="line">            Log.i(<span class="string">"Target"</span>,choosePicturePath);</span><br><span class="line">            photo = BitmapFactory.decodeFile(choosePicturePath);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//========================华丽丽的分割线============================</span></span><br><span class="line"><span class="comment">//=========================调用系统服务============================</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 调用相机服务</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">takeCamera</span><span class="params">()</span></span>&#123;</span><br><span class="line">        String path = Environment.getExternalStorageDirectory()+File.separator+Environment.DIRECTORY_DCIM;</span><br><span class="line">        Intent intent = <span class="keyword">new</span> Intent(MediaStore.ACTION_IMAGE_CAPTURE);</span><br><span class="line">        <span class="keyword">if</span>(intent.resolveActivity(getPackageManager()) != <span class="keyword">null</span> )&#123;</span><br><span class="line">            <span class="annotation">@SuppressWarnings</span>(<span class="string">"static-access"</span>)</span><br><span class="line">            String temName = <span class="keyword">new</span> DateFormat().format(<span class="string">"yyMMdd_hhmmss"</span>,System.currentTimeMillis()) + <span class="string">"_"</span> + (Math.random()*<span class="number">100</span>)+<span class="string">".jpg"</span>;</span><br><span class="line">            image_path = path + File.separator + temName;</span><br><span class="line">            File file=<span class="keyword">new</span> File(image_path);</span><br><span class="line">            <span class="keyword">if</span>(file.exists())&#123;</span><br><span class="line">                file.delete();</span><br><span class="line">            &#125;</span><br><span class="line">            Uri uri=Uri.fromFile(file);</span><br><span class="line">            intent.putExtra(MediaStore.EXTRA_OUTPUT, uri); </span><br><span class="line">            startActivityForResult(intent, CAMERA_REQUEST);</span><br><span class="line">            Log.i(<span class="string">"Target"</span>, <span class="string">"照相"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 调用相册服务</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">takePhoto</span><span class="params">()</span></span>&#123;</span><br><span class="line">         Intent intent = <span class="keyword">null</span>;</span><br><span class="line">         String state = Environment.getExternalStorageState();  </span><br><span class="line">         <span class="keyword">if</span> (state.equals(Environment.MEDIA_MOUNTED)) &#123;  </span><br><span class="line">             intent=<span class="keyword">new</span> Intent(Intent.ACTION_GET_CONTENT);</span><br><span class="line">             intent.addCategory(Intent.CATEGORY_OPENABLE);</span><br><span class="line">             intent.setType(<span class="string">"image/*"</span>);</span><br><span class="line">             intent.putExtra(<span class="string">"cameraPhoto"</span>, <span class="keyword">true</span>);</span><br><span class="line">             startActivityForResult(intent, MainActivity.GALLERY_REQUET);</span><br><span class="line">             &#125;</span><br><span class="line">             <span class="keyword">else</span> &#123;  </span><br><span class="line">                 Toast.makeText(<span class="keyword">this</span>, <span class="string">"请确认已经插入SD卡"</span>, Toast.LENGTH_LONG).show();  </span><br><span class="line">             &#125;  </span><br><span class="line">             Log.i(<span class="string">"Target"</span>, <span class="string">"选取照片"</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
-]]></content>
-    <summary type="html">
-    <![CDATA[相机相册很常用，分享下！]]>
-    
-    </summary>
-    
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
-      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
     
   </entry>
   
