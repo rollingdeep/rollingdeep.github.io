@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="一年一度的BAT校招，千军万马过独木桥。失败，别气馁，勇敢向前冲！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BAT面试准备">
+<meta property="og:url" content="http://yoursite.com/2016/03/21/BAT%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/index.html">
+<meta property="og:site_name" content="月悦">
+<meta property="og:description" content="一年一度的BAT校招，千军万马过独木桥。失败，别气馁，勇敢向前冲！">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-03-21T13:44:05.000Z">
+<meta property="article:modified_time" content="2020-09-03T11:26:12.360Z">
+<meta property="article:author" content="okok">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Interview">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2016/03/21/BAT%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>BAT面试准备 | 月悦</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">月悦</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">心有璞玉，方能致远。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/03/21/BAT%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="okok">
+      <meta itemprop="description" content="记录学习生活的点点滴滴">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月悦">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          BAT面试准备
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2016-03-21 21:44:05" itemprop="dateCreated datePublished" datetime="2016-03-21T21:44:05+08:00">2016-03-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-03 19:26:12" itemprop="dateModified" datetime="2020-09-03T19:26:12+08:00">2020-09-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Interview/" itemprop="url" rel="index"><span itemprop="name">Interview</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">一年一度的BAT校招，千军万马过独木桥。失败，别气馁，勇敢向前冲！</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h3><h4 id="数组、链表"><a href="#数组、链表" class="headerlink" title="数组、链表"></a>数组、链表</h4><ol>
+<li><a target="_blank" rel="noopener" href="http://www.cppblog.com/cxiaojia/archive/2012/07/31/185760">http://www.cppblog.com/cxiaojia/archive/2012/07/31/185760</a></li>
+<li><a target="_blank" rel="noopener" href="http://blog.csdn.net/hackbuteer1/article/details/6591486/">http://blog.csdn.net/hackbuteer1/article/details/6591486/</a></li>
+<li><a target="_blank" rel="noopener" href="http://blog.csdn.net/pony_maggie/article/details/38390513">http://blog.csdn.net/pony_maggie/article/details/38390513</a></li>
+<li><a target="_blank" rel="noopener" href="http://blog.csdn.net/niteip/article/details/11840691">AVL</a> </li>
+</ol>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://blog.csdn.net/vesper305/article/details/13614403">AVL平衡二叉树中旋转操作的本质及其实现</a></li>
+</ul>
+<ol>
+<li><a target="_blank" rel="noopener" href="http://blog.csdn.net/stpeace/article/details/9067029">BST</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/oldhorse/archive/2009/11/16/1604009.html">B，B+,B-</a></li>
+<li><a target="_blank" rel="noopener" href="http://blog.csdn.net/tonyxf121/article/details/8393545">http://blog.csdn.net/tonyxf121/article/details/8393545</a></li>
+<li><a target="_blank" rel="noopener" href="http://blog.csdn.net/chenhuajie123/article/details/11900153">http://blog.csdn.net/chenhuajie123/article/details/11900153</a></li>
+<li><a target="_blank" rel="noopener" href="http://blog.csdn.net/ganggexiongqi/article/details/7449970">http://blog.csdn.net/ganggexiongqi/article/details/7449970</a></li>
+<li><a target="_blank" rel="noopener" href="http://blog.csdn.net/yutianzuijin/article/details/11954939/">http://blog.csdn.net/yutianzuijin/article/details/11954939/</a> </li>
+</ol>
+<h4 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h4><h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h3><h4 id="String，StringBuffer-StringBuilder区别"><a href="#String，StringBuffer-StringBuilder区别" class="headerlink" title="String，StringBuffer,StringBuilder区别"></a>String，StringBuffer,StringBuilder区别</h4><ol>
+<li><a target="_blank" rel="noopener" href="http://blog.csdn.net/clam_clam/article/details/6831345">http://blog.csdn.net/clam_clam/article/details/6831345</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/xudong-bupt/p/3961159.html">http://www.cnblogs.com/xudong-bupt/p/3961159.html</a></li>
+</ol>
+<h4 id="HashMap和HashMap区别，能否存储空值"><a href="#HashMap和HashMap区别，能否存储空值" class="headerlink" title="HashMap和HashMap区别，能否存储空值"></a>HashMap和HashMap区别，能否存储空值</h4><ol>
+<li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/carbs/archive/2012/07/04/2576995">http://www.cnblogs.com/carbs/archive/2012/07/04/2576995</a></li>
+<li><a target="_blank" rel="noopener" href="http://blog.csdn.net/wl_ldy/article/details/5941770">http://blog.csdn.net/wl_ldy/article/details/5941770</a></li>
+</ol>
+<h4 id="ArrayList和HashMap初始容量"><a href="#ArrayList和HashMap初始容量" class="headerlink" title="ArrayList和HashMap初始容量"></a>ArrayList和HashMap初始容量</h4><ol>
+<li><a target="_blank" rel="noopener" href="http://blog.csdn.net/java2000_net/article/details/5215882">http://blog.csdn.net/java2000_net/article/details/5215882</a></li>
+<li><a target="_blank" rel="noopener" href="http://ask.csdn.net/questions/178013">http://ask.csdn.net/questions/178013</a></li>
+<li><a target="_blank" rel="noopener" href="http://blog.sina.com.cn/s/blog_45ff7c3f0100bwan.html">http://blog.sina.com.cn/s/blog_45ff7c3f0100bwan.html</a></li>
+<li><a target="_blank" rel="noopener" href="http://blog.csdn.net/ghsau/article/details/16890151">http://blog.csdn.net/ghsau/article/details/16890151</a></li>
+</ol>
+<h4 id="并发编程，线程，线程池，加锁"><a href="#并发编程，线程，线程池，加锁" class="headerlink" title="并发编程，线程，线程池，加锁"></a>并发编程，线程，线程池，加锁</h4><ol>
+<li><a target="_blank" rel="noopener" href="http://blog.csdn.net/jackfrued/article/details/44499227">并发思想</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/riskyer/p/3263032">http://www.cnblogs.com/riskyer/p/3263032</a></li>
+<li><a target="_blank" rel="noopener" href="http://blog.csdn.net/aboy123/article/details/38307539">http://blog.csdn.net/aboy123/article/details/38307539</a></li>
+<li><a target="_blank" rel="noopener" href="http://blog.jobbole.com/76308/">http://blog.jobbole.com/76308/</a></li>
+<li><a target="_blank" rel="noopener" href="http://developer.51cto.com/art/201509/490965.htm">http://developer.51cto.com/art/201509/490965.htm</a></li>
+<li><a target="_blank" rel="noopener" href="http://blog.csdn.net/yangzhijun_cau/article/details/6432216">http://blog.csdn.net/yangzhijun_cau/article/details/6432216</a></li>
+<li><a target="_blank" rel="noopener" href="http://cuisuqiang.iteye.com/blog/2019372">http://cuisuqiang.iteye.com/blog/2019372</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/lxzh/archive/2013/01/20/2868736.html">http://www.cnblogs.com/lxzh/archive/2013/01/20/2868736.html</a></li>
+</ol>
+<h4 id="Comparable和Comparator的区别"><a href="#Comparable和Comparator的区别" class="headerlink" title="Comparable和Comparator的区别"></a>Comparable和Comparator的区别</h4><ol>
+<li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/sunflower627/p/3158042.html">http://www.cnblogs.com/sunflower627/p/3158042.html</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.codeceo.com/article/java-comparable-comparator.html">http://www.codeceo.com/article/java-comparable-comparator.html</a></li>
+</ol>
+<h4 id="GC回收分代和回收"><a href="#GC回收分代和回收" class="headerlink" title="GC回收分代和回收"></a>GC回收分代和回收</h4><ol>
+<li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/hnrainll/archive/2013/11/06/3410042.html">http://www.cnblogs.com/hnrainll/archive/2013/11/06/3410042.html</a></li>
+<li><a target="_blank" rel="noopener" href="http://blog.csdn.net/kennyrose/article/details/7543696">http://blog.csdn.net/kennyrose/article/details/7543696</a></li>
+</ol>
+<h4 id="Collections方法"><a href="#Collections方法" class="headerlink" title="Collections方法"></a>Collections方法</h4><ol>
+<li><a target="_blank" rel="noopener" href="http://pengcqu.iteye.com/blog/492196">http://pengcqu.iteye.com/blog/492196</a></li>
+<li><a target="_blank" rel="noopener" href="http://blog.csdn.net/lskyne/article/details/8961014">http://blog.csdn.net/lskyne/article/details/8961014</a></li>
+<li><a target="_blank" rel="noopener" href="http://blog.csdn.net/ameyume/article/details/6282051">http://blog.csdn.net/ameyume/article/details/6282051</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/gw811/archive/2012/10/10/2719134.html">http://www.cnblogs.com/gw811/archive/2012/10/10/2719134.html</a></li>
+</ol>
+<h3 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h3><h4 id="SQL基础，group-by等，修改表结构"><a href="#SQL基础，group-by等，修改表结构" class="headerlink" title="SQL基础，group by等，修改表结构"></a>SQL基础，group by等，修改表结构</h4><ol>
+<li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/mr-wid/archive/2013/05/09/3068229.html">http://www.cnblogs.com/mr-wid/archive/2013/05/09/3068229.html</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/hustcat/archive/2009/10/28/1591648.html">http://www.cnblogs.com/hustcat/archive/2009/10/28/1591648.html</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/daxian2012/articles/2767989.html">http://www.cnblogs.com/daxian2012/articles/2767989.html</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/rainman/archive/2013/05/01/3053703.html">group by</a></li>
+</ol>
+<h4 id="缓存机制和MySQL调优"><a href="#缓存机制和MySQL调优" class="headerlink" title="缓存机制和MySQL调优"></a>缓存机制和MySQL调优</h4><ol>
+<li><a target="_blank" rel="noopener" href="http://blog.csdn.net/wulantian/article/details/11043121">http://blog.csdn.net/wulantian/article/details/11043121</a></li>
+<li><a target="_blank" rel="noopener" href="http://blog.csdn.net/gzh0222/article/details/8001362">http://blog.csdn.net/gzh0222/article/details/8001362</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/adforce/archive/2012/06/02/2532086.html">http://www.cnblogs.com/adforce/archive/2012/06/02/2532086.html</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/not-code/archive/2011/11/01/2231493.html">http://www.cnblogs.com/not-code/archive/2011/11/01/2231493.html</a></li>
+</ol>
+<h3 id="进程调度"><a href="#进程调度" class="headerlink" title="进程调度"></a>进程调度</h3><ol>
+<li><a target="_blank" rel="noopener" href="http://blog.csdn.net/dc_726/article/details/7985430">进程基础知识</a></li>
+<li><a target="_blank" rel="noopener" href="http://blog.csdn.net/dc_726/article/details/8001783">进程调度</a></li>
+</ol>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ol>
+<li><a target="_blank" rel="noopener" href="http://www.nowcoder.com/discuss/3043">面试心得与总结—-BAT、网易、蘑菇街</a></li>
+<li><a target="_blank" rel="noopener" href="http://blog.sina.com.cn/s/blog_53f7991701000a2l.html">JAVA和C++相比有什么优点呢？</a></li>
+<li><a target="_blank" rel="noopener" href="http://blog.csdn.net/lk_blog/article/details/13760999">Java项目性能监控和调优工具-Javamelody</a></li>
+<li><a target="_blank" rel="noopener" href="http://liudeh-009.iteye.com/blog/1847876">java内存调优工具</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/magialmoon/archive/2013/11/23/3439042.html">MySQL优化</a></li>
+<li><a target="_blank" rel="noopener" href="http://blog.csdn.net/xueshuangshuang123/article/details/8462261">Hibernate 性能优化</a></li>
+<li><a target="_blank" rel="noopener" href="http://bbs.csdn.net/topics/390843777?page=1">实际生活hibernate调优</a></li>
+<li><a target="_blank" rel="noopener" href="http://blog.sina.com.cn/s/blog_5198c7370100hvxb.html">使用Spring进行面向切面编程</a></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+              <a href="/tags/Interview/" rel="tag"># Interview</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2016/03/17/%E4%BA%92%E5%8A%A8%E6%B4%BE%E9%9D%A2%E8%AF%95%E5%9B%9E%E5%BF%86/" rel="prev" title="互动派面试回忆">
+      <i class="fa fa-chevron-left"></i> 互动派面试回忆
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2016/03/24/%E6%9C%80%E8%BF%91%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/" rel="next" title="最近面试集锦">
+      最近面试集锦 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E3%80%81%E9%93%BE%E8%A1%A8"><span class="nav-number">1.1.</span> <span class="nav-text">数组、链表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%92%E5%BA%8F"><span class="nav-number">1.2.</span> <span class="nav-text">排序</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java"><span class="nav-number">2.</span> <span class="nav-text">Java</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#String%EF%BC%8CStringBuffer-StringBuilder%E5%8C%BA%E5%88%AB"><span class="nav-number">2.1.</span> <span class="nav-text">String，StringBuffer,StringBuilder区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HashMap%E5%92%8CHashMap%E5%8C%BA%E5%88%AB%EF%BC%8C%E8%83%BD%E5%90%A6%E5%AD%98%E5%82%A8%E7%A9%BA%E5%80%BC"><span class="nav-number">2.2.</span> <span class="nav-text">HashMap和HashMap区别，能否存储空值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ArrayList%E5%92%8CHashMap%E5%88%9D%E5%A7%8B%E5%AE%B9%E9%87%8F"><span class="nav-number">2.3.</span> <span class="nav-text">ArrayList和HashMap初始容量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%EF%BC%8C%E7%BA%BF%E7%A8%8B%EF%BC%8C%E7%BA%BF%E7%A8%8B%E6%B1%A0%EF%BC%8C%E5%8A%A0%E9%94%81"><span class="nav-number">2.4.</span> <span class="nav-text">并发编程，线程，线程池，加锁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Comparable%E5%92%8CComparator%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">2.5.</span> <span class="nav-text">Comparable和Comparator的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GC%E5%9B%9E%E6%94%B6%E5%88%86%E4%BB%A3%E5%92%8C%E5%9B%9E%E6%94%B6"><span class="nav-number">2.6.</span> <span class="nav-text">GC回收分代和回收</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Collections%E6%96%B9%E6%B3%95"><span class="nav-number">2.7.</span> <span class="nav-text">Collections方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SQL"><span class="nav-number">3.</span> <span class="nav-text">SQL</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SQL%E5%9F%BA%E7%A1%80%EF%BC%8Cgroup-by%E7%AD%89%EF%BC%8C%E4%BF%AE%E6%94%B9%E8%A1%A8%E7%BB%93%E6%9E%84"><span class="nav-number">3.1.</span> <span class="nav-text">SQL基础，group by等，修改表结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6%E5%92%8CMySQL%E8%B0%83%E4%BC%98"><span class="nav-number">3.2.</span> <span class="nav-text">缓存机制和MySQL调优</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6"><span class="nav-number">4.</span> <span class="nav-text">进程调度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="okok"
+      src="/uploads/avatar.jpg">
+  <p class="site-author-name" itemprop="name">okok</p>
+  <div class="site-description" itemprop="description">记录学习生活的点点滴滴</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">okok</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : 'c74c13526a86f65a9380',
+      clientSecret: '8a5c3431391521fc4880d5d280bc31a1cc08ffd7',
+      repo        : 'rollingdeep.github.io',
+      owner       : 'rollingdeep',
+      admin       : ['rollingdeep'],
+      id          : 'e60d1723aa75462e3e55a96a1b9ad779',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
+</html>

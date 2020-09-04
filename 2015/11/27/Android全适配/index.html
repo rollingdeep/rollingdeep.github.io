@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="android设备众多，怎样才能做出一款适配95%的安卓设备？android中的基础重重之重！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android全适配">
+<meta property="og:url" content="http://yoursite.com/2015/11/27/Android%E5%85%A8%E9%80%82%E9%85%8D/index.html">
+<meta property="og:site_name" content="月悦">
+<meta property="og:description" content="android设备众多，怎样才能做出一款适配95%的安卓设备？android中的基础重重之重！">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2015-11-27T14:32:22.000Z">
+<meta property="article:modified_time" content="2020-09-03T11:26:12.360Z">
+<meta property="article:author" content="okok">
+<meta property="article:tag" content="Android">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2015/11/27/Android%E5%85%A8%E9%80%82%E9%85%8D/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Android全适配 | 月悦</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">月悦</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">心有璞玉，方能致远。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/11/27/Android%E5%85%A8%E9%80%82%E9%85%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="okok">
+      <meta itemprop="description" content="记录学习生活的点点滴滴">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月悦">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android全适配
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2015-11-27 22:32:22" itemprop="dateCreated datePublished" datetime="2015-11-27T22:32:22+08:00">2015-11-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-03 19:26:12" itemprop="dateModified" datetime="2020-09-03T19:26:12+08:00">2020-09-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">android设备众多，怎样才能做出一款适配95%的安卓设备？android中的基础重重之重！</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="基本知识"><a href="#基本知识" class="headerlink" title="基本知识"></a>基本知识</h2><h3 id="屏幕像素密度dpi"><a href="#屏幕像素密度dpi" class="headerlink" title="屏幕像素密度dpi"></a>屏幕像素密度dpi</h3><ul>
+<li>屏幕尺寸单位：1英寸=2.54厘米</li>
+<li>屏幕像素密度：dpi(每英寸上面像素点个数)</li>
+</ul>
+<p>例子：1920*1280 5.2inch<br>Dpi = sqrt(1920^2+1280^2)/5.2</p>
+<h4 id="关于dp-dip"><a href="#关于dp-dip" class="headerlink" title="关于dp,dip"></a>关于dp,dip</h4><ul>
+<li>基准160dpi：1dip=1px<br>320dpi上，1dip = 2px;<br>任意设备上，1dpi是多少。也就是1dip = dpi/160 px。</li>
+</ul>
+<h2 id="全适配"><a href="#全适配" class="headerlink" title="全适配"></a>全适配</h2><ul>
+<li>使用wrap_content、match_parent、weight</li>
+<li>使用相对布局、禁用绝对布局</li>
+<li>使用限定符</li>
+<li>使用自动拉伸位图</li>
+</ul>
+<h3 id="布局权重layout-weight"><a href="#布局权重layout-weight" class="headerlink" title="布局权重layout_weight"></a>布局权重layout_weight</h3><p>计算出的宽度 = 控件原始宽度 + 剩余宽度*百分比。</p>
+<ul>
+<li><p>假定屏幕宽度为L，横向线性布局<br>Button1:match_parent 宽度为L<br>Button2:match_parent 宽度为L<br>控件总宽度：2L<br>剩余宽度为 = 屏幕宽度 - 控件总宽度<br>Button1:2/3L = L+(L-2L)<em>(1/3)<br>Button2:1/3L= L+(L-2L)</em>(2/3)</p>
+</li>
+<li><p>假定线性布局下设置宽度为O<br>Button1:2/3L = 0 + (L-0)<em>(1/3)<br>Button2:1/3L= 0 + (L-0)</em>(2/3)</p>
+</li>
+</ul>
+<h3 id="相对布局"><a href="#相对布局" class="headerlink" title="相对布局"></a>相对布局</h3><p>这个不多说。</p>
+<h3 id="限定符"><a href="#限定符" class="headerlink" title="限定符"></a>限定符</h3><p>屏幕最小宽度限定符layout-sw600dp<br>屏幕方向限定符 layout-sw600dp-port layout-sw600dp-land</p>
+<h4 id="尺寸限定符"><a href="#尺寸限定符" class="headerlink" title="尺寸限定符"></a>尺寸限定符</h4><p>Google android3.2之前规定<br>在手机上使用，我们一般是单面板模式   res/layout/main.xml 单面板<br>在平板上使用，我们一般采用双面板模式 res/layout-large/main.xml 双面板<br>这样我们在对应文件下写两个布局分别适配。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">res/layout/main.xml 单面板</span><br><span class="line"></span><br><span class="line">&lt;LinearLayout xmlns:android=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span><br><span class="line">    android:orientation=<span class="string">&quot;vertical&quot;</span></span><br><span class="line">    android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">    android:layout_height=<span class="string">&quot;match_parent&quot;</span>&gt;</span><br><span class="line"></span><br><span class="line">    &lt;fragment android:id=<span class="string">&quot;@+id/headlines&quot;</span></span><br><span class="line">              android:layout_height=<span class="string">&quot;fill_parent&quot;</span></span><br><span class="line">              android:name=<span class="string">&quot;com.example.android.newsreader.HeadlinesFragment&quot;</span></span><br><span class="line">              android:layout_width=<span class="string">&quot;match_parent&quot;</span> /&gt;</span><br><span class="line">&lt;/LinearLayout&gt;</span><br><span class="line"></span><br><span class="line">res/layout-large/main.xml 双面板</span><br><span class="line"></span><br><span class="line">&lt;LinearLayout xmlns:android=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span><br><span class="line">    android:layout_width=<span class="string">&quot;fill_parent&quot;</span></span><br><span class="line">    android:layout_height=<span class="string">&quot;fill_parent&quot;</span></span><br><span class="line">    android:orientation=<span class="string">&quot;horizontal&quot;</span>&gt;</span><br><span class="line">    &lt;fragment android:id=<span class="string">&quot;@+id/headlines&quot;</span></span><br><span class="line">              android:layout_height=<span class="string">&quot;fill_parent&quot;</span></span><br><span class="line">              android:name=<span class="string">&quot;com.example.android.newsreader.HeadlinesFragment&quot;</span></span><br><span class="line">              android:layout_width=<span class="string">&quot;400dp&quot;</span></span><br><span class="line">              android:layout_marginRight=<span class="string">&quot;10dp&quot;</span>/&gt;</span><br><span class="line">    &lt;fragment android:id=<span class="string">&quot;@+id/article&quot;</span></span><br><span class="line">              android:layout_height=<span class="string">&quot;fill_parent&quot;</span></span><br><span class="line">              android:name=<span class="string">&quot;com.example.android.newsreader.ArticleFragment&quot;</span></span><br><span class="line">              android:layout_width=<span class="string">&quot;fill_parent&quot;</span> /&gt;</span><br><span class="line">&lt;/LinearLayout&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="最小宽度限定符"><a href="#最小宽度限定符" class="headerlink" title="最小宽度限定符"></a>最小宽度限定符</h4><p>Google android3.2之后新规：按屏幕最短的那个边，如果大于600dp，要使用layout-sw600dp<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">res/layout/main.xml，单面板（默认）布局：</span><br><span class="line"></span><br><span class="line">&lt;LinearLayout xmlns:android=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span><br><span class="line">    android:orientation=<span class="string">&quot;vertical&quot;</span></span><br><span class="line">    android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">    android:layout_height=<span class="string">&quot;match_parent&quot;</span>&gt;</span><br><span class="line"></span><br><span class="line">    &lt;fragment android:id=<span class="string">&quot;@+id/headlines&quot;</span></span><br><span class="line">              android:layout_height=<span class="string">&quot;fill_parent&quot;</span></span><br><span class="line">              android:name=<span class="string">&quot;com.example.android.newsreader.HeadlinesFragment&quot;</span></span><br><span class="line">              android:layout_width=<span class="string">&quot;match_parent&quot;</span> /&gt;</span><br><span class="line">&lt;/LinearLayout&gt;</span><br><span class="line"></span><br><span class="line">res/layout-sw600dp/main.xml，双面板布局：  Small Width 最小宽度</span><br><span class="line"></span><br><span class="line">&lt;LinearLayout xmlns:android=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span><br><span class="line">    android:layout_width=<span class="string">&quot;fill_parent&quot;</span></span><br><span class="line">    android:layout_height=<span class="string">&quot;fill_parent&quot;</span></span><br><span class="line">    android:orientation=<span class="string">&quot;horizontal&quot;</span>&gt;</span><br><span class="line">    &lt;fragment android:id=<span class="string">&quot;@+id/headlines&quot;</span></span><br><span class="line">              android:layout_height=<span class="string">&quot;fill_parent&quot;</span></span><br><span class="line">              android:name=<span class="string">&quot;com.example.android.newsreader.HeadlinesFragment&quot;</span></span><br><span class="line">              android:layout_width=<span class="string">&quot;400dp&quot;</span></span><br><span class="line">              android:layout_marginRight=<span class="string">&quot;10dp&quot;</span>/&gt;</span><br><span class="line">    &lt;fragment android:id=<span class="string">&quot;@+id/article&quot;</span></span><br><span class="line">              android:layout_height=<span class="string">&quot;fill_parent&quot;</span></span><br><span class="line">              android:name=<span class="string">&quot;com.example.android.newsreader.ArticleFragment&quot;</span></span><br><span class="line">              android:layout_width=<span class="string">&quot;fill_parent&quot;</span> /&gt;</span><br><span class="line">&lt;/LinearLayout&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="屏幕方向限定符"><a href="#屏幕方向限定符" class="headerlink" title="屏幕方向限定符"></a>屏幕方向限定符</h4><p>这个主要针对平板。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">res/values-sw600dp-land/layouts.xml:</span><br><span class="line">&lt;resources&gt;</span><br><span class="line">    &lt;item name=<span class="string">&quot;main&quot;</span> <span class="built_in">type</span>=<span class="string">&quot;layout&quot;</span>&gt;@layout/main_twopanes&lt;/item&gt;</span><br><span class="line">&lt;/resources&gt;</span><br><span class="line"></span><br><span class="line">res/values-sw600dp-port/layouts.xml:</span><br><span class="line">&lt;resources&gt;</span><br><span class="line">    &lt;item name=<span class="string">&quot;main&quot;</span> <span class="built_in">type</span>=<span class="string">&quot;layout&quot;</span>&gt;@layout/main&lt;/item&gt;</span><br><span class="line">&lt;/resources&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="布局别名"><a href="#布局别名" class="headerlink" title="布局别名"></a>布局别名</h4><p>让系统去分局values命名去选择要使用的布局文件。<br>并采用布局别名的方式,写法依旧是setContentView(R.layout.main);<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">res/layout/main.xml: 			单面板布局</span><br><span class="line">res/layout-large/main.xml: 		多面板布局</span><br><span class="line">res/layout-sw600dp/main.xml: 	多面板布局</span><br><span class="line"></span><br><span class="line">res/layout/main.xml  			单面板布局</span><br><span class="line">res/layout/main_twopanes.xml 	双面板布局</span><br><span class="line"></span><br><span class="line">setContentView(R.layout.main);</span><br><span class="line"></span><br><span class="line">默认布局</span><br><span class="line">res/values/layout.xml:</span><br><span class="line">&lt;resources&gt;</span><br><span class="line">    &lt;item name=<span class="string">&quot;main&quot;</span> <span class="built_in">type</span>=<span class="string">&quot;layout&quot;</span>&gt;@layout/main&lt;/item&gt;</span><br><span class="line">&lt;/resources&gt;</span><br><span class="line"></span><br><span class="line">Android3.2之前的平板布局</span><br><span class="line">res/values-large/layout.xml:</span><br><span class="line">&lt;resources&gt;</span><br><span class="line">    &lt;item name=<span class="string">&quot;main&quot;</span> <span class="built_in">type</span>=<span class="string">&quot;layout&quot;</span>&gt;@layout/main_twopanes&lt;/item&gt;</span><br><span class="line">&lt;/resources&gt;</span><br><span class="line"></span><br><span class="line">Android3.2之后的平板布局</span><br><span class="line">res/values-sw600dp/layout.xml:</span><br><span class="line">&lt;resources&gt;</span><br><span class="line">    &lt;item name=<span class="string">&quot;main&quot;</span> <span class="built_in">type</span>=<span class="string">&quot;layout&quot;</span>&gt;@layout/main_twopanes&lt;/item&gt;</span><br><span class="line">&lt;/resources&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="自动拉伸位图"><a href="#自动拉伸位图" class="headerlink" title="自动拉伸位图"></a>自动拉伸位图</h4><p>图片格式的自适应<br>.9图：picture.9.png:<br>左、上：拉伸区域(横纵向放缩)<br>右、下:padding box(optical)(和边框的距离即为padding)</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Android/" rel="tag"># Android</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2015/11/27/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="prev" title="Java多线程">
+      <i class="fa fa-chevron-left"></i> Java多线程
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2015/11/30/Windows%E9%80%9A%E8%BF%87virtualbox-ssh%E7%99%BB%E9%99%86%E5%88%B0%E8%99%9A%E6%8B%9Fubuntu/" rel="next" title="Windows通过virtualbox ssh登陆到虚拟ubuntu">
+      Windows通过virtualbox ssh登陆到虚拟ubuntu <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text">基本知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B1%8F%E5%B9%95%E5%83%8F%E7%B4%A0%E5%AF%86%E5%BA%A6dpi"><span class="nav-number">1.1.</span> <span class="nav-text">屏幕像素密度dpi</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E4%BA%8Edp-dip"><span class="nav-number">1.1.1.</span> <span class="nav-text">关于dp,dip</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A8%E9%80%82%E9%85%8D"><span class="nav-number">2.</span> <span class="nav-text">全适配</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%83%E5%B1%80%E6%9D%83%E9%87%8Dlayout-weight"><span class="nav-number">2.1.</span> <span class="nav-text">布局权重layout_weight</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%AF%B9%E5%B8%83%E5%B1%80"><span class="nav-number">2.2.</span> <span class="nav-text">相对布局</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%90%E5%AE%9A%E7%AC%A6"><span class="nav-number">2.3.</span> <span class="nav-text">限定符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%BA%E5%AF%B8%E9%99%90%E5%AE%9A%E7%AC%A6"><span class="nav-number">2.3.1.</span> <span class="nav-text">尺寸限定符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%80%E5%B0%8F%E5%AE%BD%E5%BA%A6%E9%99%90%E5%AE%9A%E7%AC%A6"><span class="nav-number">2.3.2.</span> <span class="nav-text">最小宽度限定符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B1%8F%E5%B9%95%E6%96%B9%E5%90%91%E9%99%90%E5%AE%9A%E7%AC%A6"><span class="nav-number">2.3.3.</span> <span class="nav-text">屏幕方向限定符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%83%E5%B1%80%E5%88%AB%E5%90%8D"><span class="nav-number">2.3.4.</span> <span class="nav-text">布局别名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E6%8B%89%E4%BC%B8%E4%BD%8D%E5%9B%BE"><span class="nav-number">2.3.5.</span> <span class="nav-text">自动拉伸位图</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="okok"
+      src="/uploads/avatar.jpg">
+  <p class="site-author-name" itemprop="name">okok</p>
+  <div class="site-description" itemprop="description">记录学习生活的点点滴滴</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">okok</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : 'c74c13526a86f65a9380',
+      clientSecret: '8a5c3431391521fc4880d5d280bc31a1cc08ffd7',
+      repo        : 'rollingdeep.github.io',
+      owner       : 'rollingdeep',
+      admin       : ['rollingdeep'],
+      id          : '25c2cd7e6f557979bb65be8b0bcd5871',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
+</html>

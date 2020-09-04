@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="论文demo中的一个小android程序，大部分实现过程都是之前发过的Android教程。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="医疗健康管理系统APP">
+<meta property="og:url" content="http://yoursite.com/2016/03/01/%E5%8C%BB%E7%96%97%E5%81%A5%E5%BA%B7%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9FAPP/index.html">
+<meta property="og:site_name" content="月悦">
+<meta property="og:description" content="论文demo中的一个小android程序，大部分实现过程都是之前发过的Android教程。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/uploads/softwares/s0.jpg">
+<meta property="og:image" content="http://yoursite.com/uploads/softwares/s0_1.jpg">
+<meta property="og:image" content="http://yoursite.com/uploads/softwares/s2.jpg">
+<meta property="og:image" content="http://yoursite.com/uploads/softwares/s2_1.jpg">
+<meta property="og:image" content="http://yoursite.com/uploads/softwares/s3_1.jpg">
+<meta property="og:image" content="http://yoursite.com/uploads/softwares/s4_2.jpg">
+<meta property="og:image" content="http://yoursite.com/uploads/softwares/s4_2.jpg">
+<meta property="og:image" content="http://yoursite.com/uploads/softwares/s5.jpg">
+<meta property="og:image" content="http://yoursite.com/uploads/softwares/s5_1.jpg">
+<meta property="og:image" content="http://yoursite.com/uploads/softwares/s5_2.jpg">
+<meta property="og:image" content="http://yoursite.com/uploads/softwares/s12.jpg">
+<meta property="og:image" content="http://yoursite.com/uploads/softwares/s13.jpg">
+<meta property="og:image" content="http://yoursite.com/uploads/softwares/s14.jpg">
+<meta property="article:published_time" content="2016-03-01T08:43:41.000Z">
+<meta property="article:modified_time" content="2020-09-03T11:26:12.372Z">
+<meta property="article:author" content="okok">
+<meta property="article:tag" content="Android">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/uploads/softwares/s0.jpg">
+
+<link rel="canonical" href="http://yoursite.com/2016/03/01/%E5%8C%BB%E7%96%97%E5%81%A5%E5%BA%B7%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9FAPP/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>医疗健康管理系统APP | 月悦</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">月悦</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">心有璞玉，方能致远。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/03/01/%E5%8C%BB%E7%96%97%E5%81%A5%E5%BA%B7%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9FAPP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="okok">
+      <meta itemprop="description" content="记录学习生活的点点滴滴">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月悦">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          医疗健康管理系统APP
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2016-03-01 16:43:41" itemprop="dateCreated datePublished" datetime="2016-03-01T16:43:41+08:00">2016-03-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-03 19:26:12" itemprop="dateModified" datetime="2020-09-03T19:26:12+08:00">2020-09-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">论文demo中的一个小android程序，大部分实现过程都是之前发过的Android教程。</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h3><p>私人健康小助手，它需要为用户提供友好的操作交互界面，方面用户的使用，并给出实时的合适的评测和建议，提供附近医生的地点并聊天。我们在客户的功能需求主要包含一下内容：</p>
+<ul>
+<li>身体信息采集<br>用户能够提交自己的身体参数，如血糖，血压，心跳等8个参数，心跳可以通过手机后置摄像头测得，其他参数需要手动输入。</li>
+<li>饮食图片分析<br>用户可以上传当天的所食食物图片，后台根据图片分析出该图片是什么菜，并给出菜的大致的营养含量，如蛋白质，热量，碳水化合物含量。</li>
+<li>历史分析<br>根据用户每天提交的身体参数，app会通过后台数据挖掘的模型，分析出一个概率，比如糖尿病：32.5%，高血压：20%。将每次测得的最高概率记录生成历史记录。用户可以根据曲线是否平稳，知道自己的身体是不是有生病的趋势。</li>
+<li>预测并给出生活和饮食建议<br>根据图片分析和身体信息分析，综合给出生活建议和饮食建议。如果该用户可能会有潜在的糖尿病风险，那么不要吃含糖量比较高的食物。</li>
+</ul>
+<h3 id="软件详情"><a href="#软件详情" class="headerlink" title="软件详情"></a>软件详情</h3><h4 id="启动页面"><a href="#启动页面" class="headerlink" title="启动页面"></a>启动页面</h4><p>图2-1中SHMS为开发的软件 私人健康小助手，首先查看手机是否连网，连网后，点击图标SHMS打开应用。<br><img src="/uploads/softwares/s0.jpg" alt="图2-1"><br>图2-1</p>
+<h4 id="APP启动页面"><a href="#APP启动页面" class="headerlink" title="APP启动页面"></a>APP启动页面</h4><p>图2-2是APP启动欢迎页面，私人健康小助手，为页面初始化和数据准备做一个简单的缓冲。<br><img src="/uploads/softwares/s0_1.jpg" alt="图2-2"><br>图2-2</p>
+<h4 id="程序页面介绍"><a href="#程序页面介绍" class="headerlink" title="程序页面介绍"></a>程序页面介绍</h4><h5 id="自我诊断页面"><a href="#自我诊断页面" class="headerlink" title="自我诊断页面"></a>自我诊断页面</h5><ol>
+<li>输入手环或者智能终端测试的数据提交到后台分析得病的潜在概率。</li>
+<li>用手机按住摄像头读取红色色素点傅里叶变换成心率曲线。<br>图2-3展示的是自我诊断页面(Self diagnose),用户可以通过点击右边的数字，会弹出对话框。可以填写自己的身体状况信息。<br><img src="/uploads/softwares/s2.jpg" alt="图2-3"><br>图2-3</li>
+</ol>
+<h5 id="信息输入"><a href="#信息输入" class="headerlink" title="信息输入"></a>信息输入</h5><p>图2-4展示的是信息输入页面，点击图2-3中数字，可以弹出如下的对话框，可以上下滑动，然后Confirm确认输入，Cancel取消输入。输入的数据会最终显示在图2-3中，点击按钮Submit会提交至图2-6所示的页面，预测结果会以饼状图显示。<br><img src="/uploads/softwares/s2_1.jpg" alt="图2-4"><br>图2-4</p>
+<h5 id="脉搏测量"><a href="#脉搏测量" class="headerlink" title="脉搏测量"></a>脉搏测量</h5><p>点击图2-3HeartBeat右侧的数字会显示如图2-5所示的界面。界面会提示用户将手指按住后置摄像头，然后会出现心跳的频率。并将结果提交到图2-3<br>中。<br><img src="/uploads/softwares/s3_1.jpg" alt="图2-5"><br>图2-5</p>
+<h5 id="预测结果展示"><a href="#预测结果展示" class="headerlink" title="预测结果展示"></a>预测结果展示</h5><p>图2-3中点击Submit,会将输入的身体状况信息提交至图2-6，并以饼图的形式展示，里面百分比数据是代表预测出该疾病的潜在发生概率，如果超过60%就表明身体状况有些危险。该页面有历史分析（Historic Analysis），点击该按钮，跳转至图2-13的历史分析图。<br><img src="/uploads/softwares/s4_2.jpg" alt="图2-6"><br>图2-6</p>
+<p>输入不同的数据，会展示不同的概率饼图，图2-7展示就是血糖过高的一个实际例子，高达90%的概率，这基本已经确定是糖尿病人。</p>
+<p><img src="/uploads/softwares/s4_2.jpg" alt="图2-7"><br>图2-7</p>
+<h5 id="饮食分析"><a href="#饮食分析" class="headerlink" title="饮食分析"></a>饮食分析</h5><ul>
+<li>读取并拍摄获取手机里的食物照片，分析食物的分量如含糖量，碳水化合物的含量。<br>图2-8中展示的是饮食分析页面。用户可以上传当天饮食情况，打出相关标签，并上传至服务器。分析菜的分量。点击Submit提交至图2-10。</li>
+</ul>
+<p><img src="/uploads/softwares/s5.jpg" alt="图2-8"><br>图2-8</p>
+<p>点击图2-8中的小龙虾图片，会展示如图2-9底栏对话框。可以选择拍照，上传图片等功能。最终选择的图片会展示在图2-8小龙虾的位置。下面有一个文本框。这个是在后台无法识别该图片的时候。用户可以打一个标签，如小龙虾。这样后台可以给出一个如图2-10的图片。</p>
+<p><img src="/uploads/softwares/s5_1.jpg" alt="图2-9"><br>图2-9</p>
+<h5 id="食物摄入量"><a href="#食物摄入量" class="headerlink" title="食物摄入量"></a>食物摄入量</h5><p>图2-9中上传的图片和打出的标签，传入服务器后台，会给出一个营养成分柱状表。有卡路里，碳水化合物，脂肪，蛋白质，纤维素的含量。单位为100g。<br><img src="/uploads/softwares/s5_2.jpg" alt="图2-10"><br>图2-10</p>
+<h5 id="健康建议"><a href="#健康建议" class="headerlink" title="健康建议"></a>健康建议</h5><ul>
+<li>根据前两者给出相关饮食和生活建议。<br>图2-11中根据自我诊断和饮食分析建立的该用户的画像，分析给出适当的生活和饮食建议。点击右上方的时间图标同样可以看到图2-13的历史分析页面。记录用户使用以来的身体状况是否平稳。<br><img src="/uploads/softwares/s12.jpg" alt="图2-11"><br>图2-11</li>
+</ul>
+<p>图2-12展示的是不同的信息输入和饮食分析，会出现不同的分析结果。图2-11展示的是胆固醇高的用户，图2-12展示的是图2-7展示对应的血糖高的用户。<br><img src="/uploads/softwares/s13.jpg" alt="图2-12"><br>图2-12</p>
+<h5 id="历史记录"><a href="#历史记录" class="headerlink" title="历史记录"></a>历史记录</h5><p>图2-13展示的是历史记录。每次用户测试之后都会有一个最高概率，如果最高概率超过阈值就会被记录在折线图中。此处展示的是没有设置阈值的情况。<br><img src="/uploads/softwares/s14.jpg" alt="图2-13"><br>图2-13</p>
+<h5 id="查找医生"><a href="#查找医生" class="headerlink" title="查找医生"></a>查找医生</h5><ul>
+<li>根据百度地图定位周边医生，发送自己的身体状况分析报告，并可以和医生在线聊天询问病情发展。<br>会根据百度地图提供附近医生的信息，可以向医生传输发送自己的数据，让医生给出一些合适的建议。此功能正在修改当中，未来会逐渐完善。</li>
+</ul>
+<h3 id="问题反馈"><a href="#问题反馈" class="headerlink" title="问题反馈"></a>问题反馈</h3><p>以上就是私人健康小助手的全部功能介绍。如有问题,欢迎发送邮件至chxu@m.scnu.edu.cn.</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Android/" rel="tag"># Android</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2015/12/22/Android%E4%B9%8B%E7%9B%B8%E6%9C%BA%E7%9B%B8%E5%86%8C%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8/" rel="prev" title="Android之相机相册服务调用">
+      <i class="fa fa-chevron-left"></i> Android之相机相册服务调用
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2016/03/02/%E8%85%BE%E8%AE%AF%E4%B8%80%E9%9D%A2/" rel="next" title="腾讯OMG一面">
+      腾讯OMG一面 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">基本介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%AF%A6%E6%83%85"><span class="nav-number">2.</span> <span class="nav-text">软件详情</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E9%A1%B5%E9%9D%A2"><span class="nav-number">2.1.</span> <span class="nav-text">启动页面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#APP%E5%90%AF%E5%8A%A8%E9%A1%B5%E9%9D%A2"><span class="nav-number">2.2.</span> <span class="nav-text">APP启动页面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E9%A1%B5%E9%9D%A2%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.3.</span> <span class="nav-text">程序页面介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%87%AA%E6%88%91%E8%AF%8A%E6%96%AD%E9%A1%B5%E9%9D%A2"><span class="nav-number">2.3.1.</span> <span class="nav-text">自我诊断页面</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E8%BE%93%E5%85%A5"><span class="nav-number">2.3.2.</span> <span class="nav-text">信息输入</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%84%89%E6%90%8F%E6%B5%8B%E9%87%8F"><span class="nav-number">2.3.3.</span> <span class="nav-text">脉搏测量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%A2%84%E6%B5%8B%E7%BB%93%E6%9E%9C%E5%B1%95%E7%A4%BA"><span class="nav-number">2.3.4.</span> <span class="nav-text">预测结果展示</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%A5%AE%E9%A3%9F%E5%88%86%E6%9E%90"><span class="nav-number">2.3.5.</span> <span class="nav-text">饮食分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%A3%9F%E7%89%A9%E6%91%84%E5%85%A5%E9%87%8F"><span class="nav-number">2.3.6.</span> <span class="nav-text">食物摄入量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%81%A5%E5%BA%B7%E5%BB%BA%E8%AE%AE"><span class="nav-number">2.3.7.</span> <span class="nav-text">健康建议</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95"><span class="nav-number">2.3.8.</span> <span class="nav-text">历史记录</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E5%8C%BB%E7%94%9F"><span class="nav-number">2.3.9.</span> <span class="nav-text">查找医生</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%8F%8D%E9%A6%88"><span class="nav-number">3.</span> <span class="nav-text">问题反馈</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="okok"
+      src="/uploads/avatar.jpg">
+  <p class="site-author-name" itemprop="name">okok</p>
+  <div class="site-description" itemprop="description">记录学习生活的点点滴滴</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">okok</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : 'c74c13526a86f65a9380',
+      clientSecret: '8a5c3431391521fc4880d5d280bc31a1cc08ffd7',
+      repo        : 'rollingdeep.github.io',
+      owner       : 'rollingdeep',
+      admin       : ['rollingdeep'],
+      id          : 'd2f2c0c608a8e4132d259ba18ac6fa85',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
+</html>

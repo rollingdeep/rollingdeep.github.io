@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="塔布数据">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA位运算以及在大数据上的应用">
+<meta property="og:url" content="http://yoursite.com/2016/09/23/JAVA%E4%BD%8D%E8%BF%90%E7%AE%97%E4%BB%A5%E5%8F%8A%E5%9C%A8%E5%A4%A7%E6%95%B0%E6%8D%AE%E4%B8%8A%E7%9A%84%E5%BA%94%E7%94%A8/index.html">
+<meta property="og:site_name" content="月悦">
+<meta property="og:description" content="塔布数据">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-09-23T02:31:45.000Z">
+<meta property="article:modified_time" content="2020-09-03T11:26:12.364Z">
+<meta property="article:author" content="okok">
+<meta property="article:tag" content="JAVA">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2016/09/23/JAVA%E4%BD%8D%E8%BF%90%E7%AE%97%E4%BB%A5%E5%8F%8A%E5%9C%A8%E5%A4%A7%E6%95%B0%E6%8D%AE%E4%B8%8A%E7%9A%84%E5%BA%94%E7%94%A8/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>JAVA位运算以及在大数据上的应用 | 月悦</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">月悦</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">心有璞玉，方能致远。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/09/23/JAVA%E4%BD%8D%E8%BF%90%E7%AE%97%E4%BB%A5%E5%8F%8A%E5%9C%A8%E5%A4%A7%E6%95%B0%E6%8D%AE%E4%B8%8A%E7%9A%84%E5%BA%94%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="okok">
+      <meta itemprop="description" content="记录学习生活的点点滴滴">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月悦">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JAVA位运算以及在大数据上的应用
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2016-09-23 10:31:45" itemprop="dateCreated datePublished" datetime="2016-09-23T10:31:45+08:00">2016-09-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-03 19:26:12" itemprop="dateModified" datetime="2020-09-03T19:26:12+08:00">2020-09-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">塔布数据</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h3><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">* &amp; : 与运算</span><br><span class="line">* | : 或运算</span><br><span class="line">* ^ : 异或运算</span><br><span class="line">* ~ : 非运算</span><br><span class="line">* &lt;&lt; : 左移操作，右侧补0</span><br><span class="line">* &gt;&gt; : 右移操作，左侧补1</span><br><span class="line">* &gt;&gt;&gt; : 右移操作，左侧补0</span><br></pre></td></tr></table></figure>
+<h3 id="基本技巧"><a href="#基本技巧" class="headerlink" title="基本技巧"></a>基本技巧</h3><ol>
+<li>判别奇数偶数<br>(num &amp; 1) != 0 为奇数  (常规情况下, 取余操作没有逻辑操作快)</li>
+<li>判别某一位为1<br>num = num &gt;&gt; indexBit; //右移indexBit位<br>(num &amp; 1) == 1         //判断当前位是不是1</li>
+<li>二进制数1的个数<br>(n &amp; (n -1))           //不断清除最右边的 1</li>
+<li>异或 数学逻辑<br>b = a ^ b ^ a<br>a ^ a = 0<br>a ^ 0 = a<br>eg:加密运算，将text和psd异或加密。</li>
+</ol>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><blockquote>
+<ol>
+<li>数组中有两个元素出现了奇数次，其他元素出现了偶数次。找出这两个元素。</li>
+</ol>
+</blockquote>
+<p>解析：a^b^c^d^…^z,出现偶数次可以抵消，奇数次则最终留下来运算。<br><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">package com.leetcode;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.BitSet;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by Paul on 2016/9/23.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="symbol">TwoEven</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> static <span class="built_in">void</span> main(String[] args)&#123;</span><br><span class="line">        <span class="built_in">int</span> a[]=&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">7</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">7</span>,<span class="number">7</span>&#125;;</span><br><span class="line">        fun(a);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> static <span class="built_in">void</span> fun(<span class="built_in">int</span>[] data)&#123;</span><br><span class="line">        <span class="built_in">int</span> e0 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="built_in">int</span> i = <span class="number">0</span>;i &lt; data.length;i ++)&#123;</span><br><span class="line">            e0 = e0 ^ data[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//在indexBit这个位置上面，一定有一个是1，另外一个为0</span></span><br><span class="line">        <span class="built_in">int</span> indexBit = findFirstBit(e0);</span><br><span class="line">        <span class="built_in">int</span> num1 = <span class="number">0</span>, num2 =<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="built_in">int</span> i = <span class="number">0</span>;i &lt; data.length;i ++)&#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(isbit1(data[i] ,indexBit))num1 = num1 ^ data[i];</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                num2 = num2 ^ data[i];</span><br><span class="line">        &#125;</span><br><span class="line">        System.<span class="keyword">out</span>.println(num1 + <span class="string">&quot; | &quot;</span> + num2);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> static  <span class="built_in">int</span> findFirstBit(<span class="built_in">int</span> num)&#123;</span><br><span class="line">        <span class="comment">// 64位机器</span></span><br><span class="line">        <span class="built_in">int</span> indexBit = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// num &amp; 1 == 0  如果这样写，会报错。原来位运算 优先级 比 == 低</span></span><br><span class="line">        <span class="keyword">while</span>((num &amp; <span class="number">1</span>) == <span class="number">0</span> &amp;&amp; (indexBit &lt; <span class="number">32</span>))&#123;</span><br><span class="line">            num = num &gt;&gt; <span class="number">1</span>;</span><br><span class="line">            indexBit ++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> indexBit;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 对应bit位是0还是1</span></span><br><span class="line">    <span class="keyword">public</span> static <span class="built_in">bool</span>ean isbit1(<span class="built_in">int</span> num,<span class="built_in">int</span> indexBit)&#123;</span><br><span class="line">        num = num &gt;&gt; indexBit;</span><br><span class="line">        <span class="keyword">return</span> (num &amp; <span class="number">1</span>) == <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<ol>
+<li>对于两个32位整数a和b，请设计一个算法返回a和b中较大的。但是不能用任何比较判断。若两数相同，返回任意一个。<br>给定两个整数a和b，请返回较大的数。</li>
+</ol>
+</blockquote>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="symbol">Compare</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> flip(<span class="built_in">int</span> n) &#123;</span><br><span class="line">        <span class="keyword">return</span> n ^ <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> sign(<span class="built_in">int</span> n) &#123;</span><br><span class="line">        <span class="keyword">return</span> flip((n &gt;&gt; <span class="number">31</span>) &amp; <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> getMax(<span class="built_in">int</span> a, <span class="built_in">int</span> b) &#123;</span><br><span class="line">        <span class="built_in">int</span> c = a - b;</span><br><span class="line">        <span class="built_in">int</span> sa = sign(a);</span><br><span class="line">        <span class="built_in">int</span> sb = sign(b);</span><br><span class="line">        <span class="built_in">int</span> sc = sign(c);</span><br><span class="line">        <span class="built_in">int</span> difSab = sa ^ sb;</span><br><span class="line">        <span class="built_in">int</span> sameSab = flip(difSab);</span><br><span class="line">        <span class="built_in">int</span> returnA = difSab * sa + sameSab * sc;</span><br><span class="line">        <span class="built_in">int</span> returnB = flip(returnA);</span><br><span class="line">        <span class="keyword">return</span> a * returnA + b * returnB;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="大数据之位存储"><a href="#大数据之位存储" class="headerlink" title="大数据之位存储"></a>大数据之位存储</h3><h4 id="BitSet"><a href="#BitSet" class="headerlink" title="BitSet"></a>BitSet</h4><p>1.set(int bitIndex)<br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * Sets the bit at the specified index to &#123;<span class="doctag">@code</span> true&#125;.</span></span><br><span class="line"><span class="comment">    *</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span>  bitIndex a bit index</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@throws</span> IndexOutOfBoundsException if the specified index is negative</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@since</span>  JDK1.0</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">set</span><span class="params">(<span class="keyword">int</span> bitIndex)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (bitIndex &lt; <span class="number">0</span>)</span><br><span class="line">           <span class="keyword">throw</span> <span class="keyword">new</span> IndexOutOfBoundsException(<span class="string">&quot;bitIndex &lt; 0: &quot;</span> + bitIndex);</span><br><span class="line"></span><br><span class="line">       <span class="keyword">int</span> wordIndex = wordIndex(bitIndex);</span><br><span class="line">       expandTo(wordIndex);</span><br><span class="line"></span><br><span class="line">       words[wordIndex] |= (<span class="number">1</span>L &lt;&lt; bitIndex); <span class="comment">// Restores invariants</span></span><br><span class="line"></span><br><span class="line">       checkInvariants();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure><br>2.get(int bitIndex) 取值<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span> bitIndex)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (bitIndex &lt; <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IndexOutOfBoundsException(<span class="string">&quot;bitIndex &lt; 0: &quot;</span> + bitIndex);</span><br><span class="line"></span><br><span class="line">        checkInvariants();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> wordIndex = wordIndex(bitIndex);</span><br><span class="line">        <span class="keyword">return</span> (wordIndex &lt; wordsInUse)</span><br><span class="line">            &amp;&amp; ((words[wordIndex] &amp; (<span class="number">1L</span> &lt;&lt; bitIndex)) != <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><br>3.flip(int bitIndex) 置反<br><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Sets the bit at the specified index to the complement of its</span></span><br><span class="line"><span class="comment">     * current value.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * @param  bitIndex the index of the bit to flip</span></span><br><span class="line"><span class="comment">     * @throws IndexOutOfBoundsException if the specified index is negative</span></span><br><span class="line"><span class="comment">     * @since  1.4</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    public void flip(<span class="built_in">int</span> bitIndex) &#123;</span><br><span class="line">        <span class="keyword">if</span> (bitIndex &lt; <span class="number">0</span>)</span><br><span class="line">            throw <span class="keyword">new</span> <span class="constructor">IndexOutOfBoundsException(<span class="string">&quot;bitIndex &lt; 0: &quot;</span> + <span class="params">bitIndex</span>)</span>;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">int</span> wordIndex = word<span class="constructor">Index(<span class="params">bitIndex</span>)</span>;</span><br><span class="line">        expand<span class="constructor">To(<span class="params">wordIndex</span>)</span>;</span><br><span class="line"></span><br><span class="line">        words<span class="literal">[<span class="identifier">wordIndex</span>]</span> ^= (<span class="number">1L</span> &lt;&lt; bitIndex);</span><br><span class="line"></span><br><span class="line">        recalculate<span class="constructor">WordsInUse()</span>;</span><br><span class="line">        check<span class="constructor">Invariants()</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><br>4.clear(int bitIndex)清除<br><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public void clear(<span class="built_in">int</span> bitIndex) &#123;</span><br><span class="line">        <span class="keyword">if</span> (bitIndex &lt; <span class="number">0</span>)</span><br><span class="line">            throw <span class="keyword">new</span> <span class="constructor">IndexOutOfBoundsException(<span class="string">&quot;bitIndex &lt; 0: &quot;</span> + <span class="params">bitIndex</span>)</span>;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">int</span> wordIndex = word<span class="constructor">Index(<span class="params">bitIndex</span>)</span>;</span><br><span class="line">        <span class="keyword">if</span> (wordIndex &gt;= wordsInUse)</span><br><span class="line">            return;</span><br><span class="line"></span><br><span class="line">        words<span class="literal">[<span class="identifier">wordIndex</span>]</span> &amp;= ~(<span class="number">1L</span> &lt;&lt; bitIndex);</span><br><span class="line"></span><br><span class="line">        recalculate<span class="constructor">WordsInUse()</span>;</span><br><span class="line">        check<span class="constructor">Invariants()</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="Bloom-filter"><a href="#Bloom-filter" class="headerlink" title="Bloom filter"></a>Bloom filter</h4><p>原理 : hash + BitSet<br>(1) 一般情况：通过hash函数映射到BitSet上<br>y = f(x) % BitSet.size();<br>y的位置在BitSet上为1<br>(2) 布隆过滤器 : n个独立的hash函数 + m位的BitSet;<br>hash函数之后投射到m位的BitSet上，需要index = f(x) % m;<br>(3) 如果当前的x输入，经过映射会出现y1,y2,…,yn.如果y1,y2,….,yn位置上全是1.<br>则返回true.否则，返回false,即从未出现过。</p>
+<p>常用场景：<br>1.网页黑名单系统<br>2.垃圾邮件过滤系统<br>3.爬虫的网址判断</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JAVA/" rel="tag"># JAVA</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2016/09/09/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/" rel="prev" title="深度学习个人学习笔记(1)">
+      <i class="fa fa-chevron-left"></i> 深度学习个人学习笔记(1)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2016/09/25/2017%E7%BD%91%E6%98%93%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95%E7%BC%96%E7%A8%8B%E6%95%B4%E7%90%86/" rel="next" title="2017网易校招笔试编程整理">
+      2017网易校招笔试编程整理 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%8D%E8%BF%90%E7%AE%97"><span class="nav-number">1.</span> <span class="nav-text">位运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%8A%80%E5%B7%A7"><span class="nav-number">2.</span> <span class="nav-text">基本技巧</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B"><span class="nav-number">3.</span> <span class="nav-text">实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%A7%E6%95%B0%E6%8D%AE%E4%B9%8B%E4%BD%8D%E5%AD%98%E5%82%A8"><span class="nav-number">4.</span> <span class="nav-text">大数据之位存储</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#BitSet"><span class="nav-number">4.1.</span> <span class="nav-text">BitSet</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bloom-filter"><span class="nav-number">4.2.</span> <span class="nav-text">Bloom filter</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="okok"
+      src="/uploads/avatar.jpg">
+  <p class="site-author-name" itemprop="name">okok</p>
+  <div class="site-description" itemprop="description">记录学习生活的点点滴滴</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">okok</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : 'c74c13526a86f65a9380',
+      clientSecret: '8a5c3431391521fc4880d5d280bc31a1cc08ffd7',
+      repo        : 'rollingdeep.github.io',
+      owner       : 'rollingdeep',
+      admin       : ['rollingdeep'],
+      id          : '302822ba1d11d4d1b4db2f56289cbfff',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
+</html>
