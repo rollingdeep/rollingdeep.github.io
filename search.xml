@@ -1868,4 +1868,63 @@ $ sudo apt-get upgrade
         <tag>TOMCAT</tag>
       </tags>
   </entry>
+  <entry>
+    <title>hive 保序concat</title>
+    <url>/2020/09/11/hive-%E4%BF%9D%E5%BA%8Fconcat/</url>
+    <content><![CDATA[<h3 id="hive保序concat"><a href="#hive保序concat" class="headerlink" title="hive保序concat"></a>hive保序concat</h3><blockquote>
+<p>品类里面取TOP2并按score分值连接成字符串</p>
+</blockquote>
+<ol>
+<li>row_number() 首先要排序。</li>
+<li>where rank &lt; N 其次要进行过滤。<br>以上两步缺一不可</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span></span><br><span class="line">    uid,</span><br><span class="line">    prefer_type,</span><br><span class="line">    <span class="keyword">sum</span>(watch_proba) <span class="keyword">as</span> watch_proba,</span><br><span class="line">    <span class="keyword">concat_ws</span>(<span class="string">&quot;;&quot;</span>, collect_list(item)) <span class="keyword">as</span> type_item</span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">(</span><br><span class="line">    <span class="keyword">select</span> </span><br><span class="line">        uid,</span><br><span class="line">        gt,</span><br><span class="line">        prefer_type,</span><br><span class="line">        watch_proba,</span><br><span class="line">        watch_proba_normalize,</span><br><span class="line">        <span class="keyword">concat</span>(gt, <span class="string">&quot;:&quot;</span>, <span class="keyword">substr</span>(<span class="keyword">cast</span>(watch_proba_normalize <span class="keyword">as</span> <span class="built_in">decimal</span>(<span class="number">32</span>,<span class="number">30</span>)), <span class="number">0</span>, <span class="number">6</span>)) <span class="keyword">as</span> item, <span class="comment">-- 排除科学计数法，小数分值截断</span></span><br><span class="line">        row_number() <span class="keyword">over</span> ( <span class="keyword">partition</span> <span class="keyword">by</span> uid, prefer_type <span class="keyword">order</span> <span class="keyword">by</span> watch_proba <span class="keyword">desc</span> ) <span class="keyword">as</span> <span class="keyword">rank</span></span><br><span class="line">    <span class="keyword">from</span> </span><br><span class="line">    (</span><br><span class="line">        <span class="keyword">select</span> </span><br><span class="line">            uid,</span><br><span class="line">            gt,</span><br><span class="line">            prefer_type,</span><br><span class="line">            watch_proba,</span><br><span class="line">            watch_proba / <span class="keyword">sum</span>(watch_proba) <span class="keyword">over</span> ( <span class="keyword">partition</span> <span class="keyword">by</span> uid, prefer_type ) <span class="keyword">as</span> watch_proba_normalize <span class="comment">-- 归一化</span></span><br><span class="line">        <span class="keyword">from</span> recom_app.prefer_type</span><br><span class="line">    ) t11</span><br><span class="line">    <span class="keyword">where</span> watch_proba_normalize &gt;= <span class="number">0.0001</span></span><br><span class="line">) t12</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">rank</span> &lt;= <span class="number">2</span></span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> uid, prefer_type</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
+  <entry>
+    <title>Spark调优指南</title>
+    <url>/2020/09/11/Spark%E8%B0%83%E4%BC%98%E6%8C%87%E5%8D%97/</url>
+    <content><![CDATA[<h3 id="spark-yarn-executor-memoryOverhead"><a href="#spark-yarn-executor-memoryOverhead" class="headerlink" title="spark.yarn.executor.memoryOverhead"></a>spark.yarn.executor.memoryOverhead</h3><blockquote>
+<p> ExecutorLostFailure (executor 52 exited caused by one of the running tasks) Reason: Container killed by YARN for exceeding memory limits. 11.0 GB of 11 GB physical memory used. Consider boosting spark.yarn.executor.memoryOverhead.</p>
+</blockquote>
+<p>emoryOverhead是JVM进程中除Java堆以外占用的空间大小，包括方法区（永久代）、Java虚拟机栈、本地方法栈、JVM进程本身所用的内存、直接内存（Direct Memory）等。 通过spark.yarn.executor.memoryOverhead设置，单位MB。如果Java堆或者永久代的内存不足，则会产生各种OOM异常，executor会被结束。 在Java堆以外的JVM进程内存占用较多的情况下，应该将MemoryOverhead设置为一个足够大的值，以防JVM进程因实际占用的内存超标而被kill。</p>
+<ul>
+<li><code>spark-submit --conf spark.yarn.executor.memoryOverhead=10G</code></li>
+<li>spark里面设置 <code>`spark.conf.set(&quot;spark.yarn.executor.memoryOverhead&quot;, &quot;10G&quot;)</code></li>
+</ul>
+<h3 id="spark-sql-caseSensitive"><a href="#spark-sql-caseSensitive" class="headerlink" title="spark.sql.caseSensitive"></a>spark.sql.caseSensitive</h3><blockquote>
+<p>spark在读取json时候<code>spark.read.json(dataPath).toDF()</code>会自动inferschema(推断类型)，可能有些json的key写的不标准，比如同时存在Uid和uid就会解析错误。</p>
+<ul>
+<li>在spark程序里面设置 spark.conf.set(“spark.sql.caseSensitive”, “true”)</li>
+</ul>
+</blockquote>
+<h3 id="spark-sql-shuffle-partitions"><a href="#spark-sql-shuffle-partitions" class="headerlink" title="spark.sql.shuffle.partitions"></a>spark.sql.shuffle.partitions</h3><blockquote>
+<p>数据倾斜的时候，通过设置distribute by task numer, 重新shuffle数据均衡</p>
+<ul>
+<li>spark.conf.set(“spark.sql.shuffle.partitions”, 800)</li>
+<li>spark.conf.set(“spark.default.parallelism”, 800)</li>
+</ul>
+</blockquote>
+<h3 id="spark-sql-parquet-compression-codec"><a href="#spark-sql-parquet-compression-codec" class="headerlink" title="spark.sql.parquet.compression.codec"></a>spark.sql.parquet.compression.codec</h3><blockquote>
+<p>lzo压缩文件spark自动解压</p>
+<ul>
+<li>spark.conf.set(“spark.sql.parquet.compression.codec”, “lzo”)</li>
+</ul>
+</blockquote>
+<h3 id="设置spark-driver-extraJavaOptions-Dhdp-version"><a href="#设置spark-driver-extraJavaOptions-Dhdp-version" class="headerlink" title="设置spark.driver.extraJavaOptions -Dhdp.version"></a>设置spark.driver.extraJavaOptions -Dhdp.version</h3><blockquote>
+<p>Exception in thread “main” java.lang.IllegalStateException: hdp.version is not set while running Spark under HDP</p>
+<ul>
+<li>spark.conf.set(“spark.driver.extraJavaOptions -Dhdp.version”, “3.1.0.0-78”)</li>
+<li>spark.conf.set(“spark.yarn.am.extraJavaOptions -Dhdp.version”, “3.1.0.0-78”)<br>以上均可以通过<code>--conf</code>设置</li>
+</ul>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>Spark</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>test perm</title>
+    <url>/2020/09/11/test-perm/</url>
+    <content><![CDATA[]]></content>
+  </entry>
 </search>
