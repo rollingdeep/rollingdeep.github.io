@@ -1,27 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>ANDROID STUDIO 安装提示JDK未安装解决办法</title>
-    <url>/2016/06/22/Android-Studio-%E5%AE%89%E8%A3%85%E6%8F%90%E7%A4%BAjdk%E6%9C%AA%E5%AE%89%E8%A3%85%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</url>
-    <content><![CDATA[<ul>
-<li>Android Studio安装时候提示未检测path中含有1.7或者1.7+jdk<br>解决办法</li>
-</ul>
-<ol>
-<li>检查系统中是否含有JAVA_HOME，path是否指定到%JAVA_HOME%\bin；</li>
-<li>将JAVA_HOME中‘\’替换为‘/’, path中也一致改为%JAVA_HOME%/bin;</li>
-</ol>
-<ul>
-<li>在home目录下创建.开头的文件<br>在dos下用mkdir创建</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>2017网易校招笔试编程整理</title>
     <url>/2016/09/25/2017%E7%BD%91%E6%98%93%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95%E7%BC%96%E7%A8%8B%E6%95%B4%E7%90%86/</url>
     <content><![CDATA[<h3 id="数位和最小"><a href="#数位和最小" class="headerlink" title="数位和最小"></a>数位和最小</h3><p>一个数字的数位和定义为这个数字所有位置的数值的总和，例如：<br>1234的数位和为：1 + 2 + 3 + 4 = 10<br>5463的数位和为：5 + 4 + 6 + 3 = 18<br>现在有三个数A、B、C,需要你求出在A、B范围内(包括A,B)的一个数X,让X的数位和与C的数位和差值最小。</p>
@@ -41,6 +20,27 @@
       <tags>
         <tag>Java</tag>
         <tag>Interview</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ANDROID STUDIO 安装提示JDK未安装解决办法</title>
+    <url>/2016/06/22/Android-Studio-%E5%AE%89%E8%A3%85%E6%8F%90%E7%A4%BAjdk%E6%9C%AA%E5%AE%89%E8%A3%85%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</url>
+    <content><![CDATA[<ul>
+<li>Android Studio安装时候提示未检测path中含有1.7或者1.7+jdk<br>解决办法</li>
+</ul>
+<ol>
+<li>检查系统中是否含有JAVA_HOME，path是否指定到%JAVA_HOME%\bin；</li>
+<li>将JAVA_HOME中‘\’替换为‘/’, path中也一致改为%JAVA_HOME%/bin;</li>
+</ol>
+<ul>
+<li>在home目录下创建.开头的文件<br>在dos下用mkdir创建</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
       </tags>
   </entry>
   <entry>
@@ -73,6 +73,31 @@
       <tags>
         <tag>Android</tag>
         <tag>SharedPreferences</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Android之相机相册服务调用</title>
+    <url>/2015/12/22/Android%E4%B9%8B%E7%9B%B8%E6%9C%BA%E7%9B%B8%E5%86%8C%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8/</url>
+    <content><![CDATA[<h3 id="相册服务"><a href="#相册服务" class="headerlink" title="相册服务"></a>相册服务</h3><ol>
+<li>判断是否有外存</li>
+<li>通过startActivityForResult(intent, MainActivity.GALLERY_REQUET)返回主Activity获得result.</li>
+<li>重写方法 protected void onActivityResult(int requestCode, int resultCode, Intent data);</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 调用相册服务</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">takePhoto</span><span class="params">()</span></span>&#123;</span><br><span class="line">         Intent intent = <span class="keyword">null</span>;</span><br><span class="line">         String state = Environment.getExternalStorageState();  </span><br><span class="line">         <span class="keyword">if</span> (state.equals(Environment.MEDIA_MOUNTED)) &#123;  </span><br><span class="line">             intent=<span class="keyword">new</span> Intent(Intent.ACTION_GET_CONTENT);</span><br><span class="line">             intent.addCategory(Intent.CATEGORY_OPENABLE);</span><br><span class="line">             intent.setType(<span class="string">&quot;image/*&quot;</span>);</span><br><span class="line">             intent.putExtra(<span class="string">&quot;cameraPhoto&quot;</span>, <span class="keyword">true</span>);</span><br><span class="line">             startActivityForResult(intent, MainActivity.GALLERY_REQUET);</span><br><span class="line">             &#125;</span><br><span class="line">             <span class="keyword">else</span> &#123;  </span><br><span class="line">                 Toast.makeText(<span class="keyword">this</span>, <span class="string">&quot;请确认已经插入SD卡&quot;</span>, Toast.LENGTH_LONG).show();  </span><br><span class="line">             &#125;  </span><br><span class="line">             Log.i(<span class="string">&quot;Target&quot;</span>, <span class="string">&quot;选取照片&quot;</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="相机服务"><a href="#相机服务" class="headerlink" title="相机服务"></a>相机服务</h3><p>这里给出的就是拍照并根据时间保存相片，然后image_path作为全局变量，在onActivityResult(int requestCode, int resultCode, Intent data);继续使用</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 调用相机服务</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">takeCamera</span><span class="params">()</span></span>&#123;</span><br><span class="line">        String path = Environment.getExternalStorageDirectory()+File.separator+Environment.DIRECTORY_DCIM;</span><br><span class="line">        Intent intent = <span class="keyword">new</span> Intent(MediaStore.ACTION_IMAGE_CAPTURE);</span><br><span class="line">        <span class="keyword">if</span>(intent.resolveActivity(getPackageManager()) != <span class="keyword">null</span> )&#123;</span><br><span class="line">            <span class="meta">@SuppressWarnings(&quot;static-access&quot;)</span></span><br><span class="line">            String temName = <span class="keyword">new</span> DateFormat().format(<span class="string">&quot;yyMMdd_hhmmss&quot;</span>,System.currentTimeMillis()) + <span class="string">&quot;_&quot;</span> + (Math.random()*<span class="number">100</span>)+<span class="string">&quot;.jpg&quot;</span>;</span><br><span class="line">            image_path = path + File.separator + temName;</span><br><span class="line">            File file=<span class="keyword">new</span> File(image_path);</span><br><span class="line">            <span class="keyword">if</span>(file.exists())&#123;</span><br><span class="line">                file.delete();</span><br><span class="line">            &#125;</span><br><span class="line">            Uri uri=Uri.fromFile(file);</span><br><span class="line">            intent.putExtra(MediaStore.EXTRA_OUTPUT, uri); </span><br><span class="line">            startActivityForResult(intent, CAMERA_REQUEST);</span><br><span class="line">            Log.i(<span class="string">&quot;Target&quot;</span>, <span class="string">&quot;照相&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="onActivityResult"><a href="#onActivityResult" class="headerlink" title="onActivityResult"></a>onActivityResult</h3><p>在Activity跳转中很常用<br>这里用于系统服务和我们程序跳转，我想原理应该类似<br>onActivityResult(int requestCode, int resultCode, Intent data)不多说，生命周期<br>WARNING：</p>
+<ol>
+<li>CAMERA_REQUEST中是通过image_path生成File再生成的Uri，没有使用Intent data中的数据</li>
+<li>在Fragment中调用MainActivity时候要强转为Activity类，即((MainActivity)getActivity()).takeCamera();<br>这两点我在做的时候，疑惑了好久！后来发现，不难理解</li>
+</ol>
+<h3 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h3><p>MainActivity.java<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//全局变量</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Bitmap photo;</span><br><span class="line">    <span class="comment">//系统参数</span></span><br><span class="line">    <span class="keyword">private</span> String image_path;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onActivityResult</span><span class="params">(<span class="keyword">int</span> requestCode, <span class="keyword">int</span> resultCode, Intent data)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(requestCode == CAMERA_REQUEST &amp;&amp; resultCode == RESULT_OK)&#123;</span><br><span class="line">            File file=<span class="keyword">new</span> File(image_path);</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Uri uri = Uri.fromFile(file);</span><br><span class="line">                BitmapFactory.Options options=<span class="keyword">new</span> BitmapFactory.Options();</span><br><span class="line">                options.inJustDecodeBounds=<span class="keyword">true</span>;                </span><br><span class="line">                BitmapFactory.decodeStream(getContentResolver().openInputStream(uri), <span class="keyword">null</span>, options);</span><br><span class="line">                options.inSampleSize=<span class="number">4</span>;</span><br><span class="line">                options.inJustDecodeBounds=<span class="keyword">false</span>;</span><br><span class="line">                Bitmap map=BitmapFactory.decodeStream(getContentResolver().openInputStream(uri), <span class="keyword">null</span>, options);</span><br><span class="line">                android.provider.MediaStore.Images.Media.insertImage(getContentResolver(), map, <span class="keyword">null</span>, <span class="keyword">null</span>);</span><br><span class="line">                sendBroadcast(<span class="keyword">new</span> Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE,uri));</span><br><span class="line"><span class="comment">//              image.setImageBitmap(map);</span></span><br><span class="line">                photo = map;</span><br><span class="line">            &#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125; </span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(requestCode == GALLERY_REQUET &amp;&amp; resultCode == RESULT_OK)&#123;</span><br><span class="line">            ContentResolver resolver = getContentResolver();</span><br><span class="line">            Uri selectedImage = data.getData();  </span><br><span class="line">            String[] filePathColumn = &#123; MediaStore.Images.Media.DATA &#125;;  </span><br><span class="line">       </span><br><span class="line">            Cursor cursor = resolver.query(selectedImage,  </span><br><span class="line">                     filePathColumn, <span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">null</span>);  </span><br><span class="line">            cursor.moveToFirst();  </span><br><span class="line">            <span class="keyword">int</span> columnIndex = cursor.getColumnIndex(filePathColumn[<span class="number">0</span>]);  </span><br><span class="line">            String choosePicturePath = cursor.getString(columnIndex);  </span><br><span class="line">            cursor.close(); </span><br><span class="line">            Log.i(<span class="string">&quot;Target&quot;</span>,choosePicturePath);</span><br><span class="line">            photo = BitmapFactory.decodeFile(choosePicturePath);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//========================华丽丽的分割线============================</span></span><br><span class="line"><span class="comment">//=========================调用系统服务============================</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 调用相机服务</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">takeCamera</span><span class="params">()</span></span>&#123;</span><br><span class="line">        String path = Environment.getExternalStorageDirectory()+File.separator+Environment.DIRECTORY_DCIM;</span><br><span class="line">        Intent intent = <span class="keyword">new</span> Intent(MediaStore.ACTION_IMAGE_CAPTURE);</span><br><span class="line">        <span class="keyword">if</span>(intent.resolveActivity(getPackageManager()) != <span class="keyword">null</span> )&#123;</span><br><span class="line">            <span class="meta">@SuppressWarnings(&quot;static-access&quot;)</span></span><br><span class="line">            String temName = <span class="keyword">new</span> DateFormat().format(<span class="string">&quot;yyMMdd_hhmmss&quot;</span>,System.currentTimeMillis()) + <span class="string">&quot;_&quot;</span> + (Math.random()*<span class="number">100</span>)+<span class="string">&quot;.jpg&quot;</span>;</span><br><span class="line">            image_path = path + File.separator + temName;</span><br><span class="line">            File file=<span class="keyword">new</span> File(image_path);</span><br><span class="line">            <span class="keyword">if</span>(file.exists())&#123;</span><br><span class="line">                file.delete();</span><br><span class="line">            &#125;</span><br><span class="line">            Uri uri=Uri.fromFile(file);</span><br><span class="line">            intent.putExtra(MediaStore.EXTRA_OUTPUT, uri); </span><br><span class="line">            startActivityForResult(intent, CAMERA_REQUEST);</span><br><span class="line">            Log.i(<span class="string">&quot;Target&quot;</span>, <span class="string">&quot;照相&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 调用相册服务</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">takePhoto</span><span class="params">()</span></span>&#123;</span><br><span class="line">         Intent intent = <span class="keyword">null</span>;</span><br><span class="line">         String state = Environment.getExternalStorageState();  </span><br><span class="line">         <span class="keyword">if</span> (state.equals(Environment.MEDIA_MOUNTED)) &#123;  </span><br><span class="line">             intent=<span class="keyword">new</span> Intent(Intent.ACTION_GET_CONTENT);</span><br><span class="line">             intent.addCategory(Intent.CATEGORY_OPENABLE);</span><br><span class="line">             intent.setType(<span class="string">&quot;image/*&quot;</span>);</span><br><span class="line">             intent.putExtra(<span class="string">&quot;cameraPhoto&quot;</span>, <span class="keyword">true</span>);</span><br><span class="line">             startActivityForResult(intent, MainActivity.GALLERY_REQUET);</span><br><span class="line">             &#125;</span><br><span class="line">             <span class="keyword">else</span> &#123;  </span><br><span class="line">                 Toast.makeText(<span class="keyword">this</span>, <span class="string">&quot;请确认已经插入SD卡&quot;</span>, Toast.LENGTH_LONG).show();  </span><br><span class="line">             &#125;  </span><br><span class="line">             Log.i(<span class="string">&quot;Target&quot;</span>, <span class="string">&quot;选取照片&quot;</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
       </tags>
   </entry>
   <entry>
@@ -110,31 +135,6 @@
       <tags>
         <tag>Android</tag>
         <tag>AsyncTask</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Android之相机相册服务调用</title>
-    <url>/2015/12/22/Android%E4%B9%8B%E7%9B%B8%E6%9C%BA%E7%9B%B8%E5%86%8C%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8/</url>
-    <content><![CDATA[<h3 id="相册服务"><a href="#相册服务" class="headerlink" title="相册服务"></a>相册服务</h3><ol>
-<li>判断是否有外存</li>
-<li>通过startActivityForResult(intent, MainActivity.GALLERY_REQUET)返回主Activity获得result.</li>
-<li>重写方法 protected void onActivityResult(int requestCode, int resultCode, Intent data);</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 调用相册服务</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">takePhoto</span><span class="params">()</span></span>&#123;</span><br><span class="line">         Intent intent = <span class="keyword">null</span>;</span><br><span class="line">         String state = Environment.getExternalStorageState();  </span><br><span class="line">         <span class="keyword">if</span> (state.equals(Environment.MEDIA_MOUNTED)) &#123;  </span><br><span class="line">             intent=<span class="keyword">new</span> Intent(Intent.ACTION_GET_CONTENT);</span><br><span class="line">             intent.addCategory(Intent.CATEGORY_OPENABLE);</span><br><span class="line">             intent.setType(<span class="string">&quot;image/*&quot;</span>);</span><br><span class="line">             intent.putExtra(<span class="string">&quot;cameraPhoto&quot;</span>, <span class="keyword">true</span>);</span><br><span class="line">             startActivityForResult(intent, MainActivity.GALLERY_REQUET);</span><br><span class="line">             &#125;</span><br><span class="line">             <span class="keyword">else</span> &#123;  </span><br><span class="line">                 Toast.makeText(<span class="keyword">this</span>, <span class="string">&quot;请确认已经插入SD卡&quot;</span>, Toast.LENGTH_LONG).show();  </span><br><span class="line">             &#125;  </span><br><span class="line">             Log.i(<span class="string">&quot;Target&quot;</span>, <span class="string">&quot;选取照片&quot;</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="相机服务"><a href="#相机服务" class="headerlink" title="相机服务"></a>相机服务</h3><p>这里给出的就是拍照并根据时间保存相片，然后image_path作为全局变量，在onActivityResult(int requestCode, int resultCode, Intent data);继续使用</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 调用相机服务</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">takeCamera</span><span class="params">()</span></span>&#123;</span><br><span class="line">        String path = Environment.getExternalStorageDirectory()+File.separator+Environment.DIRECTORY_DCIM;</span><br><span class="line">        Intent intent = <span class="keyword">new</span> Intent(MediaStore.ACTION_IMAGE_CAPTURE);</span><br><span class="line">        <span class="keyword">if</span>(intent.resolveActivity(getPackageManager()) != <span class="keyword">null</span> )&#123;</span><br><span class="line">            <span class="meta">@SuppressWarnings(&quot;static-access&quot;)</span></span><br><span class="line">            String temName = <span class="keyword">new</span> DateFormat().format(<span class="string">&quot;yyMMdd_hhmmss&quot;</span>,System.currentTimeMillis()) + <span class="string">&quot;_&quot;</span> + (Math.random()*<span class="number">100</span>)+<span class="string">&quot;.jpg&quot;</span>;</span><br><span class="line">            image_path = path + File.separator + temName;</span><br><span class="line">            File file=<span class="keyword">new</span> File(image_path);</span><br><span class="line">            <span class="keyword">if</span>(file.exists())&#123;</span><br><span class="line">                file.delete();</span><br><span class="line">            &#125;</span><br><span class="line">            Uri uri=Uri.fromFile(file);</span><br><span class="line">            intent.putExtra(MediaStore.EXTRA_OUTPUT, uri); </span><br><span class="line">            startActivityForResult(intent, CAMERA_REQUEST);</span><br><span class="line">            Log.i(<span class="string">&quot;Target&quot;</span>, <span class="string">&quot;照相&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="onActivityResult"><a href="#onActivityResult" class="headerlink" title="onActivityResult"></a>onActivityResult</h3><p>在Activity跳转中很常用<br>这里用于系统服务和我们程序跳转，我想原理应该类似<br>onActivityResult(int requestCode, int resultCode, Intent data)不多说，生命周期<br>WARNING：</p>
-<ol>
-<li>CAMERA_REQUEST中是通过image_path生成File再生成的Uri，没有使用Intent data中的数据</li>
-<li>在Fragment中调用MainActivity时候要强转为Activity类，即((MainActivity)getActivity()).takeCamera();<br>这两点我在做的时候，疑惑了好久！后来发现，不难理解</li>
-</ol>
-<h3 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h3><p>MainActivity.java<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//全局变量</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Bitmap photo;</span><br><span class="line">    <span class="comment">//系统参数</span></span><br><span class="line">    <span class="keyword">private</span> String image_path;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onActivityResult</span><span class="params">(<span class="keyword">int</span> requestCode, <span class="keyword">int</span> resultCode, Intent data)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(requestCode == CAMERA_REQUEST &amp;&amp; resultCode == RESULT_OK)&#123;</span><br><span class="line">            File file=<span class="keyword">new</span> File(image_path);</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Uri uri = Uri.fromFile(file);</span><br><span class="line">                BitmapFactory.Options options=<span class="keyword">new</span> BitmapFactory.Options();</span><br><span class="line">                options.inJustDecodeBounds=<span class="keyword">true</span>;                </span><br><span class="line">                BitmapFactory.decodeStream(getContentResolver().openInputStream(uri), <span class="keyword">null</span>, options);</span><br><span class="line">                options.inSampleSize=<span class="number">4</span>;</span><br><span class="line">                options.inJustDecodeBounds=<span class="keyword">false</span>;</span><br><span class="line">                Bitmap map=BitmapFactory.decodeStream(getContentResolver().openInputStream(uri), <span class="keyword">null</span>, options);</span><br><span class="line">                android.provider.MediaStore.Images.Media.insertImage(getContentResolver(), map, <span class="keyword">null</span>, <span class="keyword">null</span>);</span><br><span class="line">                sendBroadcast(<span class="keyword">new</span> Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE,uri));</span><br><span class="line"><span class="comment">//              image.setImageBitmap(map);</span></span><br><span class="line">                photo = map;</span><br><span class="line">            &#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125; </span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(requestCode == GALLERY_REQUET &amp;&amp; resultCode == RESULT_OK)&#123;</span><br><span class="line">            ContentResolver resolver = getContentResolver();</span><br><span class="line">            Uri selectedImage = data.getData();  </span><br><span class="line">            String[] filePathColumn = &#123; MediaStore.Images.Media.DATA &#125;;  </span><br><span class="line">       </span><br><span class="line">            Cursor cursor = resolver.query(selectedImage,  </span><br><span class="line">                     filePathColumn, <span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">null</span>);  </span><br><span class="line">            cursor.moveToFirst();  </span><br><span class="line">            <span class="keyword">int</span> columnIndex = cursor.getColumnIndex(filePathColumn[<span class="number">0</span>]);  </span><br><span class="line">            String choosePicturePath = cursor.getString(columnIndex);  </span><br><span class="line">            cursor.close(); </span><br><span class="line">            Log.i(<span class="string">&quot;Target&quot;</span>,choosePicturePath);</span><br><span class="line">            photo = BitmapFactory.decodeFile(choosePicturePath);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//========================华丽丽的分割线============================</span></span><br><span class="line"><span class="comment">//=========================调用系统服务============================</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 调用相机服务</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">takeCamera</span><span class="params">()</span></span>&#123;</span><br><span class="line">        String path = Environment.getExternalStorageDirectory()+File.separator+Environment.DIRECTORY_DCIM;</span><br><span class="line">        Intent intent = <span class="keyword">new</span> Intent(MediaStore.ACTION_IMAGE_CAPTURE);</span><br><span class="line">        <span class="keyword">if</span>(intent.resolveActivity(getPackageManager()) != <span class="keyword">null</span> )&#123;</span><br><span class="line">            <span class="meta">@SuppressWarnings(&quot;static-access&quot;)</span></span><br><span class="line">            String temName = <span class="keyword">new</span> DateFormat().format(<span class="string">&quot;yyMMdd_hhmmss&quot;</span>,System.currentTimeMillis()) + <span class="string">&quot;_&quot;</span> + (Math.random()*<span class="number">100</span>)+<span class="string">&quot;.jpg&quot;</span>;</span><br><span class="line">            image_path = path + File.separator + temName;</span><br><span class="line">            File file=<span class="keyword">new</span> File(image_path);</span><br><span class="line">            <span class="keyword">if</span>(file.exists())&#123;</span><br><span class="line">                file.delete();</span><br><span class="line">            &#125;</span><br><span class="line">            Uri uri=Uri.fromFile(file);</span><br><span class="line">            intent.putExtra(MediaStore.EXTRA_OUTPUT, uri); </span><br><span class="line">            startActivityForResult(intent, CAMERA_REQUEST);</span><br><span class="line">            Log.i(<span class="string">&quot;Target&quot;</span>, <span class="string">&quot;照相&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 调用相册服务</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">takePhoto</span><span class="params">()</span></span>&#123;</span><br><span class="line">         Intent intent = <span class="keyword">null</span>;</span><br><span class="line">         String state = Environment.getExternalStorageState();  </span><br><span class="line">         <span class="keyword">if</span> (state.equals(Environment.MEDIA_MOUNTED)) &#123;  </span><br><span class="line">             intent=<span class="keyword">new</span> Intent(Intent.ACTION_GET_CONTENT);</span><br><span class="line">             intent.addCategory(Intent.CATEGORY_OPENABLE);</span><br><span class="line">             intent.setType(<span class="string">&quot;image/*&quot;</span>);</span><br><span class="line">             intent.putExtra(<span class="string">&quot;cameraPhoto&quot;</span>, <span class="keyword">true</span>);</span><br><span class="line">             startActivityForResult(intent, MainActivity.GALLERY_REQUET);</span><br><span class="line">             &#125;</span><br><span class="line">             <span class="keyword">else</span> &#123;  </span><br><span class="line">                 Toast.makeText(<span class="keyword">this</span>, <span class="string">&quot;请确认已经插入SD卡&quot;</span>, Toast.LENGTH_LONG).show();  </span><br><span class="line">             &#125;  </span><br><span class="line">             Log.i(<span class="string">&quot;Target&quot;</span>, <span class="string">&quot;选取照片&quot;</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
       </tags>
   </entry>
   <entry>
@@ -271,32 +271,6 @@
       </tags>
   </entry>
   <entry>
-    <title>CVTE面试回忆</title>
-    <url>/2016/03/17/CVTE%E9%9D%A2%E8%AF%95%E5%9B%9E%E5%BF%86/</url>
-    <content><![CDATA[<h3 id="笔试"><a href="#笔试" class="headerlink" title="笔试"></a>笔试</h3><ol>
-<li><a href="http://wenku.baidu.com/link?url=u5nwwseVQMZZgdG0LYac0ve8D5XSXvAktz5Y9SG7XDExPb6xIBHBNn3GzcaDLRiD6l4GZbLvCpwSQloFQRWuah3wu54zAd3hKbUNbwJrCe7">笔试题文档</a></li>
-<li>笔试程序题：两个班成绩从高到低存放list1、list2怎样才能得到全年级的成绩？（假设全年级只有两个班）</li>
-</ol>
-<h3 id="技术面试"><a href="#技术面试" class="headerlink" title="技术面试"></a>技术面试</h3><ol>
-<li>hibernate优化</li>
-<li>HashMap的结构、能不能存空值，HashTable能不能存空值 ArrayList的初始容量</li>
-<li>LinkedList和ArrayList的区别</li>
-<li>多线程的实现方式、加锁用过吗、线程池有没有接触过</li>
-<li>怎么样自定义比较两个对象，提示Comparable和Comparator区别。</li>
-<li>青蛙一次跳一步一次跳两步解决方法？（写出了递归方法，主考官还问到，这种方法的弊端；然后又写了个迭代方法）</li>
-<li>sql，为什么mysql是小型数据库（后来想想答错了，应该是mysql并发量小，数据量不大）</li>
-<li>写出mysql，学生表id name, 课程表 id course , 成绩表 stuid couid score.查询成绩大于两百分的学生名和分数</li>
-<li>和导师的关系怎么样？导师如何评价你</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Interview</category>
-      </categories>
-      <tags>
-        <tag>Interview</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Collection和Collections</title>
     <url>/2015/11/26/Collection%E5%92%8CCollections/</url>
     <content><![CDATA[<h3 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h3><pre><code class="lang-bash">    Collection   
@@ -334,6 +308,31 @@
       </tags>
   </entry>
   <entry>
+    <title>GENYMOTION的安装</title>
+    <url>/2015/11/21/Genymotion%E7%9A%84%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<h3 id="在genymotion官网上注册一个账号"><a href="#在genymotion官网上注册一个账号" class="headerlink" title="在genymotion官网上注册一个账号"></a>在genymotion官网上注册一个账号</h3><ol>
+<li>然后下载安装genymotion,会自带安装virtualbox</li>
+<li>安装完成之可能会出现断网情况。<br>解决办法：选择本地连接和 virtualbox host-only这两个，鼠标右键选择桥接。</li>
+</ol>
+<h3 id="eclipse的配置"><a href="#eclipse的配置" class="headerlink" title="eclipse的配置"></a>eclipse的配置</h3><ol>
+<li>打开eclispe</li>
+<li>选择help&gt;install new software</li>
+<li>输入<a href="http://plugins.genymotion.com/eclipse。！！然后去掉勾选出现安装items，select">http://plugins.genymotion.com/eclipse。！！然后去掉勾选出现安装items，select</a> all</li>
+<li>安装，直至完成。这个时候重启eclipse可以发现已经多了一个genymotion图标。</li>
+<li>另外在genymotion中也要更改设置 settings&gt;ADB</li>
+<li>配置自己的android sdk目录 %android_dir%/_x64_windows/sdk</li>
+</ol>
+<p>至此已经大工告成！</p>
+<h3 id="相关连接"><a href="#相关连接" class="headerlink" title="相关连接"></a>相关连接</h3><p><a href="https://www.genymotion.com/#!/">genymotion官网</a></p>
+]]></content>
+      <categories>
+        <category>android</category>
+      </categories>
+      <tags>
+        <tag>Genymotion</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>E: Could not read response to hello message from hook</title>
     <url>/2020/03/18/E-Could-not-read-response-to-hello-message-from-hook/</url>
     <content><![CDATA[<p>win10 子系统 wsl 安装的 ubuntu，sudo apt-get install python3 时候出现。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">~ <span class="comment"># sudo apt-get install python3</span></span><br><span class="line">E: Could not <span class="built_in">read</span> response to hello message from hook [ ! -f /usr/bin/snap ] || /usr/bin/snap advise-snap --from-apt 2&gt;/dev/null || <span class="literal">true</span>: Success</span><br></pre></td></tr></table></figure><br>解决方法：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">~ <span class="comment"># sudo rm -rf /etc/apt/apt.conf.d/20snapd.conf</span></span><br></pre></td></tr></table></figure></p>
@@ -344,58 +343,6 @@
       <tags>
         <tag>wsl</tag>
         <tag>ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用Hexo搭建个人博客</title>
-    <url>/2015/09/01/FirstBlog/</url>
-    <content><![CDATA[<blockquote>
-<p>怎么写文章啊，不会啊,我累个去</p>
-</blockquote>
-<h3 id="Markdown语法"><a href="#Markdown语法" class="headerlink" title="Markdown语法"></a>Markdown语法</h3><ul>
-<li><p>分段： 两个回车</p>
-</li>
-<li><p>换行 两个空格 + 回车</p>
-</li>
-<li><p>标题 # ~ ###### 井号的个数表示几级标题，即Markdown可以表示一级标题到六级标题</p>
-</li>
-<li><p>引用 &gt;</p>
-</li>
-<li><p>列表 * ， + ， - ， 1. ，选其中之一，注意后面有个空格</p>
-</li>
-<li><p>代码区块 四个空格 开头</p>
-</li>
-<li><p>链接</p>
-<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">语法 [<span class="string">文字</span>](<span class="link">链接地址</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>图片  ，图片地址可以是本地路劲，也可以是网络地址</p>
-<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">语法 ![<span class="string">图片说明</span>](<span class="link">图片地址</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>强调 <strong>文字</strong> ， <strong>文字</strong> ， <em>文字</em> ， <em>文字</em></p>
-<figure class="highlight maxima"><table><tr><td class="code"><pre><span class="line">语法  **文字** ， <span class="symbol">__</span>文字<span class="symbol">__</span> ， <span class="symbol">_</span>文字<span class="symbol">_</span> ， *文字*</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>代码  三个点 : `</p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>FirstTry</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>First Blog</title>
-    <url>/2015/11/21/First-Blog/</url>
-    <content><![CDATA[<p>写点东西吧！</p>
-]]></content>
-      <categories>
-        <category>FirstTry</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>Rollingdeep</tag>
       </tags>
   </entry>
   <entry>
@@ -440,31 +387,6 @@
       </tags>
   </entry>
   <entry>
-    <title>GENYMOTION的安装</title>
-    <url>/2015/11/21/Genymotion%E7%9A%84%E5%AE%89%E8%A3%85/</url>
-    <content><![CDATA[<h3 id="在genymotion官网上注册一个账号"><a href="#在genymotion官网上注册一个账号" class="headerlink" title="在genymotion官网上注册一个账号"></a>在genymotion官网上注册一个账号</h3><ol>
-<li>然后下载安装genymotion,会自带安装virtualbox</li>
-<li>安装完成之可能会出现断网情况。<br>解决办法：选择本地连接和 virtualbox host-only这两个，鼠标右键选择桥接。</li>
-</ol>
-<h3 id="eclipse的配置"><a href="#eclipse的配置" class="headerlink" title="eclipse的配置"></a>eclipse的配置</h3><ol>
-<li>打开eclispe</li>
-<li>选择help&gt;install new software</li>
-<li>输入<a href="http://plugins.genymotion.com/eclipse。！！然后去掉勾选出现安装items，select">http://plugins.genymotion.com/eclipse。！！然后去掉勾选出现安装items，select</a> all</li>
-<li>安装，直至完成。这个时候重启eclipse可以发现已经多了一个genymotion图标。</li>
-<li>另外在genymotion中也要更改设置 settings&gt;ADB</li>
-<li>配置自己的android sdk目录 %android_dir%/_x64_windows/sdk</li>
-</ol>
-<p>至此已经大工告成！</p>
-<h3 id="相关连接"><a href="#相关连接" class="headerlink" title="相关连接"></a>相关连接</h3><p><a href="https://www.genymotion.com/#!/">genymotion官网</a></p>
-]]></content>
-      <categories>
-        <category>android</category>
-      </categories>
-      <tags>
-        <tag>Genymotion</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>IJCAI论文爬虫</title>
     <url>/2016/07/12/IJCAI%E8%AE%BA%E6%96%87%E7%88%AC%E8%99%AB/</url>
     <content><![CDATA[<h3 id="爬虫"><a href="#爬虫" class="headerlink" title="爬虫"></a>爬虫</h3><p>最简易的爬虫</p>
@@ -476,6 +398,45 @@
       </categories>
       <tags>
         <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>First Blog</title>
+    <url>/2015/11/21/First-Blog/</url>
+    <content><![CDATA[<p>写点东西吧！</p>
+]]></content>
+      <categories>
+        <category>FirstTry</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>Rollingdeep</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CVTE面试回忆</title>
+    <url>/2016/03/17/CVTE%E9%9D%A2%E8%AF%95%E5%9B%9E%E5%BF%86/</url>
+    <content><![CDATA[<h3 id="笔试"><a href="#笔试" class="headerlink" title="笔试"></a>笔试</h3><ol>
+<li><a href="http://wenku.baidu.com/link?url=u5nwwseVQMZZgdG0LYac0ve8D5XSXvAktz5Y9SG7XDExPb6xIBHBNn3GzcaDLRiD6l4GZbLvCpwSQloFQRWuah3wu54zAd3hKbUNbwJrCe7">笔试题文档</a></li>
+<li>笔试程序题：两个班成绩从高到低存放list1、list2怎样才能得到全年级的成绩？（假设全年级只有两个班）</li>
+</ol>
+<h3 id="技术面试"><a href="#技术面试" class="headerlink" title="技术面试"></a>技术面试</h3><ol>
+<li>hibernate优化</li>
+<li>HashMap的结构、能不能存空值，HashTable能不能存空值 ArrayList的初始容量</li>
+<li>LinkedList和ArrayList的区别</li>
+<li>多线程的实现方式、加锁用过吗、线程池有没有接触过</li>
+<li>怎么样自定义比较两个对象，提示Comparable和Comparator区别。</li>
+<li>青蛙一次跳一步一次跳两步解决方法？（写出了递归方法，主考官还问到，这种方法的弊端；然后又写了个迭代方法）</li>
+<li>sql，为什么mysql是小型数据库（后来想想答错了，应该是mysql并发量小，数据量不大）</li>
+<li>写出mysql，学生表id name, 课程表 id course , 成绩表 stuid couid score.查询成绩大于两百分的学生名和分数</li>
+<li>和导师的关系怎么样？导师如何评价你</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Interview</category>
+      </categories>
+      <tags>
+        <tag>Interview</tag>
       </tags>
   </entry>
   <entry>
@@ -517,39 +478,6 @@
       </tags>
   </entry>
   <entry>
-    <title>JAVA位运算以及在大数据上的应用</title>
-    <url>/2016/09/23/JAVA%E4%BD%8D%E8%BF%90%E7%AE%97%E4%BB%A5%E5%8F%8A%E5%9C%A8%E5%A4%A7%E6%95%B0%E6%8D%AE%E4%B8%8A%E7%9A%84%E5%BA%94%E7%94%A8/</url>
-    <content><![CDATA[<h3 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h3><figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">* &amp; : 与运算</span><br><span class="line">* | : 或运算</span><br><span class="line">* ^ : 异或运算</span><br><span class="line">* ~ : 非运算</span><br><span class="line">* &lt;&lt; : 左移操作，右侧补0</span><br><span class="line">* &gt;&gt; : 右移操作，左侧补1</span><br><span class="line">* &gt;&gt;&gt; : 右移操作，左侧补0</span><br></pre></td></tr></table></figure>
-<h3 id="基本技巧"><a href="#基本技巧" class="headerlink" title="基本技巧"></a>基本技巧</h3><ol>
-<li>判别奇数偶数<br>(num &amp; 1) != 0 为奇数  (常规情况下, 取余操作没有逻辑操作快)</li>
-<li>判别某一位为1<br>num = num &gt;&gt; indexBit; //右移indexBit位<br>(num &amp; 1) == 1         //判断当前位是不是1</li>
-<li>二进制数1的个数<br>(n &amp; (n -1))           //不断清除最右边的 1</li>
-<li>异或 数学逻辑<br>b = a ^ b ^ a<br>a ^ a = 0<br>a ^ 0 = a<br>eg:加密运算，将text和psd异或加密。</li>
-</ol>
-<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><blockquote>
-<ol>
-<li>数组中有两个元素出现了奇数次，其他元素出现了偶数次。找出这两个元素。</li>
-</ol>
-</blockquote>
-<p>解析：a^b^c^d^…^z,出现偶数次可以抵消，奇数次则最终留下来运算。<br><figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">package com.leetcode;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.BitSet;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by Paul on 2016/9/23.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="symbol">TwoEven</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> static <span class="built_in">void</span> main(String[] args)&#123;</span><br><span class="line">        <span class="built_in">int</span> a[]=&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">7</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">7</span>,<span class="number">7</span>&#125;;</span><br><span class="line">        fun(a);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> static <span class="built_in">void</span> fun(<span class="built_in">int</span>[] data)&#123;</span><br><span class="line">        <span class="built_in">int</span> e0 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="built_in">int</span> i = <span class="number">0</span>;i &lt; data.length;i ++)&#123;</span><br><span class="line">            e0 = e0 ^ data[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//在indexBit这个位置上面，一定有一个是1，另外一个为0</span></span><br><span class="line">        <span class="built_in">int</span> indexBit = findFirstBit(e0);</span><br><span class="line">        <span class="built_in">int</span> num1 = <span class="number">0</span>, num2 =<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="built_in">int</span> i = <span class="number">0</span>;i &lt; data.length;i ++)&#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(isbit1(data[i] ,indexBit))num1 = num1 ^ data[i];</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                num2 = num2 ^ data[i];</span><br><span class="line">        &#125;</span><br><span class="line">        System.<span class="keyword">out</span>.println(num1 + <span class="string">&quot; | &quot;</span> + num2);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> static  <span class="built_in">int</span> findFirstBit(<span class="built_in">int</span> num)&#123;</span><br><span class="line">        <span class="comment">// 64位机器</span></span><br><span class="line">        <span class="built_in">int</span> indexBit = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// num &amp; 1 == 0  如果这样写，会报错。原来位运算 优先级 比 == 低</span></span><br><span class="line">        <span class="keyword">while</span>((num &amp; <span class="number">1</span>) == <span class="number">0</span> &amp;&amp; (indexBit &lt; <span class="number">32</span>))&#123;</span><br><span class="line">            num = num &gt;&gt; <span class="number">1</span>;</span><br><span class="line">            indexBit ++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> indexBit;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 对应bit位是0还是1</span></span><br><span class="line">    <span class="keyword">public</span> static <span class="built_in">bool</span>ean isbit1(<span class="built_in">int</span> num,<span class="built_in">int</span> indexBit)&#123;</span><br><span class="line">        num = num &gt;&gt; indexBit;</span><br><span class="line">        <span class="keyword">return</span> (num &amp; <span class="number">1</span>) == <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<ol>
-<li>对于两个32位整数a和b，请设计一个算法返回a和b中较大的。但是不能用任何比较判断。若两数相同，返回任意一个。<br>给定两个整数a和b，请返回较大的数。</li>
-</ol>
-</blockquote>
-<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="symbol">Compare</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> flip(<span class="built_in">int</span> n) &#123;</span><br><span class="line">        <span class="keyword">return</span> n ^ <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> sign(<span class="built_in">int</span> n) &#123;</span><br><span class="line">        <span class="keyword">return</span> flip((n &gt;&gt; <span class="number">31</span>) &amp; <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> getMax(<span class="built_in">int</span> a, <span class="built_in">int</span> b) &#123;</span><br><span class="line">        <span class="built_in">int</span> c = a - b;</span><br><span class="line">        <span class="built_in">int</span> sa = sign(a);</span><br><span class="line">        <span class="built_in">int</span> sb = sign(b);</span><br><span class="line">        <span class="built_in">int</span> sc = sign(c);</span><br><span class="line">        <span class="built_in">int</span> difSab = sa ^ sb;</span><br><span class="line">        <span class="built_in">int</span> sameSab = flip(difSab);</span><br><span class="line">        <span class="built_in">int</span> returnA = difSab * sa + sameSab * sc;</span><br><span class="line">        <span class="built_in">int</span> returnB = flip(returnA);</span><br><span class="line">        <span class="keyword">return</span> a * returnA + b * returnB;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="大数据之位存储"><a href="#大数据之位存储" class="headerlink" title="大数据之位存储"></a>大数据之位存储</h3><h4 id="BitSet"><a href="#BitSet" class="headerlink" title="BitSet"></a>BitSet</h4><p>1.set(int bitIndex)<br><figure class="highlight aspectj"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * Sets the bit at the specified index to &#123;<span class="doctag">@code</span> true&#125;.</span></span><br><span class="line"><span class="comment">    *</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span>  bitIndex a bit index</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@throws</span> IndexOutOfBoundsException if the specified index is negative</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@since</span>  JDK1.0</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">set</span><span class="params">(<span class="keyword">int</span> bitIndex)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (bitIndex &lt; <span class="number">0</span>)</span><br><span class="line">           <span class="keyword">throw</span> <span class="keyword">new</span> IndexOutOfBoundsException(<span class="string">&quot;bitIndex &lt; 0: &quot;</span> + bitIndex);</span><br><span class="line"></span><br><span class="line">       <span class="keyword">int</span> wordIndex = wordIndex(bitIndex);</span><br><span class="line">       expandTo(wordIndex);</span><br><span class="line"></span><br><span class="line">       words[wordIndex] |= (<span class="number">1</span>L &lt;&lt; bitIndex); <span class="comment">// Restores invariants</span></span><br><span class="line"></span><br><span class="line">       checkInvariants();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure><br>2.get(int bitIndex) 取值<br><figure class="highlight arduino"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span> bitIndex)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (bitIndex &lt; <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IndexOutOfBoundsException(<span class="string">&quot;bitIndex &lt; 0: &quot;</span> + bitIndex);</span><br><span class="line"></span><br><span class="line">        checkInvariants();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> wordIndex = wordIndex(bitIndex);</span><br><span class="line">        <span class="keyword">return</span> (wordIndex &lt; wordsInUse)</span><br><span class="line">            &amp;&amp; ((words[wordIndex] &amp; (<span class="number">1L</span> &lt;&lt; bitIndex)) != <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><br>3.flip(int bitIndex) 置反<br><figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Sets the bit at the specified index to the complement of its</span></span><br><span class="line"><span class="comment">     * current value.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * @param  bitIndex the index of the bit to flip</span></span><br><span class="line"><span class="comment">     * @throws IndexOutOfBoundsException if the specified index is negative</span></span><br><span class="line"><span class="comment">     * @since  1.4</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    public void flip(<span class="built_in">int</span> bitIndex) &#123;</span><br><span class="line">        <span class="keyword">if</span> (bitIndex &lt; <span class="number">0</span>)</span><br><span class="line">            throw <span class="keyword">new</span> <span class="constructor">IndexOutOfBoundsException(<span class="string">&quot;bitIndex &lt; 0: &quot;</span> + <span class="params">bitIndex</span>)</span>;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">int</span> wordIndex = word<span class="constructor">Index(<span class="params">bitIndex</span>)</span>;</span><br><span class="line">        expand<span class="constructor">To(<span class="params">wordIndex</span>)</span>;</span><br><span class="line"></span><br><span class="line">        words<span class="literal">[<span class="identifier">wordIndex</span>]</span> ^= (<span class="number">1L</span> &lt;&lt; bitIndex);</span><br><span class="line"></span><br><span class="line">        recalculate<span class="constructor">WordsInUse()</span>;</span><br><span class="line">        check<span class="constructor">Invariants()</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><br>4.clear(int bitIndex)清除<br><figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line">public void clear(<span class="built_in">int</span> bitIndex) &#123;</span><br><span class="line">        <span class="keyword">if</span> (bitIndex &lt; <span class="number">0</span>)</span><br><span class="line">            throw <span class="keyword">new</span> <span class="constructor">IndexOutOfBoundsException(<span class="string">&quot;bitIndex &lt; 0: &quot;</span> + <span class="params">bitIndex</span>)</span>;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">int</span> wordIndex = word<span class="constructor">Index(<span class="params">bitIndex</span>)</span>;</span><br><span class="line">        <span class="keyword">if</span> (wordIndex &gt;= wordsInUse)</span><br><span class="line">            return;</span><br><span class="line"></span><br><span class="line">        words<span class="literal">[<span class="identifier">wordIndex</span>]</span> &amp;= ~(<span class="number">1L</span> &lt;&lt; bitIndex);</span><br><span class="line"></span><br><span class="line">        recalculate<span class="constructor">WordsInUse()</span>;</span><br><span class="line">        check<span class="constructor">Invariants()</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
-<h4 id="Bloom-filter"><a href="#Bloom-filter" class="headerlink" title="Bloom filter"></a>Bloom filter</h4><p>原理 : hash + BitSet<br>(1) 一般情况：通过hash函数映射到BitSet上<br>y = f(x) % BitSet.size();<br>y的位置在BitSet上为1<br>(2) 布隆过滤器 : n个独立的hash函数 + m位的BitSet;<br>hash函数之后投射到m位的BitSet上，需要index = f(x) % m;<br>(3) 如果当前的x输入，经过映射会出现y1,y2,…,yn.如果y1,y2,….,yn位置上全是1.<br>则返回true.否则，返回false,即从未出现过。</p>
-<p>常用场景：<br>1.网页黑名单系统<br>2.垃圾邮件过滤系统<br>3.爬虫的网址判断</p>
-]]></content>
-      <categories>
-        <category>JAVA</category>
-      </categories>
-      <tags>
-        <tag>JAVA</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JAVA中Object类中有几个方法</title>
     <url>/2016/05/31/JAVA%E4%B8%ADObject%E7%B1%BB%E4%B8%AD%E6%9C%89%E5%87%A0%E4%B8%AA%E6%96%B9%E6%B3%95/</url>
     <content><![CDATA[<blockquote>
@@ -580,6 +508,78 @@
       </categories>
       <tags>
         <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用Hexo搭建个人博客</title>
+    <url>/2015/09/01/FirstBlog/</url>
+    <content><![CDATA[<blockquote>
+<p>怎么写文章啊，不会啊,我累个去</p>
+</blockquote>
+<h3 id="Markdown语法"><a href="#Markdown语法" class="headerlink" title="Markdown语法"></a>Markdown语法</h3><ul>
+<li><p>分段： 两个回车</p>
+</li>
+<li><p>换行 两个空格 + 回车</p>
+</li>
+<li><p>标题 # ~ ###### 井号的个数表示几级标题，即Markdown可以表示一级标题到六级标题</p>
+</li>
+<li><p>引用 &gt;</p>
+</li>
+<li><p>列表 * ， + ， - ， 1. ，选其中之一，注意后面有个空格</p>
+</li>
+<li><p>代码区块 四个空格 开头</p>
+</li>
+<li><p>链接</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">语法 [<span class="string">文字</span>](<span class="link">链接地址</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>图片  ，图片地址可以是本地路劲，也可以是网络地址</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">语法 ![<span class="string">图片说明</span>](<span class="link">图片地址</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>强调 <strong>文字</strong> ， <strong>文字</strong> ， <em>文字</em> ， <em>文字</em></p>
+<figure class="highlight maxima"><table><tr><td class="code"><pre><span class="line">语法  **文字** ， <span class="symbol">__</span>文字<span class="symbol">__</span> ， <span class="symbol">_</span>文字<span class="symbol">_</span> ， *文字*</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>代码  三个点 : `</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>FirstTry</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JAVA位运算以及在大数据上的应用</title>
+    <url>/2016/09/23/JAVA%E4%BD%8D%E8%BF%90%E7%AE%97%E4%BB%A5%E5%8F%8A%E5%9C%A8%E5%A4%A7%E6%95%B0%E6%8D%AE%E4%B8%8A%E7%9A%84%E5%BA%94%E7%94%A8/</url>
+    <content><![CDATA[<h3 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h3><figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">* &amp; : 与运算</span><br><span class="line">* | : 或运算</span><br><span class="line">* ^ : 异或运算</span><br><span class="line">* ~ : 非运算</span><br><span class="line">* &lt;&lt; : 左移操作，右侧补0</span><br><span class="line">* &gt;&gt; : 右移操作，左侧补1</span><br><span class="line">* &gt;&gt;&gt; : 右移操作，左侧补0</span><br></pre></td></tr></table></figure>
+<h3 id="基本技巧"><a href="#基本技巧" class="headerlink" title="基本技巧"></a>基本技巧</h3><ol>
+<li>判别奇数偶数<br>(num &amp; 1) != 0 为奇数  (常规情况下, 取余操作没有逻辑操作快)</li>
+<li>判别某一位为1<br>num = num &gt;&gt; indexBit; //右移indexBit位<br>(num &amp; 1) == 1         //判断当前位是不是1</li>
+<li>二进制数1的个数<br>(n &amp; (n -1))           //不断清除最右边的 1</li>
+<li>异或 数学逻辑<br>b = a ^ b ^ a<br>a ^ a = 0<br>a ^ 0 = a<br>eg:加密运算，将text和psd异或加密。</li>
+</ol>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><blockquote>
+<ol>
+<li>数组中有两个元素出现了奇数次，其他元素出现了偶数次。找出这两个元素。</li>
+</ol>
+</blockquote>
+<p>解析：a^b^c^d^…^z,出现偶数次可以抵消，奇数次则最终留下来运算。<br><figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">package com.leetcode;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.BitSet;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by Paul on 2016/9/23.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="symbol">TwoEven</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> static <span class="built_in">void</span> main(String[] args)&#123;</span><br><span class="line">        <span class="built_in">int</span> a[]=&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">7</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">7</span>,<span class="number">7</span>&#125;;</span><br><span class="line">        fun(a);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> static <span class="built_in">void</span> fun(<span class="built_in">int</span>[] data)&#123;</span><br><span class="line">        <span class="built_in">int</span> e0 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="built_in">int</span> i = <span class="number">0</span>;i &lt; data.length;i ++)&#123;</span><br><span class="line">            e0 = e0 ^ data[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//在indexBit这个位置上面，一定有一个是1，另外一个为0</span></span><br><span class="line">        <span class="built_in">int</span> indexBit = findFirstBit(e0);</span><br><span class="line">        <span class="built_in">int</span> num1 = <span class="number">0</span>, num2 =<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="built_in">int</span> i = <span class="number">0</span>;i &lt; data.length;i ++)&#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(isbit1(data[i] ,indexBit))num1 = num1 ^ data[i];</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                num2 = num2 ^ data[i];</span><br><span class="line">        &#125;</span><br><span class="line">        System.<span class="keyword">out</span>.println(num1 + <span class="string">&quot; | &quot;</span> + num2);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> static  <span class="built_in">int</span> findFirstBit(<span class="built_in">int</span> num)&#123;</span><br><span class="line">        <span class="comment">// 64位机器</span></span><br><span class="line">        <span class="built_in">int</span> indexBit = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// num &amp; 1 == 0  如果这样写，会报错。原来位运算 优先级 比 == 低</span></span><br><span class="line">        <span class="keyword">while</span>((num &amp; <span class="number">1</span>) == <span class="number">0</span> &amp;&amp; (indexBit &lt; <span class="number">32</span>))&#123;</span><br><span class="line">            num = num &gt;&gt; <span class="number">1</span>;</span><br><span class="line">            indexBit ++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> indexBit;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 对应bit位是0还是1</span></span><br><span class="line">    <span class="keyword">public</span> static <span class="built_in">bool</span>ean isbit1(<span class="built_in">int</span> num,<span class="built_in">int</span> indexBit)&#123;</span><br><span class="line">        num = num &gt;&gt; indexBit;</span><br><span class="line">        <span class="keyword">return</span> (num &amp; <span class="number">1</span>) == <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<ol>
+<li>对于两个32位整数a和b，请设计一个算法返回a和b中较大的。但是不能用任何比较判断。若两数相同，返回任意一个。<br>给定两个整数a和b，请返回较大的数。</li>
+</ol>
+</blockquote>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="symbol">Compare</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> flip(<span class="built_in">int</span> n) &#123;</span><br><span class="line">        <span class="keyword">return</span> n ^ <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> sign(<span class="built_in">int</span> n) &#123;</span><br><span class="line">        <span class="keyword">return</span> flip((n &gt;&gt; <span class="number">31</span>) &amp; <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> getMax(<span class="built_in">int</span> a, <span class="built_in">int</span> b) &#123;</span><br><span class="line">        <span class="built_in">int</span> c = a - b;</span><br><span class="line">        <span class="built_in">int</span> sa = sign(a);</span><br><span class="line">        <span class="built_in">int</span> sb = sign(b);</span><br><span class="line">        <span class="built_in">int</span> sc = sign(c);</span><br><span class="line">        <span class="built_in">int</span> difSab = sa ^ sb;</span><br><span class="line">        <span class="built_in">int</span> sameSab = flip(difSab);</span><br><span class="line">        <span class="built_in">int</span> returnA = difSab * sa + sameSab * sc;</span><br><span class="line">        <span class="built_in">int</span> returnB = flip(returnA);</span><br><span class="line">        <span class="keyword">return</span> a * returnA + b * returnB;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="大数据之位存储"><a href="#大数据之位存储" class="headerlink" title="大数据之位存储"></a>大数据之位存储</h3><h4 id="BitSet"><a href="#BitSet" class="headerlink" title="BitSet"></a>BitSet</h4><p>1.set(int bitIndex)<br><figure class="highlight aspectj"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * Sets the bit at the specified index to &#123;<span class="doctag">@code</span> true&#125;.</span></span><br><span class="line"><span class="comment">    *</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span>  bitIndex a bit index</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@throws</span> IndexOutOfBoundsException if the specified index is negative</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@since</span>  JDK1.0</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">set</span><span class="params">(<span class="keyword">int</span> bitIndex)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (bitIndex &lt; <span class="number">0</span>)</span><br><span class="line">           <span class="keyword">throw</span> <span class="keyword">new</span> IndexOutOfBoundsException(<span class="string">&quot;bitIndex &lt; 0: &quot;</span> + bitIndex);</span><br><span class="line"></span><br><span class="line">       <span class="keyword">int</span> wordIndex = wordIndex(bitIndex);</span><br><span class="line">       expandTo(wordIndex);</span><br><span class="line"></span><br><span class="line">       words[wordIndex] |= (<span class="number">1</span>L &lt;&lt; bitIndex); <span class="comment">// Restores invariants</span></span><br><span class="line"></span><br><span class="line">       checkInvariants();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure><br>2.get(int bitIndex) 取值<br><figure class="highlight arduino"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span> bitIndex)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (bitIndex &lt; <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IndexOutOfBoundsException(<span class="string">&quot;bitIndex &lt; 0: &quot;</span> + bitIndex);</span><br><span class="line"></span><br><span class="line">        checkInvariants();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> wordIndex = wordIndex(bitIndex);</span><br><span class="line">        <span class="keyword">return</span> (wordIndex &lt; wordsInUse)</span><br><span class="line">            &amp;&amp; ((words[wordIndex] &amp; (<span class="number">1L</span> &lt;&lt; bitIndex)) != <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><br>3.flip(int bitIndex) 置反<br><figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Sets the bit at the specified index to the complement of its</span></span><br><span class="line"><span class="comment">     * current value.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * @param  bitIndex the index of the bit to flip</span></span><br><span class="line"><span class="comment">     * @throws IndexOutOfBoundsException if the specified index is negative</span></span><br><span class="line"><span class="comment">     * @since  1.4</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    public void flip(<span class="built_in">int</span> bitIndex) &#123;</span><br><span class="line">        <span class="keyword">if</span> (bitIndex &lt; <span class="number">0</span>)</span><br><span class="line">            throw <span class="keyword">new</span> <span class="constructor">IndexOutOfBoundsException(<span class="string">&quot;bitIndex &lt; 0: &quot;</span> + <span class="params">bitIndex</span>)</span>;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">int</span> wordIndex = word<span class="constructor">Index(<span class="params">bitIndex</span>)</span>;</span><br><span class="line">        expand<span class="constructor">To(<span class="params">wordIndex</span>)</span>;</span><br><span class="line"></span><br><span class="line">        words<span class="literal">[<span class="identifier">wordIndex</span>]</span> ^= (<span class="number">1L</span> &lt;&lt; bitIndex);</span><br><span class="line"></span><br><span class="line">        recalculate<span class="constructor">WordsInUse()</span>;</span><br><span class="line">        check<span class="constructor">Invariants()</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><br>4.clear(int bitIndex)清除<br><figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line">public void clear(<span class="built_in">int</span> bitIndex) &#123;</span><br><span class="line">        <span class="keyword">if</span> (bitIndex &lt; <span class="number">0</span>)</span><br><span class="line">            throw <span class="keyword">new</span> <span class="constructor">IndexOutOfBoundsException(<span class="string">&quot;bitIndex &lt; 0: &quot;</span> + <span class="params">bitIndex</span>)</span>;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">int</span> wordIndex = word<span class="constructor">Index(<span class="params">bitIndex</span>)</span>;</span><br><span class="line">        <span class="keyword">if</span> (wordIndex &gt;= wordsInUse)</span><br><span class="line">            return;</span><br><span class="line"></span><br><span class="line">        words<span class="literal">[<span class="identifier">wordIndex</span>]</span> &amp;= ~(<span class="number">1L</span> &lt;&lt; bitIndex);</span><br><span class="line"></span><br><span class="line">        recalculate<span class="constructor">WordsInUse()</span>;</span><br><span class="line">        check<span class="constructor">Invariants()</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="Bloom-filter"><a href="#Bloom-filter" class="headerlink" title="Bloom filter"></a>Bloom filter</h4><p>原理 : hash + BitSet<br>(1) 一般情况：通过hash函数映射到BitSet上<br>y = f(x) % BitSet.size();<br>y的位置在BitSet上为1<br>(2) 布隆过滤器 : n个独立的hash函数 + m位的BitSet;<br>hash函数之后投射到m位的BitSet上，需要index = f(x) % m;<br>(3) 如果当前的x输入，经过映射会出现y1,y2,…,yn.如果y1,y2,….,yn位置上全是1.<br>则返回true.否则，返回false,即从未出现过。</p>
+<p>常用场景：<br>1.网页黑名单系统<br>2.垃圾邮件过滤系统<br>3.爬虫的网址判断</p>
+]]></content>
+      <categories>
+        <category>JAVA</category>
+      </categories>
+      <tags>
+        <tag>JAVA</tag>
       </tags>
   </entry>
   <entry>
@@ -624,35 +624,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Java多线程</title>
-    <url>/2015/11/27/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B/</url>
-    <content><![CDATA[<h4 id="继承Thread"><a href="#继承Thread" class="headerlink" title="继承Thread"></a>继承Thread</h4><p>缺点：继承只能继承一次。扩展性不强<br>重写run方法，来自定义线程执行任务</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">public class MyThread extends Thread&#123;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public void <span class="function"><span class="title">run</span></span>() &#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;MyThread.run()&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args)&#123;</span><br><span class="line">		MyThread thread1 = new MyThread();</span><br><span class="line">		MyThread thread2 = new MyThread();</span><br><span class="line">		thread1.start();</span><br><span class="line">		thread2.start();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="实现Runnable接口"><a href="#实现Runnable接口" class="headerlink" title="实现Runnable接口"></a>实现Runnable接口</h4><p>优点：可扩展性强<br>方法：通过实现接口，然后Thread构造方法传参新建thread2类，start()启动。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">public class MyThread2 implements Runnable&#123;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public void <span class="function"><span class="title">run</span></span>() &#123;</span><br><span class="line">		System.out.print(<span class="string">&quot;MyThread2.run()&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args)&#123;</span><br><span class="line">		MyThread2 thread = new MyThread2();</span><br><span class="line">		Thread thread2 = new Thread(thread);</span><br><span class="line">		thread2.start();</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>Thread类本身实现了Runable接口，而且除了默认构造，还有一个带参构造，传入target<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//Thread源代码</span><br><span class="line">public <span class="function"><span class="title">Thread</span></span>() &#123;</span><br><span class="line">       init(null, null, <span class="string">&quot;Thread-&quot;</span> + nextThreadNum(), 0);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">public Thread(Runnable target) &#123;</span><br><span class="line">       init(null, target, <span class="string">&quot;Thread-&quot;</span> + nextThreadNum(), 0);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"> public void <span class="function"><span class="title">run</span></span>() &#123;</span><br><span class="line">       <span class="keyword">if</span> (target != null) &#123;</span><br><span class="line">           target.run();</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;   </span><br></pre></td></tr></table></figure></p>
-<h4 id="ExecutorService、Callable、Future带返回结果的线程实现"><a href="#ExecutorService、Callable、Future带返回结果的线程实现" class="headerlink" title="ExecutorService、Callable、Future带返回结果的线程实现"></a>ExecutorService、Callable、Future带返回结果的线程实现</h4><p>Callable：执行任务并返回结果。<br>Future<V>：Future接口是Java线程Future模式的实现，可以来进行异步计算。</p>
-<blockquote>
-<p>Future模式：我有一个任务，提交给了Future，Future替我完成这个任务。期间我自己可以去做任何想做的事情。一段时间之后，我就便可以从Future那儿取出结果。就相当于下了一张订货单，一段时间后可以拿着提订单来提货，这期间可以干别的任何事情。其中Future 接口就是订货单，真正处理订单的是Executor类，它根据Future接口的要求来生产产品。</p>
-</blockquote>
-<p>ExecutorService：继承自Executor，线程池操作类，创建，执行，关闭</p>
-<h5 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h5><ul>
-<li>Future<Object> f = pool.submit(c);</li>
-<li>Void f = pool.execute(RunnableImplements);</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//ExecutorService部分源码 </span><br><span class="line"></span><br><span class="line"> &lt;T&gt; Future&lt;T&gt; submit(Callable&lt;T&gt; task);</span><br><span class="line"></span><br><span class="line"> &lt;T&gt; Future&lt;T&gt; submit(Runnable task, T result);</span><br><span class="line"></span><br><span class="line"> Future&lt;?&gt; submit(Runnable task);</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">另外 </span><br><span class="line">//Executor源码</span><br><span class="line">public interface Executor &#123;</span><br><span class="line">    void execute(Runnable <span class="built_in">command</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="小例子"><a href="#小例子" class="headerlink" title="小例子"></a>小例子</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 有返回值的线程</span><br><span class="line"> */</span><br><span class="line">	public class MyThread3 &#123;</span><br><span class="line">		public static void main(String[] args) throws ExecutionException,</span><br><span class="line">				InterruptedException &#123;</span><br><span class="line">			System.out.println(<span class="string">&quot;----程序开始运行----&quot;</span>);</span><br><span class="line">			Date date1 = new Date();</span><br><span class="line"></span><br><span class="line">			int taskSize = 5;</span><br><span class="line">			// 创建一个线程池</span><br><span class="line">			ExecutorService pool = Executors.newFixedThreadPool(taskSize);</span><br><span class="line">			// 创建多个有返回值的任务</span><br><span class="line">			List&lt;Future&lt;Object&gt;&gt; list = new ArrayList&lt;Future&lt;Object&gt;&gt;();</span><br><span class="line">			<span class="keyword">for</span> (int i = 0; i &lt; taskSize; i++) &#123;</span><br><span class="line">				Callable&lt;Object&gt; c = new MyCallable(i + <span class="string">&quot; &quot;</span>);</span><br><span class="line">				// 执行任务并获取Future对象</span><br><span class="line">				Future&lt;Object&gt; f = pool.submit(c);</span><br><span class="line">				// System.out.println(<span class="string">&quot;&gt;&gt;&gt;&quot;</span> + f.get().toString());</span><br><span class="line">				list.add(f);</span><br><span class="line">			&#125;</span><br><span class="line">			// 关闭线程池</span><br><span class="line">			pool.shutdown();</span><br><span class="line"></span><br><span class="line">			// 获取所有并发任务的运行结果</span><br><span class="line">			<span class="keyword">for</span> (Future&lt;Object&gt; f : list) &#123;</span><br><span class="line">				// 从Future对象上获取任务的返回值，并输出到控制台</span><br><span class="line">				System.out.println(<span class="string">&quot;&gt;&gt;&gt;&quot;</span> + f.get().toString());</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			Date date2 = new Date();</span><br><span class="line">			System.out.println(<span class="string">&quot;----程序结束运行----，程序运行时间【&quot;</span></span><br><span class="line">					+ (date2.getTime() - date1.getTime()) + <span class="string">&quot;毫秒】&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	class MyCallable implements Callable&lt;Object&gt; &#123;</span><br><span class="line">		private String taskNum;</span><br><span class="line"></span><br><span class="line">		MyCallable(String taskNum) &#123;</span><br><span class="line">			this.taskNum = taskNum;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		public Object call() throws Exception &#123;</span><br><span class="line">			System.out.println(<span class="string">&quot;&gt;&gt;&gt;&quot;</span> + taskNum + <span class="string">&quot;任务启动&quot;</span>);</span><br><span class="line">			Date dateTmp1 = new Date();</span><br><span class="line">			Thread.sleep(1000);</span><br><span class="line">			Date dateTmp2 = new Date();</span><br><span class="line">			long time = dateTmp2.getTime() - dateTmp1.getTime();</span><br><span class="line">			System.out.println(<span class="string">&quot;&gt;&gt;&gt;&quot;</span> + taskNum + <span class="string">&quot;任务终止&quot;</span>);</span><br><span class="line">			<span class="built_in">return</span> taskNum + <span class="string">&quot;任务返回运行结果,当前任务时间【&quot;</span> + time + <span class="string">&quot;毫秒】&quot;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<p>如有不懂，可以多翻阅源代码。</p>
-<h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h4><p><a href="http://blog.csdn.net/aboy123/article/details/38307539">JAVA多线程实现的三种方式</a><br><a href="java Future 接口介绍">java Future 接口介绍</a><br><a href="http://blog.sina.com.cn/s/blog_64d5ddbe0100ydyv.html">线程池中execute和submit的区别</a><br><a href="http://www.cnphp6.com/archives/61093">EXECUTORSERVICE线程池讲解</a></p>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Java设计模式</title>
     <url>/2016/04/25/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</url>
     <content><![CDATA[<h3 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h3><p>在一个虚拟机内只存在一个实例，hashcode一致；<br>需要考虑两点</p>
@@ -683,6 +654,35 @@
 <figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//具体观察者</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="symbol">ConcreteObserver</span> <span class="symbol">implements</span> <span class="symbol">Observer</span>&#123;</span><br><span class="line">    @Override</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">void</span> update(String str) &#123;</span><br><span class="line">        System.<span class="keyword">out</span>.println(str);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//具体主题</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteSubject</span> <span class="keyword">implements</span> <span class="title">Subject</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> List&lt;Observer&gt; observers = <span class="keyword">new</span> ArrayList&lt;Observer&gt;();</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addObserver</span><span class="params">(Observer observer)</span> </span>&#123;</span><br><span class="line">        observers.add(observer);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">removeObserver</span><span class="params">(Observer observer)</span> </span>&#123;</span><br><span class="line">        observers.remove(observer);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//实现通知</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">notifyObservers</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(Observer observer:observers)</span><br><span class="line">            observer.update(str);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line"><span class="comment">//测试观察者模式</span></span><br><span class="line">public <span class="keyword">class</span> TestObserver&#123;</span><br><span class="line">    public static void main(String<span class="literal">[]</span> args) &#123;</span><br><span class="line">        Observer observer1 = <span class="keyword">new</span> <span class="constructor">ConcreteObserver()</span>;</span><br><span class="line">        Observer observer2 = <span class="keyword">new</span> <span class="constructor">ConcreteObserver()</span>;</span><br><span class="line">        Observer observer3 = <span class="keyword">new</span> <span class="constructor">ConcreteObserver()</span>;</span><br><span class="line">        Subject subject = <span class="keyword">new</span> <span class="constructor">ConcreteSubject()</span>;</span><br><span class="line"></span><br><span class="line">        subject.add<span class="constructor">Observer(<span class="params">observer1</span>)</span>;</span><br><span class="line">        subject.add<span class="constructor">Observer(<span class="params">observer2</span>)</span>;</span><br><span class="line">        subject.add<span class="constructor">Observer(<span class="params">observer3</span>)</span>;</span><br><span class="line">        subject.notify<span class="constructor">Observers(<span class="string">&quot;糗事百科&quot;</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java多线程</title>
+    <url>/2015/11/27/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B/</url>
+    <content><![CDATA[<h4 id="继承Thread"><a href="#继承Thread" class="headerlink" title="继承Thread"></a>继承Thread</h4><p>缺点：继承只能继承一次。扩展性不强<br>重写run方法，来自定义线程执行任务</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">public class MyThread extends Thread&#123;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public void <span class="function"><span class="title">run</span></span>() &#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;MyThread.run()&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args)&#123;</span><br><span class="line">		MyThread thread1 = new MyThread();</span><br><span class="line">		MyThread thread2 = new MyThread();</span><br><span class="line">		thread1.start();</span><br><span class="line">		thread2.start();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="实现Runnable接口"><a href="#实现Runnable接口" class="headerlink" title="实现Runnable接口"></a>实现Runnable接口</h4><p>优点：可扩展性强<br>方法：通过实现接口，然后Thread构造方法传参新建thread2类，start()启动。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">public class MyThread2 implements Runnable&#123;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public void <span class="function"><span class="title">run</span></span>() &#123;</span><br><span class="line">		System.out.print(<span class="string">&quot;MyThread2.run()&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args)&#123;</span><br><span class="line">		MyThread2 thread = new MyThread2();</span><br><span class="line">		Thread thread2 = new Thread(thread);</span><br><span class="line">		thread2.start();</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Thread类本身实现了Runable接口，而且除了默认构造，还有一个带参构造，传入target<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//Thread源代码</span><br><span class="line">public <span class="function"><span class="title">Thread</span></span>() &#123;</span><br><span class="line">       init(null, null, <span class="string">&quot;Thread-&quot;</span> + nextThreadNum(), 0);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">public Thread(Runnable target) &#123;</span><br><span class="line">       init(null, target, <span class="string">&quot;Thread-&quot;</span> + nextThreadNum(), 0);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"> public void <span class="function"><span class="title">run</span></span>() &#123;</span><br><span class="line">       <span class="keyword">if</span> (target != null) &#123;</span><br><span class="line">           target.run();</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;   </span><br></pre></td></tr></table></figure></p>
+<h4 id="ExecutorService、Callable、Future带返回结果的线程实现"><a href="#ExecutorService、Callable、Future带返回结果的线程实现" class="headerlink" title="ExecutorService、Callable、Future带返回结果的线程实现"></a>ExecutorService、Callable、Future带返回结果的线程实现</h4><p>Callable：执行任务并返回结果。<br>Future<V>：Future接口是Java线程Future模式的实现，可以来进行异步计算。</p>
+<blockquote>
+<p>Future模式：我有一个任务，提交给了Future，Future替我完成这个任务。期间我自己可以去做任何想做的事情。一段时间之后，我就便可以从Future那儿取出结果。就相当于下了一张订货单，一段时间后可以拿着提订单来提货，这期间可以干别的任何事情。其中Future 接口就是订货单，真正处理订单的是Executor类，它根据Future接口的要求来生产产品。</p>
+</blockquote>
+<p>ExecutorService：继承自Executor，线程池操作类，创建，执行，关闭</p>
+<h5 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h5><ul>
+<li>Future<Object> f = pool.submit(c);</li>
+<li>Void f = pool.execute(RunnableImplements);</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//ExecutorService部分源码 </span><br><span class="line"></span><br><span class="line"> &lt;T&gt; Future&lt;T&gt; submit(Callable&lt;T&gt; task);</span><br><span class="line"></span><br><span class="line"> &lt;T&gt; Future&lt;T&gt; submit(Runnable task, T result);</span><br><span class="line"></span><br><span class="line"> Future&lt;?&gt; submit(Runnable task);</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">另外 </span><br><span class="line">//Executor源码</span><br><span class="line">public interface Executor &#123;</span><br><span class="line">    void execute(Runnable <span class="built_in">command</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="小例子"><a href="#小例子" class="headerlink" title="小例子"></a>小例子</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 有返回值的线程</span><br><span class="line"> */</span><br><span class="line">	public class MyThread3 &#123;</span><br><span class="line">		public static void main(String[] args) throws ExecutionException,</span><br><span class="line">				InterruptedException &#123;</span><br><span class="line">			System.out.println(<span class="string">&quot;----程序开始运行----&quot;</span>);</span><br><span class="line">			Date date1 = new Date();</span><br><span class="line"></span><br><span class="line">			int taskSize = 5;</span><br><span class="line">			// 创建一个线程池</span><br><span class="line">			ExecutorService pool = Executors.newFixedThreadPool(taskSize);</span><br><span class="line">			// 创建多个有返回值的任务</span><br><span class="line">			List&lt;Future&lt;Object&gt;&gt; list = new ArrayList&lt;Future&lt;Object&gt;&gt;();</span><br><span class="line">			<span class="keyword">for</span> (int i = 0; i &lt; taskSize; i++) &#123;</span><br><span class="line">				Callable&lt;Object&gt; c = new MyCallable(i + <span class="string">&quot; &quot;</span>);</span><br><span class="line">				// 执行任务并获取Future对象</span><br><span class="line">				Future&lt;Object&gt; f = pool.submit(c);</span><br><span class="line">				// System.out.println(<span class="string">&quot;&gt;&gt;&gt;&quot;</span> + f.get().toString());</span><br><span class="line">				list.add(f);</span><br><span class="line">			&#125;</span><br><span class="line">			// 关闭线程池</span><br><span class="line">			pool.shutdown();</span><br><span class="line"></span><br><span class="line">			// 获取所有并发任务的运行结果</span><br><span class="line">			<span class="keyword">for</span> (Future&lt;Object&gt; f : list) &#123;</span><br><span class="line">				// 从Future对象上获取任务的返回值，并输出到控制台</span><br><span class="line">				System.out.println(<span class="string">&quot;&gt;&gt;&gt;&quot;</span> + f.get().toString());</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			Date date2 = new Date();</span><br><span class="line">			System.out.println(<span class="string">&quot;----程序结束运行----，程序运行时间【&quot;</span></span><br><span class="line">					+ (date2.getTime() - date1.getTime()) + <span class="string">&quot;毫秒】&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	class MyCallable implements Callable&lt;Object&gt; &#123;</span><br><span class="line">		private String taskNum;</span><br><span class="line"></span><br><span class="line">		MyCallable(String taskNum) &#123;</span><br><span class="line">			this.taskNum = taskNum;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		public Object call() throws Exception &#123;</span><br><span class="line">			System.out.println(<span class="string">&quot;&gt;&gt;&gt;&quot;</span> + taskNum + <span class="string">&quot;任务启动&quot;</span>);</span><br><span class="line">			Date dateTmp1 = new Date();</span><br><span class="line">			Thread.sleep(1000);</span><br><span class="line">			Date dateTmp2 = new Date();</span><br><span class="line">			long time = dateTmp2.getTime() - dateTmp1.getTime();</span><br><span class="line">			System.out.println(<span class="string">&quot;&gt;&gt;&gt;&quot;</span> + taskNum + <span class="string">&quot;任务终止&quot;</span>);</span><br><span class="line">			<span class="built_in">return</span> taskNum + <span class="string">&quot;任务返回运行结果,当前任务时间【&quot;</span> + time + <span class="string">&quot;毫秒】&quot;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>如有不懂，可以多翻阅源代码。</p>
+<h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h4><p><a href="http://blog.csdn.net/aboy123/article/details/38307539">JAVA多线程实现的三种方式</a><br><a href="java Future 接口介绍">java Future 接口介绍</a><br><a href="http://blog.sina.com.cn/s/blog_64d5ddbe0100ydyv.html">线程池中execute和submit的区别</a><br><a href="http://www.cnphp6.com/archives/61093">EXECUTORSERVICE线程池讲解</a></p>
 ]]></content>
       <categories>
         <category>Java</category>
@@ -747,6 +747,51 @@
       </tags>
   </entry>
   <entry>
+    <title>Spark调优指南</title>
+    <url>/2020/09/11/Spark%E8%B0%83%E4%BC%98%E6%8C%87%E5%8D%97/</url>
+    <content><![CDATA[<h2 id="spark-yarn-executor-memoryOverhead"><a href="#spark-yarn-executor-memoryOverhead" class="headerlink" title="spark.yarn.executor.memoryOverhead"></a>spark.yarn.executor.memoryOverhead</h2><blockquote>
+<p> ExecutorLostFailure (executor 52 exited caused by one of the running tasks) Reason: Container killed by YARN for exceeding memory limits. 11.0 GB of 11 GB physical memory used. Consider boosting spark.yarn.executor.memoryOverhead.</p>
+</blockquote>
+<p>emoryOverhead是JVM进程中除Java堆以外占用的空间大小，包括方法区（永久代）、Java虚拟机栈、本地方法栈、JVM进程本身所用的内存、直接内存（Direct Memory）等。 通过spark.yarn.executor.memoryOverhead设置，单位MB。如果Java堆或者永久代的内存不足，则会产生各种OOM异常，executor会被结束。 在Java堆以外的JVM进程内存占用较多的情况下，应该将MemoryOverhead设置为一个足够大的值，以防JVM进程因实际占用的内存超标而被kill。</p>
+<ul>
+<li><code>spark-submit --conf spark.yarn.executor.memoryOverhead=10G</code></li>
+<li>spark里面设置 <code>`spark.conf.set(&quot;spark.yarn.executor.memoryOverhead&quot;, &quot;10G&quot;)</code></li>
+</ul>
+<h2 id="spark-sql-caseSensitive"><a href="#spark-sql-caseSensitive" class="headerlink" title="spark.sql.caseSensitive"></a>spark.sql.caseSensitive</h2><blockquote>
+<p>spark在读取json时候<code>spark.read.json(dataPath).toDF()</code>会自动inferschema(推断类型)，可能有些json的key写的不标准，比如同时存在Uid和uid就会解析错误。</p>
+<ul>
+<li>在spark程序里面设置 spark.conf.set(“spark.sql.caseSensitive”, “true”)</li>
+</ul>
+</blockquote>
+<h2 id="spark-sql-shuffle-partitions"><a href="#spark-sql-shuffle-partitions" class="headerlink" title="spark.sql.shuffle.partitions"></a>spark.sql.shuffle.partitions</h2><blockquote>
+<p>数据倾斜的时候，通过设置distribute by task numer, 重新shuffle数据均衡</p>
+<ul>
+<li>spark.conf.set(“spark.sql.shuffle.partitions”, 800)</li>
+<li>spark.conf.set(“spark.default.parallelism”, 800)</li>
+</ul>
+</blockquote>
+<h2 id="spark-sql-parquet-compression-codec"><a href="#spark-sql-parquet-compression-codec" class="headerlink" title="spark.sql.parquet.compression.codec"></a>spark.sql.parquet.compression.codec</h2><blockquote>
+<p>lzo压缩文件spark自动解压</p>
+<ul>
+<li>spark.conf.set(“spark.sql.parquet.compression.codec”, “lzo”)</li>
+</ul>
+</blockquote>
+<h2 id="设置spark-driver-extraJavaOptions-Dhdp-version"><a href="#设置spark-driver-extraJavaOptions-Dhdp-version" class="headerlink" title="设置spark.driver.extraJavaOptions -Dhdp.version"></a>设置spark.driver.extraJavaOptions -Dhdp.version</h2><blockquote>
+<p>Exception in thread “main” java.lang.IllegalStateException: hdp.version is not set while running Spark under HDP</p>
+<ul>
+<li>spark.conf.set(“spark.driver.extraJavaOptions -Dhdp.version”, “3.1.0.0-78”)</li>
+<li>spark.conf.set(“spark.yarn.am.extraJavaOptions -Dhdp.version”, “3.1.0.0-78”)<br>以上均可以通过<code>--conf</code>设置</li>
+</ul>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Spark</category>
+      </categories>
+      <tags>
+        <tag>Spark</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Thread的方法介绍和使用场景</title>
     <url>/2016/07/25/Thread%E7%9A%84%E6%96%B9%E6%B3%95%E4%BB%8B%E7%BB%8D%E5%92%8C%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/</url>
     <content><![CDATA[<figure class="highlight isbl"><table><tr><td class="code"><pre><span class="line"><span class="variable">Thread</span> <span class="variable">implements</span> <span class="variable">Runnable</span>：</span><br><span class="line">    <span class="function"><span class="title">run</span>();</span></span><br><span class="line"><span class="function">    <span class="title">start</span>();</span></span><br><span class="line"><span class="function">    <span class="title">join</span>();</span></span><br><span class="line"><span class="function">    <span class="title"><span class="built_in">sleep</span></span>();</span></span><br><span class="line"><span class="function">    <span class="title">yield</span>();</span></span><br><span class="line"><span class="function">    <span class="title">wait</span>();</span></span><br><span class="line"><span class="function">    <span class="title">notify</span>();</span></span><br><span class="line"><span class="function">    <span class="title">interrupted</span>();</span></span><br></pre></td></tr></table></figure>
@@ -807,6 +852,54 @@
       </tags>
   </entry>
   <entry>
+    <title>Windows 下文件夹占用解决办法</title>
+    <url>/2020/03/18/Windows%E4%B8%8B%E6%96%87%E4%BB%B6%E5%A4%B9%E5%8D%A0%E7%94%A8%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</url>
+    <content><![CDATA[<p>问题： Windows 下文件夹占用解决办法<br>解决办法： </p>
+<ol>
+<li>按下 win 键</li>
+<li>搜索”资源监视器”， 打开</li>
+<li>选择 CPU 栏目</li>
+<li>在”关联的句柄” 搜索框输入 文件夹的名称</li>
+<li>鼠标右键，结束进程。<br>如图：</li>
+</ol>
+<p><img src="/uploads/zyglq.png" alt="图1-1"></p>
+]]></content>
+      <categories>
+        <category>奇技</category>
+      </categories>
+      <tags>
+        <tag>windows</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Windows 子系统管理 LxRunOffline 并切换 centos7</title>
+    <url>/2020/03/18/Windows%E5%AD%90%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86LxRunOffline%E5%B9%B6%E5%88%87%E6%8D%A2centos7/</url>
+    <content><![CDATA[<p>关于如何打开子系统我不介绍了。可以参考链接。<br>在 Linux 下，大家喜欢用 apt-get ， yum 来安装应用程序，如今在 windows 下，大家可以使用 Chocolatey 来快速下载搭建一个开发环境。</p>
+<ul>
+<li>win7 或者 win2003 以上</li>
+<li>具有 powershell 工具（ cmd 也可以安装，不过可能有些过时的 bug ）<h3 id="Windows包安装工具Chocolatey"><a href="#Windows包安装工具Chocolatey" class="headerlink" title="Windows包安装工具Chocolatey"></a>Windows包安装工具Chocolatey</h3></li>
+</ul>
+<ol>
+<li><p>用管理员身份打开 powershell , 然后运行下面一句</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Set-ExecutionPolicy AllSigned; iex ((New-Object System.Net.WebClient).DownloadString(<span class="string">&#x27;https://chocolatey.org/install.ps1&#x27;</span>))</span><br></pre></td></tr></table></figure>
+<p>如有问题，参考链接1</p>
+</li>
+<li><p>安装 lxrunoffline</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">choco install lxrunoffline</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="lxrunoffline-使用手册"><a href="#lxrunoffline-使用手册" class="headerlink" title="lxrunoffline 使用手册"></a>lxrunoffline 使用手册</h3><p>下载<a href="https://raw.githubusercontent.com/CentOS/sig-cloud-instance-images/CentOS-7-x86_64/docker/centos-7-x86_64-docker.tar.xz">centos安装包</a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看系统中已安装的 WSL </span></span><br><span class="line">PS C:\Users\admin\Desktop&gt; lxrunoffline l</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装centos </span></span><br><span class="line"><span class="comment"># lxrunoffline i -n &lt;WSL名称&gt; -d &lt;安装路径&gt; -f &lt;压缩包路径&gt;.tar.gz</span></span><br><span class="line"></span><br><span class="line">PS C:\Users\admin\Desktop&gt; lxrunoffline i -n centos7 -d C:/centos -f D:/work/centos-7-x86_64-docker.tar</span><br><span class="line"><span class="comment"># 如果出现安装的迹象，说明没问题</span></span><br><span class="line"><span class="comment"># 删除</span></span><br><span class="line">PS C:\Users\admin\Desktop&gt; wsl /l <span class="comment">#列出已注册的分发版。</span></span><br><span class="line">适用于 Linux 的 Windows 子系统:</span><br><span class="line">centos (默认)</span><br><span class="line">PS C:\Users\admin\Desktop&gt; wslconfig /u Ubuntu</span><br><span class="line">正在注销子系统...</span><br></pre></td></tr></table></figure>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>[1]. <a href="https://davidsheh.github.io/2017/09/09/windows-chocolatey-scoop/"> Windows 系统的包管理器</a></p>
+]]></content>
+      <categories>
+        <category>奇技</category>
+      </categories>
+      <tags>
+        <tag>wsl</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Win10 下最佳 Terminal 实践</title>
     <url>/2020/03/19/Win10%E4%B8%8B%E6%9C%80%E4%BD%B3Terminal%E5%AE%9E%E8%B7%B5/</url>
     <content><![CDATA[<p>一直苦于 Windows 下没有如 Mac 一般好用的 iterm2, 没有如 linux 一样好用的环境。经常折腾于双系统和 VM 之间。今天给大家推荐一款个人总结的 windows 下最完美的开发环境。子系统和 windows 公用目录且权限统一，操作及其方便。废话不多说先上图！<br><img src="/uploads/terminal.png" alt="Terminal"><br>让我们开始吧~<br><a id="more"></a> </p>
@@ -857,96 +950,6 @@
       <tags>
         <tag>Windows</tag>
         <tag>Terminal</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Spark调优指南</title>
-    <url>/2020/09/11/Spark%E8%B0%83%E4%BC%98%E6%8C%87%E5%8D%97/</url>
-    <content><![CDATA[<h2 id="spark-yarn-executor-memoryOverhead"><a href="#spark-yarn-executor-memoryOverhead" class="headerlink" title="spark.yarn.executor.memoryOverhead"></a>spark.yarn.executor.memoryOverhead</h2><blockquote>
-<p> ExecutorLostFailure (executor 52 exited caused by one of the running tasks) Reason: Container killed by YARN for exceeding memory limits. 11.0 GB of 11 GB physical memory used. Consider boosting spark.yarn.executor.memoryOverhead.</p>
-</blockquote>
-<p>emoryOverhead是JVM进程中除Java堆以外占用的空间大小，包括方法区（永久代）、Java虚拟机栈、本地方法栈、JVM进程本身所用的内存、直接内存（Direct Memory）等。 通过spark.yarn.executor.memoryOverhead设置，单位MB。如果Java堆或者永久代的内存不足，则会产生各种OOM异常，executor会被结束。 在Java堆以外的JVM进程内存占用较多的情况下，应该将MemoryOverhead设置为一个足够大的值，以防JVM进程因实际占用的内存超标而被kill。</p>
-<ul>
-<li><code>spark-submit --conf spark.yarn.executor.memoryOverhead=10G</code></li>
-<li>spark里面设置 <code>`spark.conf.set(&quot;spark.yarn.executor.memoryOverhead&quot;, &quot;10G&quot;)</code></li>
-</ul>
-<h2 id="spark-sql-caseSensitive"><a href="#spark-sql-caseSensitive" class="headerlink" title="spark.sql.caseSensitive"></a>spark.sql.caseSensitive</h2><blockquote>
-<p>spark在读取json时候<code>spark.read.json(dataPath).toDF()</code>会自动inferschema(推断类型)，可能有些json的key写的不标准，比如同时存在Uid和uid就会解析错误。</p>
-<ul>
-<li>在spark程序里面设置 spark.conf.set(“spark.sql.caseSensitive”, “true”)</li>
-</ul>
-</blockquote>
-<h2 id="spark-sql-shuffle-partitions"><a href="#spark-sql-shuffle-partitions" class="headerlink" title="spark.sql.shuffle.partitions"></a>spark.sql.shuffle.partitions</h2><blockquote>
-<p>数据倾斜的时候，通过设置distribute by task numer, 重新shuffle数据均衡</p>
-<ul>
-<li>spark.conf.set(“spark.sql.shuffle.partitions”, 800)</li>
-<li>spark.conf.set(“spark.default.parallelism”, 800)</li>
-</ul>
-</blockquote>
-<h2 id="spark-sql-parquet-compression-codec"><a href="#spark-sql-parquet-compression-codec" class="headerlink" title="spark.sql.parquet.compression.codec"></a>spark.sql.parquet.compression.codec</h2><blockquote>
-<p>lzo压缩文件spark自动解压</p>
-<ul>
-<li>spark.conf.set(“spark.sql.parquet.compression.codec”, “lzo”)</li>
-</ul>
-</blockquote>
-<h2 id="设置spark-driver-extraJavaOptions-Dhdp-version"><a href="#设置spark-driver-extraJavaOptions-Dhdp-version" class="headerlink" title="设置spark.driver.extraJavaOptions -Dhdp.version"></a>设置spark.driver.extraJavaOptions -Dhdp.version</h2><blockquote>
-<p>Exception in thread “main” java.lang.IllegalStateException: hdp.version is not set while running Spark under HDP</p>
-<ul>
-<li>spark.conf.set(“spark.driver.extraJavaOptions -Dhdp.version”, “3.1.0.0-78”)</li>
-<li>spark.conf.set(“spark.yarn.am.extraJavaOptions -Dhdp.version”, “3.1.0.0-78”)<br>以上均可以通过<code>--conf</code>设置</li>
-</ul>
-</blockquote>
-]]></content>
-      <tags>
-        <tag>Spark</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Windows 下文件夹占用解决办法</title>
-    <url>/2020/03/18/Windows%E4%B8%8B%E6%96%87%E4%BB%B6%E5%A4%B9%E5%8D%A0%E7%94%A8%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</url>
-    <content><![CDATA[<p>问题： Windows 下文件夹占用解决办法<br>解决办法： </p>
-<ol>
-<li>按下 win 键</li>
-<li>搜索”资源监视器”， 打开</li>
-<li>选择 CPU 栏目</li>
-<li>在”关联的句柄” 搜索框输入 文件夹的名称</li>
-<li>鼠标右键，结束进程。<br>如图：</li>
-</ol>
-<p><img src="/uploads/zyglq.png" alt="图1-1"></p>
-]]></content>
-      <categories>
-        <category>奇技</category>
-      </categories>
-      <tags>
-        <tag>windows</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Windows 子系统管理 LxRunOffline 并切换 centos7</title>
-    <url>/2020/03/18/Windows%E5%AD%90%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86LxRunOffline%E5%B9%B6%E5%88%87%E6%8D%A2centos7/</url>
-    <content><![CDATA[<p>关于如何打开子系统我不介绍了。可以参考链接。<br>在 Linux 下，大家喜欢用 apt-get ， yum 来安装应用程序，如今在 windows 下，大家可以使用 Chocolatey 来快速下载搭建一个开发环境。</p>
-<ul>
-<li>win7 或者 win2003 以上</li>
-<li>具有 powershell 工具（ cmd 也可以安装，不过可能有些过时的 bug ）<h3 id="Windows包安装工具Chocolatey"><a href="#Windows包安装工具Chocolatey" class="headerlink" title="Windows包安装工具Chocolatey"></a>Windows包安装工具Chocolatey</h3></li>
-</ul>
-<ol>
-<li><p>用管理员身份打开 powershell , 然后运行下面一句</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Set-ExecutionPolicy AllSigned; iex ((New-Object System.Net.WebClient).DownloadString(<span class="string">&#x27;https://chocolatey.org/install.ps1&#x27;</span>))</span><br></pre></td></tr></table></figure>
-<p>如有问题，参考链接1</p>
-</li>
-<li><p>安装 lxrunoffline</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">choco install lxrunoffline</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="lxrunoffline-使用手册"><a href="#lxrunoffline-使用手册" class="headerlink" title="lxrunoffline 使用手册"></a>lxrunoffline 使用手册</h3><p>下载<a href="https://raw.githubusercontent.com/CentOS/sig-cloud-instance-images/CentOS-7-x86_64/docker/centos-7-x86_64-docker.tar.xz">centos安装包</a></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看系统中已安装的 WSL </span></span><br><span class="line">PS C:\Users\admin\Desktop&gt; lxrunoffline l</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装centos </span></span><br><span class="line"><span class="comment"># lxrunoffline i -n &lt;WSL名称&gt; -d &lt;安装路径&gt; -f &lt;压缩包路径&gt;.tar.gz</span></span><br><span class="line"></span><br><span class="line">PS C:\Users\admin\Desktop&gt; lxrunoffline i -n centos7 -d C:/centos -f D:/work/centos-7-x86_64-docker.tar</span><br><span class="line"><span class="comment"># 如果出现安装的迹象，说明没问题</span></span><br><span class="line"><span class="comment"># 删除</span></span><br><span class="line">PS C:\Users\admin\Desktop&gt; wsl /l <span class="comment">#列出已注册的分发版。</span></span><br><span class="line">适用于 Linux 的 Windows 子系统:</span><br><span class="line">centos (默认)</span><br><span class="line">PS C:\Users\admin\Desktop&gt; wslconfig /u Ubuntu</span><br><span class="line">正在注销子系统...</span><br></pre></td></tr></table></figure>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>[1]. <a href="https://davidsheh.github.io/2017/09/09/windows-chocolatey-scoop/"> Windows 系统的包管理器</a></p>
-]]></content>
-      <categories>
-        <category>奇技</category>
-      </categories>
-      <tags>
-        <tag>wsl</tag>
       </tags>
   </entry>
   <entry>
@@ -1079,6 +1082,19 @@ $ sudo apt-get upgrade
       </tags>
   </entry>
   <entry>
+    <title>azkaban Installation Failed.MALFORMED错误解决</title>
+    <url>/2020/09/17/azkaban-Installation-Failed-MALFORMED%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/</url>
+    <content><![CDATA[<h2 id="Installation-Failed-MALFORMED"><a href="#Installation-Failed-MALFORMED" class="headerlink" title="Installation Failed.MALFORMED"></a>Installation Failed.MALFORMED</h2><p>有中文命名的文件，请改名或者删除。然后就好了。</p>
+]]></content>
+      <categories>
+        <category>azkaban</category>
+      </categories>
+      <tags>
+        <tag>azkaban</tag>
+        <tag>MALFORMED</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>android之自定义Dialog</title>
     <url>/2015/12/19/android%E4%B9%8B%E8%87%AA%E5%AE%9A%E4%B9%89dialog/</url>
     <content><![CDATA[<h3 id="自定义Dialog"><a href="#自定义Dialog" class="headerlink" title="自定义Dialog"></a>自定义Dialog</h3><h4 id="自定义Dialog的创建"><a href="#自定义Dialog的创建" class="headerlink" title="自定义Dialog的创建"></a>自定义Dialog的创建</h4><ol>
@@ -1125,18 +1141,6 @@ $ sudo apt-get upgrade
       </tags>
   </entry>
   <entry>
-    <title>hive 保序concat</title>
-    <url>/2020/09/11/hive-%E4%BF%9D%E5%BA%8Fconcat/</url>
-    <content><![CDATA[<h2 id="hive保序concat"><a href="#hive保序concat" class="headerlink" title="hive保序concat"></a>hive保序concat</h2><blockquote>
-<p>品类里面取TOP2并按score分值连接成字符串</p>
-</blockquote>
-<ol>
-<li>row_number() 首先要排序。</li>
-<li>where rank &lt; N 其次要进行过滤。<br>以上两步缺一不可</li>
-</ol>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span></span><br><span class="line">    uid,</span><br><span class="line">    prefer_type,</span><br><span class="line">    <span class="keyword">sum</span>(watch_proba) <span class="keyword">as</span> watch_proba,</span><br><span class="line">    <span class="keyword">concat_ws</span>(<span class="string">&quot;;&quot;</span>, collect_list(item)) <span class="keyword">as</span> type_item</span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">(</span><br><span class="line">    <span class="keyword">select</span> </span><br><span class="line">        uid,</span><br><span class="line">        gt,</span><br><span class="line">        prefer_type,</span><br><span class="line">        watch_proba,</span><br><span class="line">        watch_proba_normalize,</span><br><span class="line">        <span class="keyword">concat</span>(gt, <span class="string">&quot;:&quot;</span>, <span class="keyword">substr</span>(<span class="keyword">cast</span>(watch_proba_normalize <span class="keyword">as</span> <span class="built_in">decimal</span>(<span class="number">32</span>,<span class="number">30</span>)), <span class="number">0</span>, <span class="number">6</span>)) <span class="keyword">as</span> item, <span class="comment">-- 排除科学计数法，小数分值截断</span></span><br><span class="line">        row_number() <span class="keyword">over</span> ( <span class="keyword">partition</span> <span class="keyword">by</span> uid, prefer_type <span class="keyword">order</span> <span class="keyword">by</span> watch_proba <span class="keyword">desc</span> ) <span class="keyword">as</span> <span class="keyword">rank</span></span><br><span class="line">    <span class="keyword">from</span> </span><br><span class="line">    (</span><br><span class="line">        <span class="keyword">select</span> </span><br><span class="line">            uid,</span><br><span class="line">            gt,</span><br><span class="line">            prefer_type,</span><br><span class="line">            watch_proba,</span><br><span class="line">            watch_proba / <span class="keyword">sum</span>(watch_proba) <span class="keyword">over</span> ( <span class="keyword">partition</span> <span class="keyword">by</span> uid, prefer_type ) <span class="keyword">as</span> watch_proba_normalize <span class="comment">-- 归一化</span></span><br><span class="line">        <span class="keyword">from</span> recom_app.prefer_type</span><br><span class="line">    ) t11</span><br><span class="line">    <span class="keyword">where</span> watch_proba_normalize &gt;= <span class="number">0.0001</span></span><br><span class="line">) t12</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">rank</span> &lt;= <span class="number">2</span></span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> uid, prefer_type</span><br></pre></td></tr></table></figure>]]></content>
-  </entry>
-  <entry>
     <title>Hello World</title>
     <url>/2015/11/20/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="http://hexo.io/">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
@@ -1155,6 +1159,66 @@ $ sudo apt-get upgrade
       <tags>
         <tag>Hexo</tag>
         <tag>Github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hive 保序concat</title>
+    <url>/2020/09/11/hive-%E4%BF%9D%E5%BA%8Fconcat/</url>
+    <content><![CDATA[<h2 id="hive保序concat"><a href="#hive保序concat" class="headerlink" title="hive保序concat"></a>hive保序concat</h2><blockquote>
+<p>品类里面取TOP2并按score分值连接成字符串</p>
+</blockquote>
+<ol>
+<li>row_number() 首先要排序。</li>
+<li>where rank &lt; N 其次要进行过滤。<br>以上两步缺一不可</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span></span><br><span class="line">    uid,</span><br><span class="line">    prefer_type,</span><br><span class="line">    <span class="keyword">sum</span>(watch_proba) <span class="keyword">as</span> watch_proba,</span><br><span class="line">    <span class="keyword">concat_ws</span>(<span class="string">&quot;;&quot;</span>, collect_list(item)) <span class="keyword">as</span> type_item</span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">(</span><br><span class="line">    <span class="keyword">select</span> </span><br><span class="line">        uid,</span><br><span class="line">        gt,</span><br><span class="line">        prefer_type,</span><br><span class="line">        watch_proba,</span><br><span class="line">        watch_proba_normalize,</span><br><span class="line">        <span class="keyword">concat</span>(gt, <span class="string">&quot;:&quot;</span>, <span class="keyword">substr</span>(<span class="keyword">cast</span>(watch_proba_normalize <span class="keyword">as</span> <span class="built_in">decimal</span>(<span class="number">32</span>,<span class="number">30</span>)), <span class="number">0</span>, <span class="number">6</span>)) <span class="keyword">as</span> item, <span class="comment">-- 排除科学计数法，小数分值截断</span></span><br><span class="line">        row_number() <span class="keyword">over</span> ( <span class="keyword">partition</span> <span class="keyword">by</span> uid, prefer_type <span class="keyword">order</span> <span class="keyword">by</span> watch_proba <span class="keyword">desc</span> ) <span class="keyword">as</span> <span class="keyword">rank</span></span><br><span class="line">    <span class="keyword">from</span> </span><br><span class="line">    (</span><br><span class="line">        <span class="keyword">select</span> </span><br><span class="line">            uid,</span><br><span class="line">            gt,</span><br><span class="line">            prefer_type,</span><br><span class="line">            watch_proba,</span><br><span class="line">            watch_proba / <span class="keyword">sum</span>(watch_proba) <span class="keyword">over</span> ( <span class="keyword">partition</span> <span class="keyword">by</span> uid, prefer_type ) <span class="keyword">as</span> watch_proba_normalize <span class="comment">-- 归一化</span></span><br><span class="line">        <span class="keyword">from</span> recom_app.prefer_type</span><br><span class="line">    ) t11</span><br><span class="line">    <span class="keyword">where</span> watch_proba_normalize &gt;= <span class="number">0.0001</span></span><br><span class="line">) t12</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">rank</span> &lt;= <span class="number">2</span></span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> uid, prefer_type</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
+  <entry>
+    <title>hive创建不同类型的空map</title>
+    <url>/2020/09/22/hive%E5%88%9B%E5%BB%BA%E4%B8%8D%E5%90%8C%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%A9%BAmap/</url>
+    <content><![CDATA[<h2 id="hive创建空map"><a href="#hive创建空map" class="headerlink" title="hive创建空map"></a>hive创建空map</h2><ul>
+<li>众所周知，hive默认的空类型的map对应的类型是<code>map&lt;string, string&gt;</code><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">beeline&gt; select map() as empty_map;</span><br><span class="line">+<span class="comment">------------+</span></span><br><span class="line">| empty_map  |</span><br><span class="line">+<span class="comment">------------+</span></span><br><span class="line">| &#123;&#125;         |</span><br><span class="line">+<span class="comment">------------+</span></span><br><span class="line">1 row selected (0.583 seconds)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>如何才能创建各种类型的map呢? 比如<code>map&lt;string, bigint&gt;</code>, <code>map&lt;string, boolean&gt;</code>, <code>map&lt;string, array&lt;string&gt;&gt;</code><br><a id="more"></a></p>
+<h2 id="创建任意类型的空map-要啥有啥"><a href="#创建任意类型的空map-要啥有啥" class="headerlink" title="创建任意类型的空map, 要啥有啥"></a>创建任意类型的空map, 要啥有啥</h2><ul>
+<li>先创建一个带类型map，然后删除key。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">add jar hdfs:&#x2F;&#x2F;&#x2F;lib&#x2F;brickhouse-0.7.1-SNAPSHOT.jar;</span><br><span class="line">create temporary function map_remove_keys as &#39;brickhouse.udf.collect.MapRemoveKeysUDF&#39;;</span><br><span class="line"></span><br><span class="line">set hivevar:empty_bool_map&#x3D;map_remove_keys(map(&#39;&#39;, false), array(&#39;&#39;));</span><br><span class="line">set hivevar:empty_bigint_map&#x3D;map_remove_keys(map(&#39;&#39;, bigint(-2)), array(&#39;&#39;));</span><br><span class="line">set hivevar:empty_double_map&#x3D;map_remove_keys(map(&#39;&#39;, double(-2)), array(&#39;&#39;));</span><br><span class="line">set hivevar:empty_string_map&#x3D;map_remove_keys(map(&#39;&#39;, &#39;&#39;), array(&#39;&#39;));</span><br><span class="line">set hivevar:empty_list_map&#x3D; map_remove_keys(map(&#39;&#39;, array()), array(&#39;&#39;));</span><br><span class="line"></span><br><span class="line">select $&#123;empty_bool_map&#125;, $&#123;empty_bigint_map&#125;, $&#123;empty_double_map&#125;, $&#123;empty_string_map&#125;, $&#123;empty_list_map&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="通过spark程序创建"><a href="#通过spark程序创建" class="headerlink" title="通过spark程序创建"></a>通过spark程序创建</h2><ul>
+<li>val spark_udf_function = spark.udf.register()<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">spark.udf.register(&quot;boolean<span class="emphasis">_empty_</span>map&quot;, () =&gt; Map[<span class="string">String, Boolean</span>](<span class="link"></span>))</span><br><span class="line">spark.udf.register(&quot;bigint<span class="emphasis">_empty_</span>map&quot;, () =&gt; Map[<span class="string">String, Long</span>](<span class="link"></span>))</span><br><span class="line">spark.udf.register(&quot;double<span class="emphasis">_empty_</span>map&quot;, () =&gt; Map[<span class="string">String, Double</span>](<span class="link"></span>))</span><br><span class="line">spark.udf.register(&quot;string<span class="emphasis">_empty_</span>map&quot;, () =&gt; Map[<span class="string">String, String</span>](<span class="link"></span>))</span><br><span class="line">spark.udf.register(&quot;list<span class="emphasis">_empty_</span>map&quot;, () =&gt; Map[<span class="string">String, Array[String</span>]]())</span><br><span class="line">spark.sql(&quot;SELECT boolean<span class="emphasis">_empty_</span>map(), bigint<span class="emphasis">_empty_</span>map(), double<span class="emphasis">_empty_</span>map(), string<span class="emphasis">_empty_</span>map(), list<span class="emphasis">_empty_</span>map()&quot;).printSchema()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="map合并union-map"><a href="#map合并union-map" class="headerlink" title="map合并union_map"></a>map合并<code>union_map</code></h2><ul>
+<li><p>union_map能够相同类型的map</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">add jar hdfs:///lib/brickhouse-0.7.1-SNAPSHOT.jar;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TEMPORARY</span> <span class="keyword">FUNCTION</span> union_map <span class="keyword">AS</span> <span class="string">&#x27;brickhouse.udf.collect.UnionUDAF&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">id</span>, union_map(m) <span class="keyword">from</span> (<span class="keyword">select</span> <span class="number">1</span> <span class="keyword">as</span> <span class="keyword">id</span>, <span class="keyword">map</span>(<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;2&#x27;</span>) <span class="keyword">as</span> m <span class="keyword">union</span> <span class="keyword">all</span> <span class="keyword">select</span> <span class="number">1</span> <span class="keyword">as</span> <span class="keyword">id</span>, <span class="keyword">map</span>(<span class="string">&#x27;a&#x27;</span>, <span class="number">0</span>, <span class="string">&#x27;c&#x27;</span>,<span class="string">&#x27;3&#x27;</span>, <span class="string">&#x27;d&#x27;</span>,<span class="string">&#x27;4&#x27;</span>) <span class="keyword">as</span> m) t <span class="keyword">group</span> <span class="keyword">by</span> <span class="keyword">id</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>小 bug, union_map 在合并 key 带有冲突的情况，由于并行原因，不能实现新加入的 key 覆盖。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">id</span>,union_map(m) <span class="keyword">from</span> </span><br><span class="line">    (</span><br><span class="line">        <span class="keyword">select</span> <span class="number">1</span> <span class="keyword">as</span> <span class="keyword">id</span>, <span class="keyword">map</span>(<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;2&#x27;</span>) <span class="keyword">as</span> m </span><br><span class="line">        <span class="keyword">union</span> <span class="keyword">all</span> </span><br><span class="line">        <span class="keyword">select</span> <span class="number">1</span> <span class="keyword">as</span> <span class="keyword">id</span>, <span class="keyword">map</span>(<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;c&#x27;</span>,<span class="string">&#x27;3&#x27;</span>, <span class="string">&#x27;d&#x27;</span>,<span class="string">&#x27;4&#x27;</span>) <span class="keyword">as</span> m</span><br><span class="line">        <span class="keyword">union</span> <span class="keyword">all</span> </span><br><span class="line">        <span class="keyword">select</span> <span class="number">1</span> <span class="keyword">as</span> <span class="keyword">id</span>, <span class="keyword">map</span>(<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;0&#x27;</span>, <span class="string">&#x27;c&#x27;</span>,<span class="string">&#x27;4&#x27;</span>, <span class="string">&#x27;d&#x27;</span>,<span class="string">&#x27;5&#x27;</span>) <span class="keyword">as</span> m</span><br><span class="line">    ) t <span class="keyword">group</span> <span class="keyword">by</span> <span class="keyword">id</span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>[1]. <a href="https://github.com/klout/brickhouse/tree/master/src/main/java/brickhouse/udf/collect">brickhouse udf</a></p>
+]]></content>
+      <categories>
+        <category>Hive</category>
+      </categories>
+      <tags>
+        <tag>Hive</tag>
+        <tag>Map</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python matplotlib画图</title>
+    <url>/2016/07/21/python-matplotlib%E7%94%BB%E5%9B%BE/</url>
+    <content><![CDATA[<h3 id="2D折线图绘制"><a href="#2D折线图绘制" class="headerlink" title="2D折线图绘制"></a>2D折线图绘制</h3><p>主要模块pyplot<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取数据</span></span><br><span class="line">file = open(<span class="string">&quot;./dataset.txt&quot;</span>)</span><br><span class="line">dataSet = []</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        line = file.readline()</span><br><span class="line">        dataSet.append(line)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> line:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    file.close()</span><br><span class="line"></span><br><span class="line"><span class="comment"># x,y 必须是相同的维度</span></span><br><span class="line"><span class="comment"># y =  np.arange(0, 12000, 500) # 步长500</span></span><br><span class="line">x, y = dataSet <span class="comment"># 这里用你自己的</span></span><br><span class="line"><span class="comment"># x = y =  np.arange(0, 1, 0.1) # 示例数据</span></span><br><span class="line"></span><br><span class="line">plt.figure()</span><br><span class="line"><span class="comment"># color [r：red g：green b:blue m c]   mark [s = square &#x27;^&#x27; &#x27;*&#x27; &#x27;o&#x27; &#x27;x&#x27;]</span></span><br><span class="line">plt.plot(y,x,<span class="string">&#x27;rs&#x27;</span>,label = str)</span><br><span class="line">plt.plot(y,x,<span class="string">&#x27;r&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&quot;Number of features extracted&quot;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;Accuracy(F1)&quot;</span>)</span><br><span class="line">plt.grid() <span class="comment"># 添加网格</span></span><br><span class="line">plt.ylim(<span class="number">0</span>, <span class="number">1</span>) <span class="comment"># y轴 范围限制</span></span><br><span class="line"></span><br><span class="line">plt.legend()</span><br><span class="line">plt.show()</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<h3 id="3D图绘制"><a href="#3D图绘制" class="headerlink" title="3D图绘制"></a>3D图绘制</h3><p>主要模块 axes3d<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> mpl_toolkits.mplot3d.axes3d <span class="keyword">as</span> p3</span><br><span class="line"></span><br><span class="line">fig_num = <span class="number">1</span></span><br><span class="line">fig = plt.figure(fig_num)</span><br><span class="line">ax = p3.Axes3D(fig)</span><br><span class="line"><span class="comment"># x,y,z = dataset</span></span><br><span class="line">color = <span class="string">&#x27;r&#x27;</span></span><br><span class="line">mark = <span class="string">&#x27;*&#x27;</span></span><br><span class="line"><span class="comment"># 3D折线图</span></span><br><span class="line">ax.scatter3D(x, y, z ,c = color, marker = mark)</span><br><span class="line"><span class="comment"># 3D曲面图</span></span><br><span class="line">ax.plot_surface(x1, y, z ,rstride=<span class="number">1</span>, cstride=<span class="number">1</span>, cmap=plt.cm.hot)</span><br><span class="line"></span><br><span class="line">plt.legend()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p>[1]. <a href="http://matplotlib.org/examples/index.html">matplotlib examples</a></p>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -1187,6 +1251,66 @@ $ sudo apt-get upgrade
       </categories>
       <tags>
         <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>spark同步mongo数据到hive方法汇总</title>
+    <url>/2020/09/18/spark%E5%90%8C%E6%AD%A5mongo%E6%95%B0%E6%8D%AE%E5%88%B0hive%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/</url>
+    <content><![CDATA[<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><ul>
+<li>spark 2.3.2</li>
+</ul>
+<h2 id="单机测试"><a href="#单机测试" class="headerlink" title="单机测试"></a>单机测试</h2><ol>
+<li><p><code>mongo version &gt;= 3.2</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">spark-shell --packages org.mongodb.spark:mongo-spark-connector_2.11:2.3.2 </span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>mongo version &lt; 3.2</code></p>
+</li>
+</ol>
+<ul>
+<li>当 mongo 版本低于 3.2 会报错。<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line">ERROR partitioner.DefaultMongoPartitioner:</span><br><span class="line"><span class="comment">----------------------------------------</span></span><br><span class="line">WARNING: MongoDB <span class="built_in">version</span> &lt; <span class="number">3.2</span> detected.</span><br><span class="line"><span class="comment">----------------------------------------</span></span><br><span class="line">With legacy MongoDB installations you will need <span class="built_in">to</span> explicitly configure <span class="keyword">the</span> Spark Connector <span class="keyword">with</span> <span class="keyword">a</span> partitioner.</span><br><span class="line">This can be done <span class="keyword">by</span>:</span><br><span class="line"> * Setting <span class="keyword">a</span> <span class="string">&quot;spark.mongodb.input.partitioner&quot;</span> <span class="keyword">in</span> SparkConf.</span><br><span class="line"> * Setting <span class="keyword">in</span> <span class="keyword">the</span> <span class="string">&quot;partitioner&quot;</span> parameter <span class="keyword">in</span> ReadConfig.</span><br><span class="line"> * Passing <span class="keyword">the</span> <span class="string">&quot;partitioner&quot;</span> option <span class="built_in">to</span> <span class="keyword">the</span> DataFrameReader.</span><br><span class="line">The following Partitioners are available:</span><br><span class="line"> * MongoShardedPartitioner - <span class="keyword">for</span> sharded clusters, requires <span class="built_in">read</span> access <span class="built_in">to</span> <span class="keyword">the</span> config database.</span><br><span class="line"> * MongoSplitVectorPartitioner - <span class="keyword">for</span> single nodes <span class="keyword">or</span> replicaSets. Utilises <span class="keyword">the</span> SplitVector <span class="keyword">command</span> <span class="title">on</span> <span class="title">the</span> <span class="title">primary</span>.</span><br><span class="line"> * MongoPaginateByCountPartitioner - creates <span class="keyword">a</span> specific <span class="built_in">number</span> <span class="keyword">of</span> partitions. Slow <span class="keyword">as</span> requires <span class="keyword">a</span> query <span class="keyword">for</span> every partition.</span><br><span class="line"> * MongoPaginateBySizePartitioner - creates partitions based <span class="keyword">on</span> <span class="title">data</span> <span class="title">size</span>. <span class="title">Slow</span> <span class="title">as</span> <span class="title">requires</span> <span class="title">a</span> <span class="title">query</span> <span class="title">for</span> <span class="title">every</span> <span class="title">partition</span>.</span><br></pre></td></tr></table></figure>
+<a id="more"></a></li>
+<li>根据自己的 mongo 情况选择分区器，并为 spark-shell 或者 spark-submit 配置 conf。因为进入 spark-shell 之后配置会不生效。</li>
+<li><code>spark.mongodb.input.sampleSize=10000000</code>. spark 在推断表结构的时候使用的数据量，我自己遇到了因为数据量小schema不断变化的情况。<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">spark-shell   \</span><br><span class="line">  --packages org.mongodb.spark:mongo-spark-connector_2.11:2.3.2 \</span><br><span class="line">  --conf spark.mongodb.input.partitioner=MongoPaginateByCountPartitioner \</span><br><span class="line">  --conf spark.mongodb.input.sampleSize=10000000</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><ul>
+<li>用命令<code>:paste</code> 将代码粘贴<figure class="highlight scala"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> com.mongodb.spark._</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.spark.sql.<span class="type">SparkSession</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">val</span> spark = <span class="type">SparkSession</span>.builder()</span><br><span class="line">  .master(<span class="string">&quot;local&quot;</span>)</span><br><span class="line">  .getOrCreate()</span><br><span class="line"></span><br><span class="line"><span class="comment">//对应的自行替换</span></span><br><span class="line"><span class="keyword">val</span> uri = <span class="string">&quot;mongodb://$username:$passwordd@$host:$port/$db?connectTimeoutMS=10000&amp;socketTimeoutMS=30000&amp;readPreference=secondaryPreferred&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">val</span> collection = <span class="string">&quot;user_interest&quot;</span></span><br><span class="line"><span class="keyword">val</span> df = spark.read.format(<span class="string">&quot;com.mongodb.spark.sql&quot;</span>) </span><br><span class="line">    .option(<span class="string">&quot;uri&quot;</span>, uri) </span><br><span class="line">    .option(<span class="string">&quot;collection&quot;</span>, collection) </span><br><span class="line">    .load()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 查看表结构  </span></span><br><span class="line">df.printSchema()</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.spark.sql.&#123;<span class="type">DataFrame</span>, <span class="type">SaveMode</span>, <span class="type">SparkSession</span>&#125;</span><br><span class="line"><span class="keyword">val</span> hdfs_path = <span class="string">&quot;/warehouse/hive/$db.db/$collection&quot;</span></span><br><span class="line"><span class="comment">// 可以选择save spark table 也可以选择save hdfs</span></span><br><span class="line">df.write.mode(<span class="type">SaveMode</span>.<span class="type">Overwrite</span>).orc(hdfs_path)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="线上调度提交"><a href="#线上调度提交" class="headerlink" title="线上调度提交"></a>线上调度提交</h2><ul>
+<li><p>需要额外提供两个jar, 也可以 <code>assembly</code> package</p>
+<ul>
+<li>mongo-spark-connector_2.11-2.3.2.jar</li>
+<li>mongo-java-driver-3.8.2.jar</li>
+<li>spark-mongo-hive_2.11-0.1.jar // 自行打包</li>
+</ul>
+</li>
+<li><p>spark-submit 样例</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">spark-submit \</span><br><span class="line">    --class com.xuchuanhua.sync.MongoToHiveWithSpark \</span><br><span class="line">    --jars ../../jar/mongo-spark-connector_2.11-2.3.2.jar,../../jar/mongo-java-driver-3.8.2.jar \</span><br><span class="line">    --master yarn           \</span><br><span class="line">    --deploy-mode client    \</span><br><span class="line">    --queue offline         \</span><br><span class="line">    --executor-memory 1G    \</span><br><span class="line">    --driver-memory 1G      \</span><br><span class="line">    --num-executors 10     \</span><br><span class="line">    --executor-cores 4      \</span><br><span class="line">    --driver-cores 4        \</span><br><span class="line">    ../../jar/spark-mongo-hive_2.11-0.1.jar <span class="variable">$1</span> <span class="variable">$2</span> <span class="variable">$3</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h2><blockquote>
+<p>com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message</p>
+</blockquote>
+<ul>
+<li>调大 socketTimeoutMS，socketTimeoutMS=30000</li>
+</ul>
+<blockquote>
+<p>连接从库readPreference=secondaryPreferred</p>
+</blockquote>
+<ul>
+<li>readPreference=secondaryPreferred</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>[1]. <a href="https://docs.mongodb.com/spark-connector/master/scala-api/">Spark Connector Scala Guide</a></p>
+]]></content>
+      <categories>
+        <category>数据同步</category>
+      </categories>
+      <tags>
+        <tag>Spark</tag>
+        <tag>Hive</tag>
+        <tag>Mongo</tag>
+        <tag>同步</tag>
       </tags>
   </entry>
   <entry>
@@ -1242,20 +1366,6 @@ $ sudo apt-get upgrade
       </tags>
   </entry>
   <entry>
-    <title>python matplotlib画图</title>
-    <url>/2016/07/21/python-matplotlib%E7%94%BB%E5%9B%BE/</url>
-    <content><![CDATA[<h3 id="2D折线图绘制"><a href="#2D折线图绘制" class="headerlink" title="2D折线图绘制"></a>2D折线图绘制</h3><p>主要模块pyplot<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取数据</span></span><br><span class="line">file = open(<span class="string">&quot;./dataset.txt&quot;</span>)</span><br><span class="line">dataSet = []</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        line = file.readline()</span><br><span class="line">        dataSet.append(line)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> line:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    file.close()</span><br><span class="line"></span><br><span class="line"><span class="comment"># x,y 必须是相同的维度</span></span><br><span class="line"><span class="comment"># y =  np.arange(0, 12000, 500) # 步长500</span></span><br><span class="line">x, y = dataSet <span class="comment"># 这里用你自己的</span></span><br><span class="line"><span class="comment"># x = y =  np.arange(0, 1, 0.1) # 示例数据</span></span><br><span class="line"></span><br><span class="line">plt.figure()</span><br><span class="line"><span class="comment"># color [r：red g：green b:blue m c]   mark [s = square &#x27;^&#x27; &#x27;*&#x27; &#x27;o&#x27; &#x27;x&#x27;]</span></span><br><span class="line">plt.plot(y,x,<span class="string">&#x27;rs&#x27;</span>,label = str)</span><br><span class="line">plt.plot(y,x,<span class="string">&#x27;r&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&quot;Number of features extracted&quot;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;Accuracy(F1)&quot;</span>)</span><br><span class="line">plt.grid() <span class="comment"># 添加网格</span></span><br><span class="line">plt.ylim(<span class="number">0</span>, <span class="number">1</span>) <span class="comment"># y轴 范围限制</span></span><br><span class="line"></span><br><span class="line">plt.legend()</span><br><span class="line">plt.show()</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
-<h3 id="3D图绘制"><a href="#3D图绘制" class="headerlink" title="3D图绘制"></a>3D图绘制</h3><p>主要模块 axes3d<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> mpl_toolkits.mplot3d.axes3d <span class="keyword">as</span> p3</span><br><span class="line"></span><br><span class="line">fig_num = <span class="number">1</span></span><br><span class="line">fig = plt.figure(fig_num)</span><br><span class="line">ax = p3.Axes3D(fig)</span><br><span class="line"><span class="comment"># x,y,z = dataset</span></span><br><span class="line">color = <span class="string">&#x27;r&#x27;</span></span><br><span class="line">mark = <span class="string">&#x27;*&#x27;</span></span><br><span class="line"><span class="comment"># 3D折线图</span></span><br><span class="line">ax.scatter3D(x, y, z ,c = color, marker = mark)</span><br><span class="line"><span class="comment"># 3D曲面图</span></span><br><span class="line">ax.plot_surface(x1, y, z ,rstride=<span class="number">1</span>, cstride=<span class="number">1</span>, cmap=plt.cm.hot)</span><br><span class="line"></span><br><span class="line">plt.legend()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></p>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p>[1]. <a href="http://matplotlib.org/examples/index.html">matplotlib examples</a></p>
-]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>互动派面试回忆</title>
     <url>/2016/03/17/%E4%BA%92%E5%8A%A8%E6%B4%BE%E9%9D%A2%E8%AF%95%E5%9B%9E%E5%BF%86/</url>
     <content><![CDATA[<h3 id="笔试"><a href="#笔试" class="headerlink" title="笔试"></a>笔试</h3><ol>
@@ -1305,32 +1415,6 @@ $ sudo apt-get upgrade
       </tags>
   </entry>
   <entry>
-    <title>平凡之路收获不平凡</title>
-    <url>/2017/03/22/%E5%B9%B3%E5%87%A1%E4%B9%8B%E8%B7%AF%E6%94%B6%E8%8E%B7%E4%B8%8D%E5%B9%B3%E5%87%A1/</url>
-    <content><![CDATA[<blockquote>
-<p>美团春招有感</p>
-</blockquote>
-<h3 id="春招面试"><a href="#春招面试" class="headerlink" title="春招面试"></a>春招面试</h3><ol>
-<li>lr</li>
-<li>CNN</li>
-<li>算法</li>
-</ol>
-<ul>
-<li>经历这场面试，我终于明白，仅仅停留在表面，无法获得别人的青睐。<br>lr的特征、使用场景、优化过程、怎么处理过拟合？</li>
-<li>CNN整体过程，里面的具体过程，有没有参考过Google论文。对Google里面的模型有多少了解。</li>
-<li>算法说出自己的思路。</li>
-</ul>
-<p>虽然自己都有参与和设计过，都没有仔细思考为何要这么去做，有没有更多的解决。<br>数据挖掘工程师的思路还是比code重要些。</p>
-<p>那个面试官给人的感觉很专业，考核的很有意义，给个赞！</p>
-]]></content>
-      <categories>
-        <category>idea</category>
-      </categories>
-      <tags>
-        <tag>insist</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>医疗健康管理系统APP</title>
     <url>/2016/03/01/%E5%8C%BB%E7%96%97%E5%81%A5%E5%BA%B7%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9FAPP/</url>
     <content><![CDATA[<h3 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h3><p>私人健康小助手，它需要为用户提供友好的操作交互界面，方面用户的使用，并给出实时的合适的评测和建议，提供附近医生的地点并聊天。我们在客户的功能需求主要包含一下内容：</p>
@@ -1376,6 +1460,32 @@ $ sudo apt-get upgrade
       </tags>
   </entry>
   <entry>
+    <title>平凡之路收获不平凡</title>
+    <url>/2017/03/22/%E5%B9%B3%E5%87%A1%E4%B9%8B%E8%B7%AF%E6%94%B6%E8%8E%B7%E4%B8%8D%E5%B9%B3%E5%87%A1/</url>
+    <content><![CDATA[<blockquote>
+<p>美团春招有感</p>
+</blockquote>
+<h3 id="春招面试"><a href="#春招面试" class="headerlink" title="春招面试"></a>春招面试</h3><ol>
+<li>lr</li>
+<li>CNN</li>
+<li>算法</li>
+</ol>
+<ul>
+<li>经历这场面试，我终于明白，仅仅停留在表面，无法获得别人的青睐。<br>lr的特征、使用场景、优化过程、怎么处理过拟合？</li>
+<li>CNN整体过程，里面的具体过程，有没有参考过Google论文。对Google里面的模型有多少了解。</li>
+<li>算法说出自己的思路。</li>
+</ul>
+<p>虽然自己都有参与和设计过，都没有仔细思考为何要这么去做，有没有更多的解决。<br>数据挖掘工程师的思路还是比code重要些。</p>
+<p>那个面试官给人的感觉很专业，考核的很有意义，给个赞！</p>
+]]></content>
+      <categories>
+        <category>idea</category>
+      </categories>
+      <tags>
+        <tag>insist</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>我的Hexo创建历程</title>
     <url>/2015/11/21/%E6%88%91%E7%9A%84Hexo%E5%88%9B%E5%BB%BA%E5%8E%86%E7%A8%8B/</url>
     <content><![CDATA[<blockquote>
@@ -1398,6 +1508,57 @@ $ sudo apt-get upgrade
         <tag>Hexo</tag>
         <tag>Github</tag>
         <tag>Nodejs</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>最近校招算法题整理</title>
+    <url>/2016/04/20/%E6%9C%80%E8%BF%91%E6%A0%A1%E6%8B%9B%E7%AE%97%E6%B3%95%E9%A2%98%E6%95%B4%E7%90%86/</url>
+    <content><![CDATA[<h3 id="幂次"><a href="#幂次" class="headerlink" title="幂次"></a><a href="http://blog.sina.com.cn/s/blog_638f5b130102dr0t.html">幂次</a></h3><p>判断一个数的幂次</p>
+<blockquote>
+<p>个位数是2的n次方的尾数循环为：2486 2486 2486 2486….<br>个位数是3的n次方的尾数循环为：3971 3971 3971 3971….<br>[公式] : n&amp;(n-1)判断n中有多少个1;</p>
+</blockquote>
+<ul>
+<li>判断一个数是2的幂次<br>[code]</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Created by Paul on 2016/4/20.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;iostream&quot;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">is2sN</span><span class="params">(<span class="keyword">int</span> n)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; <span class="number">1000</span>;i ++)&#123;</span><br><span class="line">            <span class="keyword">int</span> flag = is2sN(i);</span><br><span class="line">            <span class="keyword">if</span>(flag == <span class="number">0</span>)&#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;%d \n&quot;</span>,i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">is2sN</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> n &amp; (n - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>判断一个数是3的幂次<br>[code]</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Created by Paul on 2016/4/20.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;iostream&quot;</span></span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;math.h&quot;</span></span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">is3sN</span><span class="params">(<span class="keyword">int</span> n)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; <span class="number">1000</span>;i ++)&#123;</span><br><span class="line">            <span class="keyword">int</span> flag = is3sN(i);</span><br><span class="line">            <span class="keyword">if</span>(flag == <span class="number">1</span>)<span class="built_in">printf</span>(<span class="string">&quot;%d  %d \n&quot;</span>,i,flag);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">is3sN</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">        <span class="keyword">double</span> a = <span class="built_in">log</span>(n)/<span class="built_in">log</span>(<span class="number">3</span>);</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">floor</span>(a) == <span class="built_in">ceil</span>(a))<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="完全数-梅森素数"><a href="#完全数-梅森素数" class="headerlink" title="[完全数]梅森素数"></a>[完全数]梅森素数</h3><p>大数学家欧几里德曾推算出完全数的获得公式：如果2^p-1质数,那么(2^p-1)2^(p-1)便是一个完全数.</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">example</span>:</span><br><span class="line">         <span class="attribute">p</span>=<span class="number">2</span>,<span class="number">2</span>^p-<span class="number">1</span>=<span class="number">3</span>是质数,(<span class="number">2</span>^p-<span class="number">1</span>)*<span class="number">2</span>^(p-<span class="number">1</span>)=<span class="number">3</span>*<span class="number">2</span>=<span class="number">6</span></span><br><span class="line">         <span class="attribute">p</span>=<span class="number">3</span>,<span class="number">2</span>^p-<span class="number">1</span>=<span class="number">7</span>是质数,(<span class="number">2</span>^p-<span class="number">1</span>)*<span class="number">2</span>^(p-<span class="number">1</span>)=<span class="number">7</span>X<span class="number">4</span>=<span class="number">28</span></span><br><span class="line">         <span class="attribute">p</span>=<span class="number">5</span>,<span class="number">2</span>^p-<span class="number">1</span>=<span class="number">31</span>是质数,(<span class="number">2</span>^p-<span class="number">1</span>)*<span class="number">2</span>^(p-<span class="number">1</span>)=<span class="number">31</span>X<span class="number">16</span>=<span class="number">496</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>但是2^p-1什么条件下才是质数呢?当2^p-1是质数的时候,称其为梅森素数!顾名思义,就是梅森第一个系统地研究这种形式的素数的!事实上,至今(2006.9.4)为止,人类只发现了44个梅森素数,也就是只发现了44个完全数!</p>
+</blockquote>
+<p>[算法]：</p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Created by Paul on 2016/4/20.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line">    #include <span class="string">&quot;iostream&quot;</span></span><br><span class="line">    <span class="built_in">int</span> isPerfectNumber(<span class="built_in">int</span> n);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">int</span> main()&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="built_in">int</span> i = <span class="number">1</span>;i &lt; <span class="number">10000</span>;i ++)&#123;</span><br><span class="line">            <span class="built_in">int</span> flag = isPerfectNumber(i);</span><br><span class="line">            <span class="keyword">if</span>(flag == <span class="number">1</span>)&#123;</span><br><span class="line">                printf(<span class="string">&quot;%d \n&quot;</span>,i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">int</span> isPerfectNumber(<span class="built_in">int</span> n)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(n &lt; <span class="number">6</span>)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">int</span> i = <span class="number">2</span>;</span><br><span class="line">        <span class="built_in">int</span> sum = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(i &lt; n/<span class="number">2</span> + <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(n % i == <span class="number">0</span>)sum += i;</span><br><span class="line">            i ++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(sum == n)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Interview</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Interview</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>斯坦福机器学习课程</title>
+    <url>/2016/06/23/%E6%96%AF%E5%9D%A6%E7%A6%8F%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0CS229/</url>
+    <content><![CDATA[<h3 id="COURSE-1"><a href="#COURSE-1" class="headerlink" title="COURSE 1"></a>COURSE 1</h3><ol>
+<li>SUPERVISED LEANRNING — 分类<br>有先验知识。对事物的判断已有相关定论</li>
+<li>UNSUPERVISED LEARNING — 聚类<br>没有先验知识。事先没有给定结论</li>
+<li>REFOCEMENT LEANRNING<br>见[2]</li>
+</ol>
+<h3 id="COURSE-2"><a href="#COURSE-2" class="headerlink" title="COURSE 2"></a>COURSE 2</h3><figure class="highlight gams"><table><tr><td class="code"><pre><span class="line">Notation</span><br><span class="line">m = #training examples</span><br><span class="line">x = <span class="string">&#x27;input&#x27;</span> <span class="keyword">variables</span>/features;</span><br><span class="line">y = <span class="comment">&#x27;output&#x27;</span> variables/<span class="string">&#x27;target&#x27;</span> <span class="keyword">variables</span></span><br><span class="line">(x,y) = training <span class="comment">example</span></span><br><span class="line">ith <span class="comment">training example = (xi,yi)</span></span><br></pre></td></tr></table></figure>
+<h4 id="Gradient-Descent"><a href="#Gradient-Descent" class="headerlink" title="Gradient Descent"></a>Gradient Descent</h4><h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ol>
+<li><a href="http://cs229.stanford.edu/materials.html">课程讲义</a></li>
+<li><a href="http://www.cnblogs.com/jerrylead/archive/2011/05/13/2045309.html">增强学习</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>ML</category>
+      </categories>
+      <tags>
+        <tag>Machine Learning</tag>
       </tags>
   </entry>
   <entry>
@@ -1472,24 +1633,23 @@ $ sudo apt-get upgrade
       </tags>
   </entry>
   <entry>
-    <title>斯坦福机器学习课程</title>
-    <url>/2016/06/23/%E6%96%AF%E5%9D%A6%E7%A6%8F%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0CS229/</url>
-    <content><![CDATA[<h3 id="COURSE-1"><a href="#COURSE-1" class="headerlink" title="COURSE 1"></a>COURSE 1</h3><ol>
-<li>SUPERVISED LEANRNING — 分类<br>有先验知识。对事物的判断已有相关定论</li>
-<li>UNSUPERVISED LEARNING — 聚类<br>没有先验知识。事先没有给定结论</li>
-<li>REFOCEMENT LEANRNING<br>见[2]</li>
-</ol>
-<h3 id="COURSE-2"><a href="#COURSE-2" class="headerlink" title="COURSE 2"></a>COURSE 2</h3><figure class="highlight gams"><table><tr><td class="code"><pre><span class="line">Notation</span><br><span class="line">m = #training examples</span><br><span class="line">x = <span class="string">&#x27;input&#x27;</span> <span class="keyword">variables</span>/features;</span><br><span class="line">y = <span class="comment">&#x27;output&#x27;</span> variables/<span class="string">&#x27;target&#x27;</span> <span class="keyword">variables</span></span><br><span class="line">(x,y) = training <span class="comment">example</span></span><br><span class="line">ith <span class="comment">training example = (xi,yi)</span></span><br></pre></td></tr></table></figure>
-<h4 id="Gradient-Descent"><a href="#Gradient-Descent" class="headerlink" title="Gradient Descent"></a>Gradient Descent</h4><h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ol>
-<li><a href="http://cs229.stanford.edu/materials.html">课程讲义</a></li>
-<li><a href="http://www.cnblogs.com/jerrylead/archive/2011/05/13/2045309.html">增强学习</a></li>
+    <title>机器学习|实时推荐架构简介</title>
+    <url>/2020/04/02/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%AE%9E%E6%97%B6%E6%8E%A8%E8%8D%90%E6%9E%B6%E6%9E%84%E7%AE%80%E4%BB%8B/</url>
+    <content><![CDATA[<h2 id="实时画像"><a href="#实时画像" class="headerlink" title="实时画像"></a>实时画像</h2><h3 id="最大期望（-EM-）算法"><a href="#最大期望（-EM-）算法" class="headerlink" title="最大期望（ EM ）算法"></a>最大期望（ EM ）算法</h3><h2 id="实时推荐算法"><a href="#实时推荐算法" class="headerlink" title="实时推荐算法"></a>实时推荐算法</h2><h2 id="推荐架构"><a href="#推荐架构" class="headerlink" title="推荐架构"></a>推荐架构</h2><h3 id="离线计算"><a href="#离线计算" class="headerlink" title="离线计算"></a>离线计算</h3><h3 id="近线计算"><a href="#近线计算" class="headerlink" title="近线计算"></a>近线计算</h3><h3 id="在线计算"><a href="#在线计算" class="headerlink" title="在线计算"></a>在线计算</h3><h2 id=""><a href="#" class="headerlink" title="#"></a>#</h2><p>HBase 用于实时获取画像，提供高并发下的毫秒级返回。<br>Elasticsearch 用于召回层，尽可能在短时间内根据用户画像标签初筛合适的商品作为候选集。<br>Hive 用于算法同学训练模型提供统一的数据源，该存储可以不实时，根据需求每天同步一份即可。</p>
+<p><a href="https://www.jianshu.com/p/7a3349d1e3cc">推荐系统总结6（系统架构）</a><br><a href="https://cloud.tencent.com/developer/article/1118880">手Q游戏中心的个性化推荐实战</a></p>
+<h2 id="相关论文"><a href="#相关论文" class="headerlink" title="相关论文"></a>相关论文</h2><ol>
+<li><a href="https://www.biaodianfu.com/tencentrec-real-time-stream-recommendation-in-practice.html">TencentRec: Real-time Stream Recommendation in Practice论文解读</a></li>
+<li><a href="https://www.biaodianfu.com/real-time-video-recommendation-exploration.html">Real-time Video Recommendation Exploration论文解读</a></li>
+<li><a href="https://cloud.tencent.com/developer/article/1380402">Youtube 深度学习推荐系统论文</a></li>
+<li><a href="https://daiwk.github.io/posts/links-navigation-recommender-system.html">推荐系统论文合集</a></li>
+<li><a href="https://github.com/NLP-LOVE/ML-NLP">算法基础</a></li>
 </ol>
 ]]></content>
       <categories>
-        <category>ML</category>
+        <category>机器学习</category>
       </categories>
       <tags>
-        <tag>Machine Learning</tag>
+        <tag>实时推荐</tag>
       </tags>
   </entry>
   <entry>
@@ -1511,126 +1671,18 @@ $ sudo apt-get upgrade
 <li>运营直接干预，对新出现的物品，进行人工干预强推。</li>
 </ul>
 <h2 id="系统冷启动"><a href="#系统冷启动" class="headerlink" title="系统冷启动"></a>系统冷启动</h2><p>推荐系统冷启动，可以通过人工标注的比较好的热门数据，作为兜底推荐。在推荐数据为空的情况下，通过兜底推荐也能保证用户和物品被推荐出去。</p>
+<h2 id="冷启动策略"><a href="#冷启动策略" class="headerlink" title="冷启动策略"></a>冷启动策略</h2><p>基于标签的相似视频推荐基本不存在冷启动问题，因为任何新注入的视频都是包含标签的，并且我们是近实时为新节目计算相似视频，在极短的时间内就会为新节目计算出相似推荐。本节我们来说说实时个性化推荐冷启动问题。<br>因为是基于内容的推荐，冷启动问题没有那么严重，只要用户看过一个视频，这个视频的标签就是用户的兴趣标签，我们可以为用户推荐具备该标签的节目。但是，如果用户一个节目都没看，那要怎么为用户做推荐呢？<br>我们可以采用如下3大策略：</p>
+<ul>
+<li>利用新热节目作为推荐；</li>
+<li>基于用户特征(比如用户地域)来为用户生成相关推荐列表；</li>
+<li>从所有视频中选择不同类别的视频推荐给用户，总有一款是用户喜欢的。</li>
+</ul>
 ]]></content>
       <categories>
         <category>机器学习</category>
       </categories>
       <tags>
         <tag>冷启动</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>机器学习|实时推荐架构简介</title>
-    <url>/2020/04/02/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%AE%9E%E6%97%B6%E6%8E%A8%E8%8D%90%E6%9E%B6%E6%9E%84%E7%AE%80%E4%BB%8B/</url>
-    <content><![CDATA[<h2 id="实时画像"><a href="#实时画像" class="headerlink" title="实时画像"></a>实时画像</h2><h3 id="最大期望（-EM-）算法"><a href="#最大期望（-EM-）算法" class="headerlink" title="最大期望（ EM ）算法"></a>最大期望（ EM ）算法</h3><h2 id="实时推荐算法"><a href="#实时推荐算法" class="headerlink" title="实时推荐算法"></a>实时推荐算法</h2><h2 id="推荐架构"><a href="#推荐架构" class="headerlink" title="推荐架构"></a>推荐架构</h2><h3 id="离线计算"><a href="#离线计算" class="headerlink" title="离线计算"></a>离线计算</h3><h3 id="近线计算"><a href="#近线计算" class="headerlink" title="近线计算"></a>近线计算</h3><h3 id="在线计算"><a href="#在线计算" class="headerlink" title="在线计算"></a>在线计算</h3><h2 id=""><a href="#" class="headerlink" title="#"></a>#</h2><p>HBase 用于实时获取画像，提供高并发下的毫秒级返回。<br>Elasticsearch 用于召回层，尽可能在短时间内根据用户画像标签初筛合适的商品作为候选集。<br>Hive 用于算法同学训练模型提供统一的数据源，该存储可以不实时，根据需求每天同步一份即可。</p>
-<p><a href="https://www.jianshu.com/p/7a3349d1e3cc">推荐系统总结6（系统架构）</a><br><a href="https://cloud.tencent.com/developer/article/1118880">手Q游戏中心的个性化推荐实战</a></p>
-<h2 id="相关论文"><a href="#相关论文" class="headerlink" title="相关论文"></a>相关论文</h2><ol>
-<li><a href="https://www.biaodianfu.com/tencentrec-real-time-stream-recommendation-in-practice.html">TencentRec: Real-time Stream Recommendation in Practice论文解读</a></li>
-<li><a href="https://www.biaodianfu.com/real-time-video-recommendation-exploration.html">Real-time Video Recommendation Exploration论文解读</a></li>
-<li><a href="https://cloud.tencent.com/developer/article/1380402">Youtube 深度学习推荐系统论文</a></li>
-<li><a href="https://daiwk.github.io/posts/links-navigation-recommender-system.html">推荐系统论文合集</a></li>
-<li><a href="https://github.com/NLP-LOVE/ML-NLP">算法基础</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>机器学习</category>
-      </categories>
-      <tags>
-        <tag>实时推荐</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>最近校招算法题整理</title>
-    <url>/2016/04/20/%E6%9C%80%E8%BF%91%E6%A0%A1%E6%8B%9B%E7%AE%97%E6%B3%95%E9%A2%98%E6%95%B4%E7%90%86/</url>
-    <content><![CDATA[<h3 id="幂次"><a href="#幂次" class="headerlink" title="幂次"></a><a href="http://blog.sina.com.cn/s/blog_638f5b130102dr0t.html">幂次</a></h3><p>判断一个数的幂次</p>
-<blockquote>
-<p>个位数是2的n次方的尾数循环为：2486 2486 2486 2486….<br>个位数是3的n次方的尾数循环为：3971 3971 3971 3971….<br>[公式] : n&amp;(n-1)判断n中有多少个1;</p>
-</blockquote>
-<ul>
-<li>判断一个数是2的幂次<br>[code]</li>
-</ul>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Created by Paul on 2016/4/20.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;iostream&quot;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">is2sN</span><span class="params">(<span class="keyword">int</span> n)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; <span class="number">1000</span>;i ++)&#123;</span><br><span class="line">            <span class="keyword">int</span> flag = is2sN(i);</span><br><span class="line">            <span class="keyword">if</span>(flag == <span class="number">0</span>)&#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;%d \n&quot;</span>,i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">is2sN</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> n &amp; (n - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>判断一个数是3的幂次<br>[code]</li>
-</ul>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Created by Paul on 2016/4/20.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;iostream&quot;</span></span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;math.h&quot;</span></span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">is3sN</span><span class="params">(<span class="keyword">int</span> n)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; <span class="number">1000</span>;i ++)&#123;</span><br><span class="line">            <span class="keyword">int</span> flag = is3sN(i);</span><br><span class="line">            <span class="keyword">if</span>(flag == <span class="number">1</span>)<span class="built_in">printf</span>(<span class="string">&quot;%d  %d \n&quot;</span>,i,flag);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">is3sN</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">        <span class="keyword">double</span> a = <span class="built_in">log</span>(n)/<span class="built_in">log</span>(<span class="number">3</span>);</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">floor</span>(a) == <span class="built_in">ceil</span>(a))<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="完全数-梅森素数"><a href="#完全数-梅森素数" class="headerlink" title="[完全数]梅森素数"></a>[完全数]梅森素数</h3><p>大数学家欧几里德曾推算出完全数的获得公式：如果2^p-1质数,那么(2^p-1)2^(p-1)便是一个完全数.</p>
-<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">example</span>:</span><br><span class="line">         <span class="attribute">p</span>=<span class="number">2</span>,<span class="number">2</span>^p-<span class="number">1</span>=<span class="number">3</span>是质数,(<span class="number">2</span>^p-<span class="number">1</span>)*<span class="number">2</span>^(p-<span class="number">1</span>)=<span class="number">3</span>*<span class="number">2</span>=<span class="number">6</span></span><br><span class="line">         <span class="attribute">p</span>=<span class="number">3</span>,<span class="number">2</span>^p-<span class="number">1</span>=<span class="number">7</span>是质数,(<span class="number">2</span>^p-<span class="number">1</span>)*<span class="number">2</span>^(p-<span class="number">1</span>)=<span class="number">7</span>X<span class="number">4</span>=<span class="number">28</span></span><br><span class="line">         <span class="attribute">p</span>=<span class="number">5</span>,<span class="number">2</span>^p-<span class="number">1</span>=<span class="number">31</span>是质数,(<span class="number">2</span>^p-<span class="number">1</span>)*<span class="number">2</span>^(p-<span class="number">1</span>)=<span class="number">31</span>X<span class="number">16</span>=<span class="number">496</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>但是2^p-1什么条件下才是质数呢?当2^p-1是质数的时候,称其为梅森素数!顾名思义,就是梅森第一个系统地研究这种形式的素数的!事实上,至今(2006.9.4)为止,人类只发现了44个梅森素数,也就是只发现了44个完全数!</p>
-</blockquote>
-<p>[算法]：</p>
-<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Created by Paul on 2016/4/20.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line">    #include <span class="string">&quot;iostream&quot;</span></span><br><span class="line">    <span class="built_in">int</span> isPerfectNumber(<span class="built_in">int</span> n);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">int</span> main()&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="built_in">int</span> i = <span class="number">1</span>;i &lt; <span class="number">10000</span>;i ++)&#123;</span><br><span class="line">            <span class="built_in">int</span> flag = isPerfectNumber(i);</span><br><span class="line">            <span class="keyword">if</span>(flag == <span class="number">1</span>)&#123;</span><br><span class="line">                printf(<span class="string">&quot;%d \n&quot;</span>,i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">int</span> isPerfectNumber(<span class="built_in">int</span> n)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(n &lt; <span class="number">6</span>)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">int</span> i = <span class="number">2</span>;</span><br><span class="line">        <span class="built_in">int</span> sum = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(i &lt; n/<span class="number">2</span> + <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(n % i == <span class="number">0</span>)sum += i;</span><br><span class="line">            i ++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(sum == n)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Interview</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>Interview</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>机器学习1000问</title>
-    <url>/2020/04/01/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A01000%E9%97%AE/</url>
-    <content><![CDATA[<h2 id="什么是机器学习？"><a href="#什么是机器学习？" class="headerlink" title="什么是机器学习？"></a>什么是机器学习？</h2><p>利用大量的数据样本，使得计算机通过不断的学习获得一个模型，用来对新的未知数据做预测。</p>
-<h2 id="机器学习有哪些类别？"><a href="#机器学习有哪些类别？" class="headerlink" title="机器学习有哪些类别？"></a>机器学习有哪些类别？</h2><blockquote>
-<p>机器学习分为监督学习，非监督学习和强化学习。<br>监督学习：同时将数据样本和标签输入给模型，模型学习到数据和标签的映射关系，从而对新数据进行预测。监督学习又分为分类问题和回归问题。</p>
-</blockquote>
-<p>非监督学习：只有数据，没有标签，模型通过总结规律，从数据中挖掘出信息。</p>
-<h2 id="逻辑回归相比于线性回归，有何异同？"><a href="#逻辑回归相比于线性回归，有何异同？" class="headerlink" title="逻辑回归相比于线性回归，有何异同？"></a>逻辑回归相比于线性回归，有何异同？</h2><ul>
-<li>首先逻辑回归处理的是分类问题，线性回归处理的是回归问题，这是两者最本质的区别</li>
-<li>线性回归是一种拟合函数，逻辑回归是一种预测函数。</li>
-<li>线性回归求参采用最小二乘法，逻辑回归求参采用梯度下降。</li>
-</ul>
-<h2 id="树形结构为什么不需要归一化？"><a href="#树形结构为什么不需要归一化？" class="headerlink" title="树形结构为什么不需要归一化？"></a>树形结构为什么不需要归一化？</h2><p>因为数值缩放不影响分裂点位置，对树模型的结构不造成影响。树模型是不能进行梯度下降的，因为构建树模型（回归树）寻找最优点时是通过寻找最优分裂点完成的，因此树模型是阶跃的，阶跃点是不可导的，并且求导没意义，也就不需要归一化。归一化对模型没有影响。<br><strong>问题来了，为何非树形结构比如 Adaboost、SVM、LR、Knn、KMeans 之类则需要归一化呢？</strong><br>对于线性模型，特征值差别很大时，比如说 LR ，我有两个特征，一个是 (0,1) 的，一个是 (0,10000) 的，运用梯度下降的时候，损失等高线是椭圆形，需要进行多次迭代才能到达最优点。<br>但是如果进行了归一化，那么等高线就是圆形的，促使 SGD 往原点迭代，从而导致需要的迭代次数较少。在实际应用中，通过梯度下降法求解的模型一般都是需要归一化的，比如线性回归、logistic回归、KNN、SVM、神经网络等模型。</p>
-<h2 id="有哪些归一化方法"><a href="#有哪些归一化方法" class="headerlink" title="有哪些归一化方法"></a>有哪些归一化方法</h2><ul>
-<li>线性归一化</li>
-<li><p>标准差归一化</p>
-</li>
-<li><p>非线性归一化<br>幂律分布可用log(v, 2) / log(max, 2)<br>指数归一化<br>反正切函数 arctan</p>
-</li>
-</ul>
-<h2 id="新内容，曝光较少的内容的排序问题如何解决"><a href="#新内容，曝光较少的内容的排序问题如何解决" class="headerlink" title="新内容，曝光较少的内容的排序问题如何解决?"></a>新内容，曝光较少的内容的排序问题如何解决?</h2><p>对于某件商品或广告X，其是否被点击是一个伯努利分布（Bernoulli）</p>
-<script type="math/tex; mode=display">
-  X ~ Ber(r), r是商品或者广告的被点击概率</script><script type="math/tex; mode=display">
-\hat{r} = \frac{ C+\alpha }{ I + \alpha + \beta}</script><script type="math/tex; mode=display">
-\alpha = \bar{X} \left(\frac{\bar{X}(1-\bar{X})}{S^2} - 1\right)</script><script type="math/tex; mode=display">
-\beta = (1-\bar{X})\left(\frac{\bar{X}(1-\bar{X})}{S^2} - 1\right)</script><p>求解$\alpha, \beta$</p>
-<p>然而，Beta分布除了两个显性的重要参数α和β外，还有两个相对隐形但同样重要的参数，平均值和中位数，通过平均值和中位数可以唯一确定α和β的值，它们的数学关系如下：</p>
-<script type="math/tex; mode=display">mean = \frac{\alpha}{\alpha + \beta}</script><script type="math/tex; mode=display">mode = \frac{\alpha - 1}{ \alpha + \beta -1}</script><h3 id="威尔逊平滑"><a href="#威尔逊平滑" class="headerlink" title="威尔逊平滑"></a>威尔逊平滑</h3><p>平滑，曝光次数n，点击率p<br>它只适用于样本较多的情况（np &gt; 5 且 n(1 − p) &gt; 5），对于小样本，它的准确性很差。</p>
-<h2 id="类别特征有哪些编码方式？"><a href="#类别特征有哪些编码方式？" class="headerlink" title="类别特征有哪些编码方式？"></a>类别特征有哪些编码方式？</h2><ul>
-<li><p>独热编码<br>独热编码通常用于处理类别间不具有大小关系的特征，每个特征取值对应一维特征，能够处理缺失值，在一定程度上也起到了扩充特征的作用。但是当类别的数量很多时，特征空间会变得非常大。在这种情况下，一般可以用 PCA 等方法进行降维。</p>
-</li>
-<li><p>散列编码<br>对于有些取值特别多的类别特征，使用独热编码得到的特征矩阵非常稀疏，再加上如果还有笛卡尔积等构造的组合特征，会使得特征维度爆炸式增长。使用2-3倍取模。</p>
-</li>
-<li><p>打分排名编码</p>
-</li>
-</ul>
-<h2 id="特征降维方法？"><a href="#特征降维方法？" class="headerlink" title="特征降维方法？"></a>特征降维方法？</h2><ul>
-<li>频次阶段技术<br>比如文档中某个词语出现的次数不超过5次，则不计入特征中。</li>
-</ul>
-<h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><ol>
-<li><a href="https://www.jianshu.com/p/b3e9b300a100">推荐系统-威尔逊区间法</a></li>
-<li><a href="http://sakigami-yang.me/2017/12/27/rating-model-considering-user-count/">考虑评分人数的用户评分模型</a></li>
-<li>Click-Through Rate Estimation for Rare Events in Online Advertising</li>
-<li><a href="https://www.zhihu.com/question/264165760">如何用通俗的语言解释CTR和推荐系统中常用的Feature Hashing</a></li>
-<li>Feature hashing for large scale multitask learning.</li>
-</ol>
-]]></content>
-  </entry>
-  <entry>
-    <title>机器学习|特征工程基本框架</title>
-    <url>/2020/04/02/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B%E5%9F%BA%E6%9C%AC%E6%A1%86%E6%9E%B6/</url>
-    <content><![CDATA[<p>在推荐系统中，特征工程扮演着重要的角色。俗话说数据和特征决定了机器学习算法的上限，而模型、算法的选择和优化只是在不断逼近这个上限。</p>
-<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><ol>
-<li><a href="https://www.jiqizhixin.com/articles/2019-12-11-5">浅谈微视推荐系统中的特征工程</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>机器学习</category>
-      </categories>
-      <tags>
-        <tag>特征工程</tag>
       </tags>
   </entry>
   <entry>
@@ -1650,6 +1702,62 @@ $ sudo apt-get upgrade
       <tags>
         <tag>DEEPLEARNING</tag>
         <tag>KERAS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>机器学习|特征工程基本框架</title>
+    <url>/2020/04/02/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B%E5%9F%BA%E6%9C%AC%E6%A1%86%E6%9E%B6/</url>
+    <content><![CDATA[<p>在推荐系统中，特征工程扮演着重要的角色。俗话说数据和特征决定了机器学习算法的上限，而模型、算法的选择和优化只是在不断逼近这个上限。</p>
+<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><ol>
+<li><a href="https://www.jiqizhixin.com/articles/2019-12-11-5">浅谈微视推荐系统中的特征工程</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>特征工程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>腾讯SNG面试经历</title>
+    <url>/2016/04/11/%E8%85%BE%E8%AE%AFSNG%E9%9D%A2%E8%AF%95%E7%BB%8F%E5%8E%86/</url>
+    <content><![CDATA[<h3 id="一面（回忆版）"><a href="#一面（回忆版）" class="headerlink" title="一面（回忆版）"></a>一面（回忆版）</h3><blockquote>
+<p>本来是准备等到下午六点就准备回去，因为放在那儿的简历一直躺在那儿，没人要。早晨10点钟过来，到了霸面区，hr姐姐说，霸面的同学简历放在这儿，我穿过人群过去一看，好多简历，各种漂亮的简历。<br>晚上5点45分有个面试官过来看了下后台开发的简历，晒走了两份，我一看，哎，命中了，有点欣喜。<br>大约6点钟，经过签到，然后去等待叫号。</p>
+</blockquote>
+<p>面试开始了，首先自我介绍。<br>面试官很年轻，一开始在填写我的信息。然后说他们那个系统很烂，然后不是他开发的，所以很无语。</p>
+<ol>
+<li>你最熟悉的语言是什么？为什么选择java,哪一点最吸引你！</li>
+<li>Java语言的优缺点？</li>
+<li>Java的特性</li>
+<li>SSH三个分别是什么东西？struts负责那一部分，Spring干嘛的，hibernate作用。 </li>
+<li>有了解过平衡二叉树，红黑树吗？查找的时间复杂度是多少，怎么来的？<br><a href="http://blog.csdn.net/niteip/article/details/11840691">平衡二叉树</a><br><a href="http://blog.csdn.net/chenhuajie123/article/details/11951777">红黑树</a></li>
+<li>对排序算法熟悉吗？快排序时间复杂度，为什么是O(nlogn)<br><a href="http://blog.csdn.net/whuslei/article/details/6442755">常见排序算法</a></li>
+<li>mysql的性能？<br>（一脸懵逼）然后我问是指什么，面试官说TPS，还是不知道，我说大约10w吧，之前查询数据的时候1s差不多10w条，然后面试官说，你这有依据吗<br><a href="http://f.dataguru.cn/thread-385925-1-1.html">关于qps一点资料</a></li>
+<li>你对mysql的了解，说说？（好多这样开放性的题目，能说多少就说多少）mysql索引是什么数据结构<br><a href="http://my.oschina.net/u/554660/blog/284653">B+</a></li>
+<li>数据库的ACID了解吗？1,2,3NF知道吗？<br><a href="http://www.cnblogs.com/CareySon/archive/2012/01/29/2331088.html">ACID</a><br><a href="http://blog.csdn.net/xuxurui007/article/details/7738330">1,2,3,BCNF</a></li>
+<li>在海量数据里面选出最大的1000条数据怎么做？（内存不够）</li>
+</ol>
+<h3 id="二面"><a href="#二面" class="headerlink" title="二面"></a>二面</h3><blockquote>
+<p>在昨天晚上，实验室大部分人都走了，正在看一个人B+树博客的时候，突然手机一响，我看了下。竟然是一面过了，邀请明天10点面试，想想好激动。去大堂签到，然后等待叫号,惴惴不安。突然一个短信来了，心里一叮咚，这就开始啦。</p>
+</blockquote>
+<p>上楼看了找房间，房号，结果们关着。。。<br>我礼貌的敲了下们，没人。我纳闷，结果发现门旁边有个门铃，我按了两下，好像有动静，然后再按了下，门开了。</p>
+<p>打了个招呼，我报了下自己的名字，是来面试的。<br>面试开始了，首先自我介绍。</p>
+<ol>
+<li>直接就开始聊起了项目，了解最熟悉最拿手的项目。</li>
+<li>对js熟悉吗，angular js, facebook的js框架。<br><a href="http://www.apjs.net/">angular js</a><br><a href="http://reactjs.cn/react/docs/getting-started.html">React.js</a></li>
+<li>项目里面有个安卓自己开发的项目，然后面试官想看看效果，刚好前几天，我把它放在我的github博客上了！</li>
+<li>研究生阶段是学的什么课程，学过一些什么，知道AWS吗？</li>
+<li>本科学校是什么，专业，估计面试官很看重出身吧！</li>
+<li>然后面试官介绍了他们项目组是SNG,目前最业务状况和需要哪方面的人才！</li>
+</ol>
+<p>全程下来没有聊任何技术方面的，不知道结果如何，waiting!</p>
+]]></content>
+      <categories>
+        <category>Interview</category>
+      </categories>
+      <tags>
+        <tag>Interview</tag>
       </tags>
   </entry>
   <entry>
@@ -1719,45 +1827,53 @@ $ sudo apt-get upgrade
       </tags>
   </entry>
   <entry>
-    <title>腾讯SNG面试经历</title>
-    <url>/2016/04/11/%E8%85%BE%E8%AE%AFSNG%E9%9D%A2%E8%AF%95%E7%BB%8F%E5%8E%86/</url>
-    <content><![CDATA[<h3 id="一面（回忆版）"><a href="#一面（回忆版）" class="headerlink" title="一面（回忆版）"></a>一面（回忆版）</h3><blockquote>
-<p>本来是准备等到下午六点就准备回去，因为放在那儿的简历一直躺在那儿，没人要。早晨10点钟过来，到了霸面区，hr姐姐说，霸面的同学简历放在这儿，我穿过人群过去一看，好多简历，各种漂亮的简历。<br>晚上5点45分有个面试官过来看了下后台开发的简历，晒走了两份，我一看，哎，命中了，有点欣喜。<br>大约6点钟，经过签到，然后去等待叫号。</p>
+    <title>机器学习1000问</title>
+    <url>/2020/04/01/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A01000%E9%97%AE/</url>
+    <content><![CDATA[<h2 id="什么是机器学习？"><a href="#什么是机器学习？" class="headerlink" title="什么是机器学习？"></a>什么是机器学习？</h2><p>利用大量的数据样本，使得计算机通过不断的学习获得一个模型，用来对新的未知数据做预测。</p>
+<h2 id="机器学习有哪些类别？"><a href="#机器学习有哪些类别？" class="headerlink" title="机器学习有哪些类别？"></a>机器学习有哪些类别？</h2><blockquote>
+<p>机器学习分为监督学习，非监督学习和强化学习。<br>监督学习：同时将数据样本和标签输入给模型，模型学习到数据和标签的映射关系，从而对新数据进行预测。监督学习又分为分类问题和回归问题。</p>
 </blockquote>
-<p>面试开始了，首先自我介绍。<br>面试官很年轻，一开始在填写我的信息。然后说他们那个系统很烂，然后不是他开发的，所以很无语。</p>
-<ol>
-<li>你最熟悉的语言是什么？为什么选择java,哪一点最吸引你！</li>
-<li>Java语言的优缺点？</li>
-<li>Java的特性</li>
-<li>SSH三个分别是什么东西？struts负责那一部分，Spring干嘛的，hibernate作用。 </li>
-<li>有了解过平衡二叉树，红黑树吗？查找的时间复杂度是多少，怎么来的？<br><a href="http://blog.csdn.net/niteip/article/details/11840691">平衡二叉树</a><br><a href="http://blog.csdn.net/chenhuajie123/article/details/11951777">红黑树</a></li>
-<li>对排序算法熟悉吗？快排序时间复杂度，为什么是O(nlogn)<br><a href="http://blog.csdn.net/whuslei/article/details/6442755">常见排序算法</a></li>
-<li>mysql的性能？<br>（一脸懵逼）然后我问是指什么，面试官说TPS，还是不知道，我说大约10w吧，之前查询数据的时候1s差不多10w条，然后面试官说，你这有依据吗<br><a href="http://f.dataguru.cn/thread-385925-1-1.html">关于qps一点资料</a></li>
-<li>你对mysql的了解，说说？（好多这样开放性的题目，能说多少就说多少）mysql索引是什么数据结构<br><a href="http://my.oschina.net/u/554660/blog/284653">B+</a></li>
-<li>数据库的ACID了解吗？1,2,3NF知道吗？<br><a href="http://www.cnblogs.com/CareySon/archive/2012/01/29/2331088.html">ACID</a><br><a href="http://blog.csdn.net/xuxurui007/article/details/7738330">1,2,3,BCNF</a></li>
-<li>在海量数据里面选出最大的1000条数据怎么做？（内存不够）</li>
+<p>非监督学习：只有数据，没有标签，模型通过总结规律，从数据中挖掘出信息。</p>
+<h2 id="逻辑回归相比于线性回归，有何异同？"><a href="#逻辑回归相比于线性回归，有何异同？" class="headerlink" title="逻辑回归相比于线性回归，有何异同？"></a>逻辑回归相比于线性回归，有何异同？</h2><ul>
+<li>首先逻辑回归处理的是分类问题，线性回归处理的是回归问题，这是两者最本质的区别</li>
+<li>线性回归是一种拟合函数，逻辑回归是一种预测函数。</li>
+<li>线性回归求参采用最小二乘法，逻辑回归求参采用梯度下降。</li>
+</ul>
+<h2 id="树形结构为什么不需要归一化？"><a href="#树形结构为什么不需要归一化？" class="headerlink" title="树形结构为什么不需要归一化？"></a>树形结构为什么不需要归一化？</h2><p>因为数值缩放不影响分裂点位置，对树模型的结构不造成影响。树模型是不能进行梯度下降的，因为构建树模型（回归树）寻找最优点时是通过寻找最优分裂点完成的，因此树模型是阶跃的，阶跃点是不可导的，并且求导没意义，也就不需要归一化。归一化对模型没有影响。<br><strong>问题来了，为何非树形结构比如 Adaboost、SVM、LR、Knn、KMeans 之类则需要归一化呢？</strong><br>对于线性模型，特征值差别很大时，比如说 LR ，我有两个特征，一个是 (0,1) 的，一个是 (0,10000) 的，运用梯度下降的时候，损失等高线是椭圆形，需要进行多次迭代才能到达最优点。<br>但是如果进行了归一化，那么等高线就是圆形的，促使 SGD 往原点迭代，从而导致需要的迭代次数较少。在实际应用中，通过梯度下降法求解的模型一般都是需要归一化的，比如线性回归、logistic回归、KNN、SVM、神经网络等模型。</p>
+<h2 id="有哪些归一化方法"><a href="#有哪些归一化方法" class="headerlink" title="有哪些归一化方法"></a>有哪些归一化方法</h2><ul>
+<li>线性归一化</li>
+<li><p>标准差归一化</p>
+</li>
+<li><p>非线性归一化<br>幂律分布可用log(v, 2) / log(max, 2)<br>指数归一化<br>反正切函数 arctan</p>
+</li>
+</ul>
+<h2 id="新内容，曝光较少的内容的排序问题如何解决"><a href="#新内容，曝光较少的内容的排序问题如何解决" class="headerlink" title="新内容，曝光较少的内容的排序问题如何解决?"></a>新内容，曝光较少的内容的排序问题如何解决?</h2><p>对于某件商品或广告X，其是否被点击是一个伯努利分布（Bernoulli）</p>
+<script type="math/tex; mode=display">
+  X ~ Ber(r), r是商品或者广告的被点击概率</script><script type="math/tex; mode=display">
+\hat{r} = \frac{ C+\alpha }{ I + \alpha + \beta}</script><script type="math/tex; mode=display">
+\alpha = \bar{X} \left(\frac{\bar{X}(1-\bar{X})}{S^2} - 1\right)</script><script type="math/tex; mode=display">
+\beta = (1-\bar{X})\left(\frac{\bar{X}(1-\bar{X})}{S^2} - 1\right)</script><p>求解$\alpha, \beta$</p>
+<p>然而，Beta分布除了两个显性的重要参数α和β外，还有两个相对隐形但同样重要的参数，平均值和中位数，通过平均值和中位数可以唯一确定α和β的值，它们的数学关系如下：</p>
+<script type="math/tex; mode=display">mean = \frac{\alpha}{\alpha + \beta}</script><script type="math/tex; mode=display">mode = \frac{\alpha - 1}{ \alpha + \beta -1}</script><h3 id="威尔逊平滑"><a href="#威尔逊平滑" class="headerlink" title="威尔逊平滑"></a>威尔逊平滑</h3><p>平滑，曝光次数n，点击率p<br>它只适用于样本较多的情况（np &gt; 5 且 n(1 − p) &gt; 5），对于小样本，它的准确性很差。</p>
+<h2 id="类别特征有哪些编码方式？"><a href="#类别特征有哪些编码方式？" class="headerlink" title="类别特征有哪些编码方式？"></a>类别特征有哪些编码方式？</h2><ul>
+<li><p>独热编码<br>独热编码通常用于处理类别间不具有大小关系的特征，每个特征取值对应一维特征，能够处理缺失值，在一定程度上也起到了扩充特征的作用。但是当类别的数量很多时，特征空间会变得非常大。在这种情况下，一般可以用 PCA 等方法进行降维。</p>
+</li>
+<li><p>散列编码<br>对于有些取值特别多的类别特征，使用独热编码得到的特征矩阵非常稀疏，再加上如果还有笛卡尔积等构造的组合特征，会使得特征维度爆炸式增长。使用2-3倍取模。</p>
+</li>
+<li><p>打分排名编码</p>
+</li>
+</ul>
+<h2 id="特征降维方法？"><a href="#特征降维方法？" class="headerlink" title="特征降维方法？"></a>特征降维方法？</h2><ul>
+<li>频次阶段技术<br>比如文档中某个词语出现的次数不超过5次，则不计入特征中。</li>
+</ul>
+<h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><ol>
+<li><a href="https://www.jianshu.com/p/b3e9b300a100">推荐系统-威尔逊区间法</a></li>
+<li><a href="http://sakigami-yang.me/2017/12/27/rating-model-considering-user-count/">考虑评分人数的用户评分模型</a></li>
+<li>Click-Through Rate Estimation for Rare Events in Online Advertising</li>
+<li><a href="https://www.zhihu.com/question/264165760">如何用通俗的语言解释CTR和推荐系统中常用的Feature Hashing</a></li>
+<li>Feature hashing for large scale multitask learning.</li>
 </ol>
-<h3 id="二面"><a href="#二面" class="headerlink" title="二面"></a>二面</h3><blockquote>
-<p>在昨天晚上，实验室大部分人都走了，正在看一个人B+树博客的时候，突然手机一响，我看了下。竟然是一面过了，邀请明天10点面试，想想好激动。去大堂签到，然后等待叫号,惴惴不安。突然一个短信来了，心里一叮咚，这就开始啦。</p>
-</blockquote>
-<p>上楼看了找房间，房号，结果们关着。。。<br>我礼貌的敲了下们，没人。我纳闷，结果发现门旁边有个门铃，我按了两下，好像有动静，然后再按了下，门开了。</p>
-<p>打了个招呼，我报了下自己的名字，是来面试的。<br>面试开始了，首先自我介绍。</p>
-<ol>
-<li>直接就开始聊起了项目，了解最熟悉最拿手的项目。</li>
-<li>对js熟悉吗，angular js, facebook的js框架。<br><a href="http://www.apjs.net/">angular js</a><br><a href="http://reactjs.cn/react/docs/getting-started.html">React.js</a></li>
-<li>项目里面有个安卓自己开发的项目，然后面试官想看看效果，刚好前几天，我把它放在我的github博客上了！</li>
-<li>研究生阶段是学的什么课程，学过一些什么，知道AWS吗？</li>
-<li>本科学校是什么，专业，估计面试官很看重出身吧！</li>
-<li>然后面试官介绍了他们项目组是SNG,目前最业务状况和需要哪方面的人才！</li>
-</ol>
-<p>全程下来没有聊任何技术方面的，不知道结果如何，waiting!</p>
 ]]></content>
-      <categories>
-        <category>Interview</category>
-      </categories>
-      <tags>
-        <tag>Interview</tag>
-      </tags>
   </entry>
   <entry>
     <title>腾讯OMG一面</title>
@@ -1875,6 +1991,12 @@ $ sudo apt-get upgrade
       </tags>
   </entry>
   <entry>
+    <title>重温机器学习(一)</title>
+    <url>/2020/02/15/%E9%87%8D%E6%B8%A9%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E4%B8%80/</url>
+    <content><![CDATA[<h4 id="test"><a href="#test" class="headerlink" title="test"></a>test</h4><h4 id="test-1"><a href="#test-1" class="headerlink" title="test"></a>test</h4><h4 id="test-2"><a href="#test-2" class="headerlink" title="test"></a>test</h4><script type="math/tex; mode=display">lim_{1\to+\infty}P(|\frac{1}{n}\sum_i^nX_i-\mu|<\epsilon)=1, i=1,...,n</script><p><a href="https://io-oi.me/tech/hexo-next-optimization/">https://io-oi.me/tech/hexo-next-optimization/</a><br><a href="https://www.codewoody.com/">https://www.codewoody.com/</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>NGINX + TOMCAT配置负载均衡</title>
     <url>/2016/08/30/nginx-tomcat%E9%85%8D%E7%BD%AE%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</url>
     <content><![CDATA[<blockquote>
@@ -1915,11 +2037,5 @@ $ sudo apt-get upgrade
         <tag>NGINX</tag>
         <tag>TOMCAT</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>重温机器学习(一)</title>
-    <url>/2020/02/15/%E9%87%8D%E6%B8%A9%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E4%B8%80/</url>
-    <content><![CDATA[<h4 id="test"><a href="#test" class="headerlink" title="test"></a>test</h4><h4 id="test-1"><a href="#test-1" class="headerlink" title="test"></a>test</h4><h4 id="test-2"><a href="#test-2" class="headerlink" title="test"></a>test</h4><script type="math/tex; mode=display">lim_{1\to+\infty}P(|\frac{1}{n}\sum_i^nX_i-\mu|<\epsilon)=1, i=1,...,n</script><p><a href="https://io-oi.me/tech/hexo-next-optimization/">https://io-oi.me/tech/hexo-next-optimization/</a><br><a href="https://www.codewoody.com/">https://www.codewoody.com/</a></p>
-]]></content>
   </entry>
 </search>

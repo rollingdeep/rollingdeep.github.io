@@ -176,6 +176,245 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/22/hive%E5%88%9B%E5%BB%BA%E4%B8%8D%E5%90%8C%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%A9%BAmap/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="okok">
+      <meta itemprop="description" content="记录学习生活的点点滴滴">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="少年游">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/22/hive%E5%88%9B%E5%BB%BA%E4%B8%8D%E5%90%8C%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%A9%BAmap/" class="post-title-link" itemprop="url">hive创建不同类型的空map</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-22 16:14:22 / 修改时间：16:34:51" itemprop="dateCreated datePublished" datetime="2020-09-22T16:14:22+08:00">2020-09-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hive/" itemprop="url" rel="index"><span itemprop="name">Hive</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="hive创建空map"><a href="#hive创建空map" class="headerlink" title="hive创建空map"></a>hive创建空map</h2><ul>
+<li>众所周知，hive默认的空类型的map对应的类型是<code>map&lt;string, string&gt;</code><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">beeline&gt; select map() as empty_map;</span><br><span class="line">+<span class="comment">------------+</span></span><br><span class="line">| empty_map  |</span><br><span class="line">+<span class="comment">------------+</span></span><br><span class="line">| &#123;&#125;         |</span><br><span class="line">+<span class="comment">------------+</span></span><br><span class="line">1 row selected (0.583 seconds)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>如何才能创建各种类型的map呢? 比如<code>map&lt;string, bigint&gt;</code>, <code>map&lt;string, boolean&gt;</code>, <code>map&lt;string, array&lt;string&gt;&gt;</code><br>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/09/22/hive%E5%88%9B%E5%BB%BA%E4%B8%8D%E5%90%8C%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%A9%BAmap/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/18/spark%E5%90%8C%E6%AD%A5mongo%E6%95%B0%E6%8D%AE%E5%88%B0hive%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="okok">
+      <meta itemprop="description" content="记录学习生活的点点滴滴">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="少年游">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/18/spark%E5%90%8C%E6%AD%A5mongo%E6%95%B0%E6%8D%AE%E5%88%B0hive%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/" class="post-title-link" itemprop="url">spark同步mongo数据到hive方法汇总</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-18 15:16:48 / 修改时间：15:50:17" itemprop="dateCreated datePublished" datetime="2020-09-18T15:16:48+08:00">2020-09-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5/" itemprop="url" rel="index"><span itemprop="name">数据同步</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><ul>
+<li>spark 2.3.2</li>
+</ul>
+<h2 id="单机测试"><a href="#单机测试" class="headerlink" title="单机测试"></a>单机测试</h2><ol>
+<li><p><code>mongo version &gt;= 3.2</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">spark-shell --packages org.mongodb.spark:mongo-spark-connector_2.11:2.3.2 </span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>mongo version &lt; 3.2</code></p>
+</li>
+</ol>
+<ul>
+<li>当 mongo 版本低于 3.2 会报错。<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">ERROR partitioner.DefaultMongoPartitioner:</span><br><span class="line"><span class="comment">----------------------------------------</span></span><br><span class="line">WARNING: MongoDB <span class="built_in">version</span> &lt; <span class="number">3.2</span> detected.</span><br><span class="line"><span class="comment">----------------------------------------</span></span><br><span class="line">With legacy MongoDB installations you will need <span class="built_in">to</span> explicitly configure <span class="keyword">the</span> Spark Connector <span class="keyword">with</span> <span class="keyword">a</span> partitioner.</span><br><span class="line">This can be done <span class="keyword">by</span>:</span><br><span class="line"> * Setting <span class="keyword">a</span> <span class="string">&quot;spark.mongodb.input.partitioner&quot;</span> <span class="keyword">in</span> SparkConf.</span><br><span class="line"> * Setting <span class="keyword">in</span> <span class="keyword">the</span> <span class="string">&quot;partitioner&quot;</span> parameter <span class="keyword">in</span> ReadConfig.</span><br><span class="line"> * Passing <span class="keyword">the</span> <span class="string">&quot;partitioner&quot;</span> option <span class="built_in">to</span> <span class="keyword">the</span> DataFrameReader.</span><br><span class="line">The following Partitioners are available:</span><br><span class="line"> * MongoShardedPartitioner - <span class="keyword">for</span> sharded clusters, requires <span class="built_in">read</span> access <span class="built_in">to</span> <span class="keyword">the</span> config database.</span><br><span class="line"> * MongoSplitVectorPartitioner - <span class="keyword">for</span> single nodes <span class="keyword">or</span> replicaSets. Utilises <span class="keyword">the</span> SplitVector <span class="keyword">command</span> <span class="title">on</span> <span class="title">the</span> <span class="title">primary</span>.</span><br><span class="line"> * MongoPaginateByCountPartitioner - creates <span class="keyword">a</span> specific <span class="built_in">number</span> <span class="keyword">of</span> partitions. Slow <span class="keyword">as</span> requires <span class="keyword">a</span> query <span class="keyword">for</span> every partition.</span><br><span class="line"> * MongoPaginateBySizePartitioner - creates partitions based <span class="keyword">on</span> <span class="title">data</span> <span class="title">size</span>. <span class="title">Slow</span> <span class="title">as</span> <span class="title">requires</span> <span class="title">a</span> <span class="title">query</span> <span class="title">for</span> <span class="title">every</span> <span class="title">partition</span>.</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/09/18/spark%E5%90%8C%E6%AD%A5mongo%E6%95%B0%E6%8D%AE%E5%88%B0hive%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/17/azkaban-Installation-Failed-MALFORMED%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="okok">
+      <meta itemprop="description" content="记录学习生活的点点滴滴">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="少年游">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/17/azkaban-Installation-Failed-MALFORMED%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/" class="post-title-link" itemprop="url">azkaban Installation Failed.MALFORMED错误解决</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-09-17 17:01:19" itemprop="dateCreated datePublished" datetime="2020-09-17T17:01:19+08:00">2020-09-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-22 16:39:04" itemprop="dateModified" datetime="2020-09-22T16:39:04+08:00">2020-09-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/azkaban/" itemprop="url" rel="index"><span itemprop="name">azkaban</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Installation-Failed-MALFORMED"><a href="#Installation-Failed-MALFORMED" class="headerlink" title="Installation Failed.MALFORMED"></a>Installation Failed.MALFORMED</h2><p>有中文命名的文件，请改名或者删除。然后就好了。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/11/Spark%E8%B0%83%E4%BC%98%E6%8C%87%E5%8D%97/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -199,9 +438,24 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-09-11 17:54:47 / 修改时间：18:31:36" itemprop="dateCreated datePublished" datetime="2020-09-11T17:54:47+08:00">2020-09-11</time>
+              <time title="创建时间：2020-09-11 17:54:47" itemprop="dateCreated datePublished" datetime="2020-09-11T17:54:47+08:00">2020-09-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-22 16:39:44" itemprop="dateModified" datetime="2020-09-22T16:39:44+08:00">2020-09-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Spark/" itemprop="url" rel="index"><span itemprop="name">Spark</span></a>
+                </span>
             </span>
 
           
@@ -364,7 +618,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-03 20:57:36" itemprop="dateModified" datetime="2020-09-03T20:57:36+08:00">2020-09-03</time>
+                <time title="修改时间：2020-09-22 16:43:17" itemprop="dateModified" datetime="2020-09-22T16:43:17+08:00">2020-09-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -403,6 +657,12 @@
 <li>运营直接干预，对新出现的物品，进行人工干预强推。</li>
 </ul>
 <h2 id="系统冷启动"><a href="#系统冷启动" class="headerlink" title="系统冷启动"></a>系统冷启动</h2><p>推荐系统冷启动，可以通过人工标注的比较好的热门数据，作为兜底推荐。在推荐数据为空的情况下，通过兜底推荐也能保证用户和物品被推荐出去。</p>
+<h2 id="冷启动策略"><a href="#冷启动策略" class="headerlink" title="冷启动策略"></a>冷启动策略</h2><p>基于标签的相似视频推荐基本不存在冷启动问题，因为任何新注入的视频都是包含标签的，并且我们是近实时为新节目计算相似视频，在极短的时间内就会为新节目计算出相似推荐。本节我们来说说实时个性化推荐冷启动问题。<br>因为是基于内容的推荐，冷启动问题没有那么严重，只要用户看过一个视频，这个视频的标签就是用户的兴趣标签，我们可以为用户推荐具备该标签的节目。但是，如果用户一个节目都没看，那要怎么为用户做推荐呢？<br>我们可以采用如下3大策略：</p>
+<ul>
+<li>利用新热节目作为推荐；</li>
+<li>基于用户特征(比如用户地域)来为用户生成相关推荐列表；</li>
+<li>从所有视频中选择不同类别的视频推荐给用户，总有一款是用户喜欢的。</li>
+</ul>
 
       
     </div>
@@ -773,259 +1033,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/19/Win10%E4%B8%8B%E6%9C%80%E4%BD%B3Terminal%E5%AE%9E%E8%B7%B5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="okok">
-      <meta itemprop="description" content="记录学习生活的点点滴滴">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="少年游">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/19/Win10%E4%B8%8B%E6%9C%80%E4%BD%B3Terminal%E5%AE%9E%E8%B7%B5/" class="post-title-link" itemprop="url">Win10 下最佳 Terminal 实践</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-03-19 09:22:14" itemprop="dateCreated datePublished" datetime="2020-03-19T09:22:14+08:00">2020-03-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-03 20:58:53" itemprop="dateModified" datetime="2020-09-03T20:58:53+08:00">2020-09-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/tool/" itemprop="url" rel="index"><span itemprop="name">tool</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>一直苦于 Windows 下没有如 Mac 一般好用的 iterm2, 没有如 linux 一样好用的环境。经常折腾于双系统和 VM 之间。今天给大家推荐一款个人总结的 windows 下最完美的开发环境。子系统和 windows 公用目录且权限统一，操作及其方便。废话不多说先上图！<br><img src="/uploads/terminal.png" alt="Terminal"><br>让我们开始吧~<br>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/03/19/Win10%E4%B8%8B%E6%9C%80%E4%BD%B3Terminal%E5%AE%9E%E8%B7%B5/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/18/Windows%E5%AD%90%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86LxRunOffline%E5%B9%B6%E5%88%87%E6%8D%A2centos7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="okok">
-      <meta itemprop="description" content="记录学习生活的点点滴滴">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="少年游">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/18/Windows%E5%AD%90%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86LxRunOffline%E5%B9%B6%E5%88%87%E6%8D%A2centos7/" class="post-title-link" itemprop="url">Windows 子系统管理 LxRunOffline 并切换 centos7</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-03-18 21:55:50" itemprop="dateCreated datePublished" datetime="2020-03-18T21:55:50+08:00">2020-03-18</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-03 20:59:17" itemprop="dateModified" datetime="2020-09-03T20:59:17+08:00">2020-09-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%A5%87%E6%8A%80/" itemprop="url" rel="index"><span itemprop="name">奇技</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>关于如何打开子系统我不介绍了。可以参考链接。<br>在 Linux 下，大家喜欢用 apt-get ， yum 来安装应用程序，如今在 windows 下，大家可以使用 Chocolatey 来快速下载搭建一个开发环境。</p>
-<ul>
-<li>win7 或者 win2003 以上</li>
-<li>具有 powershell 工具（ cmd 也可以安装，不过可能有些过时的 bug ）<h3 id="Windows包安装工具Chocolatey"><a href="#Windows包安装工具Chocolatey" class="headerlink" title="Windows包安装工具Chocolatey"></a>Windows包安装工具Chocolatey</h3></li>
-</ul>
-<ol>
-<li><p>用管理员身份打开 powershell , 然后运行下面一句</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set-ExecutionPolicy AllSigned; iex ((New-Object System.Net.WebClient).DownloadString(<span class="string">&#x27;https://chocolatey.org/install.ps1&#x27;</span>))</span><br></pre></td></tr></table></figure>
-<p>如有问题，参考链接1</p>
-</li>
-<li><p>安装 lxrunoffline</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">choco install lxrunoffline</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="lxrunoffline-使用手册"><a href="#lxrunoffline-使用手册" class="headerlink" title="lxrunoffline 使用手册"></a>lxrunoffline 使用手册</h3><p>下载<a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/CentOS/sig-cloud-instance-images/CentOS-7-x86_64/docker/centos-7-x86_64-docker.tar.xz">centos安装包</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看系统中已安装的 WSL </span></span><br><span class="line">PS C:\Users\admin\Desktop&gt; lxrunoffline l</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装centos </span></span><br><span class="line"><span class="comment"># lxrunoffline i -n &lt;WSL名称&gt; -d &lt;安装路径&gt; -f &lt;压缩包路径&gt;.tar.gz</span></span><br><span class="line"></span><br><span class="line">PS C:\Users\admin\Desktop&gt; lxrunoffline i -n centos7 -d C:/centos -f D:/work/centos-7-x86_64-docker.tar</span><br><span class="line"><span class="comment"># 如果出现安装的迹象，说明没问题</span></span><br><span class="line"><span class="comment"># 删除</span></span><br><span class="line">PS C:\Users\admin\Desktop&gt; wsl /l <span class="comment">#列出已注册的分发版。</span></span><br><span class="line">适用于 Linux 的 Windows 子系统:</span><br><span class="line">centos (默认)</span><br><span class="line">PS C:\Users\admin\Desktop&gt; wslconfig /u Ubuntu</span><br><span class="line">正在注销子系统...</span><br></pre></td></tr></table></figure>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>[1]. <a target="_blank" rel="noopener" href="https://davidsheh.github.io/2017/09/09/windows-chocolatey-scoop/"> Windows 系统的包管理器</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/18/Windows%E4%B8%8B%E6%96%87%E4%BB%B6%E5%A4%B9%E5%8D%A0%E7%94%A8%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="okok">
-      <meta itemprop="description" content="记录学习生活的点点滴滴">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="少年游">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/18/Windows%E4%B8%8B%E6%96%87%E4%BB%B6%E5%A4%B9%E5%8D%A0%E7%94%A8%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" class="post-title-link" itemprop="url">Windows 下文件夹占用解决办法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-03-18 21:47:00" itemprop="dateCreated datePublished" datetime="2020-03-18T21:47:00+08:00">2020-03-18</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-03 20:57:33" itemprop="dateModified" datetime="2020-09-03T20:57:33+08:00">2020-09-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%A5%87%E6%8A%80/" itemprop="url" rel="index"><span itemprop="name">奇技</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>问题： Windows 下文件夹占用解决办法<br>解决办法： </p>
-<ol>
-<li>按下 win 键</li>
-<li>搜索”资源监视器”， 打开</li>
-<li>选择 CPU 栏目</li>
-<li>在”关联的句柄” 搜索框输入 文件夹的名称</li>
-<li>鼠标右键，结束进程。<br>如图：</li>
-</ol>
-<p><img src="/uploads/zyglq.png" alt="图1-1"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1097,18 +1104,18 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">57</span>
+          <span class="site-state-item-count">60</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">21</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">42</span>
+        <span class="site-state-item-count">48</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
