@@ -180,70 +180,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/02/25/%E6%8E%A8%E8%8D%90%E6%95%B0%E6%8D%AE%E9%87%87%E6%A0%B7%E8%B5%84%E6%96%99/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="okok">
-      <meta itemprop="description" content="记录学习生活的点点滴滴">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="少年游">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/02/25/%E6%8E%A8%E8%8D%90%E6%95%B0%E6%8D%AE%E9%87%87%E6%A0%B7%E8%B5%84%E6%96%99/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-02-25 16:24:00" itemprop="dateCreated datePublished" datetime="2021-02-25T16:24:00+08:00">2021-02-25</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <hr>
-<p>title: 推荐数据采样资料<br>copyright: true<br>top: 0<br>date: 2020-12-30 10:59:10<br>tags:<br>categories:<br>password:<br>这个问题超有趣，推荐系统里有类似的场景，即只有用户点击浏览购买的正样本，却没有显性负样本，这样该如何学习呢？ 我们假设下面几种方案：对于一个用户，用他所有没有过行为的数据作为负样本对于一个用户，从他没有过行为的负样本中均匀采样出一些作为负样本对于一个用户，从他没有过行为的负样本中均匀采样出一些作为负样本， 且保证正负样本比为1：1对于一个用户，从他没有过行为的负样本中均匀采样出一些作为负样本，但采样时，偏重采样那些热门却没有点击的样本。对于第一种方法，缺点太明显，在实际样本中，负样本数量远远超过正样本，正负样本比例太悬殊，效果最差。而第三种方法好于第二种，因为第三种样本比例比较平衡。最有趣的莫过于第四种方案了，在2011年举办的KDD cup的Yahoo！music推荐比赛中，大家发现选取热门却没有行为的样本进行负采样效果最好！因为热门物品大概率曝光过，而用户没有点，说明用户不感兴趣；而冷门物品，用户压根就没见到过，根本谈不上是否感兴趣。一个看似简单的办法，背后却是对用户及数据逻辑深刻的洞察，这才是机器学习最有魅力的地方。</p>
-<h2 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h2><p>直播推荐ctr预估，时长样本优化：</p>
-<pre><code>* 用户点击推荐流，但是没曝光或者很短的时间就退出。如果只考虑曝光和点击样本，则会将一些封面主播推出，ctr虽高，实际观看效果不好。
-* 用户的推荐列表中有英雄联盟，Dota2。用户经常看英雄联盟，没有一次点击Dota2或者累计观看时长小于10分钟。可以考虑删除这些样本，或者作为负样本。
-* 推荐列表所在的session，如果用户只点击了英雄联盟，可以只考虑英雄联盟类别或者当前session下点击的样本为正样本，未点击的为负样本。
-</code></pre><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>[1]. <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/286851129">只有正样本和未标签数据的机器学习怎么做？</a><br>[2]. <a target="_blank" rel="noopener" href="https://blog.csdn.net/Code_LT/article/details/87626770">加权随机抽样算法</a><br>[3]. <a target="_blank" rel="noopener" href="https://lotabout.me/2018/Weighted-Random-Sampling/">加权随机采样 (Weighted Random Sampling)</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/02/25/BML-CodeLab-win10%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E9%97%AE%E9%A2%98%E9%9B%86%E9%94%A6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -323,6 +259,77 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/12/30/%E6%8E%A8%E8%8D%90%E6%95%B0%E6%8D%AE%E9%87%87%E6%A0%B7%E8%B5%84%E6%96%99/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="okok">
+      <meta itemprop="description" content="记录学习生活的点点滴滴">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="少年游">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/12/30/%E6%8E%A8%E8%8D%90%E6%95%B0%E6%8D%AE%E9%87%87%E6%A0%B7%E8%B5%84%E6%96%99/" class="post-title-link" itemprop="url">推荐数据采样资料</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-12-30 10:59:10" itemprop="dateCreated datePublished" datetime="2020-12-30T10:59:10+08:00">2020-12-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-02-25 16:54:15" itemprop="dateModified" datetime="2021-02-25T16:54:15+08:00">2021-02-25</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>这个问题超有趣，推荐系统里有类似的场景，即只有用户点击浏览购买的正样本，却没有显性负样本，这样该如何学习呢？ 我们假设下面几种方案：对于一个用户，用他所有没有过行为的数据作为负样本对于一个用户，从他没有过行为的负样本中均匀采样出一些作为负样本对于一个用户，从他没有过行为的负样本中均匀采样出一些作为负样本， 且保证正负样本比为1：1对于一个用户，从他没有过行为的负样本中均匀采样出一些作为负样本，但采样时，偏重采样那些热门却没有点击的样本。对于第一种方法，缺点太明显，在实际样本中，负样本数量远远超过正样本，正负样本比例太悬殊，效果最差。而第三种方法好于第二种，因为第三种样本比例比较平衡。最有趣的莫过于第四种方案了，在2011年举办的KDD cup的Yahoo！music推荐比赛中，大家发现选取热门却没有行为的样本进行负采样效果最好！因为热门物品大概率曝光过，而用户没有点，说明用户不感兴趣；而冷门物品，用户压根就没见到过，根本谈不上是否感兴趣。一个看似简单的办法，背后却是对用户及数据逻辑深刻的洞察，这才是机器学习最有魅力的地方。</p>
+<h2 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h2><p>直播推荐ctr预估，时长样本优化：</p>
+<pre><code>* 用户点击推荐流，但是没曝光或者很短的时间就退出，可以考虑为真实负样本。如果只考虑曝光和点击样本，则会将一些封面主播推出，ctr虽高，实际观看效果不好。
+* 用户的推荐列表中有英雄联盟，dota。用户经常看英雄联盟，没有一次点击 dota 或者 dota 累计观看时长小于k=10分钟。可以考虑删除这些样本，或者采样作为负样本。
+* 推荐列表所在的session，如果用户只点击了英雄联盟，可以只考虑英雄联盟类别或者当前session时效下点击的样本为正样本，未点击的为负样本。
+</code></pre><p>互动交友推荐：<br>用户点击曝光列表多，但是基本没有回应，可以删除这些用户的样本，可能是骗子。<br>用户有点击曝光列表，但是从未发送过消息。可以删除这些用户的样本，可能不是真实用户。<br>用户有点击曝光列表，但是发送过消息。则是大概率是真实用户，也需采样用户发送的条目数（骗子用户可能一天发送很多用户），全部作为样本训练问题较大。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>[1]. <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/286851129">只有正样本和未标签数据的机器学习怎么做？</a><br>[2]. <a target="_blank" rel="noopener" href="https://blog.csdn.net/Code_LT/article/details/87626770">加权随机抽样算法</a><br>[3]. <a target="_blank" rel="noopener" href="https://lotabout.me/2018/Weighted-Random-Sampling/">加权随机采样 (Weighted Random Sampling)</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/12/29/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E5%90%91%E9%87%8F%E5%8F%AC%E5%9B%9E%E8%B5%84%E6%96%99%E6%94%B6%E9%9B%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -346,10 +353,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-12-29 17:28:43 / 修改时间：17:52:40" itemprop="dateCreated datePublished" datetime="2020-12-29T17:28:43+08:00">2020-12-29</time>
+              <time title="创建时间：2020-12-29 17:28:43" itemprop="dateCreated datePublished" datetime="2020-12-29T17:28:43+08:00">2020-12-29</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-12-30 16:49:32" itemprop="dateModified" datetime="2020-12-30T16:49:32+08:00">2020-12-30</time>
+              </span>
 
           
 
