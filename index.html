@@ -74,7 +74,11 @@
   </style>
 </noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -172,6 +176,528 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/02/25/%E6%8E%A8%E8%8D%90%E6%95%B0%E6%8D%AE%E9%87%87%E6%A0%B7%E8%B5%84%E6%96%99/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="okok">
+      <meta itemprop="description" content="记录学习生活的点点滴滴">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="少年游">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/02/25/%E6%8E%A8%E8%8D%90%E6%95%B0%E6%8D%AE%E9%87%87%E6%A0%B7%E8%B5%84%E6%96%99/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-02-25 16:24:00" itemprop="dateCreated datePublished" datetime="2021-02-25T16:24:00+08:00">2021-02-25</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <hr>
+<p>title: 推荐数据采样资料<br>copyright: true<br>top: 0<br>date: 2020-12-30 10:59:10<br>tags:<br>categories:<br>password:<br>这个问题超有趣，推荐系统里有类似的场景，即只有用户点击浏览购买的正样本，却没有显性负样本，这样该如何学习呢？ 我们假设下面几种方案：对于一个用户，用他所有没有过行为的数据作为负样本对于一个用户，从他没有过行为的负样本中均匀采样出一些作为负样本对于一个用户，从他没有过行为的负样本中均匀采样出一些作为负样本， 且保证正负样本比为1：1对于一个用户，从他没有过行为的负样本中均匀采样出一些作为负样本，但采样时，偏重采样那些热门却没有点击的样本。对于第一种方法，缺点太明显，在实际样本中，负样本数量远远超过正样本，正负样本比例太悬殊，效果最差。而第三种方法好于第二种，因为第三种样本比例比较平衡。最有趣的莫过于第四种方案了，在2011年举办的KDD cup的Yahoo！music推荐比赛中，大家发现选取热门却没有行为的样本进行负采样效果最好！因为热门物品大概率曝光过，而用户没有点，说明用户不感兴趣；而冷门物品，用户压根就没见到过，根本谈不上是否感兴趣。一个看似简单的办法，背后却是对用户及数据逻辑深刻的洞察，这才是机器学习最有魅力的地方。</p>
+<h2 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h2><p>直播推荐ctr预估，时长样本优化：</p>
+<pre><code>* 用户点击推荐流，但是没曝光或者很短的时间就退出。如果只考虑曝光和点击样本，则会将一些封面主播推出，ctr虽高，实际观看效果不好。
+* 用户的推荐列表中有英雄联盟，Dota2。用户经常看英雄联盟，没有一次点击Dota2或者累计观看时长小于10分钟。可以考虑删除这些样本，或者作为负样本。
+* 推荐列表所在的session，如果用户只点击了英雄联盟，可以只考虑英雄联盟类别或者当前session下点击的样本为正样本，未点击的为负样本。
+</code></pre><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>[1]. <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/286851129">只有正样本和未标签数据的机器学习怎么做？</a><br>[2]. <a target="_blank" rel="noopener" href="https://blog.csdn.net/Code_LT/article/details/87626770">加权随机抽样算法</a><br>[3]. <a target="_blank" rel="noopener" href="https://lotabout.me/2018/Weighted-Random-Sampling/">加权随机采样 (Weighted Random Sampling)</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/02/25/BML-CodeLab-win10%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E9%97%AE%E9%A2%98%E9%9B%86%E9%94%A6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="okok">
+      <meta itemprop="description" content="记录学习生活的点点滴滴">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="少年游">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/02/25/BML-CodeLab-win10%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E9%97%AE%E9%A2%98%E9%9B%86%E9%94%A6/" class="post-title-link" itemprop="url">BML CodeLab win10配置以及问题集锦</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-02-25 16:13:04 / 修改时间：16:41:54" itemprop="dateCreated datePublished" datetime="2021-02-25T16:13:04+08:00">2021-02-25</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://cloud.baidu.com/doc/BML/s/1khemrnf2">安装与启动</a></li>
+<li>下载 Windows 客户端（内置 Linux 子系统，提供原生 Linux 开发体验）这个版本</li>
+<li>下载完之后可以直接安装</li>
+<li>启动BML CodeLab(如果安装完可以直接打开则跳过后续步骤)<br>如果报错wsl则先配置wsl2, 如果报错docker则需要安装 <a target="_blank" rel="noopener" href="https://public-codelab.cdn.bcebos.com/docker-images/codelab_cpu.0.3.2.tar.gz?98764">docker镜像</a>。</li>
+</ul>
+<h2 id="wsl2配置"><a href="#wsl2配置" class="headerlink" title="wsl2配置"></a>wsl2配置</h2><ol>
+<li>管理员身份打开 powershell，输入下面指令。<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span><span class="variable">$</span> <span class="built_in">Enable-WindowsOptionalFeature</span> <span class="literal">-Online</span> <span class="literal">-FeatureName</span> VirtualMachinePlatform</span><br></pre></td></tr></table></figure></li>
+<li><p>在 PowerShell 中运行下面指令以将 WS L转变为 WSL2 。</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">$</span><span class="symbol">$</span> wsl --<span class="keyword">set</span>-default-version <span class="comment">2</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看当前子系统列表</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$$ wsl -l -v</span><br><span class="line">  NAME            STATE           VERSION</span><br><span class="line">* Ubuntu<span class="number">-20.04</span>    Running         <span class="number">1</span></span><br><span class="line">  bml-codelab     Running         <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p>如果有 bml-codelab 则子系统存在，而且是 wsl2 分发版</p>
+</li>
+</ol>
+<h2 id="启动-bml-codelab"><a href="#启动-bml-codelab" class="headerlink" title="启动 bml-codelab"></a>启动 bml-codelab</h2><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">$</span><span class="symbol">$</span> wsl -d bml-codelab</span><br></pre></td></tr></table></figure>
+<p>如果报错Failed to set version to docker-desktop: exit code: -1<br>需要：NoLsp.exe  <a target="_blank" rel="noopener" href="https://files.cnblogs.com/files/gaocong/NoLsp.zip">下载地址</a></p>
+<p>cmd管理员下执行<br><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="formula">$$ NoLsp.exe c:<span class="tag">\<span class="name">windows</span></span><span class="tag">\<span class="name">system</span></span>32<span class="tag">\<span class="name">wsl</span></span>.exe</span></span><br><span class="line"><span class="formula">Success!</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="docker安装镜像"><a href="#docker安装镜像" class="headerlink" title="docker安装镜像"></a>docker安装镜像</h2><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$$ docker load --input codelab_cpu<span class="number">.0</span><span class="number">.3</span><span class="number">.2</span>.tar.gz</span><br><span class="line"><span class="number">762</span>d8e1a6054: Loading layer [==================================================&gt;]  <span class="number">91.39</span>MB/<span class="number">91.39</span>MB                      e45cfbc98a50: Loading layer [==================================================&gt;]  <span class="number">15.87</span>kB/<span class="number">15.87</span>kB                      d60e01b37e74: Loading layer [==================================================&gt;]  <span class="number">12.29</span>kB/<span class="number">12.29</span>kB                      b57c79f4a9f3: Loading layer [==================================================&gt;]  <span class="number">3.072</span>kB/<span class="number">3.072</span>kB                      <span class="number">4</span>b7de42b7ca3: Loading layer [==================================================&gt;]  <span class="number">870.1</span>MB/<span class="number">870.1</span>MB                      <span class="number">5e86736</span>c169f: Loading layer [==================================================&gt;]  <span class="number">805.9</span>kB/<span class="number">805.9</span>kB                      <span class="number">8</span>a6ada0c0934: Loading layer [==================================================&gt;]  <span class="number">2.327</span>MB/<span class="number">2.327</span>MB                      d5a0861e1d8c: Loading layer [==================================================&gt;]  <span class="number">1.295</span>GB/<span class="number">1.295</span>GB                      <span class="number">3f</span>9d86b3f7a5: Loading layer [==================================================&gt;]  <span class="number">3.072</span>kB/<span class="number">3.072</span>kB                      <span class="number">7</span>c4f5dae3140: Loading layer [==================================================&gt;]   <span class="number">11.4</span>MB/<span class="number">11.4</span>MB                       <span class="number">4</span>dea97a4c622: Loading layer [==================================================&gt;]   <span class="number">12.8</span>kB/<span class="number">12.8</span>kB                       bdc626aed6fe: Loading layer [==================================================&gt;]  <span class="number">40.33</span>MB/<span class="number">40.33</span>MB                      aa5f0d69148a: Loading layer [==================================================&gt;]  <span class="number">6.144</span>kB/<span class="number">6.144</span>kB                      <span class="number">159f</span>6dd6ce7b: Loading layer [==================================================&gt;]  <span class="number">3.584</span>kB/<span class="number">3.584</span>kB                      f2d43b4d5a6f: Loading layer [==================================================&gt;]   <span class="number">2.56</span>kB/<span class="number">2.56</span>kB                       <span class="number">9</span>da1e585de35: Loading layer [==================================================&gt;]   <span class="number">16.9</span>kB/<span class="number">16.9</span>kB                       b25860c4d9f8: Loading layer [==================================================&gt;]  <span class="number">17.41</span>kB/<span class="number">17.41</span>kB                      <span class="number">9</span>acba5ef0eb3: Loading layer [==================================================&gt;]  <span class="number">32.26</span>kB/<span class="number">32.26</span>kB                      b20dad55177e: Loading layer [==================================================&gt;]  <span class="number">13.31</span>kB/<span class="number">13.31</span>kB                      d9f4e5d74149: Loading layer [==================================================&gt;]  <span class="number">3.808</span>MB/<span class="number">3.808</span>MB                      fddb2663004d: Loading layer [==================================================&gt;]  <span class="number">6.144</span>kB/<span class="number">6.144</span>kB                      <span class="number">0</span>ee6855b88fd: Loading layer [==================================================&gt;]   <span class="number">42.5</span>kB/<span class="number">42.5</span>kB                       <span class="number">824</span>cee98dd03: Loading layer [==================================================&gt;]  <span class="number">3.072</span>kB/<span class="number">3.072</span>kB                      d69f4ef5eae2: Loading layer [==================================================&gt;]    <span class="number">630</span>MB/<span class="number">630</span>MB                        <span class="number">57082f</span>c6ece1: Loading layer [==================================================&gt;]  <span class="number">4.608</span>kB/<span class="number">4.608</span>kB </span><br><span class="line"></span><br><span class="line">$$ docker images</span><br><span class="line">REPOSITORY                         TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">hub.baidubce.com/jarvis2/codelab   cpu2021<span class="number">-01</span><span class="number">-11</span>       <span class="number">4</span>bbbf92b2eaa        <span class="number">6</span> weeks ago         <span class="number">2.83</span>GB</span><br><span class="line"></span><br><span class="line"># 如果当前机器无GPU卡，启动命令为：</span><br><span class="line">$$ docker run -d -p &#123;本地启动的端口, 可以是<span class="number">8552</span>&#125;:<span class="number">8670</span> -v /home/work/codelab:/home/work/mnt --privileged &#123;镜像的名称或镜像的ID, 上面对应是<span class="number">4</span>bbbf92b2eaa&#125;</span><br><span class="line"></span><br><span class="line">如果当前机器有GPU卡，启动命令为：</span><br><span class="line">docker run -d -p &#123;本地启动的端口, 可以是<span class="number">8552</span>&#125;:<span class="number">8670</span> -v /home/work/codelab:/home/work/mnt -–gpus all --privileged</span><br></pre></td></tr></table></figure>
+<h2 id="win10桌面启动BML-CodeLab"><a href="#win10桌面启动BML-CodeLab" class="headerlink" title="win10桌面启动BML CodeLab"></a>win10桌面启动BML CodeLab</h2><p>成功！</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/12/29/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E5%90%91%E9%87%8F%E5%8F%AC%E5%9B%9E%E8%B5%84%E6%96%99%E6%94%B6%E9%9B%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="okok">
+      <meta itemprop="description" content="记录学习生活的点点滴滴">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="少年游">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/12/29/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E5%90%91%E9%87%8F%E5%8F%AC%E5%9B%9E%E8%B5%84%E6%96%99%E6%94%B6%E9%9B%86/" class="post-title-link" itemprop="url">推荐算法向量召回资料收集</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-12-29 17:28:43 / 修改时间：17:52:40" itemprop="dateCreated datePublished" datetime="2020-12-29T17:28:43+08:00">2020-12-29</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>FALCONN的索引构建过程非常快，百万量级的数据，维度如果是128维，其构建索引时间大概2-3min的样子，实时搜索可以做到几毫秒的响应时间。总之，这是小白菜见过的构建索引时间最短查询响应时间也极快的ANN工具库。</p>
+<p>另外谈一下数据规模问题。对于小数据集和中型规模的数据集(几个million-几十个million)， FALCONN和 NMSLIB 是一个非常不错的选择，如果对于大型规模数据集(几百个million以上)，基于矢量量化的 Faiss 是一个明智的选择。关于这方面的讨论，可以参阅小白菜参阅的讨论 benchmark。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>[1]. <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_27245709/article/details/72393613?utm_medium=distribute.pc_relevant.none-task-blog-baidujs_title-11&amp;spm=1001.2101.3001.4242">图像检索：再叙ANN Search</a><br>[2]. <a target="_blank" rel="noopener" href="https://blog.csdn.net/Young_Gy/article/details/60868414">KD树和LSH局部敏感哈希</a><br>[3]. <a target="_blank" rel="noopener" href="https://www.lagou.com/lgeduarticle/72602.html">浅谈KNN算法与KD树</a><br>[4]. <a target="_blank" rel="noopener" href="https://yq.aliyun.com/articles/697621">Nmslib高维空间最近邻逼近搜索算法介绍</a><br>[5]. <a target="_blank" rel="noopener" href="https://github.com/nmslib/nmslib/blob/v2.0.7/python_bindings/README.md">nmslib github</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/02/CART%E5%9B%9E%E5%BD%92%E6%A0%91%E4%BE%8B%E5%AD%90%E8%AE%B2%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="okok">
+      <meta itemprop="description" content="记录学习生活的点点滴滴">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="少年游">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/02/CART%E5%9B%9E%E5%BD%92%E6%A0%91%E4%BE%8B%E5%AD%90%E8%AE%B2%E8%A7%A3/" class="post-title-link" itemprop="url">CART回归树例子讲解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-02 11:43:41" itemprop="dateCreated datePublished" datetime="2020-11-02T11:43:41+08:00">2020-11-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-12-30 16:49:02" itemprop="dateModified" datetime="2020-12-30T16:49:02+08:00">2020-12-30</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="CART回归树原理"><a href="#CART回归树原理" class="headerlink" title="CART回归树原理"></a>CART回归树原理</h2><ul>
+<li>回归树将特征值大于切分点值的数据划分为左子树。</li>
+<li>回归树将特征值小于等于切分点值的数据划分为右子树。</li>
+</ul>
+<h2 id="如何寻找切分点值，最优切分点"><a href="#如何寻找切分点值，最优切分点" class="headerlink" title="如何寻找切分点值，最优切分点"></a>如何寻找切分点值，最优切分点</h2><ul>
+<li>切分指标：平方误差<br><script type="math/tex">err = \sum{(y_1 - \overline{y_1})^2} + \sum{(y_2 - \overline{y_2})^2}  ，\overline{y_1}， \overline{y_2}</script> 分别是划分样本中回归目标的均值。</li>
+</ul>
+<h2 id="CART回归树例子"><a href="#CART回归树例子" class="headerlink" title="CART回归树例子"></a>CART回归树例子</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>面积/平米</th>
+<th>价格/万</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20</td>
+<td>40.1</td>
+</tr>
+<tr>
+<td>21</td>
+<td>40.3</td>
+</tr>
+<tr>
+<td>35</td>
+<td>70.4</td>
+</tr>
+<tr>
+<td>36</td>
+<td>70.2</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ol>
+<li><p>按照面积=20切分， <script type="math/tex">y_1</script> 均值是 (40.3 + 70.4 + 70) / 3 = 60.3， $y_2$均值是40.1</p>
+<script type="math/tex; mode=display">err = (40.3 - 60.3)^2 + (70.4 - 60.3)^2 + (70 - 60.3)^2) + 0 = 600.02</script></li>
+<li><p>按照面积=21切分， $y_1$均值是(70.4 + 70.2) / 2 = 70.3， <script type="math/tex">y_2</script> 均值是 (40.1 + 40.3) / 2 = 40.2</p>
+<script type="math/tex; mode=display">err = (40.1 - 40.2)^2 + (40.3 - 40.2)^2 +(70.1 - 70.2)^2 + (70.3 - 70.2)^2 = 0.04</script></li>
+<li><p>按照面积=35， $y_1$均值是70.2， <script type="math/tex">y_2</script> 均值是 (40.1 + 40.3 + 70.4) / 3 = 50.27</p>
+</li>
+</ol>
+<script type="math/tex; mode=display">err = 0 + (40.1 –50.27)^2 + (40.3 –50.27)^2 + (70.4 –50.27)^2 = 608.05</script><p>由此可见面积=21是当前最优切分。</p>
+<ul>
+<li>切分结果</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>面积/平米</th>
+<th>价格/万</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20</td>
+<td>40.1</td>
+</tr>
+<tr>
+<td>21</td>
+<td>40.3</td>
+</tr>
+<tr>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>35</td>
+<td>70.4</td>
+</tr>
+<tr>
+<td>36</td>
+<td>70.2</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>面积&gt;21: 面积&gt;35: 价格=70.2， 面积&lt;=32: 价格=70.4<br>面积&lt;=21: 面积&gt;20: 价格=40.1，面积&lt;=20: 价格=40.3</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>[1]. <a target="_blank" rel="noopener" href="https://developer.ibm.com/zh/technologies/analytics/articles/machine-learning-hands-on5-cart-tree/">机器学习系列之手把手教你实现一个分类回归树</a><br>[2]. <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/005a4e6ac775">残差预测</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/02/CART%E5%88%86%E7%B1%BB%E6%A0%91%E4%BE%8B%E5%AD%90%E8%AE%B2%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="okok">
+      <meta itemprop="description" content="记录学习生活的点点滴滴">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="少年游">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/02/CART%E5%88%86%E7%B1%BB%E6%A0%91%E4%BE%8B%E5%AD%90%E8%AE%B2%E8%A7%A3/" class="post-title-link" itemprop="url">CART分类树例子讲解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-02 11:43:17" itemprop="dateCreated datePublished" datetime="2020-11-02T11:43:17+08:00">2020-11-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-12-30 16:49:29" itemprop="dateModified" datetime="2020-12-30T16:49:29+08:00">2020-12-30</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="CART分类树原理"><a href="#CART分类树原理" class="headerlink" title="CART分类树原理"></a>CART分类树原理</h2><p>二分思想：</p>
+<pre><code>* 将特征值等于切分点值的数据划分为左子树。
+* 将特征值不等于切分点值的数据划分为右子树。
+</code></pre><p>如此循环构造二叉分类树。</p>
+<h2 id="如何寻找切分点值，最优切分点"><a href="#如何寻找切分点值，最优切分点" class="headerlink" title="如何寻找切分点值，最优切分点"></a>如何寻找切分点值，最优切分点</h2><p>切分指标：</p>
+<pre><code>* 基尼指数
+</code></pre><ul>
+<li><p>假设有N个类别，样本属于第n类的概率为$P_n$, 则基尼系数为：</p>
+<script type="math/tex; mode=display">Gini(P) = \sum_{n=1}^{N}p_n(1-p_n)</script></li>
+<li><p>若数据集按特征值A取值是否等于切分点D1和D2两部分，则在特征A下，集合D的基尼指数为：</p>
+<script type="math/tex; mode=display">Gini(D，A) = \frac{|D_1|}{D}Gini(D_1) + \frac{|D_2|}{D}Gini(D_2)</script></li>
+</ul>
+<p>那么，对于数据集D，存在特征A，B，C三个，我们就需要选取最优切分点。计算出Gini(D,A), Gini(D,B), Gini(D,C)。如此以来，我们就可以选取最大或者最小作为切分依据。<br>那到底是最大还是最小呢？请看基尼指数定义。</p>
+<h2 id="CART树分类例子"><a href="#CART树分类例子" class="headerlink" title="CART树分类例子"></a>CART树分类例子</h2><ul>
+<li>给定数据集D, 含有两个个特征A, B。分类标签是label</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>A</th>
+<th>B</th>
+<th>label</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>选择最优特征</li>
+</ul>
+<ol>
+<li>分界点A=1, 参考公式</li>
+</ol>
+<script type="math/tex; mode=display">
+Gini(D, A=1) = 3/5 * Gini(D_1) + 2/5 * Gini(D_2) = 3/5 * (1/3*2/3 + 2/3 * 1/3) + 2/5 * (0 * 1 + 1 * 0) = 0.266</script><ol>
+<li>分界点B=1, 参考公式<script type="math/tex; mode=display">
+Gini(D, B=1) = 2/5 * Gini(D_1) + 3/5 * Gini(D_2) = 2/5 * (1/2 * 1/2 + 1/2 * 1/2) + 3/5 * (0 * 1 + 1 * 0) = 0.2</script>由此可见，Gini(D, B=1)数值更小，应当以特征B划分第一个节点。</li>
+</ol>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>A</th>
+<th>B</th>
+<th>label</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<script type="math/tex; mode=display">Gini(D, B=1, A=1) = 1/2* Gini(D_1) + 1/2 * Gini(D_2) = 1/2 * 0 + 1/2 * 0 = 0</script><p>划分后，由于只剩下一个特征，其实是不用计算的，直接划分<br>那么决策树为：{“B=0”: “label=0”, “B=1”: {“A=1”: “label=1”, “B=0”: “label=0”}} }</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -599,433 +1125,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/11/hive-%E4%BF%9D%E5%BA%8Fconcat/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="okok">
-      <meta itemprop="description" content="记录学习生活的点点滴滴">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="少年游">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/11/hive-%E4%BF%9D%E5%BA%8Fconcat/" class="post-title-link" itemprop="url">hive 保序concat</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-09-11 15:23:33 / 修改时间：18:31:36" itemprop="dateCreated datePublished" datetime="2020-09-11T15:23:33+08:00">2020-09-11</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="hive保序concat"><a href="#hive保序concat" class="headerlink" title="hive保序concat"></a>hive保序concat</h2><blockquote>
-<p>品类里面取TOP2并按score分值连接成字符串</p>
-</blockquote>
-<ol>
-<li>row_number() 首先要排序。</li>
-<li>where rank &lt; N 其次要进行过滤。<br>以上两步缺一不可</li>
-</ol>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span></span><br><span class="line">    uid,</span><br><span class="line">    prefer_type,</span><br><span class="line">    <span class="keyword">sum</span>(watch_proba) <span class="keyword">as</span> watch_proba,</span><br><span class="line">    <span class="keyword">concat_ws</span>(<span class="string">&quot;;&quot;</span>, collect_list(item)) <span class="keyword">as</span> type_item</span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">(</span><br><span class="line">    <span class="keyword">select</span> </span><br><span class="line">        uid,</span><br><span class="line">        gt,</span><br><span class="line">        prefer_type,</span><br><span class="line">        watch_proba,</span><br><span class="line">        watch_proba_normalize,</span><br><span class="line">        <span class="keyword">concat</span>(gt, <span class="string">&quot;:&quot;</span>, <span class="keyword">substr</span>(<span class="keyword">cast</span>(watch_proba_normalize <span class="keyword">as</span> <span class="built_in">decimal</span>(<span class="number">32</span>,<span class="number">30</span>)), <span class="number">0</span>, <span class="number">6</span>)) <span class="keyword">as</span> item, <span class="comment">-- 排除科学计数法，小数分值截断</span></span><br><span class="line">        row_number() <span class="keyword">over</span> ( <span class="keyword">partition</span> <span class="keyword">by</span> uid, prefer_type <span class="keyword">order</span> <span class="keyword">by</span> watch_proba <span class="keyword">desc</span> ) <span class="keyword">as</span> <span class="keyword">rank</span></span><br><span class="line">    <span class="keyword">from</span> </span><br><span class="line">    (</span><br><span class="line">        <span class="keyword">select</span> </span><br><span class="line">            uid,</span><br><span class="line">            gt,</span><br><span class="line">            prefer_type,</span><br><span class="line">            watch_proba,</span><br><span class="line">            watch_proba / <span class="keyword">sum</span>(watch_proba) <span class="keyword">over</span> ( <span class="keyword">partition</span> <span class="keyword">by</span> uid, prefer_type ) <span class="keyword">as</span> watch_proba_normalize <span class="comment">-- 归一化</span></span><br><span class="line">        <span class="keyword">from</span> recom_app.prefer_type</span><br><span class="line">    ) t11</span><br><span class="line">    <span class="keyword">where</span> watch_proba_normalize &gt;= <span class="number">0.0001</span></span><br><span class="line">) t12</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">rank</span> &lt;= <span class="number">2</span></span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> uid, prefer_type</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/02/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%86%B7%E5%90%AF%E5%8A%A8%E9%97%AE%E9%A2%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="okok">
-      <meta itemprop="description" content="记录学习生活的点点滴滴">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="少年游">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/02/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%86%B7%E5%90%AF%E5%8A%A8%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">机器学习|冷启动问题</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-02 16:15:19" itemprop="dateCreated datePublished" datetime="2020-04-02T16:15:19+08:00">2020-04-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-22 16:43:17" itemprop="dateModified" datetime="2020-09-22T16:43:17+08:00">2020-09-22</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>冷启动（ cold start ）在推荐系统中表示该系统积累数据量过少，无法给新用户作个性化推荐的问题，这是产品推荐的一大难题。每个有推荐功能的产品都会遇到冷启动的问题。一方面，当新商品时上架 会遇到冷启动的问题，没有收集到任何一个用户对其浏览、点击或者购买的行为，也无从判断如何将商品进行推荐；另一方面，新用户到来的时候，如果没有他在应用上的行为数据，也无法预测其兴趣，如果给用户的推荐千篇律，没有亮点，会使用户在一开始就对产品失去兴趣，从而放弃使用。所以在冷启动的时候要同时考虑用户的冷启动和物品的冷启动。</p>
-</blockquote>
-<h2 id="用户冷启动"><a href="#用户冷启动" class="headerlink" title="用户冷启动"></a>用户冷启动</h2><p>用户冷启动主要解决如何给新用户作个性化推荐的问题。</p>
-<ul>
-<li>利用用户账号信息，比如邮箱。去关联整个集团的公共特征库。</li>
-<li>利用手机IMEI UDID IDFA号唯一标识码关联。有些公司对匿名用户的数据也会有日志收集。根据匿名的用户行为，进行关联推荐。也可以通过第三方广告公司去购买用户特征数据。</li>
-<li>制造选工页，让用户选择自己感兴趣标签。比如说斗鱼直播，在首次登陆之后，用户会收到一个选择页面，你可以选择<code>英雄联盟</code>，<code>二次元</code>，<code>绝地求生</code>等标签，然后冷启动会立即选择这几个品类的热门数据进行补充。</li>
-</ul>
-<h2 id="物品冷启动"><a href="#物品冷启动" class="headerlink" title="物品冷启动"></a>物品冷启动</h2><p>物品冷启动主要解决如何将新的物品推荐给可能对它感兴趣的用户这一问题。</p>
-<ul>
-<li>利用物品的内容、分类信息。通过标签关联。</li>
-<li>利用专家标注的数据，将物品的特征加入到实时特征库。</li>
-<li>运营直接干预，对新出现的物品，进行人工干预强推。</li>
-</ul>
-<h2 id="系统冷启动"><a href="#系统冷启动" class="headerlink" title="系统冷启动"></a>系统冷启动</h2><p>推荐系统冷启动，可以通过人工标注的比较好的热门数据，作为兜底推荐。在推荐数据为空的情况下，通过兜底推荐也能保证用户和物品被推荐出去。</p>
-<h2 id="冷启动策略"><a href="#冷启动策略" class="headerlink" title="冷启动策略"></a>冷启动策略</h2><p>基于标签的相似视频推荐基本不存在冷启动问题，因为任何新注入的视频都是包含标签的，并且我们是近实时为新节目计算相似视频，在极短的时间内就会为新节目计算出相似推荐。本节我们来说说实时个性化推荐冷启动问题。<br>因为是基于内容的推荐，冷启动问题没有那么严重，只要用户看过一个视频，这个视频的标签就是用户的兴趣标签，我们可以为用户推荐具备该标签的节目。但是，如果用户一个节目都没看，那要怎么为用户做推荐呢？<br>我们可以采用如下3大策略：</p>
-<ul>
-<li>利用新热节目作为推荐；</li>
-<li>基于用户特征(比如用户地域)来为用户生成相关推荐列表；</li>
-<li>从所有视频中选择不同类别的视频推荐给用户，总有一款是用户喜欢的。</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/02/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%AE%9E%E6%97%B6%E6%8E%A8%E8%8D%90%E6%9E%B6%E6%9E%84%E7%AE%80%E4%BB%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="okok">
-      <meta itemprop="description" content="记录学习生活的点点滴滴">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="少年游">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/02/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%AE%9E%E6%97%B6%E6%8E%A8%E8%8D%90%E6%9E%B6%E6%9E%84%E7%AE%80%E4%BB%8B/" class="post-title-link" itemprop="url">机器学习|实时推荐架构简介</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-02 15:32:18" itemprop="dateCreated datePublished" datetime="2020-04-02T15:32:18+08:00">2020-04-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-03 20:59:28" itemprop="dateModified" datetime="2020-09-03T20:59:28+08:00">2020-09-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="实时画像"><a href="#实时画像" class="headerlink" title="实时画像"></a>实时画像</h2><h3 id="最大期望（-EM-）算法"><a href="#最大期望（-EM-）算法" class="headerlink" title="最大期望（ EM ）算法"></a>最大期望（ EM ）算法</h3><h2 id="实时推荐算法"><a href="#实时推荐算法" class="headerlink" title="实时推荐算法"></a>实时推荐算法</h2><h2 id="推荐架构"><a href="#推荐架构" class="headerlink" title="推荐架构"></a>推荐架构</h2><h3 id="离线计算"><a href="#离线计算" class="headerlink" title="离线计算"></a>离线计算</h3><h3 id="近线计算"><a href="#近线计算" class="headerlink" title="近线计算"></a>近线计算</h3><h3 id="在线计算"><a href="#在线计算" class="headerlink" title="在线计算"></a>在线计算</h3><h2 id=""><a href="#" class="headerlink" title="#"></a>#</h2><p>HBase 用于实时获取画像，提供高并发下的毫秒级返回。<br>Elasticsearch 用于召回层，尽可能在短时间内根据用户画像标签初筛合适的商品作为候选集。<br>Hive 用于算法同学训练模型提供统一的数据源，该存储可以不实时，根据需求每天同步一份即可。</p>
-<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/7a3349d1e3cc">推荐系统总结6（系统架构）</a><br><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1118880">手Q游戏中心的个性化推荐实战</a></p>
-<h2 id="相关论文"><a href="#相关论文" class="headerlink" title="相关论文"></a>相关论文</h2><ol>
-<li><a target="_blank" rel="noopener" href="https://www.biaodianfu.com/tencentrec-real-time-stream-recommendation-in-practice.html">TencentRec: Real-time Stream Recommendation in Practice论文解读</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.biaodianfu.com/real-time-video-recommendation-exploration.html">Real-time Video Recommendation Exploration论文解读</a></li>
-<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1380402">Youtube 深度学习推荐系统论文</a></li>
-<li><a target="_blank" rel="noopener" href="https://daiwk.github.io/posts/links-navigation-recommender-system.html">推荐系统论文合集</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/NLP-LOVE/ML-NLP">算法基础</a></li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/02/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B%E5%9F%BA%E6%9C%AC%E6%A1%86%E6%9E%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="okok">
-      <meta itemprop="description" content="记录学习生活的点点滴滴">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="少年游">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/02/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B%E5%9F%BA%E6%9C%AC%E6%A1%86%E6%9E%B6/" class="post-title-link" itemprop="url">机器学习|特征工程基本框架</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-02 15:31:47" itemprop="dateCreated datePublished" datetime="2020-04-02T15:31:47+08:00">2020-04-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-03 20:58:04" itemprop="dateModified" datetime="2020-09-03T20:58:04+08:00">2020-09-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>在推荐系统中，特征工程扮演着重要的角色。俗话说数据和特征决定了机器学习算法的上限，而模型、算法的选择和优化只是在不断逼近这个上限。</p>
-<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><ol>
-<li><a target="_blank" rel="noopener" href="https://www.jiqizhixin.com/articles/2019-12-11-5">浅谈微视推荐系统中的特征工程</a></li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/01/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A01000%E9%97%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="okok">
-      <meta itemprop="description" content="记录学习生活的点点滴滴">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="少年游">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/01/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A01000%E9%97%AE/" class="post-title-link" itemprop="url">机器学习1000问</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-01 16:52:16" itemprop="dateCreated datePublished" datetime="2020-04-01T16:52:16+08:00">2020-04-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-03 20:58:09" itemprop="dateModified" datetime="2020-09-03T20:58:09+08:00">2020-09-03</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="什么是机器学习？"><a href="#什么是机器学习？" class="headerlink" title="什么是机器学习？"></a>什么是机器学习？</h2><p>利用大量的数据样本，使得计算机通过不断的学习获得一个模型，用来对新的未知数据做预测。</p>
-<h2 id="机器学习有哪些类别？"><a href="#机器学习有哪些类别？" class="headerlink" title="机器学习有哪些类别？"></a>机器学习有哪些类别？</h2><blockquote>
-<p>机器学习分为监督学习，非监督学习和强化学习。<br>监督学习：同时将数据样本和标签输入给模型，模型学习到数据和标签的映射关系，从而对新数据进行预测。监督学习又分为分类问题和回归问题。</p>
-</blockquote>
-<p>非监督学习：只有数据，没有标签，模型通过总结规律，从数据中挖掘出信息。</p>
-<h2 id="逻辑回归相比于线性回归，有何异同？"><a href="#逻辑回归相比于线性回归，有何异同？" class="headerlink" title="逻辑回归相比于线性回归，有何异同？"></a>逻辑回归相比于线性回归，有何异同？</h2><ul>
-<li>首先逻辑回归处理的是分类问题，线性回归处理的是回归问题，这是两者最本质的区别</li>
-<li>线性回归是一种拟合函数，逻辑回归是一种预测函数。</li>
-<li>线性回归求参采用最小二乘法，逻辑回归求参采用梯度下降。</li>
-</ul>
-<h2 id="树形结构为什么不需要归一化？"><a href="#树形结构为什么不需要归一化？" class="headerlink" title="树形结构为什么不需要归一化？"></a>树形结构为什么不需要归一化？</h2><p>因为数值缩放不影响分裂点位置，对树模型的结构不造成影响。树模型是不能进行梯度下降的，因为构建树模型（回归树）寻找最优点时是通过寻找最优分裂点完成的，因此树模型是阶跃的，阶跃点是不可导的，并且求导没意义，也就不需要归一化。归一化对模型没有影响。<br><strong>问题来了，为何非树形结构比如 Adaboost、SVM、LR、Knn、KMeans 之类则需要归一化呢？</strong><br>对于线性模型，特征值差别很大时，比如说 LR ，我有两个特征，一个是 (0,1) 的，一个是 (0,10000) 的，运用梯度下降的时候，损失等高线是椭圆形，需要进行多次迭代才能到达最优点。<br>但是如果进行了归一化，那么等高线就是圆形的，促使 SGD 往原点迭代，从而导致需要的迭代次数较少。在实际应用中，通过梯度下降法求解的模型一般都是需要归一化的，比如线性回归、logistic回归、KNN、SVM、神经网络等模型。</p>
-<h2 id="有哪些归一化方法"><a href="#有哪些归一化方法" class="headerlink" title="有哪些归一化方法"></a>有哪些归一化方法</h2><ul>
-<li>线性归一化</li>
-<li><p>标准差归一化</p>
-</li>
-<li><p>非线性归一化<br>幂律分布可用log(v, 2) / log(max, 2)<br>指数归一化<br>反正切函数 arctan</p>
-</li>
-</ul>
-<h2 id="新内容，曝光较少的内容的排序问题如何解决"><a href="#新内容，曝光较少的内容的排序问题如何解决" class="headerlink" title="新内容，曝光较少的内容的排序问题如何解决?"></a>新内容，曝光较少的内容的排序问题如何解决?</h2><p>对于某件商品或广告X，其是否被点击是一个伯努利分布（Bernoulli）</p>
-<script type="math/tex; mode=display">
-  X ~ Ber(r), r是商品或者广告的被点击概率</script><script type="math/tex; mode=display">
-\hat{r} = \frac{ C+\alpha }{ I + \alpha + \beta}</script><script type="math/tex; mode=display">
-\alpha = \bar{X} \left(\frac{\bar{X}(1-\bar{X})}{S^2} - 1\right)</script><script type="math/tex; mode=display">
-\beta = (1-\bar{X})\left(\frac{\bar{X}(1-\bar{X})}{S^2} - 1\right)</script><p>求解$\alpha, \beta$</p>
-<p>然而，Beta分布除了两个显性的重要参数α和β外，还有两个相对隐形但同样重要的参数，平均值和中位数，通过平均值和中位数可以唯一确定α和β的值，它们的数学关系如下：</p>
-<script type="math/tex; mode=display">mean = \frac{\alpha}{\alpha + \beta}</script><script type="math/tex; mode=display">mode = \frac{\alpha - 1}{ \alpha + \beta -1}</script><h3 id="威尔逊平滑"><a href="#威尔逊平滑" class="headerlink" title="威尔逊平滑"></a>威尔逊平滑</h3><p>平滑，曝光次数n，点击率p<br>它只适用于样本较多的情况（np &gt; 5 且 n(1 − p) &gt; 5），对于小样本，它的准确性很差。</p>
-<h2 id="类别特征有哪些编码方式？"><a href="#类别特征有哪些编码方式？" class="headerlink" title="类别特征有哪些编码方式？"></a>类别特征有哪些编码方式？</h2><ul>
-<li><p>独热编码<br>独热编码通常用于处理类别间不具有大小关系的特征，每个特征取值对应一维特征，能够处理缺失值，在一定程度上也起到了扩充特征的作用。但是当类别的数量很多时，特征空间会变得非常大。在这种情况下，一般可以用 PCA 等方法进行降维。</p>
-</li>
-<li><p>散列编码<br>对于有些取值特别多的类别特征，使用独热编码得到的特征矩阵非常稀疏，再加上如果还有笛卡尔积等构造的组合特征，会使得特征维度爆炸式增长。使用2-3倍取模。</p>
-</li>
-<li><p>打分排名编码</p>
-</li>
-</ul>
-<h2 id="特征降维方法？"><a href="#特征降维方法？" class="headerlink" title="特征降维方法？"></a>特征降维方法？</h2><ul>
-<li>频次阶段技术<br>比如文档中某个词语出现的次数不超过5次，则不计入特征中。</li>
-</ul>
-<h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><ol>
-<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/b3e9b300a100">推荐系统-威尔逊区间法</a></li>
-<li><a target="_blank" rel="noopener" href="http://sakigami-yang.me/2017/12/27/rating-model-considering-user-count/">考虑评分人数的用户评分模型</a></li>
-<li>Click-Through Rate Estimation for Rare Events in Online Advertising</li>
-<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/264165760">如何用通俗的语言解释CTR和推荐系统中常用的Feature Hashing</a></li>
-<li>Feature hashing for large scale multitask learning.</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1097,7 +1196,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-count">66</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1135,7 +1234,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="heart"></i>
   </span>
@@ -1196,6 +1295,61 @@
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
